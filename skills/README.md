@@ -10,8 +10,6 @@
 
 คลังสกิลของต้นทอง (Hermes Agent) ที่ใช้ในการทำงานร่วมกับ Satang — ครอบคลุมตั้งแต่ DevOps, Finance, Trading, Marketing, AI/ML ไปจนถึงการพัฒนาซอฟต์แวร์ทั้งหมด
 
-สกิลแต่ละตัวคือ **ชุดคำสั่งและขั้นตอนที่พิสูจน์แล้ว** ที่ต้นทองโหลดขึ้นมาใช้โดยอัตโนมัติเมื่อได้รับงานที่เกี่ยวข้อง
-
 ---
 
 ## 🚀 วิธีใช้งาน
@@ -35,7 +33,7 @@ skills/  ← sync กับ ~/.hermes/skills/ บน VPS
 
 ## 📚 สารบัญ Skills
 
-> **233 skills** ใน **78 หมวด** — อัปเดตอัตโนมัติโดยต้นทอง
+> **234 skills** ใน **78 หมวด** — อัปเดตอัตโนมัติโดยต้นทอง
 
 
 ### 30x-growth-marketing-panel
@@ -583,6 +581,7 @@ skills/  ← sync กับ ~/.hermes/skills/ บน VPS
 | `llm-wiki` | Karpathy's LLM Wiki: build/query interlinked markdown KB. |
 | `polymarket` | Query Polymarket: markets, prices, orderbooks, history. |
 | `research-paper-writing` | Write ML papers for NeurIPS/ICML/ICLR: design→submit. |
+| `scrape-grocery-thailand` | Use when scraping, crawling, or extracting grocery product information from Thai retailers… |
 
 ### saas-productivity
 

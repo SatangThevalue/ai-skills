@@ -28,66 +28,51 @@ Invoke through the `terminal` tool to provision the PostgreSQL user/database, us
 - Create Postgres User: `CREATE USER n8n_user WITH PASSWORD 'secret';`
 - Create Postgres DB: `CREATE DATABASE n8n OWNER n8n_user;`
 - Required Traefik Header Label: `"traefik.http.middlewares.n8n-headers.headers.customrequestheaders.X-Forwarded-Proto=https"`
+- Local MCP Tools for n8n:
+  - `health` — Check API reachability & Docker status
+  - `list_workflows` — List workflows (active filter)
+  - `get_workflow` — Inspect a workflow (redacted secrets)
+  - `list_executions` — List execution history
+  - `activate_workflow` / `deactivate_workflow` — Mutate workflow states
 
 ## Procedure
 
-1. **Provision the Database**
-   Invoke through the `terminal` tool to execute `psql` inside the existing PostgreSQL container:
+1. **Deploy n8n and PostgreSQL**
+   Refer to the docker-compose template to spin up n8n and PostgreSQL behind Traefik (ensure `X-Forwarded-Proto` header is set to `https`).
+
+2. **Configure n8n MCP Server for Hermes**
+   If you want Hermes to control or inspect n8n workflows directly, install and configure the stdio MCP bridge:
    ```bash
-   docker exec postgres psql -U <admin_user> -d postgres -c "CREATE USER n8n_user WITH PASSWORD 'n8n_password';"
-   docker exec postgres psql -U <admin_user> -d postgres -c "CREATE DATABASE n8n OWNER n8n_user;"
+   # 1. Install the MCP bridge
+   hermes mcp install n8n
+   
+   # 2. Store n8n credentials securely
+   mkdir -p ~/.config/n8n-mcp
+   cat > ~/.config/n8n-mcp/env <<'EOF'
+   N8N_BASE_URL=http://127.0.0.1:5678
+   N8N_API_KEY=your_n8n_token
+   N8N_CONTAINER_NAME=n8n
+   EOF
+   chmod 600 ~/.config/n8n-mcp/env
+   
+   # 3. Configure the server parameters
+   hermes config set mcp_servers.n8n.command "/home/thaieasyvps/.hermes/mcp-installs/n8n/.venv/bin/python"
+   # Make sure args is saved as a JSON array list, NOT a raw string
+   python3 -c "
+   import yaml
+   path = '/home/thaieasyvps/.hermes/config.yaml'
+   with open(path) as f:
+       data = yaml.safe_load(f)
+   data['mcp_servers']['n8n']['args'] = ['/home/thaieasyvps/.hermes/mcp-installs/n8n/server.py']
+   data['mcp_servers']['n8n']['env'] = {'N8N_MCP_ENV': '/home/thaieasyvps/.config/n8n-mcp/env'}
+   with open(path, 'w') as f:
+       yaml.safe_dump(data, f)
+   "
    ```
 
-2. **Create the n8n Compose File**
-   Use `write_file` to author `docker-compose.yml`. Replace placeholders with actual values:
-   ```yaml
-   services:
-     n8n:
-       image: docker.n8n.io/n8nio/n8n
-       container_name: n8n
-       restart: unless-stopped
-       ports:
-         - "5678:5678"
-       environment:
-         - DB_TYPE=postgresdb
-         - DB_POSTGRESDB_DATABASE=n8n
-         - DB_POSTGRESDB_HOST=postgres
-         - DB_POSTGRESDB_PORT=5432
-         - DB_POSTGRESDB_USER=n8n_user
-         - DB_POSTGRESDB_PASSWORD=n8n_password
-         - N8N_HOST=n8n.example.com
-         - N8N_PORT=5678
-         - N8N_PROTOCOL=https
-         - NODE_ENV=production
-         - WEBHOOK_URL=https://n8n.example.com/
-         - GENERIC_TIMEZONE=UTC
-       volumes:
-         - n8n_data:/home/node/.n8n
-       networks:
-         - traefik-public
-       labels:
-         - "traefik.enable=true"
-         - "traefik.http.routers.n8n.rule=Host(`n8n.example.com`)"
-         - "traefik.http.routers.n8n.entrypoints=websecure"
-         - "traefik.http.routers.n8n.tls=true"
-         - "traefik.http.routers.n8n.tls.certresolver=myresolver"
-         - "traefik.http.services.n8n.loadbalancer.server.port=5678"
-         # Mandatory headers for Webhooks
-         - "traefik.http.middlewares.n8n-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
-         - "traefik.http.routers.n8n.middlewares=n8n-headers"
-
-   volumes:
-     n8n_data:
-
-   networks:
-     traefik-public:
-       external: true
-   ```
-
-3. **Deploy**
-   Invoke through the `terminal` tool to start the service in the background:
+3. **Verify the MCP bridge connection**
    ```bash
-   docker compose up -d
+   hermes mcp test n8n
    ```
 
 ## Pitfalls
