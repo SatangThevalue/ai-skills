@@ -65,6 +65,7 @@ rsync -av --exclude '.*' "$REPO_DIR/skills/" "$LOCAL_SKILLS_DIR/"
 1. **Syncing caches or private configs:** Always exclude dotfiles/lockfiles (like `.usage.json`, `.curator_state`, `.bundled_manifest`, and lockfiles) during sync.
 2. **Commit conflicts:** Always pull before pushing when working across multiple environments.
 3. **Session Cache:** Changing local files directly requires starting a new session or running `hermes status` / reloading to update active memory in some setups.
+4. **Git Author Identity Errors:** In a clean or containerized VPS environment, git commits may fail with "Author identity unknown". Always ensure `git config user.name` and `git config user.email` are configured (locally or globally) before attempting to commit.
 
 ## Verification Checklist
 - [ ] No dotfiles (e.g., `.usage.json`) copied to repository `skills/` folder
