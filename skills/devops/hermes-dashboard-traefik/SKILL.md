@@ -111,7 +111,10 @@ http:
 ## Pitfalls
 
 - **Inside-Gateway Systemd Restarts:** Do not run `systemctl --user restart hermes-dashboard` inside an agent session spawned by the gateway. The gateway will kill the process tree before it can complete, resulting in a blocked command. Run `kill <PID>` instead to let systemd restart it automatically, or execute restarts from outside.
-- **Docker host.docker.internal resolution:** On Linux, `host.docker.internal` might resolve to the default docker bridge interface (`10.0.0.1`) rather than the custom user bridge (e.g. `10.0.2.1`). Hardcode the bridge's Gateway IP inside Traefik configuration if routing fails with a 502 Bad Gateway.
+- **Docker host.docker.internal resolution:** On Linux, `host.docker.internal` might resolve to the default docker bridge interface (`10.0.0.1`) rather than the custom user bridge (e.g. `10.0.2.1`). **Always verify the real gateway IP** via `docker network inspect <network_name>` — look for the `Gateway` field under `IPAM.Config`. Hardcode that IP in the Traefik `hermes.yml` service URL.
+- **Traefik file provider: single file vs directory:** If you need multiple dynamic config files (e.g. `dynamic.yml` + `hermes.yml`), change `providers.file.filename` → `providers.file.directory` in `traefik.yml`. Mount the directory (not individual files) in `docker-compose.yml`. A single `filename` setting silently ignores any additional `.yml` files in the same folder.
+- **HTTP 429 from Traefik is usually transient:** A burst of requests (browser auto-refresh, agent health checks) can trigger rate limiting. If the site returns 302 when retried seconds later, the 429 was momentary — not a configuration bug. Check `dynamic.yml` for an explicit `rateLimit` middleware before troubleshooting further.
+- **Kanban reviewer iteration exhaustion:** The `reviewer` profile can exhaust its 150-iteration budget if it attempts `delegate_task` for subagent verification inside a Kanban worker context. When a Kanban task ends up `blocked` after a crash: run `hermes kanban unblock <task_id>` then `hermes kanban dispatch` to retry cleanly.
 
 ## Verification
 

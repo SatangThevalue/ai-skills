@@ -66,6 +66,7 @@ rsync -av --exclude '.*' "$REPO_DIR/skills/" "$LOCAL_SKILLS_DIR/"
 2. **Commit conflicts:** Always pull before pushing when working across multiple environments.
 3. **Session Cache:** Changing local files directly requires starting a new session or running `hermes status` / reloading to update active memory in some setups.
 4. **Git Author Identity Errors:** In a clean or containerized VPS environment, git commits may fail with "Author identity unknown". Always ensure `git config user.name` and `git config user.email` are configured (locally or globally) before attempting to commit.
+5. **README.md must be included in every sync:** The file `/home/thaieasyvps/.hermes/skills/README.md` is the TOC for `github.com/SatangTheValue/ai-skills`. Always `git add skills/ README.md` — not just `skills/` — so the index stays current after skill additions.
 
 ## Verification Checklist
 - [ ] No dotfiles (e.g., `.usage.json`) copied to repository `skills/` folder

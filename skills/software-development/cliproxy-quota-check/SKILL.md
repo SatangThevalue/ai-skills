@@ -48,10 +48,23 @@ try:
     with urllib.request.urlopen(req) as r:
         res = json.loads(r.read().decode())
         for f in res.get('files', []):
-            print(f"Account: {f.get('account')} | Provider: {f.get('provider')} | Status: {f.get('status')} | Success: {f.get('success')} | Failed: {f.get('failed')}")
+            success = f.get('success', 0)
+            failed = f.get('failed', 0)
+            total = success + failed
+            rate = f"{(success/total*100):.1f}%" if total else "N/A"
+            print(f"Account: {f.get('account')} | Provider: {f.get('provider')} | Status: {f.get('status')} | Success: {success} | Failed: {failed} | Rate: {rate}")
 except Exception as e:
     print('Failed to query CLIProxyAPI:', e)
 ```
+
+### 2. Interpret Results
+| Success Rate | Assessment |
+|---|---|
+| ≥ 99% | ✅ Healthy — no action needed |
+| 95–99% | ⚠️ Monitor — transient network issues |
+| < 95% | ❌ Investigate — check provider auth or quota |
+
+A `failed` count in single digits (< 10) against 1,000+ successes is normal and expected.
 
 ## Pitfalls
 
