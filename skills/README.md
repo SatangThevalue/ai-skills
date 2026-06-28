@@ -10,7 +10,7 @@
 
 คลังสกิลของต้นทอง (Hermes Agent) ที่ใช้ในการทำงานร่วมกับ Satang — ครอบคลุมตั้งแต่ DevOps, Finance, Trading, Marketing, AI/ML ไปจนถึงการพัฒนาซอฟต์แวร์ทั้งหมด
 
-สกิลแต่ละตัวคือ **ชุดคำสั่งและขั้นตอนที่พิสูจน์แล้ว** ที่ต้นทองโหลดขึ้นมาใช้โดยอัตโนมัติเมื่อได้รับงานที่เกี่ยวข้อง ทำให้ไม่ต้องอธิบายขั้นตอนซ้ำในทุก Session
+สกิลแต่ละตัวคือ **ชุดคำสั่งและขั้นตอนที่พิสูจน์แล้ว** ที่ต้นทองโหลดขึ้นมาใช้โดยอัตโนมัติเมื่อได้รับงานที่เกี่ยวข้อง
 
 ---
 
@@ -26,21 +26,16 @@ hermes skills view <ชื่อ-skill>
 ## 📁 โครงสร้างโฟลเดอร์
 
 ```
-skills/                        ← sync กับ ~/.hermes/skills/ บน VPS
-├── devops/
-├── finance/
-├── marketing/
-├── software-development/
-└── README.md
+skills/  ← sync กับ ~/.hermes/skills/ บน VPS
 ```
 
-> ⚠️ **สำคัญ:** ทุกครั้งที่มีการเพิ่ม/แก้ไข Skill ต้นทองจะ (1) อัปเดต README TOC (2) rsync (3) git push โดยอัตโนมัติ
+> ⚠️ ทุกครั้งที่มีการเพิ่ม/แก้ไข Skill ต้นทองจะ (1) อัปเดต README TOC (2) rsync (3) git push โดยอัตโนมัติ
 
 ---
 
 ## 📚 สารบัญ Skills
 
-> อัปเดตอัตโนมัติโดยต้นทอง — **230 skills** ใน **78 หมวด**
+> **233 skills** ใน **78 หมวด** — อัปเดตอัตโนมัติโดยต้นทอง
 
 
 ### 30x-growth-marketing-panel
@@ -147,6 +142,7 @@ skills/                        ← sync กับ ~/.hermes/skills/ บน VPS
 | `hermes-agent` | Configure, extend, or contribute to Hermes Agent. |
 | `hermes-gateway-resilience` | Restore and harden the Hermes Messaging Gateway on Linux when it goes inactive, drops plat… |
 | `hermes-kanban-swarm` | Orchestrate, configure, and execute multi-agent workflows (Swarms) using Hermes Kanban boa… |
+| `hermes-profile-customization` | Create and customize isolated profiles in Hermes. |
 | `hermes-workspace-setup` | Set up and run Hermes Workspace on a VPS with gateway auth. |
 | `kanban-codex-lane` | Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane … |
 | `opencode` | Delegate coding to OpenCode CLI (features, PR review). |
@@ -396,6 +392,7 @@ skills/                        ← sync กับ ~/.hermes/skills/ บน VPS
 |-------|----------|
 | `3-statement-model` | Build fully-integrated 3-statement models (IS, BS, CF) in Excel with working capital sched… |
 | `business-ledger-and-inventory` | สกิลการวางผังบัญชี 5 หมวด การจดบันทึกทางการเงิน และการบริหารจัดการคลังสินค้าสำหรับธุรกิจ S… |
+| `chicken-business-scale-up` | Scale a fresh chicken shop from local market to regional or national level. |
 | `comps-analysis` | Build comparable company analysis in Excel — operating metrics, valuation multiples, stati… |
 | `cost-accounting-inventory` | การคำนวณบัญชีต้นทุนและการบริหารจัดการสินค้าคงคลัง (FIFO, Weighted Average, EOQ, Reorder Po… |
 | `dcf-model` | Build institutional-quality DCF valuation models in Excel — revenue projections, FCF build… |
@@ -617,6 +614,7 @@ skills/                        ← sync กับ ~/.hermes/skills/ บน VPS
 | `cliproxy-quota-inspector` | Query and inspect CLIProxyAPI account statuses and request quotas. |
 | `debugging-hermes-tui-commands` | Debug Hermes TUI slash commands: Python, gateway, Ink UI. |
 | `deep-agents-python` | Guide and best practices for using LangChain's Deep Agents framework (langchain-ai/deepage… |
+| `hermes-profile-isolation` | Set up and configure isolated Hermes Agent profiles for different projects. |
 | `hermes-s6-container-supervision` | Modify, debug, or extend the s6-overlay supervision tree inside the Hermes Agent Docker im… |
 | `langgraph-development` | Best practices for building and tracing AI agents with LangGraph, Deep Agents, and MLflow. |
 | `my-skill-name               # lowercase, hyphens, ≤64 chars (MAX_NAME_LENGTH)` | Use when <trigger>. <one-line behavior>. |
