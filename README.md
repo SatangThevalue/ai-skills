@@ -1,8 +1,7 @@
 # 🧠 AI Skills — Tonthong (ต้นทอง) Skill Library
 
 > **Repository:** [SatangTheValue/ai-skills](https://github.com/SatangTheValue/ai-skills)  
-> **ผู้ดูแล:** Thanapol Nanthakaset (Satang) · ผู้ช่วย: ต้นทอง (Hermes Agent)  
-> **อัปเดตล่าสุด:** 2026-06-28
+> **ผู้ดูแล:** Thanapol N (Satang) · ผู้ช่วย: ต้นทอง (Hermes Agent)  
 
 ---
 
