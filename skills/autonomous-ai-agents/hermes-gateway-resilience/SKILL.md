@@ -22,6 +22,7 @@ Operational recovery patterns for `hermes-gateway.service`. Use when the gateway
 - `hermes status` shows platform `configured` but not `connected` after recent errors.
 - Background subsystems (Kanban dispatcher, scheduler) begin failing with storage errors.
 - The user explicitly reports "Hermes just stopped talking to me."
+- **Need to restart the gateway from inside a gateway session** (e.g. after changing `.env` variables or config.yaml settings).
 
 ## Recovery Playbook (fast path)
 
@@ -44,6 +45,21 @@ Operational recovery patterns for `hermes-gateway.service`. Use when the gateway
    tail -n 80 ~/.hermes/logs/gateway.log
    ```
    The last 80 lines almost always contain the disconnection signature.
+
+4. **Restarting Gateway from Inside a Session (Internal Handoff)**
+   ⚠️ **CRITICAL LIMIT:** You cannot run `hermes gateway restart` or `systemctl --user restart hermes-gateway` directly inside the agent conversation. The gateway process will intercept its own SIGTERM, kill the child shell process, and drop the current execution turn (leading to timeouts or failed execution states).
+   
+   *Workaround:* Schedule a one-shot `cronjob` (using the `cronjob` tool) to run the restart script slightly in the future (e.g. 30 seconds from now) so the current turn can complete cleanly and release locks before the gateway process terminates and restarts.
+   
+   *Syntax Example:*
+   ```python
+   # Schedule restart 30 seconds from current time
+   cronjob(
+       action="create",
+       prompt="systemctl --user restart hermes-gateway",
+       schedule="2026-06-28T07:53:10"  # ISO timestamp 30s in the future
+   )
+   ```
 
 ## Low-Disk Resilience
 

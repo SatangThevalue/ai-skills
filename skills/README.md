@@ -33,7 +33,7 @@ skills/  ← sync กับ ~/.hermes/skills/ บน VPS
 
 ## 📚 สารบัญ Skills
 
-> **234 skills** ใน **78 หมวด** — อัปเดตอัตโนมัติโดยต้นทอง
+> **235 skills** ใน **78 หมวด** — อัปเดตอัตโนมัติโดยต้นทอง
 
 
 ### 30x-growth-marketing-panel
@@ -138,6 +138,7 @@ skills/  ← sync กับ ~/.hermes/skills/ บน VPS
 | `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). |
 | `google-adk` | Use when building multi-agent systems with Google's Agent Development Kit (ADK), configuri… |
 | `hermes-agent` | Configure, extend, or contribute to Hermes Agent. |
+| `hermes-discord-setup` | Configure and enable the Discord bot integration for Hermes. |
 | `hermes-gateway-resilience` | Restore and harden the Hermes Messaging Gateway on Linux when it goes inactive, drops plat… |
 | `hermes-kanban-swarm` | Orchestrate, configure, and execute multi-agent workflows (Swarms) using Hermes Kanban boa… |
 | `hermes-profile-customization` | Create and customize isolated profiles in Hermes. |
