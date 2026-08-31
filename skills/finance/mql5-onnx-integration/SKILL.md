@@ -145,3 +145,5 @@ void OnTick()
    Always call `OnnxRelease(onnx_handle)` in `OnDeinit`. Failing to do so can cause the MT5 terminal to leak memory on recompilation or chart changes.
 5. **Debugging**:
    If the model fails to load or run, create the model using the `ONNX_DEBUG_LOGS` flag. Check the "Experts" tab in MT5 for detailed ONNX Runtime backend errors (e.g., dimension mismatch).
+
+*(หากต้องการออกแบบสถาปัตยกรรม EA ระดับ Production แบบ 7 Layers ที่แยก Inference, Risk, และ Execution ออกจากกัน อ่านต่อได้ที่สกิล `mql5-onnx-production-architecture`)*
