@@ -38,7 +38,8 @@ Quick check:
 docker --version && docker compose version
 ```
 
-## Quick Reference
+- `references/postgres-miner-incident.md` — Steps to identify and mitigate a crypto-miner infection inside a Postgres container.
+
 
 | Task | Command |
 |------|---------|
@@ -150,10 +151,14 @@ docker image prune -a --filter "until=168h"   # unused images older than 7 days
 
 ```bash
 # Start/stop
+# PITFALL: Do not run `docker compose up -d` directly in the foreground terminal. It starts background daemon processes which the terminal tool rejects as "hanging". 
+# ALWAYS use: terminal(command="cd /path && docker compose up -d", background=true, notify_on_complete=true)
+# Note: Sometimes `docker-compose` is not found, always try `docker compose` as a fallback.
 docker compose up -d                   # start all services detached
 docker compose up -d --build           # rebuild images before starting
 docker compose down                    # stop and remove containers
 docker compose down -v                 # also remove volumes (DESTROYS DATA)
+```
 
 # Monitoring
 docker compose ps                      # list services
@@ -221,7 +226,13 @@ docker network rm mynet                # remove network
 docker network prune                   # remove unused networks
 ```
 
-### 6. Disk usage and cleanup
+### 6. Common Build and Runtime Pitfalls
+
+- **Build Resources (No space left on device):** Production builds (like Next.js `npm run build` inside a Dockerfile) consume significant RAM and disk space. In constrained environments, this often causes `no space left on device` errors during `docker compose build`. Clean up space aggressively (`docker system prune -af --volumes`) before retrying the build.
+- **Port Conflicts:** When running containers via `docker-compose` or `docker run`, map a free port (e.g., `3001:3000` or `5433:5432`) if the host's target port is occupied by another local service, otherwise the container will fail to start with a `Bind for 0.0.0.0:XXXX failed: port is already allocated` error.
+- **Dependency Resolution in Build:** When a `pip install` step in a Dockerfile fails due to `ResolutionImpossible`, loosen strict version pins (e.g., change `==` to `>=`) in the `requirements.txt` to allow the package manager to resolve shared underlying dependencies.
+
+## Troubleshooting Common Errors
 
 Always start with a diagnostic before cleaning:
 
@@ -245,11 +256,16 @@ docker system prune -a --volumes       # EVERYTHING — named volumes too
 **Warning:** Never run `docker system prune -a --volumes` without confirming with the user. This removes named volumes with potentially important data.
 
 ## Pitfalls
-
+- **No Space Left on Device**: Docker builds (like `next build` or heavy `pip install` phases) can fail with `write ... no space left on device` on VPS instances with limited disk space. Run `docker system prune -af --volumes` to reclaim space before retrying the build.
+- **Port Allocation Failures**: If starting a container fails with `Bind for 0.0.0.0:XXXX failed: port is already allocated`, edit the compose file to map to a free host port (e.g., change `"4200:4200"` to `"4202:4200"`).
+- **Host Volume Permissions**: When mounting host directories (e.g., for Next.js), the container user might not have write access, causing `EACCES` during build/run. Fix it by running an alpine container temporarily to adjust permissions: `docker run --rm -v $(pwd):/app alpine chown -R 1000:1000 /app/<dir>`.
+- **Container-to-Host `localhost` Routing**: `localhost`/`127.0.0.1` inside a container points to the container itself, not the host. If a host process (proxy, local API, dev server) must be reached from a container, `curl http://localhost:PORT` will fail with `Connection refused`. Fix: use the Docker bridge IP of the host interface on the same network, typically `ip route show table local` or `ip addr show` to find the bridge IP (e.g., `10.0.2.1`), then expose that host port to the container via compose `environment:` rather than hardcoding IPs in application code. Prefer an env var like `HOST_GATEWAY`/`AI_PROXY_URL` so the same image works both locally and in Docker.
+- **Postgres `FATAL: role "postgres" is not permitted to log in`**: This happens if the `postgres` superuser role in a database container loses its login attribute. To fix it, you cannot use the `postgres` role itself (since it can't log in). Check for other superuser roles via `docker exec -i <db_container> psql -U <another_superuser> -c "\du"` and use one of them to restore login: `docker exec -i <db_container> psql -U <another_superuser> -d <db> -c "ALTER ROLE postgres WITH LOGIN;"`. Alternatively, if fixing the backup/export script that fails due to this, change the script to authenticate with the actual database owner role (e.g. `satangthebank`) and ensure that role owns all relevant tables (e.g., `ALTER TABLE public.table_name OWNER TO role_name;`).
 | Problem | Cause | Fix |
 |---------|-------|-----|
+| Container-to-host service `Connection refused` | App inside Docker uses `localhost:PORT` but service runs on host | Use env var + Docker bridge IP in compose; see `cli-proxy-api-troubleshooting` skill references for pattern |
 | Container exits immediately | Main process finished or crashed | Check `docker logs NAME`, try `docker run -it --entrypoint /bin/sh IMAGE` |
-| "port is already allocated" | Another process using that port | `docker ps` or `lsof -i :PORT` to find it |
+| "docker-compose: command not found" | Legacy docker-compose standalone binary is missing | Use the modern Compose plugin via `docker compose` instead |
 | "port is already allocated" | Another process using that port | `docker ps` or `lsof -i :PORT` to find it |
 | "no space left on device" | Docker disk full | `docker system df` then targeted prune |
 | Can't connect to container | App binds to 127.0.0.1 inside container | App must bind to `0.0.0.0`, check `-p` mapping |

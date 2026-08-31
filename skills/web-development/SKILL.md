@@ -56,6 +56,7 @@ Keep local `references/...` paths for files that ship with the current skill dir
 - Skipping browser-level validation after a UI or routing change.
 - **History mode SPA with CloudBase static hosting**: deploying a single-page app using History mode (React Router / Vue Router) without configuring the static hosting "404 error document" to `index.html`. This causes `NoSuchKey` / 404 errors when users refresh or directly visit any sub-route.
 - In an existing application, detouring into UI redesign or broad repo sweeps before patching the current handlers and services.
+- **Lucide Icons & Event Delegation**: When writing JavaScript to handle clicks on elements that contain Lucide icons (`<i data-lucide="..."></i>`), the `lucide.createIcons()` call replaces the `<i>` tags with `<svg>` tags in the DOM. Do NOT rely on `.querySelector('i')` after icons have been rendered. Use `.querySelector('svg') || .querySelector('i')` or delegate the click event to a stable parent container instead of the icon itself.
 
 ## Engineering constitution (non-negotiable)
 
@@ -98,6 +99,22 @@ Saying "I've implemented it" / "fixed it" / "it should work" without evidence is
 ### 3. Do not paper over failures
 
 - Do not wrap broken logic in `try { ... } catch {}` to make the error go away.
+
+## Pitfalls and Discoveries
+
+### Next.js Strict Type Checking in Builds
+- Next.js `npm run build` uses strict TypeScript checking. When modifying components, ensure all props and event handlers perfectly match the existing interfaces (e.g., `onChange` vs `onCheckedChange`, `colorVariant` vs `indicatorClassName`).
+- A single missing generic type or misaligned prop in a UI library component (like `lucide-react` or `shadcn/ui`) will halt the entire build.
+- Do not blindly assume component props across different projects; check the actual source file (e.g., `src/components/ui/button.tsx`) before passing props.
+
+### Next.js Server vs Client Components (Sonner Toast)
+- Next.js Server Components cannot import or use `useToast` or client-side hooks directly.
+- Next.js Client Components (`"use client"`) using `sonner` should import `toast` directly via `import { toast } from "sonner";` rather than dynamically awaiting it or relying on custom hooks unless explicitly defined.
+- `toast` from `sonner` is an object with methods like `toast.success()`, `toast.error()`, not a function like `toast({ title: "..." })` from `shadcn` default. Always check how the toast library is configured.
+
+### Separated Architectures
+- Always verify if a site's landing page is served from the same repository as its web application. Many projects separate the public static landing page (e.g., static HTML via Docker) from the dynamic React/Next.js application (e.g., via PM2).
+- When a user asks to edit "the main page" or "the bottom of the website", use `curl` or `grep` to confirm which file actually contains the target text before modifying framework routes.
 - Do not delete or skip a failing test to make CI green — fix it, or explain why the test is actually wrong and change the test with justification.
 - Do not mark a task complete because "the code compiles". Compilation is the bare minimum, not the goal.
 

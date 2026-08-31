@@ -590,3 +590,4 @@ You are running in CLI/API mode, not hosted Claude Design. Ignore references to 
 - Do not under-ask for high-fidelity work with no brand context.
 - Do not produce generic SaaS layouts and call them designed.
 - Do not claim browser verification unless it actually happened.
+- **Event Listeners vs. Icon Libraries**: When using DOM-rewriting icon libraries like `lucide.js` in vanilla HTML/JS prototypes, wrap your event binding logic in `document.addEventListener('DOMContentLoaded', ...)` or use event delegation. Otherwise, scripts searching for elements to bind click events to may execute before the icons are fully rendered, resulting in unresponsive buttons.

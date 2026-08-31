@@ -323,8 +323,15 @@ React in 2026 offers an abundance of choices:
 * **Performance:** Use `useTransition` for non-urgent updates, derived state over stored state, `useSyncExternalStore` for external subscriptions. See the **react-render-optimization** and **react-data-fetching** skills.
 * **AI in your workflow:** Enhance productivity with AI coding assistants, but always validate output.
 
+### Deployment & Containerization Pitfalls
+- **Next.js Docker Builds:** Next.js production builds (`npm run build`) can consume massive disk space and memory. In constrained environments like a VPS, this often triggers `no space left on device` errors. Clean up unused Docker objects (`docker system prune -af --volumes`) to clear space before building.
+- **Port Collisions:** When running Next.js in Docker, map a free port (e.g., `3001:3000`) if the host's port 3000 is occupied by another service. Always check if the port is free with `curl` or by checking logs before committing to it.
+- **Middleware Deprecation:** Next.js 15+ routing configurations may trigger a warning: `The "middleware" file convention is deprecated. Please use "proxy" instead`. If encountering this, adhere to the framework's deprecation guidance.
+- **JSX compilation errors (`Unexpected token`):** Be very careful when using tools like `sed` to patch Next.js / React TSX files. Unescaped characters (like `<` or `>`) or incorrectly formatted HTML fragments (e.g. `</main>copy;` instead of `&copy;`) will immediately break the build and throw an "Unexpected token" error. When making substantial changes to a component, rewrite the file completely rather than attempting fragile inline sed replacements.
+
 React is more powerful than ever. By choosing the right stack, you'll be well-equipped to build robust, scalable applications. Happy coding, and may your components re-render only when necessary!
 
 ## Source
 
 - [patterns.dev/react/react-2026](https://patterns.dev/react/react-2026)
+- `references/modern_saas_ui.md`: Guidelines for building modern, emotionally engaging SaaS UIs with Tailwind and micro-interactions.

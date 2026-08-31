@@ -322,9 +322,60 @@ Use dependencies when the logic can't be declared in Pydantic validation, depend
 
 Apply shared dependencies at the router level via `dependencies=[Depends(...)]`.
 
+## Known Pitfalls (Production Deployments)
+
+### SQLModel: `Annotated[None, Depends(...)]` in `dependencies=[]` crashes
+`NoneType` is not callable — FastAPI router-level `dependencies=[...]` requires each item to be a raw `Depends(fn)` call, NOT a pre-built `Annotated[None, Depends(fn)]` alias.
+
+**Broken pattern:**
+```python
+SecretDep = Annotated[None, Depends(verify_secret)]
+router = APIRouter(dependencies=[SecretDep])  # ❌ AttributeError at startup
+```
+
+**Correct pattern:**
+```python
+async def verify_secret(...) -> bool:  # return bool or any non-None type
+    ...
+    return True
+
+router = APIRouter(dependencies=[Depends(verify_secret)])  # ✅
+```
+
+### SQLModel: `metadata` is a reserved attribute name
+`class MyModel(SQLModel, table=True)` cannot have a field named `metadata` — SQLAlchemy's `DeclarativeMeta` reserves it. Rename to `extra_metadata` with an explicit column alias:
+```python
+extra_metadata: Optional[Any] = Field(default=None, sa_column=Column(JSONB, name="metadata"))
+```
+
+### SQLModel: `Optional[dict]` column type raises `ValueError`
+`dict` has no matching SQLAlchemy type. Always use `sa_column=Column(JSONB)` for JSON/dict fields:
+```python
+# ❌ raw_payload: Optional[dict] = None
+raw_payload: Optional[Any] = Field(default=None, sa_column=Column(JSONB))
+```
+
+### Docker: `PYTHONPATH` must be set explicitly for `uvicorn` module imports
+When the app folder is at `/app/app/`, `uvicorn app.main:app` fails with `ModuleNotFoundError: No module named 'app'` unless `PYTHONPATH=/app` is set in the environment. Set it as a Docker `ENV` directive:
+```dockerfile
+ENV PYTHONPATH=/app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+### Docker: `uv sync --system` fails in slim base images
+`python:3.12-slim` does not have `pip` pre-installed. Use `pip install --no-cache-dir` directly in the `RUN` step, or install pip first. `uv sync --system` requires a writable system site-packages that may not exist.
+
+### Docker with `--workers 2`: use `python:3.12-slim`, not Alpine
+Uvicorn multi-worker mode requires `multiprocessing` and `uvloop` to be available. Alpine images often miss build deps; slim Debian images work reliably.
+
 ## Async vs Sync *path operations*
 
-Use `async` *path operations* only when fully certain that the logic called inside is compatible with async and await (it's called with `await`) or that it doesn't block.
+Use `async` *path operations* only when fully certain that the logic called inside is compatible with async and await (it's called with `await`) or that it doesn't block. Doing otherwise (like running heavy LLM `.invoke()` calls synchronously) will block the main thread and stall the server for all other requests.
+
+If you must perform a heavy blocking task but still want the endpoint to be non-blocking:
+1. Push the task to `BackgroundTasks` so the endpoint can return a `202 Accepted` immediately.
+2. Await the async equivalent of the call (e.g. `await llm.ainvoke()`).
+3. Or define the path operation function simply as `def` (FastAPI will run it in an external threadpool).
 
 ```python
 from fastapi import FastAPI
@@ -367,11 +418,24 @@ See [the other tools reference](references/other-tools.md) for details on uv, Ru
 See [the other tools reference](references/other-tools.md) for details on other libraries:
 
 * Asyncer for handling async and await, concurrency, mixing async and blocking code, prefer it over AnyIO or asyncio.
-* SQLModel for working with SQL databases, prefer it over SQLAlchemy.
+* pytest for testing.
+* SQLModel for the ORM, instead of pure SQLAlchemy. SQLModel uses SQLAlchemy and Pydantic underneath. Use it for models, database, engine, sessions. Do not use SQLAlchemy unless there's an explicit reason.
+* SQLModel's `select` instead of `sqlmodel.select`.
+* Pydantic V2 instead of V1.
 * HTTPX for interacting with HTTP (other APIs), prefer it over Requests.
+* Pedalboard for applying audio effects. See [the pedalboard fx reference](references/pedalboard-fx.md) for patterns.
 
-## Do not use Pydantic RootModels
+## Pitfalls
+- **Sync/Async Mixed**: Never run sync code in FastAPI async endpoints directly if it takes a long time. Use `run_in_threadpool` or `asyncio.to_thread` for light tasks to prevent blocking the event loop.
+- **RuntimeError: asyncio.run() cannot be called from a running event loop**: When a synchronous callback (e.g., from an external library's webhook handler) needs to trigger an async function, do NOT use `asyncio.run()`. Instead, use `asyncio.get_running_loop().create_task(your_async_function())`.
+- **Gradio/Colab Integration**: When building a Gradio UI for FastAPI/ML apps in Google Colab, use `demo.launch(share=True)` for quick standalone testing instead of manual ngrok + FastAPI. When running FastAPI directly in Colab, use `nest_asyncio.apply()` to allow nested event loops before starting `uvicorn`.
+- **Gradio/FastAPI Integration**: To run Gradio and FastAPI together on the same port (saving resources and simplifying deployment), mount the Gradio app to the FastAPI app using `gr.mount_gradio_app(app, demo, path="/")`.
 
+* **Uvicorn Port Conflicts (Errno 98)**: When running `uvicorn` in the background during development or testing, if the process crashes or is restarted incorrectly, it may leave a zombie process holding the port. Always run `pkill -f "uvicorn"` before restarting to clear zombie processes and avoid `Address already in use` errors.
+
+## Dependency Conflicts in Docker
+
+When packaging FastAPI in Docker alongside other modern Python orchestration tools (like Prefect or LangGraph), Starlette version conflicts often occur (`fastapi X depends on starlette<Y`). Use `>=` version pinning in `requirements.txt` (e.g., `fastapi>=0.109.2`) instead of strict `==` pins to allow `pip` to resolve compatible versions.
 Do not use Pydantic `RootModel`, instead use regular type annotations with `Annotated` and Pydantic validation utilities.
 
 For example, for a list with validations you could do:
@@ -460,3 +524,11 @@ async def handle_items(request: Request):
     if request.method == "GET":
         return []
 ```
+
+## Pitfalls
+- **Sync/Async Mixed**: Never run sync code in FastAPI async endpoints directly if it takes a long time. Use `run_in_threadpool` or `asyncio.to_thread` for light tasks to prevent blocking the event loop.
+- **RuntimeError: asyncio.run() cannot be called from a running event loop**: When a synchronous callback (e.g., from an external library's webhook handler) needs to trigger an async function, do NOT use `asyncio.run()`. Instead, use `asyncio.get_running_loop().create_task(your_async_function())`.
+- **Gradio/Colab Integration**: When building a Gradio UI for FastAPI/ML apps in Google Colab, use `demo.launch(share=True)` for quick standalone testing instead of manual ngrok + FastAPI. When running FastAPI directly in Colab, use `nest_asyncio.apply()` to allow nested event loops before starting `uvicorn`.
+- **Gradio/FastAPI Integration**: To run Gradio and FastAPI together on the same port (saving resources and simplifying deployment), mount the Gradio app to the FastAPI app using `gr.mount_gradio_app(app, demo, path="/")`.
+
+* **SQLModel / SQLAlchemy Reserved Keywords**: Do not name your SQLModel fields with reserved SQLAlchemy declarative attributes like `metadata`. If mapping to an existing database column literally named `metadata`, use an alias for the field name: `extra_metadata: Any | None = Field(default=None, sa_column=Column(JSONB, name="metadata"))`.

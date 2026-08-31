@@ -56,6 +56,7 @@ If you are using middleware, you must migrate it:
 - Rename `middleware.ts` to `proxy.ts`.
 - Rename the exported function from `middleware` to `proxy`.
 - **CRITICAL:** The new `proxy` runtime is strictly `nodejs`. The `edge` runtime is NO LONGER SUPPORTED in `proxy`. (If you absolutely need the edge runtime, you must keep using `middleware.ts` temporarily, but it is considered legacy).
+- **Build Warnings:** If you miss this step in newer Next.js templates, the build will emit: `⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.`
 
 ### C. Turbopack by Default
 Turbopack is now the default for both `next dev` and `next build`.
@@ -74,6 +75,10 @@ Turbopack is now the default for both `next dev` and `next build`.
 - **Minimum Cache TTL:** Increased from 60 seconds to **4 hours** (14400s) to reduce CPU load.
 - **Qualities:** Default allowed qualities changed from any number to just `[75]`.
 - **Local Query Strings:** You must explicitly allow query strings on local images to prevent enumeration attacks via `localPatterns` in `next.config.ts`.
+
+## 6. Deployment & Docker Issues
+- **Storage Full during Docker Build:** During `next build` inside a Docker BuildKit context on a VPS, the build might throw "no space left on device" errors or stall at static page generation if disk space is low. Run `docker system prune -af --volumes` to free up space.
+- **Port Collisions:** If deploying via Docker, remember that `0.0.0.0:3000` is commonly in use. Map the container port to a free host port (e.g., `3001:3000`) in `docker-compose.yml` to avoid `Bind for 0.0.0.0:3000 failed` errors.
 
 ## 6. React 19.2 & Compiler
 - Next.js 16 uses React 19.2 Canary (View Transitions, `useEffectEvent`).

@@ -61,6 +61,7 @@ pip install httpx
 ### References
 
 - `references/fastmcp-cli.md` - FastMCP CLI workflow, installation targets, and deployment checks
+- `references/fastmcp-fastapi-mounting.md` - Bypassing `get_starlette_app` errors when embedding FastMCP in FastAPI.
 
 ## Workflow
 
@@ -131,6 +132,32 @@ Do not turn every document into a prompt. Prefer:
 - tools for actions
 - resources for data/document retrieval
 - prompts for reusable LLM instructions
+
+### HTTP vs SSE Transport Changes in FastMCP
+
+For FastMCP >= 1.0.0, the `get_starlette_app` function was removed in favor of running via `mcp run` or manually creating `SseServerTransport`. Do NOT use `app.mount("/sse", mcp.get_starlette_app())` natively anymore, as it will crash with `AttributeError`.
+
+If you absolutely must integrate into an existing FastAPI app, the safest fallback pattern checks for the attribute and fails gracefully, or mounts the private `_app` if the developer imported `FastMCP` from `mcp.server.fastmcp`:
+
+```python
+from fastapi import FastAPI
+from mcp.server.fastmcp import FastMCP
+
+app = FastAPI()
+mcp = FastMCP("My_Server")
+
+@mcp.tool()
+def sample_tool() -> str:
+    return "ok"
+
+try:
+    if hasattr(mcp, 'get_starlette_app'):
+        app.mount("/sse", getattr(mcp, 'get_starlette_app')())
+    elif hasattr(mcp, '_app'):
+        app.mount("/sse", mcp._app)
+except Exception as e:
+    print(f"Warning: MCP SSE mounting failed: {e}")
+```
 
 ### 5. Logging and Client Context
 
@@ -231,6 +258,8 @@ Make sure the repo contains:
 
 For generic HTTP hosting, validate the HTTP transport locally first, then deploy on any Python-compatible platform that can expose the server port.
 
+- `importlib` and Module Resolvers: When debugging missing or conflicting dependencies (like MoviePy calling Pillow's removed ANTIALIAS), lock versions explicitly (e.g. `Pillow<10.0.0` or `moviepy>=1.0.3,<2.0.0`) instead of hard-pinning everything. `uv pip install` may raise conflicts if MCP >= 1.0 requires newer versions of overlapping libraries (e.g. `anyio`, `python-multipart`). Use loose constraints `package>=X.X` to let `uv` resolve correctly.
+
 ## Common Patterns
 
 ### API Wrapper Pattern
@@ -290,6 +319,21 @@ Implementation notes:
 
 Start from `templates/file_processor.py`.
 
+### Background Processing for CPU-heavy tasks in FastAPI
+When building tools or endpoints that perform heavy CPU operations (video rendering via `moviepy`, complex audio processing via `pedalboard`), they block FastAPI's event loop, causing server freezes and client timeouts. Wrap these in `asyncio.to_thread()` and handle them in background threads:
+
+```python
+import asyncio
+
+def _heavy_sync_task(*args):
+    pass
+
+async def process_heavy_task_async(*args):
+    await asyncio.to_thread(_heavy_sync_task, *args)
+```
+
+If `moviepy` rendering deadlocks during `CompositeVideoClip` specifically, `asyncio.to_thread` is generally safer than `ProcessPoolExecutor` provided you use `threads=1` and `preset="ultrafast"` inside the `write_videofile` function.
+
 ## Quality Bar
 
 Before handing off a FastMCP server, verify all of the following:
@@ -300,6 +344,9 @@ Before handing off a FastMCP server, verify all of the following:
 - every new tool has at least one real `fastmcp call`
 - environment variables are documented
 - the tool surface is small enough to understand without guesswork
+
+### Dependency Conflicts and `uv`
+When installing dependencies with `uv` alongside FastMCP (e.g. `fastapi`, `uvicorn`, `python-multipart`), avoid hard-pinning `==` for standard web frameworks unless necessary. FastMCP `>=1.0.0` has specific constraint requirements. If `uv` fails with a resolution error about `anyio`, `pydantic`, or `python-multipart`, switch from `==` to `>=` in `requirements.txt` to allow `uv`'s resolver to find a compatible matrix.
 
 ## Troubleshooting
 

@@ -30,6 +30,7 @@ The two views cross-check each other.
 
 - Next.js **16.3+** with **Turbopack** — `/_next/mcp` plus the
   proactive compile check via `get_compilation_issues`.
+- If your Next.js application requires proxying secure requests via API Routes, see the [Secure Proxy Pattern](templates/nextjs-secure-proxy.md) reference.
 - `agent-browser` **>= 0.27.0** — when React introspection landed.
 
 These are hard floors, not soft preferences. If anything is missing,

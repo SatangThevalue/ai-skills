@@ -72,9 +72,17 @@ liff.ready.then(() => { // Safe to use APIs here });
 
 *   `liff.login({ redirectUri })`: Prompts login in external browsers. **Do not use in LIFF browser.** `redirectUri` must start with Endpoint URL.
 *   `liff.logout()`: Logs the user out.
+*   `liff.openWindow({ url, external })`: Opens a URL in the LIFF browser or the system's external browser (e.g., Safari/Chrome).
+    *   *Mobile-First Payment Gateway UX Pattern:* When linking to external payment links (such as BeamCheckout) from inside the LINE App context, **always** use `liff.openWindow({ url, external: true })` to force the phone to open it in Chrome/Safari. This ensures mobile browser features (like App-to-App deep linking to banking apps for QR PromptPay payments) work natively, avoiding screen-freeze or screenshot-to-scan friction within the LINE in-app webview.
 *   `liff.getAccessToken()`: Returns access token string (valid 12h max).
-*   `liff.getIDToken()`: Returns raw JWT ID token (Requires `openid` scope).
+*   `liff.getIDToken()`: Returns raw JWT ID token (Requires `openid` scope). **This is the ONLY token you should send to your backend for authentication.**
 *   `liff.getDecodedIDToken()`: Returns payload object. **Do not send this data to your server.**
+
+### Secure Proxy Pattern (Next.js + LIFF)
+When building full-stack LIFF apps with an external backend (e.g., n8n, external API):
+1. **Frontend acts as a proxy:** The frontend must NEVER send `lineUserId` or `profile` objects as the source of truth for authentication (they can be spoofed by malicious clients).
+2. **Pass ID Token:** The frontend should send ONLY the LINE ID Token (e.g., via an `X-Line-Id-Token` header) to the Next.js API Routes.
+3. **Backend Validation:** The Next.js API Route acts as a secure proxy, forwarding the ID token (and a server-to-server shared secret) to the actual backend, which is responsible for verifying the LINE ID Token and resolving the user.
 
 ## Permissions
 
@@ -94,6 +102,103 @@ Errors are returned as `LiffError` objects: `{ code: String, message: String, ca
 3. **Caching Issues:** Because the LIFF browser cache cannot be explicitly deleted, always ensure your web server returns appropriate `Cache-Control` headers, or use cache-busting techniques (like hashing filenames) during deployment.
 4. **Share Function Failure:** The native "Share" feature from the LIFF dropdown menu will fail if the current URL does not start exactly with the **Endpoint URL** registered in the LINE Developers Console.
 5. **`liff.sendMessages()` after Reload:** If a user re-opens the LIFF app from the "recently used services" (Multi-tab view) and a **Reload** occurs (discarding the token), using `liff.sendMessages()` will throw an error. To use it, the user must reopen the LIFF app by tapping the actual LIFF URL in a chat room.
+6. **Secure Proxy Architecture:** Never expose backend URLs (e.g., `n8n` webhooks) or API shared secrets in the LIFF client environment. Always implement a secure proxy layer (e.g., Next.js API Routes). The client sends `liff.getIDToken()` to the proxy; the proxy validates it and attaches internal API secrets before forwarding the payload to the actual backend.
+
+## Next.js App Router Integration
+
+### Architecture Pattern (Security-First)
+- **Frontend sends ID Token only** — never `lineUserId` as source of truth
+- **Next.js acts as secure proxy** — API Routes forward idToken + shared secret to n8n
+- **n8n verifies the ID Token** and resolves user identity server-side
+- This prevents user ID spoofing from the client
+
+```
+LIFF Frontend → liff.getIDToken() → Next.js /api/* → n8n webhook (with X-API-Secret)
+                                                      ↓ verify token + query DB
+```
+
+### liff.ts wrapper — always isolate SDK to a single client-only module
+```typescript
+// src/lib/liff.ts — "use client" at top (NOT in layout or RSC)
+import liff from "@line/liff";
+let initialized = false;
+
+export async function initLiff(): Promise<void> {
+  if (initialized) return;                        // guard against double-init
+  await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID!, withLoginOnExternalBrowser: true });
+  initialized = true;
+}
+export function getLiffIdToken(): string | null {
+  try { return liff.getIDToken(); } catch { return null; }
+}
+```
+
+### LiffContext — call initLiff() inside useEffect, not at module level
+```typescript
+useEffect(() => {
+  let cancelled = false;
+  async function init() {
+    await initLiff();
+    if (cancelled) return;
+    setIsReady(true);
+    // fetch profile + idToken here
+  }
+  init();
+  return () => { cancelled = true; };
+}, []);
+```
+
+### `useSearchParams()` — MUST be wrapped in `<Suspense>`
+Next.js 16 throws a build error if a page uses `useSearchParams()` outside a Suspense boundary. Pattern:
+```tsx
+// Split into inner component + wrapper export
+function PageInner() {
+  const searchParams = useSearchParams();   // safe inside Suspense
+  // ...
+}
+export default function Page() {
+  return (
+    <Suspense fallback={<LoadingUI />}>
+      <PageInner />
+    </Suspense>
+  );
+}
+```
+
+### n8n Proxy — server-side only, never client-side
+```typescript
+// src/lib/n8n-proxy.ts (server-side only — no "use client")
+export async function callN8n<T>(opts: N8nRequestOptions): Promise<T> {
+  const res = await fetch(getN8nUrl(opts.endpoint), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Secret": process.env.N8N_API_SHARED_SECRET!,
+    },
+    body: JSON.stringify({ action: opts.action, idToken: opts.idToken, ...opts.payload }),
+    cache: "no-store",
+  });
+  // ...
+}
+```
+
+### Zod v4 API Changes (breaking from v3)
+- `z.enum(["a","b"], { errorMap: ... })` → use `z.enum(["a","b"])` only (errorMap removed)
+- `z.number({ invalid_type_error: "..." })` → use `.positive("msg")` directly
+- These cause TS2769 errors at build time — remove the options object or use `.positive("msg")`
+
+### Next.js 16 + Tailwind v4 — no separate tailwind.config.js needed
+- Tailwind v4 uses `@import "tailwindcss"` in globals.css (no config file)
+- CSS custom properties via `@layer base { :root { --color-primary: ... } }`
+- `@layer utilities { .my-class { ... } }` works as before
+
+### Build Checklist for LIFF + Next.js
+- [ ] `NEXT_PUBLIC_LIFF_ID` set in `.env.local`
+- [ ] `liff.ts` has `"use client"` at top — never imported in RSC
+- [ ] All `useSearchParams()` calls wrapped in `<Suspense>`
+- [ ] API Routes use `cache: "no-store"` when proxying to n8n
+- [ ] `withLoginOnExternalBrowser: true` in `liff.init()` for non-LINE browsers
+- [ ] `NEXT_PUBLIC_APP_URL` matches the LIFF Endpoint URL in LINE console exactly
 
 ## Development Tools
 
@@ -108,3 +213,7 @@ LY Corporation provides several official tools for LIFF development:
 2. Register your endpoint URL and configure settings (App size, Module mode, etc.).
 3. Scaffold your project using the **Create LIFF App** CLI.
 4. Integrate the `liff` SDK and initialize it using `liff.init({ liffId: 'YOUR_LIFF_ID' })`.
+
+## Reference Files
+
+- `references/nextjs-liff-architecture.md` — Full production architecture for Next.js 16 + LIFF: env vars, file structure, n8n action convention, Zod v4/recharts TS build fixes, Tailwind v4 globals.css template. Verified build 2026-06-30.

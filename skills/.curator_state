@@ -1,9 +1,9 @@
 {
-  "last_report_path": null,
-  "last_run_at": "2026-06-01T13:52:55.404315+00:00",
-  "last_run_duration_seconds": null,
-  "last_run_summary": "deferred first run — curator seeded, will run after one interval; use `hermes curator run --dry-run` to preview now",
+  "last_report_path": "/home/thaieasyvps/.hermes/logs/curator/20260827-111124",
+  "last_run_at": "2026-08-27T11:11:24.155192+00:00",
+  "last_run_duration_seconds": 9.324334,
+  "last_run_summary": "auto: 2 reactivated; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 0
+  "run_count": 9
 }

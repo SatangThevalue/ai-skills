@@ -1,1 +1,1205 @@
-{"version": 1, "installed": {}}
+{
+  "version": 1,
+  "installed": {
+    "docker-management": {
+      "source": "official",
+      "identifier": "official/devops/docker-management",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:b3b0513a7dc104fa",
+      "install_path": "devops/docker-management",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:01:56.855902+00:00",
+      "updated_at": "2026-06-24T16:01:56.855927+00:00"
+    },
+    "fastapi": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/fastapi/fastapi/fastapi",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:beaac855aca01b74",
+      "install_path": "fastapi",
+      "files": [
+        "SKILL.md",
+        "references/dependencies.md",
+        "references/other-tools.md",
+        "references/streaming.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:02:04.505002+00:00",
+      "updated_at": "2026-06-24T16:02:04.505047+00:00"
+    },
+    "next-dev-loop": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/vercel/next.js/next-dev-loop",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:8b54faaa9dba7dd0",
+      "install_path": "next-dev-loop",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:02:12.257403+00:00",
+      "updated_at": "2026-06-24T16:02:12.257438+00:00"
+    },
+    "fastmcp": {
+      "source": "official",
+      "identifier": "official/mcp/fastmcp",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:aab61057773e7288",
+      "install_path": "mcp/fastmcp",
+      "files": [
+        "SKILL.md",
+        "scripts/scaffold_fastmcp.py",
+        "references/fastmcp-cli.md",
+        "templates/database_server.py",
+        "templates/api_wrapper.py",
+        "templates/file_processor.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:02:44.336332+00:00",
+      "updated_at": "2026-06-24T16:02:44.336361+00:00"
+    },
+    "postgresql": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/sickn33/antigravity-awesome-skills/postgresql",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:897586134f2631f6",
+      "install_path": "postgresql",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:03:23.983521+00:00",
+      "updated_at": "2026-06-24T16:03:23.983564+00:00"
+    },
+    "cloudflare-temporary-deploy": {
+      "source": "official",
+      "identifier": "official/web-development/cloudflare-temporary-deploy",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:fcb6e5274ffc1d55",
+      "install_path": "web-development/cloudflare-temporary-deploy",
+      "files": [
+        "SKILL.md",
+        "scripts/parse_deploy_output.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:06:51.086034+00:00",
+      "updated_at": "2026-06-24T16:06:51.086058+00:00"
+    },
+    "page-agent": {
+      "source": "official",
+      "identifier": "official/web-development/page-agent",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:d1bfdd031da222b1",
+      "install_path": "web-development/page-agent",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:06:52.992391+00:00",
+      "updated_at": "2026-06-24T16:06:52.992402+00:00"
+    },
+    "here-now": {
+      "source": "official",
+      "identifier": "official/productivity/here-now",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:6370b5bff0d63798",
+      "install_path": "productivity/here-now",
+      "files": [
+        "SKILL.md",
+        "scripts/drive.sh",
+        "scripts/publish.sh"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:06:55.371653+00:00",
+      "updated_at": "2026-06-24T16:06:55.371681+00:00"
+    },
+    "clerk-nextjs-patterns": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/clerk/skills/clerk-nextjs-patterns",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:47618661f1bd2eda",
+      "install_path": "clerk-nextjs-patterns",
+      "files": [
+        "SKILL.md",
+        "evals/evals.json",
+        "references/api-routes.md",
+        "references/caching-auth.md",
+        "references/middleware-strategies.md",
+        "references/server-actions.md",
+        "references/server-vs-client.md",
+        "templates/nextjs-basic-auth/app/layout.tsx",
+        "templates/nextjs-basic-auth/app/page.tsx",
+        "templates/nextjs-basic-auth/package.json",
+        "templates/nextjs-basic-auth/proxy.ts",
+        "templates/nextjs-basic-auth/tsconfig.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:07:06.594811+00:00",
+      "updated_at": "2026-06-24T16:07:06.594843+00:00"
+    },
+    "web-development": {
+      "source": "clawhub",
+      "identifier": "web-development",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:af6586edb98f5626",
+      "install_path": "web-development",
+      "files": [
+        "browser-testing.md",
+        "frameworks.md",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:08:51.630405+00:00",
+      "updated_at": "2026-06-24T16:08:51.630434+00:00"
+    },
+    "web": {
+      "source": "clawhub",
+      "identifier": "web",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:e85757ed91706937",
+      "install_path": "web",
+      "files": [
+        "deploy.md",
+        "frameworks.md",
+        "html-css.md",
+        "javascript.md",
+        "performance.md",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:08:20.737202+00:00",
+      "updated_at": "2026-06-24T16:08:20.737219+00:00"
+    },
+    "design-trends-2026": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/guia-matthieu/clawfu-skills/design-trends-2026",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:972df65299f5aaf1",
+      "install_path": "design-trends-2026",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:17:57.071337+00:00",
+      "updated_at": "2026-06-24T16:17:57.071359+00:00"
+    },
+    "react-2026": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/patternsdev/skills/react-2026",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:213a4d9a9eb6bde9",
+      "install_path": "react-2026",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:18:03.535053+00:00",
+      "updated_at": "2026-06-24T16:18:03.535065+00:00"
+    },
+    "react-composition-2026": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/patternsdev/skills/react-composition-2026",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:bd60954276a4bf20",
+      "install_path": "react-composition-2026",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:18:10.418895+00:00",
+      "updated_at": "2026-06-24T16:18:10.418925+00:00"
+    },
+    "ai-agent-wars": {
+      "source": "clawhub",
+      "identifier": "ai-agent-wars",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:e1cfd5b2d31676ad",
+      "install_path": "ai-agent-wars",
+      "files": [
+        "ai-agent-wars.js",
+        "data/ai-agent-wars.json",
+        "references/ai-agent-wars.json",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:18:42.262589+00:00",
+      "updated_at": "2026-06-24T16:18:42.262618+00:00"
+    },
+    "backup-global-cognitive-brain-20260316-100703": {
+      "source": "clawhub",
+      "identifier": "backup-global-cognitive-brain-20260316-100703",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:888e33a10ab69203",
+      "install_path": "backup-global-cognitive-brain-20260316-100703",
+      "files": [
+        "__init__.py",
+        "brain_memory/episodic.json",
+        "brain_memory/meta.json",
+        "brain_memory/semantic.json",
+        "brain_memory/working.json",
+        "global_cognitive_brain.py",
+        "package.json",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:19:07.979538+00:00",
+      "updated_at": "2026-06-24T16:19:07.979565+00:00"
+    },
+    "stocks": {
+      "source": "official",
+      "identifier": "official/finance/stocks",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:e2815063d9f88348",
+      "install_path": "finance/stocks",
+      "files": [
+        "SKILL.md",
+        "scripts/stocks_client.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:28.031443+00:00",
+      "updated_at": "2026-06-24T16:21:28.031478+00:00"
+    },
+    "evm": {
+      "source": "official",
+      "identifier": "official/blockchain/evm",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:48f87adf7ba2a3bc",
+      "install_path": "blockchain/evm",
+      "files": [
+        "SKILL.md",
+        "scripts/evm_client.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:34.524264+00:00",
+      "updated_at": "2026-06-24T16:21:34.524299+00:00"
+    },
+    "solana": {
+      "source": "official",
+      "identifier": "official/blockchain/solana",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:468f98c7cd39fe4a",
+      "install_path": "blockchain/solana",
+      "files": [
+        "SKILL.md",
+        "scripts/solana_client.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:36.911873+00:00",
+      "updated_at": "2026-06-24T16:21:36.911899+00:00"
+    },
+    "hyperliquid": {
+      "source": "official",
+      "identifier": "official/blockchain/hyperliquid",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:b3c0ce8a692819d1",
+      "install_path": "blockchain/hyperliquid",
+      "files": [
+        "SKILL.md",
+        "scripts/hyperliquid_client.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:39.058558+00:00",
+      "updated_at": "2026-06-24T16:21:39.058584+00:00"
+    },
+    "excel-author": {
+      "source": "official",
+      "identifier": "official/finance/excel-author",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:a7b50cbb3ad67441",
+      "install_path": "finance/excel-author",
+      "files": [
+        "SKILL.md",
+        "scripts/recalc.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:45.049579+00:00",
+      "updated_at": "2026-06-24T16:21:45.049624+00:00"
+    },
+    "3-statement-model": {
+      "source": "official",
+      "identifier": "official/finance/3-statement-model",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:db57ce74eb95f401",
+      "install_path": "finance/3-statement-model",
+      "files": [
+        "SKILL.md",
+        "references/formulas.md",
+        "references/sec-filings.md",
+        "references/formatting.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:47.228478+00:00",
+      "updated_at": "2026-06-24T16:21:47.228494+00:00"
+    },
+    "comps-analysis": {
+      "source": "official",
+      "identifier": "official/finance/comps-analysis",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:cc32f5167866f079",
+      "install_path": "finance/comps-analysis",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:49.452728+00:00",
+      "updated_at": "2026-06-24T16:21:49.452742+00:00"
+    },
+    "dcf-model": {
+      "source": "official",
+      "identifier": "official/finance/dcf-model",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:579d915276b7ff1f",
+      "install_path": "finance/dcf-model",
+      "files": [
+        "requirements.txt",
+        "SKILL.md",
+        "TROUBLESHOOTING.md",
+        "scripts/validate_dcf.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:51.372980+00:00",
+      "updated_at": "2026-06-24T16:21:51.373010+00:00"
+    },
+    "lbo-model": {
+      "source": "official",
+      "identifier": "official/finance/lbo-model",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:d54dcd27dc94e29d",
+      "install_path": "finance/lbo-model",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:53.056251+00:00",
+      "updated_at": "2026-06-24T16:21:53.056286+00:00"
+    },
+    "merger-model": {
+      "source": "official",
+      "identifier": "official/finance/merger-model",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:3322727eae7bd7ec",
+      "install_path": "finance/merger-model",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:21:54.718017+00:00",
+      "updated_at": "2026-06-24T16:21:54.718035+00:00"
+    },
+    "claw-smart-context": {
+      "source": "clawhub",
+      "identifier": "claw-smart-context",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:9acba576887d6eb6",
+      "install_path": "claw-smart-context",
+      "files": [
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:25:28.870382+00:00",
+      "updated_at": "2026-06-24T16:25:28.870406+00:00"
+    },
+    "agent-swarm": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/ruvnet/ruflo/agent-swarm",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:b6ff5a3ac28a3aaa",
+      "install_path": "agent-swarm",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-24T16:39:33.734318+00:00",
+      "updated_at": "2026-06-24T16:39:33.734349+00:00"
+    },
+    "traefik": {
+      "source": "clawhub",
+      "identifier": "traefik",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:aeab25c6e2caa3d4",
+      "install_path": "traefik",
+      "files": [
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T03:13:29.700984+00:00",
+      "updated_at": "2026-06-25T03:13:29.701010+00:00"
+    },
+    "initial-traefik": {
+      "source": "clawhub",
+      "identifier": "initial-traefik",
+      "trust_level": "community",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:e1e0fd3d3e8d9469",
+      "install_path": "initial-traefik",
+      "files": [
+        "assets/docker-compose.yml",
+        "assets/traefik-dynamic.yml",
+        "references/examples.md",
+        "references/features.md",
+        "references/summary.md",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T03:13:54.312443+00:00",
+      "updated_at": "2026-06-25T03:13:54.312472+00:00"
+    },
+    "ai-proposal-generator": {
+      "source": "clawhub",
+      "identifier": "ai-proposal-generator",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:132ab744886b5c9d",
+      "install_path": "ai-proposal-generator",
+      "files": [
+        "assets/proposal-template.html",
+        "assets/SERVICES-template.md",
+        "examples/corporate-trust-navy.html",
+        "examples/entrepreneur-ember-orange.html",
+        "examples/minimal-slate-dark.html",
+        "SKILL.md",
+        "templates/consultant.md",
+        "templates/corporate.md",
+        "templates/creative.md",
+        "templates/entrepreneur.md",
+        "templates/minimal.md",
+        "themes/ember-orange.css",
+        "themes/forest-green.css",
+        "themes/ocean-blue.css",
+        "themes/royal-purple.css",
+        "themes/slate-dark.css",
+        "themes/trust-navy.css",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:23:09.828168+00:00",
+      "updated_at": "2026-06-25T16:23:09.828203+00:00"
+    },
+    "badman-agent-rental": {
+      "source": "clawhub",
+      "identifier": "badman-agent-rental",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:812ebc3c3d002e0f",
+      "install_path": "badman-agent-rental",
+      "files": [
+        "agent.json",
+        "config.example.json",
+        "LAUNCH_CHECKLIST.md",
+        "LAUNCH_DAY_PLAN.md",
+        "LAUNCH_STRATEGY.md",
+        "README.md",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:23:21.665664+00:00",
+      "updated_at": "2026-06-25T16:23:21.665688+00:00"
+    },
+    "raai-business-analyst-pro": {
+      "source": "clawhub",
+      "identifier": "raai-business-analyst-pro",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:14dd7024aae9ff9e",
+      "install_path": "raai-business-analyst-pro",
+      "files": [
+        "build.sh",
+        "CHANGELOG.md",
+        "competitors/afrexai-fpa-engine-SKILL.md",
+        "competitors/afrexai-saas-metrics-SKILL.md",
+        "competitors/competitors-comparison.md",
+        "competitors/dash-cog-SKILL.md",
+        "config.yaml",
+        "docs/anti-fail.md",
+        "docs/onboarding.md",
+        "docs/roi.md",
+        "examples/01_dashboard.md",
+        "examples/02_unit_economics.md",
+        "examples/03_cohort_analysis.md",
+        "examples/04_pl_report.md",
+        "examples/05_cash_flow.md",
+        "examples/06_forecast_scenarios.md",
+        "examples/07_break_even.md",
+        "examples/08_plan_vs_fact.md",
+        "examples/09_funnel.md",
+        "examples/10_product_margins.md",
+        "examples/11_investor_report.md",
+        "examples/12_period_comparison.md",
+        "examples/example_prompts.md",
+        "examples/full-library.md",
+        "examples/quick-start.md",
+        "install.sh",
+        "marketing/comparison.md",
+        "marketing/onepager.md",
+        "marketing/testimonial-template.md",
+        "proof/case-01-chaos-to-dashboard.md",
+        "proof/case-02-unit-economics-visible.md",
+        "proof/case-03-funnel-losses-found.md",
+        "proof/case-04-break-even-clarity.md",
+        "proof/case-05-investor-ready-clarity.md",
+        "README.md",
+        "skill-card.md",
+        "SKILL.md",
+        "test/smoke-test.sh",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:23:48.962609+00:00",
+      "updated_at": "2026-06-25T16:23:48.962649+00:00"
+    },
+    "business-writing": {
+      "source": "clawhub",
+      "identifier": "business-writing",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:76233ec90dde1027",
+      "install_path": "business-writing",
+      "files": [
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:24:01.330558+00:00",
+      "updated_at": "2026-06-25T16:24:01.330616+00:00"
+    },
+    "executive-dashboard-generator": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/onewave-ai/claude-skills/executive-dashboard-generator",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:65aa8e3e3e7ec51f",
+      "install_path": "executive-dashboard-generator",
+      "files": [
+        "SKILL.md",
+        "references/analysis-coverage.md",
+        "references/best-practices.md",
+        "references/output-template.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:24:18.902219+00:00",
+      "updated_at": "2026-06-25T16:24:18.902251+00:00"
+    },
+    "ai-boss-assistant": {
+      "source": "clawhub",
+      "identifier": "ai-boss-assistant",
+      "trust_level": "community",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:d4d7f037013abf4f",
+      "install_path": "ai-boss-assistant",
+      "files": [
+        "agent-persona/COMMUNICATION.md",
+        "agent-persona/PERSONA.md",
+        "agent-persona/README.md",
+        "agent-persona/RULES.md",
+        "agent-persona/WORKFLOW.md",
+        "agent-persona/如何讓AI學習成為老闆助理.md",
+        "browser/KKTIX_範例訂票腳本.md",
+        "examples/對話範例.md",
+        "gog/gog Setup and Usage（英文版）.md",
+        "gog/gog 安裝與使用教學.md",
+        "meta/AI 助理通用規則模板.md",
+        "meta/Clawdbot 技能與工具總覽.md",
+        "README.md",
+        "security/AI老闆助理資安防護說明.md",
+        "setup/README-AI老闆助理安裝與設定.md",
+        "setup/前置訪談問卷.md",
+        "setup/完整安裝指南-從零開始部署AI老闆助理.md",
+        "skill-card.md",
+        "skill.json",
+        "SKILL.md",
+        "skills/README.md",
+        "tasks/今日待辦範本.md",
+        "tasks/任務同步模板.md",
+        "tasks/生活事件模板.md",
+        "完整性檢查報告.md",
+        "檢查清單.md",
+        "老闆助理/AI 老闆助理MVP功能表.md",
+        "老闆助理/AI 老闆助理產品白皮書.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:24:50.104041+00:00",
+      "updated_at": "2026-06-25T16:24:50.104071+00:00"
+    },
+    "abstract-strategy": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/jwynia/agent-skills/abstract-strategy",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:93a48a78d23c72a1",
+      "install_path": "abstract-strategy",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:25:08.011222+00:00",
+      "updated_at": "2026-06-25T16:25:08.011248+00:00"
+    },
+    "ai-product-strategy": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/refoundai/lenny-skills/ai-product-strategy",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:fa595ef471edf050",
+      "install_path": "ai-product-strategy",
+      "files": [
+        "SKILL.md",
+        "references/guest-insights.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:25:19.636385+00:00",
+      "updated_at": "2026-06-25T16:25:19.636415+00:00"
+    },
+    "pptx-author": {
+      "source": "official",
+      "identifier": "official/finance/pptx-author",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:4ec63d16a63a7bcb",
+      "install_path": "finance/pptx-author",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:26:04.085680+00:00",
+      "updated_at": "2026-06-25T16:26:04.085715+00:00"
+    },
+    "personal-productivity": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/oldwinter/skills/personal-productivity",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:98332084733a66c5",
+      "install_path": "personal-productivity",
+      "files": [
+        "SKILL.md",
+        "references/CHECKLISTS.md",
+        "references/EXAMPLES.md",
+        "references/INTAKE.md",
+        "references/RUBRIC.md",
+        "references/SOURCE_SUMMARY.md",
+        "references/TEMPLATES.md",
+        "references/WORKFLOW.md",
+        "skillpack.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:26:27.605987+00:00",
+      "updated_at": "2026-06-25T16:26:27.606019+00:00"
+    },
+    "modesty-adhd-assistant": {
+      "source": "clawhub",
+      "identifier": "modesty-adhd-assistant",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:706f3a7f0ef7e069",
+      "install_path": "modesty-adhd-assistant",
+      "files": [
+        "README.md",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:26:40.026105+00:00",
+      "updated_at": "2026-06-25T16:26:40.026133+00:00"
+    },
+    "deep-productivity": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/hexbee/hello-skills/deep-productivity",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:4d3abbc3c0b40604",
+      "install_path": "deep-productivity",
+      "files": [
+        "SKILL.md",
+        "openai.yaml",
+        "references/default-mode-network.md",
+        "references/flow-formula.md",
+        "references/focus-types.md",
+        "scripts/assess_focus.py",
+        "scripts/generate_hierarchy.py",
+        "scripts/track_levers.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:27:27.508157+00:00",
+      "updated_at": "2026-06-25T16:27:27.508214+00:00"
+    },
+    "saas-productivity": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/dylantarre/animation-principles/saas-productivity",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:5fdfc75f3a8c45f3",
+      "install_path": "saas-productivity",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:27:39.919409+00:00",
+      "updated_at": "2026-06-25T16:27:39.919440+00:00"
+    },
+    "boss-ai-agent": {
+      "source": "clawhub",
+      "identifier": "boss-ai-agent",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:7d7051da0738d9c3",
+      "install_path": "boss-ai-agent",
+      "files": [
+        "boss-ai-agent-workspace/iteration-1/eval-1-briefing/with_skill/outputs/briefing.md",
+        "boss-ai-agent-workspace/iteration-1/eval-1-briefing/without_skill/outputs/briefing.md",
+        "boss-ai-agent-workspace/iteration-1/eval-2-oneone/with_skill/outputs/oneone-prep.md",
+        "boss-ai-agent-workspace/iteration-1/eval-2-oneone/without_skill/outputs/oneone-prep.md",
+        "boss-ai-agent-workspace/iteration-1/eval-3-board/with_skill/outputs/board-meeting.md",
+        "boss-ai-agent-workspace/iteration-1/eval-3-board/without_skill/outputs/board-meeting.md",
+        "evals/evals.json",
+        "evals/trigger-eval.json",
+        "README.md",
+        "references/cultures.md",
+        "references/mcp-tools.md",
+        "references/mentors.md",
+        "references/scenarios.md",
+        "references/setup-guide.md",
+        "scripts/format-briefing.py",
+        "scripts/risk-scan.py",
+        "scripts/sync-flow.py",
+        "scripts/update-learning.py",
+        "scripts/weekly-report.py",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:28:12.292957+00:00",
+      "updated_at": "2026-06-25T16:28:12.292984+00:00"
+    },
+    "cfo": {
+      "source": "clawhub",
+      "identifier": "cfo",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:9f8c02e4ba984793",
+      "install_path": "cfo",
+      "files": [
+        "cash.md",
+        "fundraising.md",
+        "operations.md",
+        "planning.md",
+        "skill-card.md",
+        "SKILL.md",
+        "_meta.json"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:28:25.817719+00:00",
+      "updated_at": "2026-06-25T16:28:25.817746+00:00"
+    },
+    "30x-growth-marketing-panel": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/aradotso/marketing-skills/30x-growth-marketing-panel",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:36cc4bd4d976f496",
+      "install_path": "30x-growth-marketing-panel",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:28:57.041410+00:00",
+      "updated_at": "2026-06-25T16:28:57.041447+00:00"
+    },
+    "business-operations-skills": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/alirezarezvani/claude-skills/business-operations-skills",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:d6c6f5b5986b30ff",
+      "install_path": "business-operations-skills",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:29:18.146822+00:00",
+      "updated_at": "2026-06-25T16:29:18.146845+00:00"
+    },
+    "founder-sales": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/refoundai/lenny-skills/founder-sales",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:da6120af109dcff1",
+      "install_path": "founder-sales",
+      "files": [
+        "SKILL.md",
+        "references/guest-insights.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:29:38.461225+00:00",
+      "updated_at": "2026-06-25T16:29:38.461255+00:00"
+    },
+    "business-growth-skills": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/alirezarezvani/claude-skills/business-growth-skills",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:c1304c36695608a0",
+      "install_path": "business-growth-skills",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:30:42.141514+00:00",
+      "updated_at": "2026-06-25T16:30:42.141637+00:00"
+    },
+    "designing-growth-loops": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/refoundai/lenny-skills/designing-growth-loops",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:23dcd1e4a63eeced",
+      "install_path": "designing-growth-loops",
+      "files": [
+        "SKILL.md",
+        "references/guest-insights.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:31:17.023604+00:00",
+      "updated_at": "2026-06-25T16:31:17.023630+00:00"
+    },
+    "business-health-diagnostic": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/deanpeters/product-manager-skills/business-health-diagnostic",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:bc6a86936bd474af",
+      "install_path": "business-health-diagnostic",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:31:46.735452+00:00",
+      "updated_at": "2026-06-25T16:31:46.735516+00:00"
+    },
+    "ecommerce-business-plan": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/nexscope-ai/ecommerce-skills/ecommerce-business-plan",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:9732e9c49b164852",
+      "install_path": "ecommerce-business-plan",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:32:42.753985+00:00",
+      "updated_at": "2026-06-25T16:32:42.754006+00:00"
+    },
+    "competitor-price-analysis": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/nexscope-ai/ecommerce-skills/competitor-price-analysis",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:373b49e8a0514dcd",
+      "install_path": "competitor-price-analysis",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:33:02.935329+00:00",
+      "updated_at": "2026-06-25T16:33:02.935380+00:00"
+    },
+    "business-analyst": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/sickn33/antigravity-awesome-skills/business-analyst",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:514074b817e1203c",
+      "install_path": "business-analyst",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-25T16:33:54.787336+00:00",
+      "updated_at": "2026-06-25T16:33:54.787392+00:00"
+    },
+    "account-maintenance": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/joellewis/finance_skills/account-maintenance",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:c49671abab623e0c",
+      "install_path": "account-maintenance",
+      "files": [
+        "SKILL.md",
+        "references/examples.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:55:58.590094+00:00",
+      "updated_at": "2026-06-26T10:55:58.590130+00:00"
+    },
+    "account-opening-compliance": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/joellewis/finance_skills/account-opening-compliance",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:512bf406e2153880",
+      "install_path": "account-opening-compliance",
+      "files": [
+        "SKILL.md",
+        "references/examples.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:56:04.544819+00:00",
+      "updated_at": "2026-06-26T10:56:04.544847+00:00"
+    },
+    "analyze": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/allenai2014/ai-investment-advisor/analyze",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:2e5fba945a5d2c03",
+      "install_path": "analyze",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:56:09.638552+00:00",
+      "updated_at": "2026-06-26T10:56:09.638573+00:00"
+    },
+    "claim-investigation": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/jwynia/agent-skills/claim-investigation",
+      "trust_level": "community",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:4642ec086757d362",
+      "install_path": "claim-investigation",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:56:20.849112+00:00",
+      "updated_at": "2026-06-26T10:56:20.849153+00:00"
+    },
+    "algorithmic-trading": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/omer-metin/skills-for-antigravity/algorithmic-trading",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:6cdde7252f098f92",
+      "install_path": "algorithmic-trading",
+      "files": [
+        "SKILL.md",
+        "references/patterns.md",
+        "references/sharp_edges.md",
+        "references/validations.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:56:32.841393+00:00",
+      "updated_at": "2026-06-26T10:56:32.841419+00:00"
+    },
+    "backtest-expert": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/tradermonty/claude-trading-skills/backtest-expert",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:862e107168d03010",
+      "install_path": "backtest-expert",
+      "files": [
+        "SKILL.md",
+        "references/failed_tests.md",
+        "references/methodology.md",
+        "scripts/evaluate_backtest.py",
+        "scripts/tests/conftest.py",
+        "scripts/tests/test_evaluate_backtest.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:56:41.790205+00:00",
+      "updated_at": "2026-06-26T10:56:41.790235+00:00"
+    },
+    "backtesting-trading-strategies": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/gracefullight/stock-checker/backtesting-trading-strategies",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:ce557272720b422d",
+      "install_path": "backtesting-trading-strategies",
+      "files": [
+        "SKILL.md",
+        "config/settings.yaml",
+        "references/errors.md",
+        "references/examples.md",
+        "references/implementation.md",
+        "scripts/backtest.py",
+        "scripts/fetch_data.py",
+        "scripts/metrics.py",
+        "scripts/optimize.py",
+        "scripts/strategies.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:56:52.425557+00:00",
+      "updated_at": "2026-06-26T10:56:52.425584+00:00"
+    },
+    "crypto-com-app": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/crypto-com/crypto-agent-trading/crypto-com-app",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:4b033703943f9444",
+      "install_path": "crypto-com-app",
+      "files": [
+        "SKILL.md",
+        "_meta.json",
+        "references/errors.md",
+        "scripts/account.ts",
+        "scripts/coins.ts",
+        "scripts/fiat.ts",
+        "scripts/lib/api.ts",
+        "scripts/lib/output.ts",
+        "scripts/trade.ts"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:57:18.103623+00:00",
+      "updated_at": "2026-06-26T10:57:18.103663+00:00"
+    },
+    "aicoin-trading": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/aicoincom/coinos-skills/aicoin-trading",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:aa0cc6c534239f3c",
+      "install_path": "aicoin-trading",
+      "files": [
+        "SKILL.md",
+        "lib/cli.mjs",
+        "lib/defaults.json",
+        "lib/env-loader.mjs",
+        "package.json",
+        "scripts/api-key-info.mjs",
+        "scripts/auto-trade.mjs",
+        "scripts/exchange.mjs",
+        "scripts/register.mjs",
+        "scripts/trade.mjs",
+        "scripts/verify-order-matrix.mjs"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:57:35.293673+00:00",
+      "updated_at": "2026-06-26T10:57:35.293702+00:00"
+    },
+    "aster-bot-trading": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/aradotso/trending-skills/aster-bot-trading",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:e54e385f74b19c01",
+      "install_path": "aster-bot-trading",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:57:41.041933+00:00",
+      "updated_at": "2026-06-26T10:57:41.041962+00:00"
+    },
+    "crypto-market-rank": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/binance/binance-skills-hub/crypto-market-rank",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:a18ab39d8e8db2a9",
+      "install_path": "crypto-market-rank",
+      "files": [
+        "SKILL.md",
+        "references/cli.md",
+        "scripts/cli.mjs"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:59:42.622111+00:00",
+      "updated_at": "2026-06-26T10:59:42.622138+00:00"
+    },
+    "crypto-protocol-diagram": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/trailofbits/skills/crypto-protocol-diagram",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:e7946420c1d49026",
+      "install_path": "crypto-protocol-diagram",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/trail-of-bits-mark.svg",
+        "examples/simple-handshake/expected-output.md",
+        "examples/simple-handshake/protocol.py",
+        "examples/simple-proverif/expected-output.md",
+        "examples/simple-proverif/model.pv",
+        "references/ascii-sequence-diagram.md",
+        "references/mermaid-sequence-syntax.md",
+        "references/protocol-patterns.md",
+        "references/spec-parsing-patterns.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:59:54.471593+00:00",
+      "updated_at": "2026-06-26T10:59:54.471629+00:00"
+    },
+    "crypto-report": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/claude-office-skills/skills/crypto-report",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:2db78da07f784c1a",
+      "install_path": "crypto-report",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-26T10:59:59.754123+00:00",
+      "updated_at": "2026-06-26T10:59:59.754166+00:00"
+    }
+  }
+}

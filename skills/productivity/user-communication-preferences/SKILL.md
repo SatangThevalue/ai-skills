@@ -25,12 +25,13 @@ This skill captures persistent, class-level rules about how the agent should com
 ## Preferences (explicit rules)
 
 - Language: default to the user's last-used language. Prefer Thai when the user writes in Thai.
-- Brevity: prefer concise answers. Avoid long preambles and avoid unnecessary explanations unless requested.
+- Brevity: prefer concise answers. Avoid long preambles and avoid unnecessary explanations unless requested. In scheduled cron jobs (like morning briefs), present data in a highly structured, scannable format, ending with a bulleted list of actionable next steps or urgent items.
+- Silent run: when running under cron, if there is absolutely no new information to report or nothing requires attention, reply with exactly "[SILENT]" to suppress delivery.
 - Action-first: when the user requests a change, run the corresponding tool/action immediately and report real execution output rather than describing steps.
 - Confirm brief clarifying questions only when ambiguity would change the tool/action selection; otherwise act on the obvious default.
-- Avoid empty replies. Always acknowledge tool calls and show results or explicit errors.
 - Redaction: never reveal API keys, tokens, or credentials; replace them with [REDACTED].
 - Skill updates: if a session produces new procedural lessons (workflow fix, repeated correction, or non-trivial workaround), create or patch a class-level skill or add a references/ note.
+- Obsidian Vault: when performing checks on the user's local workspace, proactively inspect their active Obsidian Vault path (`/home/thaieasyvps/Documents/Obsidian Vault`), parse their local templates, and report git tracking or script sync states. Check systemd services and Docker containers to present a complete operational environment summary.
 
 ## Pitfalls
 

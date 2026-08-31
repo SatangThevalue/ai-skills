@@ -15,6 +15,8 @@ date: 2026-06-25
 
 When designing and building web applications, the user experience (UX) must be tailored to the specific constraints and behaviors of the device. Mobile is not just "shrunk-down desktop."
 
+> **Satang-specific preference:** Navy-first mobile banking UI with cute illustration accents, bottom navigation, and structured PM-report delivery. See `references/satang-mobile-dashboard.md` for concrete tokens and component patterns used in Satang projects.
+
 ## 1. Core Differences: Desktop vs. Mobile
 
 | Feature | Desktop | Mobile |
@@ -67,3 +69,15 @@ Performance is a critical UX factor, especially on mobile networks:
 * **Relying on Hover:** Information hidden behind hover states on desktop will be inaccessible on mobile. Always provide an alternative (like a tap-to-expand accordion).
 * **Tiny spacing:** Elements placed too close together cause accidental taps.
 * **Unclear errors:** Instead of "Something went wrong," tell the user exactly what failed and how to fix it (e.g., "Password must contain a number").
+
+## 6. Editing Large Dashboard `.tsx` Files Safely
+
+When rewriting dashboard screens in Next.js/React:
+
+- **Do not duplicate the component root.** Only one top-level `return (` should exist in the main auth-view branch; duplicated wrappers produce invalid JSX and cascade failures.
+- **One file edit per structural concern.** Keep tabs: auth portal, bottom nav, dashboard list form separate patches.
+- **Rollback rule:** if repeated patches leave the file in a broken state, `git checkout -- <file>` and make one clean structural edit instead of many micro-patches.
+- **Use `useState('dashboard')` + bottom-nav buttons** for mobile-first admin layouts instead of inline top tabs on small screens.
+- **Use `pb-24`** on the main wrapper so fixed bottom `/nav` does not overflow content.
+- **Convert Table structures to Responsive Card Lists on mobile screens:** Tables with 4+ columns are too wide and cause text clipping or overflow on mobile viewports. Implement responsive layouts showing standard `<table>` on `sm:block` (tablet/desktop) and transition to a vertical flex `div` with single-column visual cards on mobile (`block sm:hidden`). Arrange critical fields (Title, Amount) on the top row of each card, tags (Date, Wallet, Category) in a wraps-container in the middle, and administrative actions (Edit/Delete buttons) at the bottom.
+- **Document the mobile spec** as a separate reference file and copy/paste code blocks into the page, rather than patching blind into large JSX files.

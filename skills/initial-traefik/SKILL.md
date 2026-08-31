@@ -203,6 +203,46 @@ docker exec traefik wget -q -O - http://localhost:8080/api/http/routers
 docker restart traefik
 ```
 
+## Workflows and Architectures
+
+### Monorepo / Micro-Frontend Routing
+When separating frontend and backend traffic in a single domain space:
+1. Define a `websecure` entrypoint for both routers.
+2. Route the backend via `PathPrefix` (e.g., `/api`, `/webhooks`) with higher priority (e.g., `priority: 200`).
+3. Route the frontend to the apex domain (e.g., `Host('example.com')`) with a lower priority (e.g., `priority: 100`) as a catch-all for UI routes.
+4. If frontend and backend are running locally without Docker networks, map them via `host.docker.internal:<port>`.
+
+Example (`dynamic.yml`):
+```yaml
+http:
+  routers:
+    api-router:
+      rule: Host(`app.example.com`) && (PathPrefix(`/webhooks`) || PathPrefix(`/api`))
+      entryPoints: ["websecure"]
+      service: api-srv
+      priority: 200
+      tls:
+        certResolver: namecom
+
+    web-router:
+      rule: Host(`app.example.com`)
+      entryPoints: ["websecure"]
+      service: web-srv
+      priority: 100
+      tls:
+        certResolver: namecom
+
+  services:
+    api-srv:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:8000
+    web-srv:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:3000
+```
+
 ## References
 
 - **Features**: See `references/features.md` for all available features
@@ -211,6 +251,8 @@ docker restart traefik
 
 ## Troubleshooting
 
+- **Port Collision**: If `5432` is already bound by an existing PostgreSQL container, Traefik or a new compose stack will fail to bind `0.0.0.0:5432`. Either stop the conflicting service, or map the new container to an alternate port on the host (e.g., `5433:5432`).
+- **Docker Compose + pnpm install**: When running `pnpm install` in a Dockerfile without a TTY, pnpm may block and wait for confirmation to purge the modules directory (`ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY`). Set `ENV CI=true` and run `RUN pnpm config set confirmModulesPurge false` before `pnpm install`.
 - **404 errors**: Check container is connected to `compose_default` network
 - **Configuration not loading**: Check `traefik-dynamic.yml` YAML syntax
 - **Service not accessible**: Verify container name and port in service configuration
@@ -218,5 +260,5 @@ docker restart traefik
 - **Docker 29.4+ "client version 1.24 is too old"**: Docker Engine 29.4+ raised `MinAPIVersion` to 1.40. Traefik defaults to negotiating with `v1.24`. Use the `traefik-docker29-fix` skill to deploy a TCP proxy to rewrite the requests.
 - **Name.com DNS Challenge "Permission Denied"**: Usually caused by a trailing newline in the API token (e.g. from `.env` files). Ensure tokens are exported strictly without newlines (`echo -n "..." > .env`).
 - **Name.com DNS Challenge "server misbehaving" (dial tcp: lookup https on 127.0.0.11:53)**: Lego prefixes `https://` to `NAMECOM_SERVER`. If `NAMECOM_SERVER=https://api.name.com`, Lego dials `https://https//api.name.com`. Leave `NAMECOM_SERVER` out of configuration for production defaults.
-- **Name.com DNS Challenge**: Exclude scheme from `NAMECOM_SERVER` (e.g. `api.name.com`, not `https://api.name.com`) and ensure `.env` token lines have NO trailing newline characters.
+- **Host vs Next.js Container routing clash:** Be careful when writing dynamic router rules for multiple services sharing the same domain. Ensure you map API traffic (`PathPrefix('/api')`) with a higher `priority` (e.g. 200) than the catch-all frontend Next.js app routing (priority 100), to prevent Next.js from intercepting backend requests.
 - **Docker 29.4+ API version error**: See `traefik` skill `scripts/docker_api_relay.py` for a workaround for Traefik's `client version 1.24 is too old` error when discovering containers.

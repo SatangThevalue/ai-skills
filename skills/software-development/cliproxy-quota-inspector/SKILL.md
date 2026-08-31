@@ -31,6 +31,10 @@ This skill allows the agent to interact with the CLIProxyAPI backend (running lo
 - Get accounts endpoint: `http://127.0.0.1:42869/v0/management/auth-files`
 - Authorization header format: `Authorization: Bearer <management-key>`
 
+## Related Skills
+
+- **cliproxy-quota-check** — Higher-level quota interpretation, model-level error patterns, and troubleshooting playbook. Use that skill for analyzing 429 errors and model availability.
+
 ## Procedure
 
 ### 1. Query Active Account List and Quotas
@@ -43,11 +47,27 @@ try:
     with urllib.request.urlopen(req) as r:
         res = json.loads(r.read().decode())
         for f in res.get('files', []):
-            print(f\"Account: {f.get('account')} | Provider: {f.get('provider')} | Status: {f.get('status')} | Success: {f.get('success')} | Failed: {f.get('failed')}\")
+            print(f'Account: {f.get(\"account\")} | Provider: {f.get(\"provider\")} | Status: {f.get(\"status\")} | Success: {f.get(\"success\")} | Failed: {f.get(\"failed\")}')
 except Exception as e:
     print('Failed to query CLIProxyAPI:', e)
 "
 ```
+
+### 2. List Available Models
+```bash
+curl -s http://127.0.0.1:42869/v1/models
+```
+
+### 3. Check Model-Level Quota (when 429 errors occur)
+```bash
+cat ~/.cli-proxy-api/logs/error-v1-chat-completions-*.log | grep -A5 "QUOTA_EXHAUSTED"
+```
+Key fields:
+- `quotaResetTimeStamp` — per-account reset time (UTC)
+- `model` — which model is exhausted
+- `reset_seconds` / `reset_time` — for `model_cooldown` errors (provider-level)
+
+**See `cliproxy-quota-check` skill for full model quota patterns and fallback models.**
 
 ## Pitfalls
 - **404 Not Found**: If `secret-key` is not defined under `remote-management` in `/opt/cli-proxy-api/config.yaml`, the server disables all management endpoints. Verify configuration before querying.

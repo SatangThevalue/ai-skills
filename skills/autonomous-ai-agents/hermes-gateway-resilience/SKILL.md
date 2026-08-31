@@ -40,6 +40,13 @@ Operational recovery patterns for `hermes-gateway.service`. Use when the gateway
    ```
    Look for `telegram connected`, `api_server connected`, etc.
 
+   *Pitfall: Token Already in Use (Cross-Profile Collision)*
+   If `hermes status` or logs show `Telegram bot token already in use (PID <PID>). Stop the other gateway first.`:
+   - Check `ps aux | grep <PID>` to identify the offending profile or process.
+   - Gracefully stop the conflicting profile's gateway: `hermes --profile <profile_name> gateway stop`
+   - If zombie processes remain, explicitly kill them: `kill -9 <PID>`
+   - Restart the primary gateway.
+
 3. **Light-touch log triage**
    ```bash
    tail -n 80 ~/.hermes/logs/gateway.log
@@ -60,6 +67,25 @@ Operational recovery patterns for `hermes-gateway.service`. Use when the gateway
        schedule="2026-06-28T07:53:10"  # ISO timestamp 30s in the future
    )
    ```
+
+## Cross-Profile Port/Token Conflicts
+
+If `hermes status` or the gateway logs (`tail -n 80 ~/.hermes/logs/gateway.log`) report a startup conflict like:
+`Telegram bot token already in use (PID XXX). Stop the other gateway first.`
+or
+`[Api_Server] Port 8642 already in use.`
+
+This usually means another Hermes profile on the same host is running a gateway service in the background and holding the same platform tokens or API server ports.
+
+### Conflict Recovery:
+1. Identify the conflicting profile from `hermes gateway status` under the `Other profiles:` section.
+2. Stop and uninstall the conflicting profile's gateway if it shouldn't be running:
+   ```bash
+   hermes --profile <conflicting-profile> gateway stop
+   hermes --profile <conflicting-profile> gateway uninstall
+   ```
+   (If the uninstaller misses the systemd unit, manually run `rm -f ~/.config/systemd/user/hermes-gateway-<profile>.service && systemctl --user daemon-reload`).
+3. Start the primary gateway with `hermes gateway start`.
 
 ## Low-Disk Resilience
 

@@ -27,6 +27,7 @@ Invoke through the `terminal` tool to provision the PostgreSQL user/database, us
 ## Quick Reference
 - Create Postgres User: `CREATE USER n8n_user WITH PASSWORD 'secret';`
 - Create Postgres DB: `CREATE DATABASE n8n OWNER n8n_user;`
+- **Pitfall**: If n8n crashes repeatedly with `password authentication failed`, the password set here does not match `DB_POSTGRESDB_PASSWORD` in `docker-compose.yml`. Alter the user password in Postgres to match the env var.
 - Required Traefik Header Label: `"traefik.http.middlewares.n8n-headers.headers.customrequestheaders.X-Forwarded-Proto=https"`
 - Local MCP Tools for n8n:
   - `health` — Check API reachability & Docker status
@@ -79,6 +80,8 @@ Invoke through the `terminal` tool to provision the PostgreSQL user/database, us
 - **Missing `X-Forwarded-Proto`:** Without the custom request header middleware in Traefik, n8n will struggle with WebSocket connections, Webhook URLs will default to `http://` instead of `https://`, and the UI may warn about connection issues.
 - **Python Missing Warning:** n8n logs may complain about Python 3 missing for the Task Runner. This is normal and expected when using internal mode.
 - **Database Scope Migration:** During the first startup, n8n takes time to run database schema migrations. Wait for `Editor is now accessible via:` in the logs before assuming it's ready.
+- **Initial Setup Database Latency:** When starting the n8n container, if n8n attempts to connect to a database before the connection is fully initialized, it may report `Database is not ready!` and return a HTTP 503 error on `/api/v1/*` endpoints. Wait a few seconds for n8n to log `Database connection recovered` and print the editor access URL before executing MCP calls or API requests.
+- **Missing Custom Node Trigger Failures:** If active workflows on startup depend on custom or community node modules (e.g. `@aotoki/n8n-nodes-line-messaging.lineMessagingTrigger`), n8n will log `Unrecognized node type` and fail to auto-activate that workflow. These custom nodes must be installed either via n8n's community node manager in the UI, or by mounting/installing them into n8n's data directory.
 
 ## Verification
 Use the `terminal` tool to monitor the migration and startup process:

@@ -63,3 +63,25 @@ When building Next.js applications, selecting the right UI library is crucial fo
 1. **RSC First:** If you are using the Next.js App Router (`app/` directory), prioritize libraries that are Tailwind-based (**shadcn/ui**, **NextUI**, **Tailwind CSS**). They require minimal `"use client"` boundaries compared to heavy CSS-in-JS libraries.
 2. **Accessibility (a11y):** For serious production apps, ensure the underlying logic is accessible. Libraries built on Radix UI (like shadcn/ui) or React Aria (like NextUI) handle focus management, keyboard navigation, and ARIA attributes for you.
 3. **Modularity:** Avoid installing monolithic UI libraries if you only need a few buttons and modals. Use the copy-paste philosophy of shadcn/ui to keep your bundle size small.
+
+## Troubleshooting & Common Pitfalls
+
+### Local UI Components vs. Framework Defaults (shadcn/ui)
+* **Check local definitions:** In projects using shadcn/ui (where components are copied into `src/components/ui`), **do not assume all framework exports exist**. For example, `CardDescription` or `DialogHeader` might be missing if the developer stripped them out or wrote custom minimalist versions.
+* **Always verify the interface:** Before passing props (like `label="Email"`) to local components (like `<Input>`), `cat src/components/ui/input.tsx` to verify it actually accepts a `label` prop. Many custom implementations rely on wrapping inputs manually rather than accepting a label prop.
+
+### Sonner vs. shadcn/ui Toast Migrations
+When a project migrates from shadcn/ui's default Radix toast to **Sonner**, compiling often fails due to mixed syntaxes:
+* **shadcn/ui (useToast):** 
+  ```tsx
+  import { useToast } from "@/hooks/use-toast";
+  const { toast } = useToast();
+  toast({ title: "Error", description: "Details", variant: "destructive" });
+  ```
+* **Sonner:** 
+  ```tsx
+  import { toast } from "sonner";
+  toast.error("Error", { description: "Details" }); 
+  // OR toast.success("Success", { description: "Details" });
+  ```
+* **Fixing:** When patching, you must remove the `useToast` import, remove the `const { toast } = useToast();` hook call, and update the execution shape to `toast.error()` or `toast.success()`. Do not leave stray `{ description }` objects without wrapping them in the second argument options block.

@@ -87,10 +87,12 @@ When updating the code from Git:
 4. **Rebuild**: `docker compose up -d --build` (add `--no-cache` if the site doesn't reflect new changes).
 
 ## Pitfalls
+- **EADDRINUSE (Address already in use):** When developing locally (`npm run dev` or `pnpm dev`) and the process exits unexpectedly, the Node server might leave a zombie process holding the port (e.g. 3000). Always explicitly `pkill -f "next dev"` or `pkill node` before restarting the dev server if encountering this error.
 - **`npm ci` vs `npm install` inside Docker:** If the `package-lock.json` generated on the host is out of sync with `package.json` (often due to missing or mismatched dependencies), `npm ci` inside the Dockerfile will crash. If this happens, replace `npm ci` with `npm install` in the Dockerfile before building.
 - **Lowercase `dockerfile` Git Issues:** If the repository originally committed `dockerfile` with a lowercase `d`, running `mv dockerfile Dockerfile` locally works once. However, subsequent `git pull` operations will likely restore the lowercase `dockerfile` and overwrite or conflict with your changes. To permanently fix this, either rename it via git (`git mv dockerfile Dockerfile; git commit`) or chain the rename during deployment (`git pull && mv dockerfile Dockerfile 2>/dev/null || true && docker compose up -d --build`).
 - **Missing Standalone Output:** If `output: 'standalone'` is missing from `next.config.ts`, the Docker build will fail during the `COPY --from=builder /app/.next/standalone ./` step because the directory won't exist.
 - **Build Timeouts:** Next.js `npm run build` downloads dependencies and compiles static pages, easily taking 2-3 minutes. Run this in the background with `notify_on_complete=true` to avoid terminal timeouts.
+- **Builds fail with `no space left on device`:** On small VPS hosts, a Docker/Next.js build can fail with `failed to update builder last activity time: write .../.tmp-default...: no space left on device` before compile finishes. Check space before rebuilding: `df -h /`. If `Use%` is high, free space first with `docker image prune -af --filter "until=168h"`; if that fails, remove unused build artifacts from the project (`node_modules`, `.next`, `.cache`, `pnpm store`, `.npm`) and retry. Do not blindly rerun the build once disk is full.
 
 ## Verification
 Use the `terminal` tool to verify the redirect and the app status:

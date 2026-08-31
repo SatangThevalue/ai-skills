@@ -71,7 +71,7 @@ Build, run, and orchestrate Python data pipelines and workflow processes using t
 
 ## Pitfalls
 - **Spelling Mismatch**: Ensure you use `prefect` (correct spelling) instead of "perfect" when calling CLI binaries or importing.
-- **SQLite Database Locks**: Local Prefect server uses SQLite by default. Avoid writing heavily concurrent logs to prevent locks.
+- **SQLite Database Locks**: Local Prefect server uses SQLite by default. This can hit `database is locked` errors under concurrent load or when mapped in certain environments. For a robust production setup (especially in Docker Compose), use PostgreSQL instead by setting `PREFECT_API_DATABASE_CONNECTION_URL=postgresql+asyncpg://user:pass@host:5432/db` in the Prefect server environment.
 
 ## Verification
 Verify the Prefect CLI is active:

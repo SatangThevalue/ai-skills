@@ -61,9 +61,10 @@ docker compose down && docker compose up -d
 ## Pitfalls
 
 **ACME DNS Challenge Quirks (Name.com & Lego):**
-- **"Permission Denied" error on DNS records:** This frequently happens if the API token environment variable contains a hidden trailing newline. Use `cat -A .env` to verify there are no `$` newline markers at the end of the token string. Write tokens using `echo -n` to prevent this.
-- **"Server misbehaving" or `https//api.name.com` error:** Lego's Name.com provider automatically prepends `https://`. If you set `NAMECOM_SERVER=https://api.name.com`, Lego will dial `https://https//api.name.com`. Leave `NAMECOM_SERVER` unset for production, or specify just the hostname without the scheme if strictly required.
-- **Duplicate Record error:** Sometimes Lego interprets a "Duplicate Record" API response as "Permission Denied". Manually delete lingering `_acme-challenge` TXT records via API or dashboard if validation repeatedly fails.
+- "Permission Denied" error on DNS records: This frequently happens if the API token environment variable contains a hidden trailing newline. Use `cat -A .env` to verify there are no `$` newline markers at the end of the token string. Write tokens using `echo -n` to prevent this.
+- "Server misbehaving" or `https//api.name.com` error: Lego's Name.com provider automatically prepends `https://`. If you set `NAMECOM_SERVER=https://api.name.com`, Lego will dial `https://https//api.name.com`. Leave `NAMECOM_SERVER` unset for production, or specify just the hostname without the scheme if strictly required.
+- Duplicate Record error: Sometimes Lego interprets a "Duplicate Record" API response as "Permission Denied". Manually delete lingering `_acme-challenge` TXT records via API or dashboard if validation repeatedly fails.
+- Network Discovery Errors: If Traefik logs show `Could not find network named ...` after relay setup, ensure the service containers you are trying to route to are explicitly connected to the `traefik-public` network in their `docker-compose.yml`.
 
 ## Verification
 Use the `terminal` tool to inspect the Traefik logs. The "Failed to retrieve information" error should be gone, and you should see a successful Docker provider initialization:

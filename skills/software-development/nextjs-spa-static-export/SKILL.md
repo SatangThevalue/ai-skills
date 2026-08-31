@@ -60,6 +60,8 @@ When you set `output: 'export'`, Next.js disables features that require a Node.j
 *   Incremental Static Regeneration (ISR)
 *   Default Next.js Image Optimization (see below)
 
+**Note on Static Export vs API Routes:** If your application requires server-side proxying (e.g., hiding an external API secret from the browser by wrapping it in Next.js API Routes), you **cannot** use `output: 'export'`. API routes (`app/api/...`) require a running Node.js server to execute and are incompatible with static exports. Remove `output: 'export'` if you need to use API Routes.
+
 ## 5. Handling Images
 
 The default `<Image src="..." />` component relies on a Node.js server to optimize images on the fly. To use images in a static export, you have two choices:
@@ -114,3 +116,6 @@ server {
   }
 }
 ```
+
+## 8. Avoid `next export` if utilizing API Routes
+If your Next.js application requires proxying secure requests via API Routes (e.g. `src/app/api/...`), **do not use `output: 'export'`**. API Routes require a running Node.js server. Instead, run `next build` followed by `next start`, or use an environment like Vercel/PM2. Static Export (`output: 'export'`) completely removes API Route capabilities.

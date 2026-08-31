@@ -18,7 +18,17 @@ metadata:
     related_skills: [himalaya]
 ---
 
-# Google Workspace
+## Calendar Synchronization
+
+When the user asks you to read or review their Google Calendar (e.g., "what's on my calendar next week" or "produce a weekly review including my calendar"), but the `gws` tool returns an authentication error (e.g., `error[auth]: Access denied. No credentials provided`), the user must re-authenticate the `gws` CLI.
+
+**DO NOT** instruct the user to run `gws auth login` in the background or assume the credentials will magically appear. You are likely running as a cron job or headless agent without interactive access.
+
+**DO** state clearly in your final output that calendar access is unauthorized and that the user needs to manually run `gws auth login` in their terminal to restore access.
+
+### Example Output
+
+*Calendar access is currently unauthorized. To enable calendar syncing, please run `gws auth login` in your terminal to provide Google Workspace credentials.*
 
 Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
 

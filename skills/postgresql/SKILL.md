@@ -26,6 +26,23 @@ date_added: "2026-02-27"
 1. Capture entities, access patterns, and scale targets (rows, QPS, retention).
 2. Choose data types and constraints that enforce invariants.
 3. Add indexes for real query paths and validate with `EXPLAIN`.
+
+## Security Best Practices
+
+- Never expose port `5432` directly to the host (e.g., `ports: ["5432:5432"]` in `docker-compose.yml`) without a strong, cryptographically secure password and UFW/iptables rules. Exposed PostgreSQL databases are aggressively targeted by automated ransomware bots (e.g., Kinsing deploying cryptominers via base64-encoded bash scripts using `COPY FROM PROGRAM` to take over the container or drop tables, creating rogue roles like `wog`, `priv_esc`, etc., and stripping login from main roles). Use `127.0.0.1:5432:5432` if you only need host-local access.
+- Review `pg_hba.conf` and ensure that `trust` authentication is not used on public interfaces (avoid `host all all all trust`), as this bypasses passwords. Use `md5` or `scram-sha-256`.
+- If a database is compromised with rogue roles preventing the main user (e.g. `postgres`) from logging in, check for leftover attacker superuser roles (like `wog`, `priv_esc`) or use `docker exec -u root ... su postgres` to drop the malicious roles, objects they own, functions (e.g. `pwn()`), and event triggers, and restore `LOGIN` to the main user (`ALTER ROLE postgres WITH LOGIN;`). Note that you cannot drop a role if objects depend on it; first `DROP OWNED BY wog;` then `DROP ROLE wog;`. If dropping owned objects isn't enough, you must drop the specific objects manually (`DROP EXTENSION ... CASCADE`, `DROP EVENT TRIGGER ...`, `DROP FUNCTION ... CASCADE`) before dropping the role.
+  - **Single-User Mode Rescue**: If standard tools block you from altering the `postgres` role (e.g. `FATAL: role "postgres" is not permitted to log in`), start the DB in single-user mode to bypass `pg_hba.conf` and authentication checks. In a Docker volume rescue scenario, you must start the single-user mode interactively or pass the command correctly. For example:
+    ```sh
+    docker stop my-db-container
+    docker run -it -d --name db-rescue --volumes-from my-db-container postgres:16-alpine /bin/sh
+    docker exec -u postgres -i db-rescue postgres --single -D /var/lib/postgresql/data postgres <<EOF
+    ALTER ROLE postgres WITH LOGIN;
+    EOF
+    docker rm -f db-rescue
+    docker start my-db-container
+    ```
+  - **Alternative Superuser Rescue**: If the DB is running and you cannot use `su postgres` to alter the role because the login is disabled at the database level, connect via an alternative existing superuser (if one was created, such as `wog` or `priv_esc` during an incident) to restore access: `docker exec -i <db_container> psql -U <alt_superuser> -d <db> -c "ALTER ROLE postgres WITH LOGIN;"`. You can list roles with `docker exec -i <db_container> psql -U <app_user> -d <db> -c "\du"` using an application user that still has login access to find rogue superusers. For details, see `references/postgres-role-login-error.md`. Note: You cannot alter a superuser role from a non-superuser role (e.g. `satangthebank`); attempting to do so will result in `ERROR: permission denied to alter role`.
 4. Plan partitioning or RLS where required by scale or access control.
 5. Review migration impact and apply changes safely.
 
@@ -123,6 +140,14 @@ Enable with `ALTER TABLE tbl ENABLE ROW LEVEL SECURITY`. Create policies: `CREAT
 - **Limitations**: no global UNIQUE constraints—include partition key in PK/UNIQUE. FKs from partitioned tables not supported; use triggers.
 
 ## Special Considerations
+
+### Common Pitfalls & Configuration
+- **Docker Compose Port Conflicts (Errno 98):** When running PostgreSQL in Docker alongside an existing instance, ensure the host port mapping is distinct (e.g. `5433:5432`) AND update connection strings in your backend to use `5433` (e.g. `postgresql://user:password@localhost:5433/db`). Using `localhost` targets the host's port map, not the container's internal port.
+- **Connection String Obfuscation Failures:** Never use literal asterisks (`***`) as a placeholder in connection strings (e.g., `postgresql://postgres:***@localhost:5432`). Connection drivers treat `***` literally or shell environments glob it, causing authentication or DNS failures (e.g., `Temporary failure in name resolution` if leaked into the host part). Always substitute real passwords or use standard environment variable patterns.
+
+### User and Role Creation
+- When generating random passwords for new users/roles in shell scripts, avoid special characters (like quotes or backslashes) that can break SQL syntax. Use base64 or alphanumeric strings (e.g. `openssl rand -base64 16`).
+- A PostgreSQL role must exist before ownership or privileges can be assigned. If recreating, properly drop dependencies first (`DROP OWNED BY user; DROP USER IF EXISTS user;`).
 
 ### Update-Heavy Tables
 
