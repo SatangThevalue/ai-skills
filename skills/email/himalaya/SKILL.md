@@ -107,6 +107,10 @@ folder.aliases.trash = "Trash"
 - Use `--output json` for structured output that's easier to parse programmatically
 - The `himalaya account configure` wizard requires interactive input — use PTY mode: `terminal(command="himalaya account configure", pty=true)`
 
+### Background Process & Cron Job Pitfalls
+
+If you are running in a background process or as a cron job, you will not have interactive access to the user to perform configuration. Do not attempt to run `himalaya account configure` yourself via terminal, and do not fall into a retry loop if commands like `himalaya envelope list` fail because the CLI isn't set up. If tools like `gws` or `himalaya` fail due to missing setup/credentials, report this cleanly in the final delivery output and exit gracefully.
+
 ## Common Operations
 
 ### List Folders

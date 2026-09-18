@@ -131,9 +131,18 @@ void OnTick()
   }
 ```
 
-## 4. Best Practices & Pitfalls
+## The 4 Pillars of Export (ONNX Deployment)
+When moving from Python to MT5, export these four components:
+1. `model.onnx`
+2. `feature_order.json` (Prevents feature mismatch)
+3. `scaler.json` / `feature_metadata.json`
+4. `model_config.json` (Dynamic thresholds and risk params)
 
-1. **Data Types (Float vs Double)**:
+**Reference**: Read `references/dynamic_json_config.md` for implementation details.
+
+## Production Pitfalls
+- **Timezone Mismatch in News Filters**: Never pass news time as a feature to ONNX. Instead, handle news as a hard filter in MQL5 using a dynamic offset (`TimeCurrent() - TimeGMT()`). Read `references/standalone_news_filter.md`.
+- **Pre-Processing Consistency**: The exact normalization/scaling applied in Python must be replicated in MQL5.
    MQL5 uses `double` for prices natively. Most ML models (PyTorch/TensorFlow) export inputs as `float32`.
    - **Pitfall**: Passing a `matrix` (double) to `OnnxRun` when the model expects floats will incur an implicit conversion cost or fail. 
    - **Solution**: Always convert price data to `matrixf` or `vectorf` manually before passing to `OnnxRun`, and use the `ONNX_NO_CONVERSION` flag.
@@ -145,5 +154,8 @@ void OnTick()
    Always call `OnnxRelease(onnx_handle)` in `OnDeinit`. Failing to do so can cause the MT5 terminal to leak memory on recompilation or chart changes.
 5. **Debugging**:
    If the model fails to load or run, create the model using the `ONNX_DEBUG_LOGS` flag. Check the "Experts" tab in MT5 for detailed ONNX Runtime backend errors (e.g., dimension mismatch).
+6. **Integration Patterns**:
+   See `references/fastapi-bridge-pattern.md` for bypassing MQL5 WebRequest limitations using a local FastAPI gateway, and strategies for dynamic JSON configuration to prevent feature mismatches.
+   See `references/mt5_onnx_basics.md` for the core concepts, advantages, and limitations of the MT5 ONNX integration.
 
 *(หากต้องการออกแบบสถาปัตยกรรม EA ระดับ Production แบบ 7 Layers ที่แยก Inference, Risk, และ Execution ออกจากกัน อ่านต่อได้ที่สกิล `mql5-onnx-production-architecture`)*

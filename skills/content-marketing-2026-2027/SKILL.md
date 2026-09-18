@@ -201,7 +201,7 @@ Long-form (YouTube, Podcast, Newsletter)
 
 ---
 
-## 📋 Checklist ก่อนโพสต์
+### Checklist ก่อน Post
 
 - [ ] Hook อยู่ใน 2-3 วินาทีแรก (ตาม platform)
 - [ ] มี curiosity / social proof / emotion อย่างน้อย 1 อย่าง
@@ -209,6 +209,26 @@ Long-form (YouTube, Podcast, Newsletter)
 - [ ] มี story/ประสบการณ์ที่เป็น "แค่คุณเท่านั้น"
 - [ ] CTA ชัดเจน (ไม่ให้ AI เขียนแทน)
 - [ ] Keyword ใน Caption/Hook เพื่อ Social SEO
+
+---
+
+## 🎬 AI Content Production Gimmicks (Zero-Touch Faceless Videos)
+
+To prevent AI-generated content from feeling robotic and sterile, explicitly prompt the LLM and configure the FFmpeg pipeline to include these "Human Touch" elements:
+
+1. **Intentional Imperfections (จุดบกพร่องที่สมบูรณ์แบบ):**
+   - **Script:** Force the LLM to use conversational filler words (e.g., "เออ..", "เอาจริงปะ", "คือจะบอกว่า...").
+   - **Audio (TTS):** Insert deliberate pauses (`...` or `,`) to simulate natural breathing/thinking, rather than machine-gun delivery.
+2. **Personal Anecdote (Fake but Realistic):**
+   - Force the LLM to ground the pitch in a specific, relatable story rather than a broad generalization (e.g., "เมื่ออาทิตย์ที่แล้ว ผมนั่งปั่นงานจนปวดหลัง..." vs. "ทุกคนคงเคยปวดหลัง...").
+3. **Hyper-Specificity:**
+   - Demand exact, odd numbers and specific scenarios instead of vague praise (e.g., "เปิดดูเน็ตฟลิกซ์จบไป 2 ซีซั่น แบตเพิ่งลดไปแค่ 15%" vs. "แบตเตอรี่ทนทานมาก").
+4. **The Honest Review (เปิดแผล):**
+   - Mandate the inclusion of 1 minor flaw that doesn't impact the core value proposition to build trust (e.g., "ข้อเสียนิดนึงคือตอนแรกมันจะงงๆ วิธีกางหน่อย แต่เทียบกับราคาถือว่าคุ้ม").
+5. **Visual Pattern Interrupts (FFmpeg editing):**
+   - No static frames longer than 2.5 seconds.
+   - 15% scale zoom-in on impactful words (e.g., price reveals).
+   - High-contrast Karaoke subtitles (yellow/red) on emotional keywords.
 
 ---
 

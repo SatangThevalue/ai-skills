@@ -11,11 +11,13 @@ This skill provides best practices and troubleshooting steps for working with Pr
 
 When setting up Prefect inside a Docker Compose network alongside other services (like FastAPI and PostgreSQL), be mindful of the following configurations:
 
-1. **Port Binding:** Use `--host 0.0.0.0` when starting the Prefect server in Docker so it is accessible to other containers and the host machine.
-   ```yaml
-   prefect-server:
-     image: prefecthq/prefect:2.16-python3.11
-     command: prefect server start --host 0.0.0.0
+14. **Port Binding Security:** Use `--host 0.0.0.0` when starting the Prefect server in Docker so it is accessible to other containers. **Crucially, bind the exposed port strictly to localhost** (`127.0.0.1:4200:4200`) to prevent unauthorized internet access to your orchestrator.
+15.    ```yaml
+16.    prefect-server:
+17.      image: prefecthq/prefect:2.16-python3.11
+18.      command: prefect server start --host 0.0.0.0
+19.      ports:
+20.        - "127.0.0.1:4200:4200"
      ports:
        - "4200:4200"
    ```
@@ -55,6 +57,32 @@ To implement auto-publishing or cron-like scheduling without relying on complex 
 
 ## Disk Space Management
 
-Prefect, FastAPI, and Next.js builds can quickly consume disk space on constrained VPS environments.
-- Monitor space with `df -h`.
-- Aggressively clean up Docker using `docker system prune -af --volumes` and `docker builder prune -af` if you encounter `no space left on device` errors during `docker compose build`.
+## 5. Offline / Local Mode Constraints (VPS Hardware Limits)
+
+When running Prefect flows on constrained VPS hardware (e.g., 2 vCPUs, < 1GB available RAM), attempting to run the default Prefect daemon and SQLite backend simultaneously with heavy data/ML tasks (like LightGBM training loops) often causes system-wide hangups:
+
+- **The Error:** `sqlite3.OperationalError: database is locked` cascading into `RuntimeError: Timed out while attempting to connect to ephemeral Prefect API server.`
+- **The Cause:** Prefect attempts to boot an ephemeral API server to handle telemetry and tracking. The heavy I/O of parallel training tasks chokes SQLite and the VPS CPU, causing the ephemeral server to time out.
+- **The Fix:**
+  1. **Disable Ephemeral Server:** Hard-disable the API and telemetry in your script before importing Prefect or running the flow:
+     ```python
+     os.environ["PREFECT_API_URL"] = ""
+     os.environ["PREFECT_LOCAL_STORAGE_PATH"] = os.path.join(os.getcwd(), ".prefect")
+     os.environ["PREFECT_LOGGING_LEVEL"] = "WARNING" # or ERROR to reduce I/O
+     ```
+  2. **Force Sequential Execution:** Prevent parallel task execution to save RAM and SQLite locks by overriding the flow's task runner:
+     ```python
+     from prefect.task_runners import ThreadPoolTaskRunner
+     
+     @flow(name="Constrained Flow", task_runner=ThreadPoolTaskRunner(max_workers=1))
+     def my_heavy_flow():
+         # Tasks run sequentially
+     ```
+  3. **Rate Limiting:** If tasks hit external APIs (like `yfinance`), use Prefect's built-in rate limiting inside the loop to slow down the queue:
+     ```python
+     from prefect.concurrency.sync import rate_limit
+     
+     for item in items:
+         rate_limit("yahoo_api", occupy=1)
+         run_task(item)
+     ```

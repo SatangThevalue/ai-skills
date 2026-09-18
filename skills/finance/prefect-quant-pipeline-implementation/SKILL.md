@@ -86,7 +86,7 @@ def collect_all_data():
 
 ## 4. Prefect + PostgreSQL (แหล่งเก็บข้อมูลกลาง)
 
-ฐานข้อมูลคือหัวใจของการสเกล แนะนำให้ใช้ PostgreSQL ทำหน้าที่: `Feature Store`, `Model Metadata`, `Prediction Logs`
+ฐานข้อมูลคือหัวใจของการสเกล แนะนำให้ใช้ PostgreSQL ทำหน้าที่: `Feature Store`, `Model Metadata`, `Prediction Logs` *(สำหรับ Local Development ใน Phase 1 สามารถใช้ SQLite แทนได้ โดยแก้ Connection URL ใน SQLAlchemy เพื่อเลี่ยงปัญหา Docker/Password)*
 
 **ตารางที่ควรมี:**
 *(ดูโค้ดและดีไซน์ของตารางทั้ง 9 Layers แบบละเอียดได้ที่ `quant-database-architecture`)*
@@ -126,6 +126,10 @@ pip install mlflow
 mlflow ui
 # เปิดที่ http://localhost:5000
 ```
+
+> **⚠️ Pitfall (Local Prefect Daemon Timeout):**
+> When testing Prefect flows locally on a VPS container, the default ephemeral API server might crash with `RuntimeError: Timed out while attempting to connect to ephemeral Prefect API server`.
+> **Workaround:** Bypass the Prefect daemon for local testing by un-wrapping the `@flow` decorators or manually executing the task functions via `.fn()` (e.g., `load_raw_data_from_db.fn()`).
 
 **ตัวอย่าง Training Task ผสม MLflow:**
 ```python

@@ -38,7 +38,8 @@ Quick check:
 docker --version && docker compose version
 ```
 
-- `references/postgres-miner-incident.md` — Steps to identify and mitigate a crypto-miner infection inside a Postgres container.
+- `references/postgres-miner-sudo-askpass.md` — Handling memory-resident PostgreSQL cryptominers when the user provides a password using the `SUDO_ASKPASS` technique.
+- `references/memory-resident-malware-removal.md` — General workflow for identifying and removing memory-resident cryptominers.
 
 
 | Task | Command |
@@ -232,6 +233,17 @@ docker network prune                   # remove unused networks
 - **Port Conflicts:** When running containers via `docker-compose` or `docker run`, map a free port (e.g., `3001:3000` or `5433:5432`) if the host's target port is occupied by another local service, otherwise the container will fail to start with a `Bind for 0.0.0.0:XXXX failed: port is already allocated` error.
 - **Dependency Resolution in Build:** When a `pip install` step in a Dockerfile fails due to `ResolutionImpossible`, loosen strict version pins (e.g., change `==` to `>=`) in the `requirements.txt` to allow the package manager to resolve shared underlying dependencies.
 
+## Best Practices
+
+### Security: Strict Port Binding
+**Pitfall:** Defining ports as `- "5432:5432"` in `docker-compose.yml` binds to `0.0.0.0` by default, exposing the service (e.g., PostgreSQL, Redis) to the public internet. This leads directly to automated brute-force attacks and malware infections.
+**Fix:** If a port must be accessible from the host but NOT the public internet, bind it strictly to `127.0.0.1`:
+```yaml
+ports:
+  - "127.0.0.1:5432:5432"
+```
+If it only needs to be accessible to other containers (e.g., via Traefik or a Docker network), remove the `ports:` block entirely.
+
 ## Troubleshooting Common Errors
 
 Always start with a diagnostic before cleaning:
@@ -260,7 +272,7 @@ docker system prune -a --volumes       # EVERYTHING — named volumes too
 - **Port Allocation Failures**: If starting a container fails with `Bind for 0.0.0.0:XXXX failed: port is already allocated`, edit the compose file to map to a free host port (e.g., change `"4200:4200"` to `"4202:4200"`).
 - **Host Volume Permissions**: When mounting host directories (e.g., for Next.js), the container user might not have write access, causing `EACCES` during build/run. Fix it by running an alpine container temporarily to adjust permissions: `docker run --rm -v $(pwd):/app alpine chown -R 1000:1000 /app/<dir>`.
 - **Container-to-Host `localhost` Routing**: `localhost`/`127.0.0.1` inside a container points to the container itself, not the host. If a host process (proxy, local API, dev server) must be reached from a container, `curl http://localhost:PORT` will fail with `Connection refused`. Fix: use the Docker bridge IP of the host interface on the same network, typically `ip route show table local` or `ip addr show` to find the bridge IP (e.g., `10.0.2.1`), then expose that host port to the container via compose `environment:` rather than hardcoding IPs in application code. Prefer an env var like `HOST_GATEWAY`/`AI_PROXY_URL` so the same image works both locally and in Docker.
-- **Postgres `FATAL: role "postgres" is not permitted to log in`**: This happens if the `postgres` superuser role in a database container loses its login attribute. To fix it, you cannot use the `postgres` role itself (since it can't log in). Check for other superuser roles via `docker exec -i <db_container> psql -U <another_superuser> -c "\du"` and use one of them to restore login: `docker exec -i <db_container> psql -U <another_superuser> -d <db> -c "ALTER ROLE postgres WITH LOGIN;"`. Alternatively, if fixing the backup/export script that fails due to this, change the script to authenticate with the actual database owner role (e.g. `satangthebank`) and ensure that role owns all relevant tables (e.g., `ALTER TABLE public.table_name OWNER TO role_name;`).
+- **Malware in RAM (Postgres/Redis exploits):** If the VPS runs out of RAM and you spot a suspicious process (like `/tmp/postgresql` running under an unknown user like `70`) consuming massive memory, it is likely a cryptominer exploiting weak container credentials or open ports (e.g., exposed PostgreSQL without a password). These malware variants often delete their own binaries from `/tmp` and run entirely in memory. To fix: the agent will NOT be able to kill it via `sudo` due to password blocks. Advise the user to SSH in and manually run `sudo kill -9 <PID>`, followed by `sudo reboot` to clear the RAM. Alternatively, if the user explicitly provides their root password, you can execute the kill command via `export SUDO_ASKPASS=/tmp/ap.sh` using a temporary executable script that echoes the password. After reboot or kill, review Docker container port bindings (e.g., bind DB ports to `127.0.0.1:5432:5432` rather than `0.0.0.0` in `docker-compose.yml`), strengthen passwords, and ensure the host firewall (UFW) is active and blocking external database access.
 | Problem | Cause | Fix |
 |---------|-------|-----|
 | Container-to-host service `Connection refused` | App inside Docker uses `localhost:PORT` but service runs on host | Use env var + Docker bridge IP in compose; see `cli-proxy-api-troubleshooting` skill references for pattern |
@@ -282,9 +294,13 @@ After any Docker operation, verify the result:
 - **Container started?** → `docker ps` (check status is "Up")
 - **Logs clean?** → `docker logs --tail 20 NAME` (no errors)
 - **Port accessible?** → `curl -s http://localhost:PORT` or `docker port NAME`
-- **Image built?** → `docker images | grep TAG`
-- **Compose stack healthy?** → `docker compose ps` (all services "running" or "healthy")
+- **Volume mounted?** → `docker inspect -f '{{ .Mounts }}' NAME`
+- **Network connected?** → `docker network inspect NAME`
 - **Disk freed?** → `docker system df` (compare before/after)
+
+## Security Pitfalls
+- **Exposed Database Ports:** Never map database ports (e.g., `5432:5432`) to `0.0.0.0` on a public VPS. This exposes the database to the internet, inviting brute-force attacks and malware injections (e.g., cryptominers installed via OS command execution vulnerabilities). **Always bind to localhost** (e.g., `127.0.0.1:5432:5432`) unless explicit public access is required and secured by a firewall.
+- **Unrestricted Firewall:** Relying solely on Docker's port mapping without a host firewall (like UFW) is dangerous. Enable UFW, set default incoming to `deny`, and explicitly `allow` only required ports (22, 80, 443).
 
 ## Dockerfile Optimization Tips
 
@@ -297,3 +313,4 @@ When reviewing or creating a Dockerfile, suggest these improvements:
 5. **Pin base image versions** — `node:20-alpine` not `node:latest`
 6. **Run as non-root** — add `USER` instruction for security
 7. **Use slim/alpine bases** — `python:3.12-slim` not `python:3.12`
+8. **Port Security (Zero-Trust)** — Never expose database ports (e.g., PostgreSQL `5432`, Redis `6379`) or internal services to `0.0.0.0` unless explicitly required and secured by external firewalls. Always bind to localhost (`127.0.0.1:<port>:<port>`) for services placed behind a reverse proxy (like Traefik) to prevent brute-force attacks and malware/cryptominer infections.

@@ -57,7 +57,7 @@ description: "สถาปัตยกรรม Python Library Stack สำห�
 ## 🛠️ Python Libraries ตาม Layers
 
 ### 1. Data Collection & Database Layer
-- **`MetaTrader5`**: ตัวดึงข้อมูลหลัก (OHLCV, Tick Data, Positions, Orders) [ความสำคัญ: 10/10]
+- **`MetaTrader5`**: ตัวดึงข้อมูลหลัก (OHLCV, Tick Data, Positions, Orders) [ความสำคัญ: 10/10] *(หมายเหตุ: แพ็กเกจ Python รันได้เฉพาะบน Windows เท่านั้น หากรันบน Linux VPS ต้องใช้เทคนิครัน EA/Inference บน Windows แล้วเทรนโมเดลบน Linux)*
 - **`duckdb`**: ฐานข้อมูลแบบ In-memory ที่เร็วมาก เหมาะกับงาน Research (รองรับ SQL และ Parquet)
 - **`psycopg2-binary`, `sqlalchemy`**: สำหรับต่อ PostgreSQL เพื่อเก็บ Features, Trades, Models ในสเกลใหญ่ *(ดูการออกแบบ Schema ระดับสถาบันได้ที่สกิล `quant-database-architecture`)*
 
@@ -123,17 +123,17 @@ description: "สถาปัตยกรรม Python Library Stack สำห�
 
 ### Stage 1: MVP (Minimum Viable Product)
 ```bash
-pip install MetaTrader5 polars numpy pyarrow lightgbm scikit-learn optuna pandas-ta onnx onnxruntime onnxmltools quantstats shap duckdb mlflow prefect loguru
+uv pip install MetaTrader5 polars numpy pyarrow lightgbm scikit-learn optuna pandas-ta onnx onnxruntime onnxmltools quantstats shap duckdb mlflow prefect loguru
 ```
 
 ### Stage 2: Production v2 (เพิ่มความเสถียร & ฐานข้อมูล)
 ```bash
-pip install evidently statsmodels empyrical plotly postgresql sqlalchemy psycopg2 pydantic-settings
+uv pip install evidently statsmodels empyrical plotly postgresql sqlalchemy psycopg2-binary pydantic-settings
 ```
 
 ### Stage 3: Quant Platform (ระดับสถาบัน)
 ```bash
-pip install hmmlearn feature-engine feast prometheus-client fastapi redis
+uv pip install hmmlearn feature-engine feast prometheus-client fastapi redis
 ```
 
 ---

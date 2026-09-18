@@ -66,11 +66,36 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 # Append events: Dialogue: 0,{start},{end},Default,,0,0,0,,{\c&H00FFFF&}Word
 ```
 
-## 3. Font File Paths (Pitfall)
+## 3. Font File Paths & Complex Scripts (Pitfall)
 When using the `drawtext` filter in FFmpeg via Python `subprocess`, relative font paths or missing system fonts cause text rendering to fail (often resulting in squares for non-Latin scripts like Thai).
 **Fix:** Always pass the absolute path to the `.ttf` file using the `fontfile` argument.
+
+**CRITICAL THAI TEXT LIMITATION:** Even with the correct font, FFmpeg's native `drawtext` filter severely struggles with complex Thai typography (missing tone marks like *Mai Ek*, overlapping top/bottom vowels, ghosting, and inserting rogue consonants when attempting word wrap). 
+**Architecture Fix for Thai Text:** Do NOT use `drawtext` for Thai text. Instead, use Python `Pillow` (PIL) to generate transparent PNG images containing the properly rendered Thai text (handling wrapping and line spacing natively), and then use FFmpeg's `overlay` filter to composite those PNG frames onto the video at the correct timestamps.
 ```bash
+# For English/Basic text only:
 [vcrop]drawtext=text='My Text':fontcolor=yellow:fontsize=100:fontfile='/absolute/path/to/Sarabun-Bold.ttf':x=(w-text_w)/2:y=(h-text_h)/2[vtext]
+```
+
+## 4. Quotes / Motivation Video Overlays (Drop Shadow & Dimming)
+When overlaying text on a background video or image (e.g., for motivational quotes on TikTok/Reels), the background must be dimmed, and the text must have a drop shadow for readability.
+
+**1. Background Dimming (`colorchannelmixer`):**
+```bash
+# Dim the background by 50%
+[0:v]colorchannelmixer=r=0.5:g=0.5:b=0.5[dark_bg]
+```
+
+**2. Multi-line Text with Drop Shadow:**
+Chain `drawtext` filters to add multiple lines of text. Use `shadowcolor`, `shadowx`, and `shadowy` to create a drop shadow. Use math expressions for `x` and `y` to center text dynamically.
+
+```bash
+# Headline (Yellow/Gold, centered, large drop shadow)
+[dark_bg]drawtext=text='7 สัญญาณว่าคุณเริ่มคิดแบบ':fontfile='/path/to/Sarabun-Bold.ttf':fontcolor='#FFD700':fontsize=70:x=(w-text_w)/2:y=(h/2)-300:shadowcolor=black:shadowx=4:shadowy=4[v1];
+[v1]drawtext=text='"เจ้าของธุรกิจ" แล้ว':fontfile='/path/to/Sarabun-Bold.ttf':fontcolor='#FFD700':fontsize=80:x=(w-text_w)/2:y=(h/2)-200:shadowcolor=black:shadowx=4:shadowy=4[v2];
+
+# Body list item (White, offset x, smaller drop shadow)
+[v2]drawtext=text='1. นั่งเล่นอยู่..แต่สมองคิดเรื่องหาเงินตลอด':fontfile='/path/to/Sarabun-Regular.ttf':fontcolor='white':fontsize=50:x=100:y=(h/2)-50:shadowcolor=black:shadowx=2:shadowy=2[v_out]
 ```
 
 ## 4. Multi-Track Audio Mixing (`amix`)
@@ -84,3 +109,28 @@ When combining a voiceover with background music (BGM):
 [0:a][a_bgm]amix=inputs=2:duration=first:dropout_transition=2[a_mix]
 ```
 Ensure you map the mixed audio correctly: `-map "[a_mix]"`
+
+## 5. Listicle / Motivation Video Overlays (Staggered Text & Vignette)
+When generating short-form quotes or listicles (e.g., "7 Tips for..."), static text lacks engagement and hard-coded boxes look amateurish.
+
+**1. Vignette for Readability:** Instead of drawing a solid or semi-transparent rectangle (`drawbox`) behind the text, darken the background naturally using `colorchannelmixer` and `vignette`.
+```bash
+# Darken RGB channels to 40% and apply a vignette
+colorchannelmixer=rr=0.4:gg=0.4:bb=0.4[dimmed];[dimmed]vignette=PI/3[vignetted]
+```
+
+**2. Staggered Text Appearance:** Use the `enable` parameter in `drawtext` to make list items appear one by one, mimicking a typewriter or presentation pacing to force viewer retention.
+```bash
+# Headline appears immediately
+[vignetted]drawtext=text='Headline':x=(w-text_w)/2:y=200:fontcolor='#FFD700'[t1];
+# Item 1 appears at 1 second
+[t1]drawtext=text='1. First item':x=50:y=400:enable='between(t,1,20)'[t2];
+# Item 2 appears at 3 seconds
+[t2]drawtext=text='2. Second item':x=50:y=500:enable='between(t,3,20)'[out]
+```
+
+## 5. Typewriter & Ambient Audio Video Generation (No TTS)
+For focus/knowledge-based videos that rely on text reading without voiceover:
+- **Visuals:** Use the `enable` filter within `drawtext` to stagger text appearance simulating typing (e.g., `enable='between(t,3,20)'`). Dim the background (`colorchannelmixer=rr=0.4:gg=0.4:bb=0.4`) and use a semi-transparent box (`drawbox`).
+- **Audio:** Mix a Lo-Fi/Ambient BGM track with typing/whoosh Sound Effects (SFX) synchronized to the text appearance timestamps. Use an audio `lowpass=f=400` filter on the BGM to create an immersive, "muffled" room effect.
+*(See `templates/typewriter-lofi-video.md` for the full FFmpeg graph.)*

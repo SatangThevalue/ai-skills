@@ -78,3 +78,4 @@ Hedge Fund ไม่ใช้โมเดลเดียวครอบจัก
 *(อ่านคู่มือการตัดสินใจจัดลำดับความสำคัญของ PM พร้อมวิเคราะห์ขีดจำกัดของระบบต่อเรื่อง Arbitrage / Real-Time HFT ได้ที่สกิล `quant-platform-prioritization-and-arbitrage`)*
 
 > **บทสรุป:** สิ่งที่ควรเพิ่มเป็นอันดับแรกคือ **Execution Engine** และ **Portfolio Engine** เพราะ AI Trading ส่วนใหญ่มักพลาดโดยการ "ให้ความสำคัญกับความแม่นยำของโมเดล (Prediction) มากเกินไป" หากสร้างครบทั้ง 6 สปรินต์ ระบบของคุณจะสามารถรองรับได้ทั้ง Trend Following, Mean Reversion, Momentum, Session Trading, และ Multi-Asset Portfolio ในสถาปัตยกรรมเดียว ซึ่งใกล้เคียงแนวทางของ Quant Desk มากกว่าระบบ EA ทั่วไปในตลาดครับ
+> *(ถ้าอยากรู้ว่าในมุม PM จะรีดกำไรเพิ่มในตลาด Live ได้อย่างไรโดยไม่ต้องแก้โมเดล AI เลย ให้อ่านต่อที่สกิล `quant-live-execution-optimization`)*

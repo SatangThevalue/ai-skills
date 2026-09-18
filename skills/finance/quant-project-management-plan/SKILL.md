@@ -40,34 +40,53 @@ description: "แผนการบริหารโครงการ (Project
 ---
 
 ## 📋 Work Breakdown Structure (WBS)
-*แผนแตกงานสำหรับการบริหารจัดการโครงการแบ่งตามระยะเวลาที่แนะนำ*
+*แผนแตกงานสำหรับการบริหารจัดการโครงการแบบเจาะลึก 16 Phases ดูรายละเอียดได้ที่สกิล `quant-platform-master-plan`*
 
-### Phase 0: Project Setup (สัปดาห์ 1-2)
+### Phase A: Core Platform (สัปดาห์ 1-4)
 | งาน (Tasks) | รายละเอียด |
 |-------|---------|
-| **Define Architecture** | กำหนดโครงสร้าง Tech Stack, Database Schema และ Flow กลาง |
-| **Environment Setup** | ตั้งค่า Python, สร้าง Git Repo, วางโครงสร้างโฟลเดอร์แบบ Modular |
+| **Data Platform** | เขียนสคริปต์ดึง Data และทำระบบฐานข้อมูล |
+| **Feature Store** | สร้าง Pipeline สกัด Feature ให้เป็นมาตรฐาน |
+| **ML Models & MLflow** | เทรน LightGBM, จูน Optuna และเก็บ Metadata เข้า MLflow (หาก CPU เก่าขาด avx2 หรือพื้นที่ดิสก์น้อย ควรย้ายขั้นตอนนี้ไปรันบน Local PC/Mac) |
+| **ONNX Export** | แปลงโมเดลและไฟล์ Config ออกมารอไว้ |
 
-### Phase 1: Data & MVP Model (สัปดาห์ 3-7)
+### Phase B: Execution & Risk (สัปดาห์ 5-8)
 | งาน (Tasks) | รายละเอียด |
 |-------|---------|
-| **Data Collection** | เขียนสคริปต์ดึง OHLCV จาก MT5 / Yahoo API เซฟลง DuckDB/PostgreSQL |
-| **Feature Engineering** | เขียน Pipeline สกัด 80+ ฟีเจอร์ (Trend, Volatility, Momentum ฯลฯ) |
-| **Model Training** | เทรน LightGBM, จูนด้วย Optuna, ประเมินด้วย Walk Forward |
+| **Execution Engine** | เขียน MQL5 สำหรับจัดการออเดอร์เข้า/ออก |
+| **ATR Sizing** | สร้างระบบ Sizing อิงความผันผวนของตลาด |
+| **Risk Engine** | ทำหน้าด่านกรอง Daily Loss, Max Drawdown |
 
-### Phase 2: Deployment & MT5 (สัปดาห์ 8-12)
+### Phase C: Intelligence & Monitoring (เดือน 3-4)
 | งาน (Tasks) | รายละเอียด |
 |-------|---------|
-| **ONNX Export** | แปลงโมเดล, บันทึก Metadata/Scaler และเทสต์ด้วย ONNX Runtime |
-| **MT5 EA Integration** | เขียน MQL5, โหลด ONNX, เขียน Risk Engine (Spread/Slippage Protection) |
-| **Paper Trading** | รัน Forward Test บนบัญชี Demo อย่างน้อย 30 วัน |
+| **Regime Detection**| สร้างโมเดลวิเคราะห์เทรนด์/ความผันผวน |
+| **Drift Detection** | ทำระบบตรวจ Data/Concept Drift ผ่าน Evidently |
+| **Monitoring** | สร้าง Dashboard ติดตาม Sharpe/PF |
 
-### Phase 3: MLOps & Automation (เดือน 4-6)
+### Phase D: Portfolio Management (เดือน 5)
 | งาน (Tasks) | รายละเอียด |
 |-------|---------|
-| **MLflow Setup** | นำโค้ด Training มาผูกกับ MLflow เพื่อทำ Experiment Tracking |
-| **Prefect Orchestration**| เปลี่ยน Script ธรรมดาเป็น Prefect Flows (Data, Train, Deploy) |
-| **Evidently Integration** | ติดตั้ง Drift Detection เพื่อจับตาดูความแม่นยำและการเปลี่ยนของข้อมูล |
+| **Portfolio Engine**| ควบคุมการจัดสรรน้ำหนัก (Allocation) |
+| **Correlation Engine**| ป้องกัน Exposure ซ้ำซ้อนจากการถือหลายคู่เงิน |
+| **Strategy Router** | สลับใช้โมเดลตามสภาพตลาดแบบ Real-time |
+
+### Phase E: Advanced Quant (เดือน 6 เป็นต้นไป)
+| งาน (Tasks) | รายละเอียด |
+|-------|---------|
+| **Statistical Arbitrage**| ทำ Pair Trading, Cointegration |
+| **Ensemble Models** | ทำระบบโหวตด้วย Meta Model หลายตัว |
+
+---
+
+## 🚫 15 ข้อควรระวังสำหรับ PM (The Pitfalls)
+การทำโปรเจกต์นี้ให้สำเร็จ PM ต้องระวังข้อผิดพลาดคลาสสิกที่ทำให้ระบบเจ๊งตอนรัน Production *(อ่านรายละเอียด 15 ข้อผิดพลาดแบบเต็มๆ ได้ที่สกิล `quant-platform-pm-pitfalls`)* เช่น:
+- **Dependency Issues (VPS/OS Limits):** ระวังการใช้ Package ที่มีข้อจำกัดด้าน OS บน Production (เช่น `MetaTrader5` รันบน Linux ไม่ได้, `empyrical` ไม่รองรับ Python 3.12+) ต้องวางสถาปัตยกรรมชดเชย หรือใช้ไลบรารีทางเลือก (เช่น `quantstats` แทน `empyrical`)
+- ใช้เวลากับการทำโมเดลมากเกินไป แต่ลืมทำ Execution และ Risk Engine
+- กลัวโมเดล ONNX พัง มากกว่ากลัว "สูตรคำนวณ Feature ไม่ตรงกัน" ระหว่าง Python กับ MT5
+- วัดผลด้วย Accuracy แทนที่จะวัดที่ Sharpe Ratio หรือ Profit Factor
+- ลืมทำ Feature Versioning และ Label Versioning
+- รีบทำระบบ Self-Learning / Auto Retrain เร็วเกินไป
 
 ---
 

@@ -88,9 +88,13 @@ EA ระดับสถาบันต้องมี Parameter ให้ปร
 
 ### การคัดกรองความน่าจะเป็น (Feature Validation & Signal Logic)
 
-ก่อนรัน Predict ให้มั่นใจว่าข้อมูลไม่พัง:
+ก่อนรัน Predict ให้มั่นใจว่าข้อมูลไม่พังเด็ดขาด **(ถ้า Feature หาย ห้ามเติม 0 สุ่มสี่สุ่มห้า):**
 - ตรวจสอบ `ArraySize(features) != 8` (ขนาดอาร์เรย์ต้องตรงกับตอน Train เป๊ะ)
-- ตรวจหาค่า `NaN`, `INF`, `Missing` ก่อนส่งเข้า ONNX เสมอ
+- ตรวจหาค่า `NaN`, `INF`, `Missing` ก่อนส่งเข้า ONNX เสมอ (ถ้ามีให้ทิ้ง `return;` ทันที)
+
+**แนวทางการทำ Data Cleaning (Quant Professional):**
+- **ฝั่ง Training (Python):** `NaN` ➔ ทิ้ง (Drop), `INF` ➔ Replace เป็น `NaN` แล้ว Drop, `Outlier` ➔ Winsorize (บีบค่าให้อยู่ในกรอบ)
+- **ฝั่ง MQL5:** `Create Features` ➔ `Validate Features` ➔ `Scaling` ➔ `ONNX` ➔ `Prediction` *(ดูตัวอย่างโค้ด MQL5 สำหรับ Feature Validation และ RobustScaler ได้ที่สกิล `quant-data-cleaning-and-scaling`)*
 
 เมื่อรัน `OnnxRun()` แล้วได้ค่าความน่าจะเป็น `prob_buy` ออกมา เราจะไม่ให้ ONNX ตัดสินใจเปิดออเดอร์เอง ให้สับสวิตช์ความแม่นยำที่ **Signal Layer**:
 
@@ -149,8 +153,68 @@ Risk Engine Passed (ยังไม่ชน Daily Loss / Drawdown limit)
 
 ## 🚀 7. Roadmap การปล่อย EA (Versioning)
 
-- **EA V1 (MVP):** `ONNX Inference` + `Risk Engine` + `ATR Position Size` + `Spread/Session Filter`
-- **EA V2:** เพิ่ม `Regime Detection` + `Adaptive TP/SL` + `News Filter`
-- **EA V3:** เพิ่ม `Portfolio Engine` + `Correlation Engine` + `Multi-Asset`
+คำแนะนำที่ดีที่สุดสำหรับ Quant Architect คือ **อย่าเพิ่งทำท่ายากตั้งแต่วันแรก** เริ่มต้นง่าย ๆ เพื่อป้องกัน Feature Mismatch ระหว่าง Python กับ MT5 แล้วค่อยเพิ่มความซับซ้อน:
 
-> **บทสรุป:** การให้ ONNX ทำหน้าที่เพียง Predict Probability จาก Feature Vector ที่เตรียมมาอย่างถูกต้อง และโยนให้ Signal Layer → Risk Engine → Execution Engine ทำงานต่อ จะทำให้ระบบเสถียร ปลอดภัย และจัดการง่ายกว่าการให้โมเดลควบคุมทุกอย่างเบ็ดเสร็จ
+- **การจัดการกับ Infrastructure:** ห้ามรัน MT5 บน Linux Docker (WINE Overhead) การพยายามจำลอง WINE บน Docker เพื่อรัน MT5 จะทำให้เกิดคอขวดทรัพยากร (กิน RAM หนักและเพิ่ม Latency การเทรด) ให้ใช้สถาปัตยกรรม **"แยกเซิร์ฟเวอร์ (Separation of Concerns)"**: วาง Python/MLOps Pipeline ไว้บน Linux VPS และนำไฟล์ `.onnx` ไปใส่ในโปรแกรม MT5 ที่ติดตั้งบน Windows VPS แยกต่างหาก
+
+- **EA V1 (MVP):** `LightGBM` + `No Scaler (ไม่ทำ Normalize)` + `Feature Validation` + `ONNX` + `Simple Signal Threshold`
+- **EA V2 (Smart Standalone EA):** 
+  - นำ `RobustScaler` มาใช้ (เพิ่ม Scaler config) + `30-50 Features` + `Regime Detection` + `ATR Position Sizing`
+  - ให้ EA โหลดข้อมูลการตั้งค่าแบบ Dynamic จาก JSON (เช่น โหลด Threshold และจำนวน Features จาก `model_config.json` และ `feature_order.json`) โดยตรง เพื่อปิดช่องโหว่ Human Error ตอนอัปเดตโมเดล
+  - ใส่ **Standalone News Filter** ฝังในตัว EA ให้ยิง API ดึงปฏิทินข่าวด้วยตัวเอง แล้วจัดการเวลา `TimeCurrent() - TimeGMT()` เพื่อเลี่ยงความผันผวนช่วงข่าวแรงๆ โดยไม่ต้องพึ่งเซิร์ฟเวอร์หลังบ้าน
+  - *แนะนำ:* ให้ลองสร้าง Feature Version ใหม่เทียบกันใน MLflow (เช่น `FS_V1=No Scaler` เทียบกับ `FS_V2=RobustScaler`) จะพิจารณาอัปเกรดเป็น RobustScaler ก็ต่อเมื่อผล Walk Forward ยืนยันชัดเจนว่า **Sharpe, Profit Factor, Drawdown, และ Stability** มีค่าดีกว่า V1 เท่านั้น (อย่าใช้เพียงเพราะเขาบอกว่าเป็น Best Practice ทั่วไป)
+- **V3 (ระดับสถาบัน):** `Portfolio Engine` + `Correlation Engine` + `Strategy Router`
+- **V4 (Advanced):** `Meta-Labeling (Two-Stage Model)` + `Time-of-Day/Session Filters` + `Alternative Data (Funding Rates)` สำหรับสินทรัพย์ปราบเซียนอย่างกราฟ 15m, GOLD, และ BTC
+
+---
+
+## 🏆 The Ultimate Final Architecture 
+
+เพื่อให้ภาพทั้งหมดของการสับเปลี่ยนระหว่าง Python (Training) ไปสู่ MT5 (Execution) สมบูรณ์แบบ นี่คือสถาปัตยกรรมที่ Quant Architect แนะนำ:
+
+```text
+======================================
+               PYTHON
+======================================
+Raw Data
+    ↓
+Feature Engineering
+    ↓
+LightGBM
+    ↓
+Optuna
+    ↓
+MLflow
+    ↓
+Export
+    │
+    ├── model.onnx
+    ├── feature_order.json
+    ├── scaler.json
+    └── model_config.json
+
+======================================
+               MT5
+======================================
+OHLCV
+    ↓
+Feature Engine
+    ↓
+Normalization
+    ↓
+ONNX Runtime
+    ↓
+Probability (e.g., 0.85)
+    ↓
+Signal Threshold Filter
+    ↓
+Risk Engine
+    ↓
+Position Sizing (ATR + Confidence)
+    ↓
+Execution Engine
+    ↓
+Order
+```
+
+> **บทสรุป:** การใช้ **ONNX Runtime ภายใน MQL5 โดยตรง** ดีกว่าการใช้ Python API เชื่อมเข้า MT5 มาก เพราะเสถียร, Latency ต่ำ, Deploy ง่าย (โยนไฟล์เข้า VPS จบเลย) และเหมาะกับระบบ `LightGBM + Optuna + MLflow + MT5` ที่เราออกแบบมาตั้งแต่ต้นมากที่สุดครับ

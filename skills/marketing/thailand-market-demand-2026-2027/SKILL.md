@@ -84,3 +84,14 @@ This skill contains structured macroeconomic data, rising/falling market trends,
 - [ ] Is the business model heavily dependent on bank financing? If so, have tight credit guards (-5% commercial vehicle, -5.1% property transfers) been adjusted?
 - [ ] Does the product compete with cheap Chinese imports? (Check tariff structures and alternative market options).
 - [ ] For export products, has the impact of geopolitical conflicts (Red Sea / Hormuz Strait routes raising freight costs by 2-3x) been calculated?
+
+---
+
+## E-commerce Affiliate Product Scoring Matrix
+When automating the selection of products for TikTok/Shopee affiliate marketing in the 2026-2027 economic climate, use this scoring rubric to find "Winning Products":
+1. **Pain-killer / Cost Saver (8-10 pts):** Products that lower long-term costs (solar lights, cleaning tools) vs. luxury items.
+2. **Impulse Buy Pricing (8-10 pts):** Priced 199 - 490 THB. Low friction, doesn't require overthinking.
+3. **Visual Transformation (8-10 pts):** Highly visual Before/After (stain removers, organizers). Avoid inner health/supplements due to FDA compliance risks and lack of visual proof.
+4. **Affiliate Margin (8-10 pts):** Beauty or unbranded gadgets offering >10% commission. Avoid low-margin branded appliances (1-2%).
+5. **Lazy Economy (8-10 pts):** Smart home basics, auto-squeezing mops, ready-to-eat items.
+6. **Seasonal/Festival Relevance (8-10 pts):** Matches the current Thai quarter (e.g., Q1 PM2.5 masks, Q2 cooling fans, Q3 rain gear, Q4 party gadgets/tax reduction items).

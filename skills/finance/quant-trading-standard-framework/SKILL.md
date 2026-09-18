@@ -55,6 +55,7 @@ Framework ฉบับนี้ออกแบบสำหรับบทบา�
 ### Phase 9: Walk Forward Testing
 ห้ามใช้ Random Split ต้องใช้ Walk Forward เท่านั้น (Train 2020-2022 / Test 2023)
 - **Minimum Acceptance:** PF > 1.5, Sharpe > 1.5, Drawdown < 15%
+- *(ต้องคำนวณและหัก Transaction Costs (Spread + Commission + Swap + Slippage) ทุกครั้งในการทำ Backtest)*
 
 ### Phase 10: Market Regime Detection
 Model ต้องรู้สภาวะตลาดก่อน (Bull Trend, Bear Trend, Range, High/Low Volatility) แล้วเลือกรัน Strategy ที่เหมาะสม
@@ -88,17 +89,36 @@ Model ต้องรู้สภาวะตลาดก่อน (Bull Trend, 
 
 ---
 
-## 📑 Quant Checklist (Gold Standard)
+## 📋 Ultimate Production Checklist
 
-ทุกโมเดลต้องมีเอกสารอธิบาย Source/Version ของ Data, Feature, Model, และ Deployment
-**Checklist อนุมัติระบบ:**
-- [ ] **Data:** Standard Symbol, UTC Time, Missing/Duplicate Checked
-- [ ] **Feature:** Feature Version, Feature Registry, Unit Tested
-- [ ] **Label:** Label Registry, Label Version
-- [ ] **Model:** Baseline Comparison, Optuna Tuning, Walk Forward Tested
-- [ ] **Validation:** Sharpe/PF/Drawdown ผ่านเกณฑ์ Minimum Acceptance
-- [ ] **Deployment:** ONNX Validation, Paper Trading, Rollback Plan
-- [ ] **Monitoring:** Data Drift, Concept Drift, Trading Metrics
+ระบบที่จะขึ้น Production ต้องผ่านการตรวจสอบ 100% ตามเช็คลิสต์นี้:
+
+**1. Data & Features**
+- [ ] Missing & Duplicate Check, UTC Standard, Gap Detection
+- [ ] Feature Registry, Feature Version, Feature Contract, Drift Monitoring
+
+**2. Labels & Models**
+- [ ] Label Registry & Label Version
+- [ ] Walk Forward Validation & Optuna Tuning
+- [ ] SHAP Analysis & MLflow Logged
+
+**3. ONNX & MT5**
+- [ ] Feature Order Validation, Compatibility & Regression Test
+- [ ] Risk Engine (Spread, Slippage, News Filters)
+
+**4. Portfolio & Monitoring**
+- [ ] Exposure Limit, Correlation Control, Capital Allocation
+- [ ] Data/Concept Drift, Model Performance, Retrain Trigger
+- [ ] Paper Trading, Rollback Plan, Version Control
+
+> **🏆 The 5 Pillars of Quant Success**
+> ต่อให้ LightGBM จะเก่งแค่ไหน ถ้าระบบขาด 5 อย่างนี้ มีโอกาสขาดทุนสูงมาก:
+> 1. Data Leakage Prevention
+> 2. Feature Contract (สูตรใน Python ต้องตรงกับ MT5 100%)
+> 3. Walk Forward Validation
+> 4. Risk Engine + Position Sizing
+> 5. Drift Monitoring + Retraining Strategy
 
 > **The Gold Standard Quant Workflow:**
 > `Market Data` → `Data Validation` → `Feature Eng.` → `Feature Selection` → `Label Eng.` → `LightGBM` → `Optuna` → `Walk Forward` → `Regime Analysis` → `Portfolio Construction` → `Risk Engine` → `MLflow` → `ONNX` → `Paper Trading` → `Production` → `Monitoring` → `Drift Detection` → `Retraining`
+*(หมายเหตุ: แนะนำให้ใช้ Raw Spread Account เป็นมาตรฐานอ้างอิงในการพัฒนา AI Trading Platform เพราะ Spread ต่ำ, ต้นทุนคงที่กว่า, เหมาะกับ EA/AI, เหมาะกับ Scalping และ Intraday, และจำลอง Backtest ได้ง่าย)*

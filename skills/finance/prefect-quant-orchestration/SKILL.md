@@ -142,3 +142,27 @@ def monitor_flow():
 > **สรุป:** ถ้าจะทำสเกลโปรเจกต์นี้ให้สุด ให้ทุก Library ทำงานผ่าน Prefect Flows ทั้งหมด เพื่อให้ระบบตรวจสอบย้อนหลังได้, สั่ง Retry ได้เวลาแครช, ตั้ง Schedule ได้, และทำ Automation ได้ตั้งแต่ Data ไปจนถึง Retrain อย่างแท้จริง
 
 *(ดูตัวอย่างการเขียนโค้ดสำหรับสร้าง Pipeline พวกนี้ทั้งหมดได้ที่สกิล `prefect-quant-pipeline-implementation`)*
+
+## 6. Offline Local Mode & Hardware Constraints
+บนเครื่อง VPS ที่มีทรัพยากรจำกัด การรัน Prefect Daemon แบ็คกราวด์อาจทำให้ RAM เต็มหรือ SQLite locked ได้ ให้ตั้งค่า Offline Local Mode และปิดการบูตเซิร์ฟเวอร์ชั่วคราวขณะรันสคริปต์:
+
+```python
+import os
+import sys
+
+# HARD DISABLE PREFECT DAEMON FOR LOCAL VPS HARDWARE
+os.environ["PREFECT_API_URL"] = ""
+os.environ["PREFECT_LOCAL_STORAGE_PATH"] = os.path.join(os.getcwd(), ".prefect")
+os.environ["PREFECT_LOGGING_LEVEL"] = "WARNING"
+
+from prefect import task, flow
+from prefect.task_runners import ThreadPoolTaskRunner
+from prefect.concurrency.sync import rate_limit
+
+@flow(name="Master Quant Platform Full Loop", task_runner=ThreadPoolTaskRunner(max_workers=1))
+def prefect_full_loop_orchestrator():
+    # ... your logic ...
+    pass
+```
+
+ใช้ `ThreadPoolTaskRunner(max_workers=1)` ร่วมกับคำสั่ง `rate_limit("yahoo_finance_api", occupy=1)` ในลูปเพื่อบีบให้งานรันแบบอนุกรม (Sequential) และหน่วงเวลาป้องกันการโดนแบน IP จาก API ปลายทาง

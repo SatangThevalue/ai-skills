@@ -30,6 +30,10 @@ When the user asks you to read or review their Google Calendar (e.g., "what's on
 
 *Calendar access is currently unauthorized. To enable calendar syncing, please run `gws auth login` in your terminal to provide Google Workspace credentials.*
 
+### Background Process & Cron Job Pitfalls
+
+If you are running in a background process or as a cron job, you will not have interactive access to the user to perform OAuth flows. Do not attempt to run `gws auth login` yourself via terminal, and do not fall into a retry loop if it fails. If tools like `gws` or `himalaya` fail due to missing setup/credentials, report this cleanly in the final delivery output and exit gracefully.
+
 Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
 
 ## References

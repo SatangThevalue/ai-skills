@@ -30,6 +30,11 @@ TELEGRAM_CHAT_ID="your_chat_id"
   - *Operations:* `"cron-daily"`, `"intraday"`, `"critical"`, `"webhook"`
 
 ## 3. Strict Coding Rules & Default Fallbacks (The Fail-Safe Guardrails)
+
+0. **Centralized Data (The Vault):**
+   - ALL project data, settings, bot states (e.g., DW trading state), and logs MUST be stored exclusively in the central PostgreSQL database (`satang-vault-db` at `127.0.0.1:5432`).
+   - **NO loose files:** Do NOT use `.json`, `.csv`, or SQLite files for permanent state storage.
+   - You have explicit permission to create new schemas, databases (e.g., `trading_data`, `media_studio`, `system_logs`), and tables within this instance as needed.
 Whenever generating or updating a pipeline, the following rules MUST be applied if the user does not specify otherwise:
 
 1. **Retries (Network Guard):**
@@ -51,8 +56,24 @@ Whenever generating or updating a pipeline, the following rules MUST be applied 
 6. **Concurrency/Rate Limits:**
    - Always respect 3rd-party API rate limits (e.g., LINE API). Use `asyncio.sleep()` or Prefect's concurrency limits when fanning out.
 
+## 4. Strict Data Storage Policy (The Vault - PostgreSQL Only)
+ALL project data, configurations, bot states, and execution logs MUST be stored exclusively in the central PostgreSQL database (`satang-vault-db` bound to `127.0.0.1:5432`). 
+- NEVER use loose JSON, CSV, or SQLite files for permanent data storage. 
+- Use dedicated databases (e.g., `trading_data`, `media_studio`, `system_logs`) and create necessary schemas/tables via Python scripts.
+
+## 5. Dockerization & API Health Check
+The project root must contain a `docker-compose.yml` to run the Prefect server locally
+- **No Loose Files:** Do NOT use JSON, CSV, or SQLite files for permanent data storage. 
+- **Schema Management:** The agent has full permission to create new databases, schemas, and tables natively via `asyncpg` inside the Postgres instance to accommodate new data structures.
+- **Security:** Never expose DB ports to `0.0.0.0`. Always bind to localhost to prevent malware/botnet infections.
+
 ## 4. Dockerization & API Health Check
 The project root must contain a `docker-compose.yml` to run the Prefect server locally, ensuring it restarts automatically if the VPS reboots.
+
+**CRITICAL: Security & Port Binding:**
+- All internal services (Database, Prefect) MUST bind to `127.0.0.1` (e.g., `127.0.0.1:5432:5432`, `127.0.0.1:4200:4200`) to prevent external exposure and malware attacks.
+- Only public-facing proxies (e.g., Traefik) should bind to `0.0.0.0:80` / `0.0.0.0:443`.
+- UFW Firewall MUST be active, defaulting to deny incoming traffic, with specific allows only for SSH and essential web ports.
 
 ### `docker-compose.yml` Standard
 ```yaml
@@ -60,14 +81,16 @@ version: "3.9"
 services:
   prefect-server:
     image: prefecthq/prefect:2-python3.11
-    command: prefect server start --host 0.0.0.0
+    container_name: satang-prefect-server
+    command: ["prefect", "server", "start", "--host", "0.0.0.0"]
     ports:
-      - "4200:4200"
+      - "127.0.0.1:4200:4200" # Bind to localhost to prevent external exposure
     restart: always
     volumes:
       - prefect-data:/root/.prefect
     environment:
       - PREFECT_API_URL=http://127.0.0.1:4200/api
+      - PREFECT_SERVER_API_HOST=0.0.0.0
 
 volumes:
   prefect-data:

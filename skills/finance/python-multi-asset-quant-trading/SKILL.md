@@ -4,6 +4,12 @@ description: Frameworks, libraries, and mathematical constraints for quantitativ
 ---
 # Multi-Asset Quantitative Trading in Python
 
+**Asset-Specific Modeling and Alpha Strategies:**
+1. **Fiat Stable (EURUSD / USDCHF)**: Best suited for Mean-Reversion and standard Trend (RSI, Bollinger, EMA Gaps). Perform best on D1 and 4H timeframes.
+2. **Fiat Whipsaw (GBPUSD / USDJPY)**: Susceptible to central bank intervention. Use Night Scalping (Asian Session Mean-Reversion) or Macro Yield Spreads (e.g. trading JPY when it deviates strongly from US10Y yields).
+3. **Gold (XAUUSD)**: Very high noise. Standard indicators fail. Use Volatility Breakout (Stop Orders), Time-Based Exits, or Hidden Markov Models (HMM) to trade only during specific volatility regimes. Hard requirement: News Filter (ForexFactory).
+4. **Crypto (BTCUSD)**: Prone to Stop Hunting and Liquidation Cascades. Avoid fixed risk (1%). Use Asymmetric Triple Barrier (Wide TP like 4.0 ATR, Tight SL 1.5 ATR), Volatility Target Sizing, and Alternative Data (Binance Funding Rates / Level 2 Orderbook).
+
 Trading a cryptocurrency is mathematically and structurally different from trading a stock, a forex pair, or an options contract. A robust Quant AI must understand market hours, tick sizes, leverage mechanics, and the specific Python libraries used for each asset class.
 
 ## 1. Asset Class Characteristics & Libraries
