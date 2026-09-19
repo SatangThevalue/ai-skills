@@ -155,6 +155,25 @@ def scrape_competitor_page(page_name: str, pages_limit: int = 1):
 2. **[AI Ideation]:** นำข้อความที่ดึงมา (เช่น ลูกค้าด่าว่าสายชาร์จพังง่าย) ไปบอก LLM (CLIProxyAPI) ให้เขียนสคริปต์วิดีโอของเรา โดยเน้น Hook เรื่อง "สายชาร์จถึกทน"
 3. **[Auto-Publish]:** เมื่อ AI ทำคลิปและ Caption พร้อม HashTag เสร็จ ก็ใช้ `facebook-python-business-sdk` (Official) สั่งโพสต์คลิปนั้นลงเพจ Facebook / Reels ของเราเองอัตโนมัติ
 
-## 5. ข้อควรระวัง (Pitfalls)
+## 5. การวิเคราะห์ข้อมูลเพจด้วย requests + BeautifulSoup (ทางเลือกสำหรับเพจสาธารณะ)
+ในกรณีที่ `facebook-scraper` ถูกบล็อกหรือติดข้อจำกัด สามารถใช้ Python พื้นฐาน (requests + BeautifulSoup) เพื่อดึง meta tags สำคัญ (og:title, og:description) หรือค้นหาข้อมูลใน HTML ของเพจสาธารณะได้ เหมาะสำหรับการสกัดข้อมูลพื้นฐาน เช่น ยอดผู้ติดตาม, บริการ, หรือสโลแกนเพจ
+
+```python
+import codecs
+import subprocess
+
+def scrape_public_page_info(url: str):
+    # ใช้ curl แทน requests เพื่อเลียนแบบเบราว์เซอร์ได้เนียนกว่าในบางกรณี และดึงข้อมูลดิบมาหา text
+    cmd = f'curl -s -L -A "Mozilla/5.0 (compatible; Googlebot/2.1; +https://www.google.com/bot.html)" "{url}" > /tmp/fb.html && grep -oP \\'"text":"\\K[^"]+(?=")\\' /tmp/fb.html | head -n 50'
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        # ข้อมูลภาษาไทยมักถูกเข้ารหัสเป็น unicode escape (เช่น \\u0e14)
+        decoded_text = codecs.decode(result.stdout.replace('\\\\', '\\'), 'unicode_escape')
+        return decoded_text
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+## 6. ข้อควรระวัง (Pitfalls)
 - **Account Ban:** ห้ามใช้แอคเคาท์จริงของตัวเองในการใช้ `facebook-scraper` เพื่อดึงข้อมูล (หลีกเลี่ยงการส่ง cookies) ให้ใช้แบบ Guest Mode (ไม่ล็อกอิน) เพื่อลดความเสี่ยงที่เฟสส่วนตัวจะบิน
 - **Token Expiry:** `PAGE_ACCESS_TOKEN` ของ Facebook Business API มักจะหมดอายุใน 60 วัน ต้องหาวิธีต่ออายุ (Extend Token) หรือสร้างแบบ Never-expire

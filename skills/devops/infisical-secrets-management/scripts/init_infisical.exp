@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+set timeout 30
+
+# This script automates the interactive 'infisical init' prompt.
+# Usage: ./init_infisical.exp <path_to_workspace> <down_arrows_to_project>
+
+set workspace_dir [lindex $argv 0]
+set arrow_count [lindex $argv 1]
+
+cd $workspace_dir
+spawn infisical init
+
+# Expect the organization question (it auto-selects if there's only one, but we hit Enter just in case)
+expect "Which Infisical organization would you like to select a project from"
+send "\\r"
+
+# Expect the project selection question
+expect "Which of your Infisical projects would you like to connect this project to"
+
+# Send the ANSI down arrow sequence N times
+for {set i 0} {$i < $arrow_count} {incr i} {
+    send "\\033\[B"
+}
+# Confirm selection
+send "\\r"
+
+expect eof

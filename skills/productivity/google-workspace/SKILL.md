@@ -49,6 +49,14 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 
 ## First-Time Setup
 
+### Multi-Profile Setup (Isolating Accounts)
+If the user wants to keep personal, work, and study emails/calendars completely separate, they must use the `hermes-profile-isolation` skill first to create dedicated profiles (e.g., `default`, `work`, `study`). 
+
+1. Switch into the target profile (e.g., `work chat`).
+2. Run the `setup.py` script as described below.
+3. During the browser authorization step, the user **MUST select the specific Google Account intended for that profile** (e.g., `satang.business@gmail.com`). 
+4. The resulting `google_token.json` will be saved exclusively within that profile's isolated directory, preventing any data cross-contamination between the AI personas.
+
 ### Observed CLI behavior and quick fixes
 - The `setup.py` CLI enforces separate invocations for `--client-secret`, `--auth-url`, and `--auth-code`. Do not combine `--client-secret` with `--auth-url` in a single call; `argparse` rejects that combination.
 - The script currently does not accept `--services` or `--format` flags. To request specific scopes you must either edit the script or accept its default scope set exposed by `--auth-url`.

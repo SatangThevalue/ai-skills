@@ -27,15 +27,19 @@ This skill outlines the process for exporting local Hermes Agent skills, structu
 ## Synchronization Process
 
 ### 1. Exporting Local Skills to Repo
-To update your repository with local skills:
+To update your repository with local skills, use `rsync` with the correct exclusion flags to prevent syncing internal Hermes state files (see `references/rsync-exclude-patterns.md` for details):
+
+```bash
+rsync -av --exclude='.git' --exclude='.curator_backups' --exclude='.curator_state' --exclude='.bundled_manifest' ~/.hermes/skills/ ~/path-to-repo/skills/
+```
 ```bash
 # Define paths
 REPO_DIR="$HOME/ai-skills"
 LOCAL_SKILLS_DIR="$HOME/.hermes/skills"
 
-# Copy new and modified skills (excluding dotfiles/caches)
-rsync -av --exclude '.*' "$LOCAL_SKILLS_DIR/" "$REPO_DIR/skills/"
-
+# Copy new and modified skills (excluding dotfiles/caches and internal state)
+rsync -av --exclude='.git' --exclude='.curator_backups' --exclude='.curator_state' --exclude='.bundled_manifest' "$LOCAL_SKILLS_DIR/" "$REPO_DIR/skills/"
+```
 # Verify status in git
 cd "$REPO_DIR"
 git status

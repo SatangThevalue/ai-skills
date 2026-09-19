@@ -33,6 +33,19 @@ Skill นี้อธิบายขั้นตอนการสร้าง �
 | `<profile_name> chat` | เรียกใช้แชตในบริบทโปรไฟล์นั้นๆ โดยตรง |
 | `<profile_name> gateway start` | สตาร์ทเกตเวย์รับส่งข้อความสำหรับโปรไฟล์ย่อย |
 
+## One-Shot Recipe: Discord Multiplexing with A2A
+
+Configure Hermes to route different Discord channels to different isolated profiles, while allowing those profiles to communicate with each other via A2A.
+
+1. **Enable Platforms:** In `~/.hermes/config.yaml`, ensure `gateway.platforms` includes both `discord` and `a2a`, and `gateway.multiplex_profiles: true` is set.
+2. **Create Specialized Profiles:**
+   ```bash
+   hermes profile create bot_trade --clone --description "Trading operations"
+   hermes profile create business --clone --description "Sales and Affiliates"
+   ```
+3. **Define Personas:** Edit `~/.hermes/profiles/<name>/SOUL.md` to give each profile strict, non-overlapping objectives.
+4. **A2A Inter-Process Communication:** Enable A2A locally on port 9900 (bound to Tailscale). If the user asks the `business` profile in `#sales` for market data, `business` can use the `a2a_call(agent="bot_trade", ...)` tool to fetch it transparently without the user switching channels.
+
 ## Procedure
 
 ### Step 1: สร้างโปรไฟล์ใหม่
@@ -44,6 +57,14 @@ Skill นี้อธิบายขั้นตอนการสร้าง �
 hermes profile create <profile-name> --clone --description "อธิบายหน้าที่และวัตถุประสงค์ของโปรไฟล์ย่อยนี้"
 ```
 *การใช้ `--clone` จะคัดลอก `config.yaml`, `.env`, `SOUL.md` และ `skills` จากโปรไฟล์ปัจจุบัน ช่วยให้ไม่ต้องเริ่มตั้งค่าคีย์ API และความจำใหม่ทั้งหมด*
+
+**การใช้ Google Workspace ในหลายโปรไฟล์ (แยกบัญชี):**
+ระบบ Hermes รองรับการแยกบัญชี Google Workspace (Gmail, Calendar, Drive) ตามแต่ละโปรไฟล์ได้อย่างสมบูรณ์ โดยไม่ต้องกลัวข้อมูลปะปนกัน (เช่น แยกอีเมลเรื่องงาน กับอีเมลส่วนตัว):
+1. สร้างโปรไฟล์ย่อย (เช่น `work`, `study`) 
+2. สลับไปใช้งานโปรไฟล์นั้น (`hermes profile use work` หรือ `work chat`)
+3. เรียกใช้สคริปต์ `setup.py` ของ Google Workspace (ดูขั้นตอนใน `google-workspace` skill) 
+4. ล็อกอินผ่านหน้าต่างเบราว์เซอร์ด้วยบัญชี Google **ที่ต้องการใช้สำหรับโปรไฟล์นั้นโดยเฉพาะ** (เช่น `satang.business@gmail.com`)
+คีย์การเข้าสู่ระบบ (`google_token.json`) จะถูกสร้างและเก็บแยกไว้ในโฟลเดอร์ของโปรไฟล์นั้นโดยอัตโนมัติ ทำให้ผู้ช่วยแต่ละร่างมีตารางงานและกล่องข้อความแยกจากกัน 100%
 
 ---
 

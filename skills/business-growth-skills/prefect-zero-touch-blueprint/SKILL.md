@@ -1,7 +1,13 @@
 ---
 name: prefect-zero-touch-blueprint
-description: Enterprise architecture, strict coding standards, fallback rules, and Dockerized setup for the Zero-Touch Monetization suite using Prefect.
+description: "Enterprise architecture, strict coding standards, fallback rules, and Dockerized setup for the Zero-Touch Monetization suite using Prefect."
+version: 0.1.1
+metadata:
+  hermes:
+    tags: [Prefect, Architecture, Zero-Touch, Python, Guidelines]
+    related_skills: [infisical-secrets-management]
 ---
+
 # Prefect Zero-Touch Development Blueprint
 
 This skill defines the strict architectural rules, default fallbacks, and Dockerized infrastructure for the `zero-touch-prefect` monetization suite. It ensures scalable, resilient, and observable Python pipelines on a constrained VPS.
@@ -35,37 +41,34 @@ TELEGRAM_CHAT_ID="your_chat_id"
    - ALL project data, settings, bot states (e.g., DW trading state), and logs MUST be stored exclusively in the central PostgreSQL database (`satang-vault-db` at `127.0.0.1:5432`).
    - **NO loose files:** Do NOT use `.json`, `.csv`, or SQLite files for permanent state storage.
    - You have explicit permission to create new schemas, databases (e.g., `trading_data`, `media_studio`, `system_logs`), and tables within this instance as needed.
-Whenever generating or updating a pipeline, the following rules MUST be applied if the user does not specify otherwise:
+
+0.5 **Centralized Secrets (Infisical):**
+   - ALL API keys, database passwords, and external tokens MUST be stored in the self-hosted Infisical Vault.
+   - Scripts must retrieve secrets programmatically using the `infisical-python` SDK via a Machine Identity token, NOT via local `.env` files.
 
 1. **Retries (Network Guard):**
    - API/Web Scraping: `@task(retries=3, retry_delay_seconds=10)`
    - Trading (Settrade/Crypto): `@task(retries=5, retry_delay_seconds=2)`
+
 2. **Timeouts (Anti-Zombie Guard):**
    - ALL flows must have a timeout. 
    - Media rendering: `@flow(timeout_seconds=3600)` (1 Hour)
    - Trading/General: `@flow(timeout_seconds=600)` (10 Minutes)
+
 3. **Logging (Observability Guard):**
    - **NEVER use `print()`.**
    - Use `from prefect import get_run_logger`.
    - `logger = get_run_logger()` inside tasks.
    - Use `logger.info()` for milestones, `logger.error()` for exceptions.
+
 4. **Error Alerting (Notification Guard):**
    - Critical failures (e.g., API auth failure, DB crash) must trigger a Telegram alert. Use a dedicated `send_telegram_alert(msg)` task in the `except` block of the main flow.
+
 5. **Idempotency (Data Guard):**
    - Pipelines must be able to run twice without duplicating data or orders. Use `cache_key_fn` in Prefect or check DB existence before inserting.
+
 6. **Concurrency/Rate Limits:**
    - Always respect 3rd-party API rate limits (e.g., LINE API). Use `asyncio.sleep()` or Prefect's concurrency limits when fanning out.
-
-## 4. Strict Data Storage Policy (The Vault - PostgreSQL Only)
-ALL project data, configurations, bot states, and execution logs MUST be stored exclusively in the central PostgreSQL database (`satang-vault-db` bound to `127.0.0.1:5432`). 
-- NEVER use loose JSON, CSV, or SQLite files for permanent data storage. 
-- Use dedicated databases (e.g., `trading_data`, `media_studio`, `system_logs`) and create necessary schemas/tables via Python scripts.
-
-## 5. Dockerization & API Health Check
-The project root must contain a `docker-compose.yml` to run the Prefect server locally
-- **No Loose Files:** Do NOT use JSON, CSV, or SQLite files for permanent data storage. 
-- **Schema Management:** The agent has full permission to create new databases, schemas, and tables natively via `asyncpg` inside the Postgres instance to accommodate new data structures.
-- **Security:** Never expose DB ports to `0.0.0.0`. Always bind to localhost to prevent malware/botnet infections.
 
 ## 4. Dockerization & API Health Check
 The project root must contain a `docker-compose.yml` to run the Prefect server locally, ensuring it restarts automatically if the VPS reboots.
