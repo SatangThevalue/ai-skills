@@ -45,9 +45,15 @@ cd "$REPO_DIR"
 git status
 ```
 
-### 2. Pushing Changes to GitHub
+### 2. Regenerating Index & Pushing Changes to GitHub
+Before committing, always ensure skills are categorized (no raw skill folders in root) and regenerate the index using the bundled script:
 ```bash
-git add skills/
+python3 "$LOCAL_SKILLS_DIR/software-development/agent-skills-github-sync/scripts/generate_skills_index.py"
+```
+
+Then sync and push:
+```bash
+git add skills/ README.md INDEX.md
 git commit -m "sync: updated agent skills $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 git push origin main
 ```
@@ -70,7 +76,8 @@ rsync -av --exclude '.*' "$REPO_DIR/skills/" "$LOCAL_SKILLS_DIR/"
 2. **Commit conflicts:** Always pull before pushing when working across multiple environments.
 3. **Session Cache:** Changing local files directly requires starting a new session or running `hermes status` / reloading to update active memory in some setups.
 4. **Git Author Identity Errors:** In a clean or containerized VPS environment, git commits may fail with "Author identity unknown". Always ensure `git config user.name` and `git config user.email` are configured (locally or globally) before attempting to commit.
-5. **README.md must be included in every sync:** The file `/home/thaieasyvps/.hermes/skills/README.md` is the TOC for `github.com/SatangTheValue/ai-skills`. Always `git add skills/ README.md` — not just `skills/` — so the index stays current after skill additions.
+5. **README.md and INDEX.md must be included in every sync:** The file `/home/thaieasyvps/.hermes/skills/README.md` and `INDEX.md` form the TOC for `github.com/SatangTheValue/ai-skills`. Always `git add skills/ README.md INDEX.md` — not just `skills/` — so the catalog stays current after skill additions.
+6. **Strict Category Hierarchy:** Never leave raw skill folders at `~/.hermes/skills/` root. Always group under an appropriate category folder (e.g., `devops/`, `finance/`, `software-development/`).
 
 ## Verification Checklist
 - [ ] No dotfiles (e.g., `.usage.json`) copied to repository `skills/` folder

@@ -23,6 +23,7 @@ Operational recovery patterns for `hermes-gateway.service`. Use when the gateway
 - Background subsystems (Kanban dispatcher, scheduler) begin failing with storage errors.
 - The user explicitly reports "Hermes just stopped talking to me."
 - **Need to restart the gateway from inside a gateway session** (e.g. after changing `.env` variables or config.yaml settings).
+- **Need to force systemd to pick up new `.env` variables** (e.g. after updating Infisical secrets and syncing them to `~/.hermes/.env`). See `references/troubleshooting_gateway_env_reload.md` for the correct daemon-reload sequence.
 
 ## Recovery Playbook (fast path)
 
@@ -34,7 +35,13 @@ Operational recovery patterns for `hermes-gateway.service`. Use when the gateway
    ```
    If the systemd service is `disabled`, the start is still valid for the current session, but enabling it prevents recurrence after logout/reboot.
 
-2. **Verify platform connections**
+2. **Restarting or Enabling Gateway Profiles after Server Reboot**
+   If the VPS/Server restarts, any `hermes-gateway-<profile>.service` that was NOT enabled in systemd will remain down (`inactive (dead)`). 
+   - **Check status:** `systemctl --user list-units | grep -i hermes` (shows running gateways)
+   - **Start the missing profile:** `systemctl --user start hermes-gateway-<profile>.service`
+   - **CRITICAL: Ensure it survives the next reboot:** Always run `systemctl --user enable hermes-gateway-<profile>.service` (or hit `Y` to "Start the gateway automatically on login/boot with systemd?" when running `hermes --profile <profile> gateway install`).
+
+3. **Verify platform connections**
    ```bash
    hermes status
    ```

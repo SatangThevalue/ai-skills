@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  9router:
+    image: decolua/9router:latest
+    container_name: 9router-proxy
+    restart: always
+    environment:
+      - DATA_DIR=/app/data
+      - INITIAL_PASSWORD=change_me_123456
+      - PORT=20128
+      - HOSTNAME=0.0.0.0
+      # Do NOT add inline comments here. It breaks parsing.
+      - REQUIRE_API_KEY=true
+      - API_KEY_SECRET=your_secure_secret_here
+      - MACHINE_ID_SALT=your_secure_salt_here
+    ports:
+      - "100.115.66.121:20128:20128" # Bind to Tailscale IP
+    volumes:
+      - router_data:/app/data
+    networks:
+      - agent_network
+volumes:
+  router_data:
+networks:
+  agent_network:
+    external: true

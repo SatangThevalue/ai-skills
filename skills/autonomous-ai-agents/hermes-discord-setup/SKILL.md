@@ -34,11 +34,14 @@ Skill นี้รวบรวมขั้นตอน วิธีการก�
 
 ตัวแปรสภาพแวดล้อมสำคัญที่ต้องกำหนดใน `~/.hermes/.env`:
 ```text
-DISCORD_BOT_TOKEN=your-token-here
+DISCORD_TOKEN=your-token-here
 DISCORD_ALLOWED_USERS=your-user-id
 DISCORD_HOME_CHANNEL=channel-id
 DISCORD_FREE_RESPONSE_CHANNELS=channel-id
+TELEGRAM_TOKEN=your-telegram-token-here  # หากมีการใช้งานร่วมกัน
 ```
+
+**สิ่งที่ต้องระวัง:** ห้ามมีเครื่องหมายคำพูด (Quote) ล้อมรอบค่า Token เด็ดขาด มิเช่นนั้นระบบจะมองว่าเป็นค่าที่ไม่ถูกต้องและเชื่อมต่อไม่ได้
 
 ---
 
@@ -77,9 +80,9 @@ DISCORD_FREE_RESPONSE_CHANNELS=channel-id
    with open(path, 'r') as f:
        lines = f.readlines()
 
-   new_lines = [l for l in lines if not l.startswith(('DISCORD_BOT_TOKEN=', 'DISCORD_ALLOWED_USERS=', 'DISCORD_HOME_CHANNEL=', 'DISCORD_FREE_RESPONSE_CHANNELS='))]
+   new_lines = [l for l in lines if not l.startswith(('DISCORD_TOKEN=', 'DISCORD_ALLOWED_USERS=', 'DISCORD_HOME_CHANNEL=', 'DISCORD_FREE_RESPONSE_CHANNELS='))]
    
-   new_lines.append('DISCORD_BOT_TOKEN=YOUR_BOT_TOKEN\n')
+   new_lines.append('DISCORD_TOKEN=YOUR_BOT_TOKEN\\n')
    new_lines.append('DISCORD_ALLOWED_USERS=YOUR_DISCORD_USER_ID\n') # บังคับสิทธิ์เข้าถึงเฉพาะคุณ
    new_lines.append('DISCORD_HOME_CHANNEL=YOUR_TARGET_CHANNEL_ID\n') # ห้องหลักที่ใช้ส่งข้อความแจ้งเตือน
    new_lines.append('DISCORD_FREE_RESPONSE_CHANNELS=YOUR_TARGET_CHANNEL_ID\n') # ห้องที่ไม่ต้อง tag บอทนำหน้า
@@ -120,6 +123,8 @@ DISCORD_FREE_RESPONSE_CHANNELS=channel-id
 ## Pitfalls
 
 - **Message Content Intent ปิดอยู่:** อาการคือบอทมีสถานะออนไลน์ (สีเขียว) ใน Discord แต่ไม่ว่าเราจะพิมพ์อะไร บอทก็ไม่ตอบสนองเลย ให้กลับไปเปิด Intent นี้ใน Developer Portal แล้วรีสตาร์ท Gateway
+- **ตัวแปรสภาพแวดล้อมตั้งชื่อผิดพลาด:** ระวังการตั้งชื่อคีย์ผิด เช่น ใช้ `DISCORD_BOT_TOKEN=` แทน `DISCORD_TOKEN=` หรือมีเครื่องหมายคำพูด (Quotes) ครอบค่า Token เช่น `DISCORD_TOKEN="MTUy..."` ระบบ Gateway ไม่ต้องการ Quote ใดๆ ทั้งสิ้น การตั้งค่าผิดจะทำให้ระบบฟ้อง `No bot token configured` ทันทีแม้ตั้งค่าผ่าน .env ไว้แล้วก็ตาม 
+- **แพลตฟอร์มถูกปิดการทำงานใน config.yaml:** ถึงแม้ตั้งค่า .env ถูกต้อง หากใช้คำสั่ง `hermes config set discord.enabled true` และ `hermes config set telegram.enabled true` ไม่เรียบร้อย ก็จะไม่เชื่อมต่อ
 - **จำกัดสิทธิ์ผู้ใช้ (`DISCORD_ALLOWED_USERS`):** หากไม่ได้ระบุไอดีของคุณ บอทอาจไม่ยอมคุยด้วย หรือถ้าใส่ไอดีผิด บอทจะทำการ Ignore ข้อความทั้งหมดเพื่อความปลอดภัย ให้เช็คความถูกต้องของไอดี
 - **บอทค้างจากการรีสตาร์ทตรงๆ:** หากเผลอรันคำสั่ง restart หรือ stop ภายในแชตจนบริการค้าง ให้ล็อกอิน SSH เข้ามาที่ VPS แล้วสั่งรัน `systemctl --user restart hermes-gateway`
 

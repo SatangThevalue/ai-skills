@@ -70,6 +70,13 @@ Figure out which area the request falls into:
 
 ### 2. Container operations
 
+**Restart Policies (Ensuring Resilience):**
+When deploying critical infrastructure (databases, proxies, APIs), ALWAYS set the restart policy to `unless-stopped`. This ensures they spin back up automatically after a VPS reboot (check reboot via `uptime`).
+```bash
+# Update existing exited/running containers to auto-restart
+docker update --restart unless-stopped <container1> <container2>
+```
+
 **Run a new container:**
 
 ```bash

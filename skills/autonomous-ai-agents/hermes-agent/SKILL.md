@@ -843,11 +843,17 @@ Check logs first:
 ```bash
 grep -i "failed to send\|error" ~/.hermes/logs/gateway.log | tail -20
 ```
+Or check the systemd journal for user services:
+```bash
+journalctl --user -u hermes-gateway -n 50 --no-pager
+```
 
 Common gateway problems:
 - **Gateway dies on SSH logout**: Enable linger: `sudo loginctl enable-linger $USER`
 - **Gateway dies on WSL2 close**: WSL2 requires `systemd=true` in `/etc/wsl.conf` for systemd services to work. Without it, gateway falls back to `nohup` (dies when session closes).
 - **Gateway crash loop**: Reset the failed state: `systemctl --user reset-failed hermes-gateway`
+- **Multiplexer Profile Conflict (Crash Loop)**: If the default gateway has `multiplex_profiles: true` and a specific profile (e.g., `ton-crassula`) also tries to start its own gateway service, the profile gateway will crash-loop with `status=1/FAILURE` because the multiplexer holds the connection. **Fix:** Stop and disable the profile's separate service (`systemctl --user stop hermes-gateway-<profile>.service`), then ensure the profile is listed in the default config (`hermes config set gateway.multiplex_profiles '["<profile>"]' --type json`) and run `hermes gateway restart` from the default profile.
+- **Gateway Restart Blocked**: You cannot run `hermes gateway restart`, `systemctl --user stop hermes-gateway`, or similar gateway-killing commands *from inside a session running on that gateway*. The gateway intercepts SIGTERM and kills child processes (like the agent's shell) before they finish, causing the terminal tool to fail with "Blocked: cannot restart or stop the gateway from inside the gateway process." **Fix:** Instruct the user to run the restart command in a separate terminal outside the agent.
 
 ### Platform-specific issues
 - **Discord bot silent**: Must enable **Message Content Intent** in Bot → Privileged Gateway Intents.

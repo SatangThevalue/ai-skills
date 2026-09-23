@@ -122,10 +122,13 @@ hermes profile create <profile-name> --clone --description "อธิบาย�
 ---
 
 ## Pitfalls
+- **Environment Variable Overlap in .env Files (Gateway Cross-talk):** Each profile's `.env` file must *only* contain variables relevant to that profile, particularly for API keys like `TELEGRAM_BOT_TOKEN`. The Hermes default backend SDK reads `TELEGRAM_BOT_TOKEN` automatically if present. If you have multiple bot tokens, you **must** use prefixed variable names for the sub-profiles (e.g., `CRASSULA_TELEGRAM_TOKEN` instead of `TELEGRAM_TOKEN`). Furthermore, strictly remove the default `TELEGRAM_BOT_TOKEN` from the sub-profile's `.env` file, and remove the sub-profile's token from the default profile's `.env`. Always restart the gateway after changing `.env` variables. Use the provided verification script `scripts/audit_env_overlaps.sh` to audit the state.
 
+- **Gateway Multiplexer Limitation**: Sub-profiles running under a multiplexer **cannot** be restarted with `systemctl restart hermes-gateway-<profile>`. They must be stopped and disabled, and the main `hermes-gateway` service restarted to apply config changes.
 - **ระวังขอบเขตการเขียนข้ามโปรไฟล์ (Cross-Profile soft guard):** เมื่อเขียนไฟล์ลงไปในโฟลเดอร์ของโปรไฟล์อื่นที่ไม่ใช่ตัวปัจจุบัน (เช่น จากโปรไฟล์ `default` ไปยัง `golden-fresh-chicken`) ตัวเครื่องมือของระบบจะบล็อกไว้เพื่อความปลอดภัย หากยืนยันจะแก้ให้ใส่พารามิเตอร์ `cross_profile: true` เสมอ
 - **สคริปต์ Alias ของโปรไฟล์ย่อย:** หากมีการลบโปรไฟล์ทิ้ง อย่าลืมสั่ง `hermes profile delete <name>` เพื่อลบไฟล์และสคริปต์ alias ใน `/home/thaieasyvps/.local/bin/<profile-name>` ด้วย
 - **คลัง Skill ทับซ้อน:** โดยปกติโปรไฟล์ที่โคลนจะชี้ลิงก์หรือคัดลอกโฟลเดอร์ `skills/` ไปด้วย การอัปเดต Skill จะแชร์กันในระดับ local หรือแยกตาม profile ขึ้นอยู่กับคอนฟิก `profile.yaml`
+- **Environment Variable สำหรับ Bot Token:** เมื่อคอนฟิก Gateway สำหรับโปรไฟล์ย่อย ปลั๊กอินของแพลตฟอร์ม (เช่น Telegram) จะมองหาตัวแปรชื่อมาตรฐานใน `.env` (เช่น `TELEGRAM_BOT_TOKEN`) ห้ามใช้ชื่อ custom ผ่าน `api_key_env_var` (เช่น `CRASSULA_TELEGRAM_TOKEN`) ดูรายละเอียดเพิ่มเติมใน `references/messaging_token_env_vars.md`
 
 ---
 

@@ -163,9 +163,20 @@ The service directory is on tmpfs and was wiped on container restart. Either the
 
 Most likely the profile has no model or auth configured. The service slot is correct — the gateway itself is unconfigured. Run `hermes -p <profile> setup` first. The s6 supervisor will keep restarting it; that's the desired behavior (when you fix the config, the next attempt succeeds and stays up).
 
-### Reconciler skipped a profile
+### Cannot restart or stop the gateway from inside the gateway process
 
-The reconciler keys on the **presence of `SOUL.md`** as the "real profile" marker. `hermes profile create` always seeds it. If a profile dir is missing SOUL.md (stray directory, partial restore, backup-in-progress), the reconciler skips it intentionally. Add a `SOUL.md` (even empty) to opt back in.
+If the agent is running inside the gateway process (via Telegram, Discord, LINE, etc.) and tries to run `hermes gateway restart` or `systemctl --user stop hermes-gateway` via the `terminal` tool, it will be blocked with an error:
+
+`Blocked: cannot restart or stop the gateway from inside the gateway process. The gateway would kill this command before it could complete (SIGTERM propagates to child processes). Run 'hermes gateway restart' from a separate shell outside the running gateway.`
+
+**Workaround:** The user must run the command manually via their host terminal, or the agent can attempt to use an asynchronous background job with `nohup` (though this is heavily guarded and often blocked as well). The standard fix is to instruct the user to run `hermes gateway restart` natively.
+
+### Gateway Multiplexer Profiles Conflict
+
+If `gateway.multiplex_profiles` is `true` in the default config, the default gateway handles inbound messages for all configured profiles.
+- If you start a separate profile gateway (`systemctl --user start hermes-gateway-<profile>`) while the multiplexer is running, it will crash continuously with: `The default gateway is running as a profile multiplexer and already serves profile '<profile>'.`
+- **Fix:** Stop and disable the per-profile service (`systemctl --user stop hermes-gateway-<profile> && systemctl --user disable hermes-gateway-<profile>`).
+- If the bot is unresponsive after stopping the conflicting service, you must restart the default multiplexer gateway to release the stale webhook/polling locks: `hermes gateway restart` (from a shell outside the running gateway).
 
 ### "Help, the container exits 143!"
 

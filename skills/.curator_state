@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/home/thaieasyvps/.hermes/logs/curator/20260827-111124",
-  "last_run_at": "2026-08-27T11:11:24.155192+00:00",
-  "last_run_duration_seconds": 9.324334,
-  "last_run_summary": "auto: 2 reactivated; llm: skipped (consolidation off)",
+  "last_report_path": "/home/thaieasyvps/.hermes/logs/curator/20260917-111642",
+  "last_run_at": "2026-09-17T11:16:42.890981+00:00",
+  "last_run_duration_seconds": 8.716003,
+  "last_run_summary": "auto: 1 marked stale; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 9
+  "run_count": 12
 }
