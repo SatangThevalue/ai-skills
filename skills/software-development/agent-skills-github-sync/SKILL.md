@@ -45,15 +45,17 @@ cd "$REPO_DIR"
 git status
 ```
 
-### 2. Regenerating Index & Pushing Changes to GitHub
-Before committing, always ensure skills are categorized (no raw skill folders in root) and regenerate the index using the bundled script:
+### 2. Regenerating Index, TOC & Pushing Changes
+Before committing, always ensure skills are categorized (no raw skill folders in root) and run the bundled generator to update both `INDEX.md` and `README.md`:
 ```bash
 python3 "$LOCAL_SKILLS_DIR/software-development/agent-skills-github-sync/scripts/generate_skills_index.py"
 ```
 
 Then sync and push:
 ```bash
-git add skills/ README.md INDEX.md
+rsync -av --delete "$LOCAL_SKILLS_DIR/" "$REPO_DIR/skills/"
+cd "$REPO_DIR"
+git add -A
 git commit -m "sync: updated agent skills $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 git push origin main
 ```

@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **437 skills** จัดระเบียบใน **26 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **454 skills** จัดระเบียบใน **27 หมวดหมู่**
 
 ---
 
@@ -17,9 +17,9 @@
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
 | [creative](#creative) | **21** | `abstract-strategy`, `architecture-diagram`, `ascii-art` *(+อีก 18)* |
 | [data-science](#data-science) | **3** | `data-science-and-engineering`, `jupyter-live-kernel`, `prefect-workflows` |
-| [devops](#devops) | **38** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 35)* |
+| [devops](#devops) | **40** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 37)* |
 | [email](#email) | **1** | `himalaya` |
-| [finance](#finance) | **123** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 120)* |
+| [finance](#finance) | **132** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 129)* |
 | [gaming](#gaming) | **2** | `minecraft-modpack-server`, `pokemon-player` |
 | [github](#github) | **6** | `codebase-inspection`, `github-auth`, `github-code-review` *(+อีก 3)* |
 | [hermes-agent](#hermes-agent) | **4** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 1)* |
@@ -31,9 +31,10 @@
 | [note-taking](#note-taking) | **1** | `obsidian` |
 | [productivity](#productivity) | **25** | `airtable`, `brain-hacking-and-productivity`, `business-analysis-frameworks` *(+อีก 22)* |
 | [red-teaming](#red-teaming) | **1** | `godmode` |
+| [research](#research) | **5** | `arxiv`, `blogwatcher`, `llm-wiki` *(+อีก 2)* |
 | [smart-home](#smart-home) | **1** | `openhue` |
 | [social-media](#social-media) | **1** | `xurl` |
-| [software-development](#software-development) | **92** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 89)* |
+| [software-development](#software-development) | **93** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 90)* |
 
 ---
 
@@ -163,7 +164,7 @@
 | `jupyter-live-kernel` | Iterative Python via live Jupyter kernel (hamelnb). | `data-science/jupyter-live-kernel` |
 | `prefect-workflows` | Design, monitor, and run data orchestrations with Prefect. | `data-science/prefect-workflows` |
 
-## <a id="devops"></a>📂 devops (38 skills)
+## <a id="devops"></a>📂 devops (40 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -181,9 +182,11 @@
 | `cli-proxy-api-troubleshooting` | Diagnose and fix cli-proxy-api provider and auth failures. | `devops/cli-proxy-api-troubleshooting` |
 | `disk-space-management-docker-builds` | Prevent disk space exhaustion during Docker container builds. | `devops/disk-space-management-docker-builds` |
 | `docker-compose-git-update` | Pull Git updates and rebuild Docker Compose stacks safely. | `devops/docker-compose-git-update` |
+| `docker-compose-orchestration` | Container orchestration with Docker Compose for multi-container applications, networking, volumes, and production deployment | `devops/docker-compose-orchestration` |
 | `docker-management` | Manage Docker containers, images, volumes, networks, and Compose stacks — lifecycle ops, debugging, cleanup, and Dockerfile optimization. | `devops/docker-management` |
 | `hermes-dashboard-traefik` | Expose Hermes Dashboard via Traefik with SSL and systemd. | `devops/hermes-dashboard-traefik` |
 | `hermes-production-deploy` | Procedural best practices for deploying Node.js (Next.js) and Python (FastAPI) SaaS applications on Hermes-managed VPS with Docker/Traefik. | `devops/hermes-production-deploy` |
+| `hermes-profile-telegram-gateway` | Configure and verify Telegram gateway for a named Hermes profile. | `devops/hermes-profile-telegram-gateway` |
 | `hermes-zero-trust-infrastructure` | Deploy Hermes Gateway, WebUI, and 9Router via Tailscale. | `devops/hermes-zero-trust-infrastructure` |
 | `hybrid-fastapi-line-deployment` | Deploy and debug FastAPI LINE bots behind Traefik. | `devops/hybrid-fastapi-line-deployment` |
 | `infisical-secrets-management` | Self-host and implement Infisical for secure environment variable management. | `devops/infisical-secrets-management` |
@@ -212,7 +215,7 @@
 |---|---|---|
 | `himalaya` | Himalaya CLI: IMAP/SMTP email from terminal. | `email/himalaya` |
 
-## <a id="finance"></a>📂 finance (123 skills)
+## <a id="finance"></a>📂 finance (132 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -232,6 +235,7 @@
 | `chicken-business-scale-up` | Scale a fresh chicken shop from local market to regional or national level. | `finance/chicken-business-scale-up` |
 | `comps-analysis` | Build comparable company analysis in Excel — operating metrics, valuation multiples, statistical benchmarking vs peer sets. Pairs with ex... | `finance/comps-analysis` |
 | `cost-accounting-inventory` | การคำนวณบัญชีต้นทุนและการบริหารจัดการสินค้าคงคลัง (FIFO, Weighted Average, EOQ, Reorder Point, Safety Stock) พร้อม Python Implementation | `finance/cost-accounting-inventory` |
+| `crassula-investment-persona` | น้องใบเงิน (Crassula) investment advisor persona — Risk-First framework, response structure, tone, and decision hierarchy for all investm... | `finance/crassula-investment-persona` |
 | `crypto-com-app` | Execute crypto trades (buy, sell, swap, exchange), manage cash deposits and withdrawals, and query account balances, market prices, and t... | `finance/crypto-com-app` |
 | `crypto-market-rank` | / | `finance/crypto-market-rank` |
 | `crypto-protocol-diagram` | Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.spthy) m... | `finance/crypto-protocol-diagram` |
@@ -246,7 +250,9 @@
 | `ea-news-filter-architecture` | แนวทางและสถาปัตยกรรมในการสร้างระบบ News Filter สำหรับ EA และ Python Bot | `finance/ea-news-filter-architecture` |
 | `eamt5-python-architecture` | แนวทางและโครงสร้างการสร้าง EA บน MT5 เชื่อมต่อกับ Python สำหรับระบบเทรดอัตโนมัติ | `finance/eamt5-python-architecture` |
 | `excel-author` | Build auditable Excel workbooks headless with openpyxl — blue/black/green cell conventions, formulas over hardcodes, named ranges, balanc... | `finance/excel-author` |
+| `factor-investing` | Apply factor models to portfolio construction and fund evaluation, from CAPM through the Fama-French 3- and 5-factor models plus momentum... | `finance/factor-investing` |
 | `farmed-hedge-yield-strategy` | กลยุทธ์การเทรดแบบ Systematic Hedging และ Yield Farming จาก Farmed Hedge Yield Copy I พร้อมการปรับใช้ด้วย Python/MT5 | `finance/algorithmic-trading/farmed-hedge-yield-strategy` |
+| `finance-os-tracker` | Process daily financial transactions and route them to FinanceOS double-entry system via MCP tools. | `finance/finance-os-tracker` |
 | `forex-exness-backtesting` | การทดสอบสภาพแวดล้อมเสมือนจริงของ Exness (Free Swap) บน Python | `finance/forex-exness-backtesting` |
 | `forex-fundamental-analysis` | Framework for analyzing macroeconomic fundamentals to select Forex currency pairs. | `finance/forex-fundamental-analysis` |
 | `forex-mean-reversion-indicators` | คู่มือการเลือกใช้อินดิเคเตอร์สำหรับระบบเทรด Mean Reversion และ Scalping | `finance/forex-mean-reversion-indicators` |
@@ -256,6 +262,8 @@
 | `high-frequency-sweetspot-reversion` | สูตรลับการปรับจูน Indicator เพื่อหา Sweet Spot (Win Rate ~70% + เทรดถี่) สำหรับ Daily Cashflow | `finance/high-frequency-sweetspot-reversion` |
 | `high-win-rate-mean-reversion` | สูตรลับการปรับจูน Indicator (Optimization) ให้ได้ Win Rate 100% สำหรับ Mean Reversion | `finance/high-win-rate-mean-reversion` |
 | `innovestx-api` | InnovestX Digital Asset Open API integration guide and Python client implementation. | `finance/innovestx-api` |
+| `intelligent-investor-graham` | Use Graham value investing for Is this investment or speculation, defensive | `finance/intelligent-investor-graham` |
+| `investment-memo` | Write professional investment memorandums for VC, PE, or public market investments. Structure thesis, risks, and recommendations clearly. | `finance/investment-memo` |
 | `lbo-model` | Build leveraged buyout models in Excel — sources & uses, debt schedule, cash sweep, exit multiple, IRR/MOIC sensitivity. Pairs with excel... | `finance/lbo-model` |
 | `lightgbm-mt5-onnx-pipeline` | Architecture for LightGBM-based MT5 algorithmic trading bots using Walk-Forward testing and ONNX deployment. | `finance/lightgbm-mt5-onnx-pipeline` |
 | `market-regime-detection-quant` | สถาปัตยกรรมและเทคนิคการสร้าง Market Regime Detection สำหรับระบบ AI Trading เพื่อแก้ปัญหาโมเดลขาดทุนเมื่อสภาวะตลาดเปลี่ยน | `finance/market-regime-detection-quant` |
@@ -263,6 +271,7 @@
 | `metatrader5-docker-python` | Run MT5 in Docker and trade via Python on Linux. | `finance/metatrader5-docker-python` |
 | `mlflow-quant-tracking-guide` | คู่มือการออกแบบ MLflow Tracking, Naming Convention และ Artifacts สำหรับ AI Quant Trading ระดับสถาบัน | `finance/mlflow-quant-tracking-guide` |
 | `modern-ea-features-2026` | รวมฟีเจอร์และสถาปัตยกรรมของ EA ยุคใหม่ (2026-2027) สำหรับสอบกองทุน Prop Firm และใช้งานจริง | `finance/modern-ea-features-2026` |
+| `most-important-thing-in-investing-howard-marks` | Apply Howard Marks investing judgment for second-level thinking, price | `finance/most-important-thing-in-investing-howard-marks` |
 | `mql5-acd-cs-architecture` | โครงสร้างและอัลกอริทึมของ EA แบบ Adaptive Context-Driven (ACD-CS) บน MT5 | `finance/mql5-acd-cs-architecture` |
 | `mql5-commercial-ea-collection` | รวมเทคนิค สถาปัตยกรรม และอินดิเคเตอร์ของ 5 EA ยอดฮิตในตลาด MQL5 ปี 2026 | `finance/mql5-commercial-ea-collection` |
 | `mql5-market-research-workflow` | Reverse-engineer commercial EAs from MQL5 Market to build custom trading bots. | `finance/mql5-market-research-workflow` |
@@ -314,6 +323,8 @@
 | `quant-walk-forward-validation` | คู่มือทำ Walk Forward Validation แบบ Rolling Window และการวิเคราะห์ความเสถียร (Stability) เชิง Quant | `finance/quant-walk-forward-validation` |
 | `quantum-omnigold-architecture` | สถาปัตยกรรมและกลยุทธ์การเทรดทองคำ (XAUUSD) เลียนแบบ Quantum OmniGold EA | `finance/quantum-omnigold-architecture` |
 | `research-backed-investing` | Use when designing asset allocation frameworks, developing algorithmic trading strategies, or selecting investment vehicles across Stocks... | `finance/research-backed-investing` |
+| `risk-management` | Portfolio-level risk controls, drawdown management, exposure limits, and circuit breakers for crypto trading | `finance/risk-management` |
+| `risk-management-specialist` | Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evaluation, r... | `finance/risk-management-specialist` |
 | `settrade-adaptive-survival-bot` | Deploy an adaptive algorithmic trading bot for Thai stocks. | `finance/settrade-adaptive-survival-bot` |
 | `settrade-dw-algo-trading` | คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้... | `finance/settrade-dw-algo-trading` |
 | `settrade-dw-daily-income-bot` | Deploy an automated DW trading bot using Settrade Open API. | `finance/settrade-dw-daily-income-bot` |
@@ -333,6 +344,7 @@
 | `thai-dw-price-table` | คู่มือและวิธีการดึงข้อมูลตารางราคา DW (Derivative Warrants) ของแต่ละบริษัทผู้ออกหลักทรัพย์ในตลาดหุ้นไทย | `finance/thai-dw-price-table` |
 | `thai-dw-trading-strategy` | คู่มือกลยุทธ์, การคำนวณ, และข้อควรระวังในการเทรด DW (Derivative Warrants) ในตลาดหุ้นไทย | `finance/thai-dw-trading-strategy` |
 | `thai-finance-legal-guide` | Reference for Thai tax, stock, and crypto regulations. | `finance/thai-finance-legal-guide` |
+| `thai-financial-operating-rules` | กฎการเงินส่วนตัวสำหรับผู้อาศัยในไทย — ภาษี, ธนาคาร, การลงทุน, ป้องกันความเสี่ยง | `finance/thai-financial-operating-rules` |
 | `thai-personal-accounting-and-finance` | คู่มือและเครื่องมือการทำบัญชีส่วนบุคคล งบการเงิน และการวิเคราะห์อัตราส่วนสุขภาพทางการเงินตามมาตรฐานตลาดหลักทรัพย์แห่งประเทศไทย (SET Happy... | `finance/thai-personal-accounting-and-finance` |
 | `thai-stock-seasonal-strategy` | คู่มือและกลยุทธ์การเลือกหุ้นไทยด้วยปัจจัยพื้นฐาน ผสมผสานกับการเก็งกำไรตามฤดูกาล (Seasonal Effect) ในแต่ละไตรมาส | `finance/thai-stock-seasonal-strategy` |
 | `thai-tax-planning-strategy` | Guide and strategies for legal tax planning and tax optimization (Tax Avoidance) in Thailand for individuals and businesses. | `finance/thai-tax-planning-strategy` |
@@ -495,6 +507,16 @@
 |---|---|---|
 | `godmode` | Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN. | `red-teaming/godmode` |
 
+## <a id="research"></a>📂 research (5 skills)
+
+| Skill Name | Description | Path |
+|---|---|---|
+| `arxiv` | Search arXiv papers by keyword, author, category, or ID. | `research/arxiv` |
+| `blogwatcher` | Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool. | `research/blogwatcher` |
+| `llm-wiki` | Karpathy's LLM Wiki: build/query interlinked markdown KB. | `research/llm-wiki` |
+| `polymarket` | Query Polymarket: markets, prices, orderbooks, history. | `research/polymarket` |
+| `research-paper-writing` | Write ML papers for NeurIPS/ICML/ICLR: design→submit. | `research/research-paper-writing` |
+
 ## <a id="smart-home"></a>📂 smart-home (1 skills)
 
 | Skill Name | Description | Path |
@@ -507,7 +529,7 @@
 |---|---|---|
 | `xurl` | X/Twitter via xurl CLI: post, search, DM, media, v2 API. | `social-media/xurl` |
 
-## <a id="software-development"></a>📂 software-development (92 skills)
+## <a id="software-development"></a>📂 software-development (93 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -577,6 +599,7 @@
 | `setup-matt-pocock-skills` | Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before... | `software-development/setup-matt-pocock-skills` |
 | `setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-c... | `software-development/setup-pre-commit` |
 | `setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable o... | `software-development/setup-ts-deep-modules` |
+| `shadcn-ui` | Provides complete shadcn/ui component library patterns including installation, configuration, and implementation of accessible React comp... | `software-development/shadcn-ui` |
 | `simplify-code` | Parallel 3-agent cleanup of recent code changes. | `software-development/simplify-code` |
 | `smart-context-usage` | Guidelines for maintaining token efficiency and executing context compression in Hermes | `software-development/smart-context-usage` |
 | `spike` | Throwaway experiments to validate an idea before build. | `software-development/spike` |

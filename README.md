@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (437 skills ใน 26 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (454 skills ใน 27 หมวดหมู่)
 
 ### 📁 API-INTEGRATION (1)
 
@@ -38,7 +38,7 @@ hermes skills view <ชื่อ-skill>
 - **`apple-reminders`**: Apple Reminders via remindctl: add, list, complete.
 - **`findmy`**: Track Apple devices/AirTags via FindMy.app on macOS.
 - **`imessage`**: Send and receive iMessages/SMS via the imsg CLI on macOS.
-- **`macos-computer-use`**: |
+- **`macos-computer-use`**: /
 
 ### 📁 AUTOMATION (1)
 
@@ -136,7 +136,7 @@ hermes skills view <ชื่อ-skill>
 - **`jupyter-live-kernel`**: Iterative Python via live Jupyter kernel (hamelnb).
 - **`prefect-workflows`**: Design, monitor, and run data orchestrations with Prefect.
 
-### 📁 DEVOPS (38)
+### 📁 DEVOPS (40)
 
 - **`9router`**: Entry point for 9Router — local/remote AI gateway with OpenAI-compatible REST for chat, image, TTS, embeddings, web search, web fetch. Use when the user mentions 9Router, NINEROUTER_URL, or wants AI without writing provider boilerplate. This skill covers setup + indexes capability skills; fetch the relevant capability SKILL.md from the URLs below when needed.
 - **`9router-chat`**: Chat / code generation via 9Router using OpenAI /v1/chat/completions or Anthropic /v1/messages format with streaming + auto-fallback combos. Use when the user wants to ask an LLM, generate code, summarize text, or run prompts through 9Router.
@@ -152,9 +152,11 @@ hermes skills view <ชื่อ-skill>
 - **`cli-proxy-api-troubleshooting`**: Diagnose and fix cli-proxy-api provider and auth failures.
 - **`disk-space-management-docker-builds`**: Prevent disk space exhaustion during Docker container builds.
 - **`docker-compose-git-update`**: Pull Git updates and rebuild Docker Compose stacks safely.
+- **`docker-compose-orchestration`**: Container orchestration with Docker Compose for multi-container applications, networking, volumes, and production deployment
 - **`docker-management`**: Manage Docker containers, images, volumes, networks, and Compose stacks — lifecycle ops, debugging, cleanup, and Dockerfile optimization.
 - **`hermes-dashboard-traefik`**: Expose Hermes Dashboard via Traefik with SSL and systemd.
 - **`hermes-production-deploy`**: Procedural best practices for deploying Node.js (Next.js) and Python (FastAPI) SaaS applications on Hermes-managed VPS with Docker/Traefik.
+- **`hermes-profile-telegram-gateway`**: Configure and verify Telegram gateway for a named Hermes profile.
 - **`hermes-zero-trust-infrastructure`**: Deploy Hermes Gateway, WebUI, and 9Router via Tailscale.
 - **`hybrid-fastapi-line-deployment`**: Deploy and debug FastAPI LINE bots behind Traefik.
 - **`infisical-secrets-management`**: Self-host and implement Infisical for secure environment variable management.
@@ -181,7 +183,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`himalaya`**: Himalaya CLI: IMAP/SMTP email from terminal.
 
-### 📁 FINANCE (123)
+### 📁 FINANCE (132)
 
 - **`3-statement-model`**: Build fully-integrated 3-statement models (IS, BS, CF) in Excel with working capital schedules, D&A roll-forwards, debt schedule, and the plugs that make cash and retained earnings tie. Pairs with excel-author.
 - **`ai-trading-continuous-learning`**: Architecture and guidelines for building a Continuous Learning Pipeline for AI Trading models (Data Lake to MT5 ONNX) targeting Risk-adjusted Returns.
@@ -192,15 +194,16 @@ hermes skills view <ชื่อ-skill>
 - **`aster-bot-trading`**: Automated perpetual futures trading bot for AsterDEX with dual strategies, risk management, and TypeScript/Node.js stack
 - **`backtest-expert`**: Expert guidance for systematic backtesting of trading strategies. Use when developing, testing, stress-testing, or validating quantitative trading strategies. Covers "beating ideas to death" methodology, parameter robustness testing, slippage modeling, bias prevention, and interpreting backtest results. Applicable when user asks about backtesting, strategy validation, robustness testing, avoiding overfitting, or systematic trading development.
 - **`backtesting-py-mean-reversion`**: วิธีเขียนโค้ดและทำ Optimization กลยุทธ์ Mean Reversion ด้วยไลบรารี Backtesting.py
-- **`backtesting-trading-strategies`**: |
+- **`backtesting-trading-strategies`**: /
 - **`build-ea-python-strategy`**: Guidelines and architecture for building Expert Advisors using Python and MT5.
 - **`business-ledger-and-inventory`**: สกิลการวางผังบัญชี 5 หมวด การจดบันทึกทางการเงิน และการบริหารจัดการคลังสินค้าสำหรับธุรกิจ SME ในประเทศไทย
 - **`CFO / Chief Financial Officer`**: Be the CFO with financial planning, cash management, fundraising, capital allocation, and strategic financial leadership.
 - **`chicken-business-scale-up`**: Scale a fresh chicken shop from local market to regional or national level.
 - **`comps-analysis`**: Build comparable company analysis in Excel — operating metrics, valuation multiples, statistical benchmarking vs peer sets. Pairs with excel-author. Use for public-company valuation, IPO pricing, sector benchmarking, or outlier detection.
 - **`cost-accounting-inventory`**: การคำนวณบัญชีต้นทุนและการบริหารจัดการสินค้าคงคลัง (FIFO, Weighted Average, EOQ, Reorder Point, Safety Stock) พร้อม Python Implementation
+- **`crassula-investment-persona`**: น้องใบเงิน (Crassula) investment advisor persona — Risk-First framework, response structure, tone, and decision hierarchy for all investment analysis tasks. Load when acting as Crassula or when user asks for investment analysis, risk assessment, or portfolio advice.
 - **`crypto-com-app`**: Execute crypto trades (buy, sell, swap, exchange), manage cash deposits and withdrawals, and query account balances, market prices, and transaction history via the Crypto.com APP API. View weekly trading limits, portfolio positions, bank accounts, and payment networks. Use when the user wants to trade cryptocurrency, deposit or withdraw cash, check bank account details, view deposit instructions, or manage fiat wallet operations. Supports BTC, ETH, CRO, and 200+ tokens across fiat and crypto wallets.
-- **`crypto-market-rank`**: |
+- **`crypto-market-rank`**: /
 - **`crypto-protocol-diagram`**: Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.spthy) models and generates Mermaid sequenceDiagrams with cryptographic annotations. Use when diagramming a crypto protocol, visualizing a handshake or key exchange flow, extracting message flow from a spec or RFC, diagramming a ProVerif or Tamarin model, or drawing sequence diagrams for TLS, Noise, Signal, X3DH, Double Ratchet, FROST, DH, or ECDH protocols.
 - **`crypto-report`**: Analyze cryptocurrency projects with tokenomics, on-chain metrics, and market analysis. Generate comprehensive crypto research reports.
 - **`dcf-model`**: Build institutional-quality DCF valuation models in Excel — revenue projections, FCF build, WACC, terminal value, Bear/Base/Bull scenarios, 5x5 sensitivity tables. Pairs with excel-author. Use for intrinsic-value equity analysis.
@@ -213,7 +216,9 @@ hermes skills view <ชื่อ-skill>
 - **`ea-news-filter-architecture`**: แนวทางและสถาปัตยกรรมในการสร้างระบบ News Filter สำหรับ EA และ Python Bot
 - **`eamt5-python-architecture`**: แนวทางและโครงสร้างการสร้าง EA บน MT5 เชื่อมต่อกับ Python สำหรับระบบเทรดอัตโนมัติ
 - **`excel-author`**: Build auditable Excel workbooks headless with openpyxl — blue/black/green cell conventions, formulas over hardcodes, named ranges, balance checks, sensitivity tables. Use for financial models, audit outputs, reconciliations.
+- **`factor-investing`**: Apply factor models to portfolio construction and fund evaluation, from CAPM through the Fama-French 3- and 5-factor models plus momentum. Use when the user asks about 'Fama-French', 'value factor', 'smart beta', 'factor tilt', 'momentum exposure', or the 'factor zoo', wants to run or interpret a factor regression (loadings, alpha after controlling for factors, R-squared, t-stats), decompose a manager's returns into factor exposures versus skill, or asks 'is my fund closet indexing'. Also trigger on SMB, HML, RMW, CMA, UMD, size/value/quality/profitability/low-vol premia, factor ETF or smart-beta product evaluation (factor purity, turnover, capacity, fees), factor cyclicality and the danger of factor timing, factor crowding, long-short academic factors versus long-only implementable tilts, and post-publication factor decay.
 - **`farmed-hedge-yield-strategy`**: กลยุทธ์การเทรดแบบ Systematic Hedging และ Yield Farming จาก Farmed Hedge Yield Copy I พร้อมการปรับใช้ด้วย Python/MT5
+- **`finance-os-tracker`**: Process daily financial transactions and route them to FinanceOS double-entry system via MCP tools.
 - **`forex-exness-backtesting`**: การทดสอบสภาพแวดล้อมเสมือนจริงของ Exness (Free Swap) บน Python
 - **`forex-fundamental-analysis`**: Framework for analyzing macroeconomic fundamentals to select Forex currency pairs.
 - **`forex-mean-reversion-indicators`**: คู่มือการเลือกใช้อินดิเคเตอร์สำหรับระบบเทรด Mean Reversion และ Scalping
@@ -223,6 +228,8 @@ hermes skills view <ชื่อ-skill>
 - **`high-frequency-sweetspot-reversion`**: สูตรลับการปรับจูน Indicator เพื่อหา Sweet Spot (Win Rate ~70% + เทรดถี่) สำหรับ Daily Cashflow
 - **`high-win-rate-mean-reversion`**: สูตรลับการปรับจูน Indicator (Optimization) ให้ได้ Win Rate 100% สำหรับ Mean Reversion
 - **`innovestx-api`**: InnovestX Digital Asset Open API integration guide and Python client implementation.
+- **`intelligent-investor-graham`**: Use Graham value investing for Is this investment or speculation, defensive
+- **`investment-memo`**: Write professional investment memorandums for VC, PE, or public market investments. Structure thesis, risks, and recommendations clearly.
 - **`lbo-model`**: Build leveraged buyout models in Excel — sources & uses, debt schedule, cash sweep, exit multiple, IRR/MOIC sensitivity. Pairs with excel-author. Use for PE screening, sponsor-case valuation, or illustrative LBO in a pitch.
 - **`lightgbm-mt5-onnx-pipeline`**: Architecture for LightGBM-based MT5 algorithmic trading bots using Walk-Forward testing and ONNX deployment.
 - **`market-regime-detection-quant`**: สถาปัตยกรรมและเทคนิคการสร้าง Market Regime Detection สำหรับระบบ AI Trading เพื่อแก้ปัญหาโมเดลขาดทุนเมื่อสภาวะตลาดเปลี่ยน
@@ -230,6 +237,7 @@ hermes skills view <ชื่อ-skill>
 - **`metatrader5-docker-python`**: Run MT5 in Docker and trade via Python on Linux.
 - **`mlflow-quant-tracking-guide`**: คู่มือการออกแบบ MLflow Tracking, Naming Convention และ Artifacts สำหรับ AI Quant Trading ระดับสถาบัน
 - **`modern-ea-features-2026`**: รวมฟีเจอร์และสถาปัตยกรรมของ EA ยุคใหม่ (2026-2027) สำหรับสอบกองทุน Prop Firm และใช้งานจริง
+- **`most-important-thing-in-investing-howard-marks`**: Apply Howard Marks investing judgment for second-level thinking, price
 - **`mql5-acd-cs-architecture`**: โครงสร้างและอัลกอริทึมของ EA แบบ Adaptive Context-Driven (ACD-CS) บน MT5
 - **`mql5-commercial-ea-collection`**: รวมเทคนิค สถาปัตยกรรม และอินดิเคเตอร์ของ 5 EA ยอดฮิตในตลาด MQL5 ปี 2026
 - **`mql5-market-research-workflow`**: Reverse-engineer commercial EAs from MQL5 Market to build custom trading bots.
@@ -281,6 +289,8 @@ hermes skills view <ชื่อ-skill>
 - **`quant-walk-forward-validation`**: คู่มือทำ Walk Forward Validation แบบ Rolling Window และการวิเคราะห์ความเสถียร (Stability) เชิง Quant
 - **`quantum-omnigold-architecture`**: สถาปัตยกรรมและกลยุทธ์การเทรดทองคำ (XAUUSD) เลียนแบบ Quantum OmniGold EA
 - **`research-backed-investing`**: Use when designing asset allocation frameworks, developing algorithmic trading strategies, or selecting investment vehicles across Stocks, Mutual Funds, Forex, and Crypto using academic research-backed methodologies.
+- **`risk-management`**: Portfolio-level risk controls, drawdown management, exposure limits, and circuit breakers for crypto trading
+- **`risk-management-specialist`**: Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evaluation, risk control, and post-production information analysis. Use when user mentions risk management, ISO 14971, risk analysis, FMEA, fault tree analysis, hazard identification, risk control, risk matrix, benefit-risk analysis, residual risk, risk acceptability, or post-market risk.
 - **`settrade-adaptive-survival-bot`**: Deploy an adaptive algorithmic trading bot for Thai stocks.
 - **`settrade-dw-algo-trading`**: คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้วย Python พร้อมวิเคราะห์พารามิเตอร์แบบเจาะลึก
 - **`settrade-dw-daily-income-bot`**: Deploy an automated DW trading bot using Settrade Open API.
@@ -300,6 +310,7 @@ hermes skills view <ชื่อ-skill>
 - **`thai-dw-price-table`**: คู่มือและวิธีการดึงข้อมูลตารางราคา DW (Derivative Warrants) ของแต่ละบริษัทผู้ออกหลักทรัพย์ในตลาดหุ้นไทย
 - **`thai-dw-trading-strategy`**: คู่มือกลยุทธ์, การคำนวณ, และข้อควรระวังในการเทรด DW (Derivative Warrants) ในตลาดหุ้นไทย
 - **`thai-finance-legal-guide`**: Reference for Thai tax, stock, and crypto regulations.
+- **`thai-financial-operating-rules`**: กฎการเงินส่วนตัวสำหรับผู้อาศัยในไทย — ภาษี, ธนาคาร, การลงทุน, ป้องกันความเสี่ยง
 - **`thai-personal-accounting-and-finance`**: คู่มือและเครื่องมือการทำบัญชีส่วนบุคคล งบการเงิน และการวิเคราะห์อัตราส่วนสุขภาพทางการเงินตามมาตรฐานตลาดหลักทรัพย์แห่งประเทศไทย (SET Happy Money) ร่วมกับการวางแผนภาษีและการลดหย่อนภาษี
 - **`thai-stock-seasonal-strategy`**: คู่มือและกลยุทธ์การเลือกหุ้นไทยด้วยปัจจัยพื้นฐาน ผสมผสานกับการเก็งกำไรตามฤดูกาล (Seasonal Effect) ในแต่ละไตรมาส
 - **`thai-tax-planning-strategy`**: Guide and strategies for legal tax planning and tax optimization (Tax Avoidance) in Thailand for individuals and businesses.
@@ -382,7 +393,7 @@ hermes skills view <ชื่อ-skill>
 - **`backup-global-cognitive-brain-20260316-100703`**: -
 - **`badman-agent-rental`**: -
 - **`boss-ai-agent`**: Boss AI Agent — AI management advisor and team operations middleware. Use this skill whenever the user needs management advice, leadership guidance, or team operations help. Triggers for: 1:1 meeting prep, daily briefings ('what's important today'), team performance reviews (advice and analysis, not templates), risk assessments, KPI health checks, check-in question design, conflict resolution, cross-cultural feedback ('how do I give feedback to my Filipino/Chinese/Indonesian employee'), mentor philosophy application ('what would Musk/Inamori/Ma say'), C-Suite board simulation, promotion/hiring decisions, employee engagement issues, weekly reports, and incentive reviews. Supports 16 mentor philosophies (Musk, Inamori, Ma, Dalio, Grove, Bezos, etc.), 9 culture packs, and learns boss preferences over time. Works offline as advisor or connected to manageaibrain.com MCP for full 33-tool automation (check-ins, tracking, messaging, sync). Use this even if the user doesn't say 'management' explicitly — any people leadership question, team dynamics issue, or boss-level decision qualifies. Do NOT trigger for software development tasks (building apps, APIs, bots, schemas) even if they relate to HR/employees — this skill is for management advice, not code implementation.
-- **`computer-use`**: |
+- **`computer-use`**: /
 - **`grill-me`**: A relentless interview to sharpen a plan or design.
 - **`grill-with-docs`**: A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.
 - **`grilling`**: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
@@ -421,8 +432,8 @@ hermes skills view <ชื่อ-skill>
 - **`maps`**: Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.
 - **`nano-pdf`**: Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).
 - **`notion`**: Notion API + ntn CLI: pages, databases, markdown, Workers.
-- **`obsidian-personal-templates`**: |
-- **`obsidian-workflow`**: |
+- **`obsidian-personal-templates`**: /
+- **`obsidian-workflow`**: /
 - **`ocr-and-documents`**: Extract text from PDFs/scans (pymupdf, marker-pdf).
 - **`online-income-and-monetization`**: Strategies for online monetization, content creation, digital products, and building a professional brand.
 - **`personal-productivity`**: Build a Personal Productivity System Pack (weekly timebox plan, capture+to-do system, daily/weekly review rituals, and a 7-day rollout). Use for timeboxing, calendar blocking, and staying on top of high-volume leadership work. Category: Career.
@@ -440,6 +451,14 @@ hermes skills view <ชื่อ-skill>
 
 - **`godmode`**: Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.
 
+### 📁 RESEARCH (5)
+
+- **`arxiv`**: Search arXiv papers by keyword, author, category, or ID.
+- **`blogwatcher`**: Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.
+- **`llm-wiki`**: Karpathy's LLM Wiki: build/query interlinked markdown KB.
+- **`polymarket`**: Query Polymarket: markets, prices, orderbooks, history.
+- **`research-paper-writing`**: Write ML papers for NeurIPS/ICML/ICLR: design→submit.
+
 ### 📁 SMART-HOME (1)
 
 - **`openhue`**: Control Philips Hue lights, scenes, rooms via OpenHue CLI.
@@ -448,7 +467,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`xurl`**: X/Twitter via xurl CLI: post, search, DM, media, v2 API.
 
-### 📁 SOFTWARE-DEVELOPMENT (92)
+### 📁 SOFTWARE-DEVELOPMENT (93)
 
 - **`agent-skills-github-sync`**: Use when synchronizing Hermes Agent local skills with a remote GitHub repository. Guides the backup, management, and deployment of agent skills.
 - **`ai-content-studio-architecture`**: Architecture and workflows for the Satang AI Studio multi-agent content generation platform.
@@ -516,6 +535,7 @@ hermes skills view <ชื่อ-skill>
 - **`setup-matt-pocock-skills`**: Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
 - **`setup-pre-commit`**: Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-commit hooks, set up Husky, configure lint-staged, or add commit-time formatting/typechecking/testing.
 - **`setup-ts-deep-modules`**: Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.
+- **`shadcn-ui`**: Provides complete shadcn/ui component library patterns including installation, configuration, and implementation of accessible React components. Use when setting up shadcn/ui, installing components, building forms with React Hook Form and Zod, customizing themes with Tailwind CSS, or implementing UI patterns like buttons, dialogs, dropdowns, tables, and complex form layouts.
 - **`simplify-code`**: Parallel 3-agent cleanup of recent code changes.
 - **`smart-context-usage`**: Guidelines for maintaining token efficiency and executing context compression in Hermes
 - **`spike`**: Throwaway experiments to validate an idea before build.
