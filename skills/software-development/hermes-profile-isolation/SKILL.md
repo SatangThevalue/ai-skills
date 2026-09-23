@@ -127,7 +127,15 @@ hermes profile create <profile-name> --clone --description "อธิบาย�
 - **Gateway Multiplexer Limitation**: Sub-profiles running under a multiplexer **cannot** be restarted with `systemctl restart hermes-gateway-<profile>`. They must be stopped and disabled, and the main `hermes-gateway` service restarted to apply config changes.
 - **ระวังขอบเขตการเขียนข้ามโปรไฟล์ (Cross-Profile soft guard):** เมื่อเขียนไฟล์ลงไปในโฟลเดอร์ของโปรไฟล์อื่นที่ไม่ใช่ตัวปัจจุบัน (เช่น จากโปรไฟล์ `default` ไปยัง `golden-fresh-chicken`) ตัวเครื่องมือของระบบจะบล็อกไว้เพื่อความปลอดภัย หากยืนยันจะแก้ให้ใส่พารามิเตอร์ `cross_profile: true` เสมอ
 - **สคริปต์ Alias ของโปรไฟล์ย่อย:** หากมีการลบโปรไฟล์ทิ้ง อย่าลืมสั่ง `hermes profile delete <name>` เพื่อลบไฟล์และสคริปต์ alias ใน `/home/thaieasyvps/.local/bin/<profile-name>` ด้วย
-- **คลัง Skill ทับซ้อน:** โดยปกติโปรไฟล์ที่โคลนจะชี้ลิงก์หรือคัดลอกโฟลเดอร์ `skills/` ไปด้วย การอัปเดต Skill จะแชร์กันในระดับ local หรือแยกตาม profile ขึ้นอยู่กับคอนฟิก `profile.yaml`
+- **การแชร์คลัง Skills ร่วมกันแบบ Real-time (Symlink Pattern):** โดยค่าเริ่มต้น โปรไฟล์ที่สร้างใหม่จะคัดลอกโฟลเดอร์ `skills/` แยกไป ทำให้เมื่อโปรไฟล์หลักเพิ่มสกิลใหม่ (เช่น 9Router) หรือจัดหมวดหมู่ โปรไฟล์ย่อยจะไม่เห็นและเกิดปัญหาทักษะไม่ตรงกัน (Drift) หรือลิงก์ขาด
+  **วิธีแก้ไขให้ทุกโปรไฟล์ใช้สกิลชุดเดียวกันแบบ Real-time:**
+  1. ย้ายสกิลเฉพาะตัวของโปรไฟล์ย่อยเข้ามารวมในคลังกลาง `~/.hermes/skills/<category>/`
+  2. ลบโฟลเดอร์สกิลของโปรไฟล์ย่อยแล้วสร้าง Symlink ชี้กลับมาที่คลังกลาง:
+     ```bash
+     rm -rf ~/.hermes/profiles/<profile_name>/skills
+     ln -s /home/thaieasyvps/.hermes/skills ~/.hermes/profiles/<profile_name>/skills
+     ```
+  3. ตรวจสอบด้วย `hermes -p <profile_name> skills list` ทุกโปรไฟล์จะเข้าถึงคลังสกิลเดียวกันทันที 100% โดยไม่ต้องซิงค์ซ้ำ
 - **Environment Variable สำหรับ Bot Token:** เมื่อคอนฟิก Gateway สำหรับโปรไฟล์ย่อย ปลั๊กอินของแพลตฟอร์ม (เช่น Telegram) จะมองหาตัวแปรชื่อมาตรฐานใน `.env` (เช่น `TELEGRAM_BOT_TOKEN`) ห้ามใช้ชื่อ custom ผ่าน `api_key_env_var` (เช่น `CRASSULA_TELEGRAM_TOKEN`) ดูรายละเอียดเพิ่มเติมใน `references/messaging_token_env_vars.md`
 
 ---
