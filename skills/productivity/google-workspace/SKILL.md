@@ -20,15 +20,16 @@ metadata:
 
 ## Calendar Synchronization
 
-When the user asks you to read or review their Google Calendar (e.g., "what's on my calendar next week" or "produce a weekly review including my calendar"), but the `gws` tool returns an authentication error (e.g., `error[auth]: Access denied. No credentials provided`), the user must re-authenticate the `gws` CLI.
+When the user asks you to read or review their Google Calendar or Gmail, **always use the wrapper script `google_api.py`** rather than calling `gws` directly:
+```bash
+python3 ~/.hermes/skills/productivity/google-workspace/scripts/google_api.py calendar list
+```
+Hermes stores valid OAuth tokens at `~/.hermes/google_token.json`. Raw `gws` calls look in `~/.config/gws/` and will fail with `error[auth]: Access denied` unless `GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE=~/.hermes/google_token.json` is passed or `google_api.py` is used.
 
-**DO NOT** instruct the user to run `gws auth login` in the background or assume the credentials will magically appear. You are likely running as a cron job or headless agent without interactive access.
-
-**DO** state clearly in your final output that calendar access is unauthorized and that the user needs to manually run `gws auth login` in their terminal to restore access.
-
-### Example Output
-
-*Calendar access is currently unauthorized. To enable calendar syncing, please run `gws auth login` in your terminal to provide Google Workspace credentials.*
+Before declaring calendar or mail unauthorized in a cron job or headless run:
+1. Verify token status with `python3 ~/.hermes/skills/productivity/google-workspace/scripts/setup.py --check`.
+2. Always execute queries through `google_api.py`.
+3. Only if `setup.py --check` returns `NOT_AUTHENTICATED` or `REFRESH_FAILED` should you inform the user that re-authentication is required.
 
 ### Background Process & Cron Job Pitfalls
 

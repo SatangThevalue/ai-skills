@@ -33,7 +33,23 @@ pnpm add next@latest react@latest react-dom@latest
 
 ## 3. Major Breaking Changes
 
-### A. Async Request APIs (Strict Enforcement)
+### A. Tailwind CSS v4 Migration (2026 Standard)
+Tailwind v4 is the default companion for Next.js 16. The Turbopack build will fail with `Cannot apply unknown utility class` if misconfigured.
+- **Tailwind v4 Upgrades Wipe Custom CSS:** When running Tailwind v4 initialization or upgrade scripts, they may completely overwrite `src/app/globals.css`. ALWAYS back up `globals.css` or use `git restore` and manual patching to preserve existing complex CSS rules, grid layouts, and animations before applying the new `@import "tailwindcss";` directives.
+- `tailwind.config.ts` is **removed**. Do not use it.
+- **PostCSS Plugin Required:** Do not use `tailwindcss` directly in `postcss.config.js` with v4; you MUST use `@tailwindcss/postcss` and install it via `--legacy-peer-deps` if peer conflicts arise with Vite/Vitest. All theme configuration moves to CSS using the `@theme` directive.
+- Install `@tailwindcss/postcss` alongside `tailwindcss`.
+- In `postcss.config.js`, register the plugin as `@tailwindcss/postcss` (not `tailwindcss`).
+- Configure theme variables directly in `globals.css` using the `@theme` directive:
+  ```css
+  @import "tailwindcss";
+  @theme {
+    --color-background: #000000;
+    --color-primary: #7b63ff;
+  }
+  ```
+
+### B. Async Request APIs (Strict Enforcement)
 Synchronous access to request-time APIs is fully removed. **You MUST `await` them.**
 - **Affected:** `cookies`, `headers`, `draftMode`, `params` (in pages/layouts), `searchParams`.
 - **Images/Sitemaps:** The `params` and `id` passed to dynamic image generation (`opengraph-image`, `icon`) and `sitemap` functions are now Promises.
@@ -76,7 +92,9 @@ Turbopack is now the default for both `next dev` and `next build`.
 - **Qualities:** Default allowed qualities changed from any number to just `[75]`.
 - **Local Query Strings:** You must explicitly allow query strings on local images to prevent enumeration attacks via `localPatterns` in `next.config.ts`.
 
-## 6. Deployment & Docker Issues
+## 6. Deployment & Build Issues
+- **Background `next dev` Port Collisions (EADDRINUSE):** When spawning `next dev` in the background (e.g. `npm run dev -- -p 9999 &`), ensure no dangling Next.js processes are bound to that port. A previous process may survive a disconnected terminal. Always run `kill -9 $(lsof -t -i:9999) 2>/dev/null || true` before spawning the new background server to guarantee a clean bind.
+- **Stripe / SDK API Keys at Build Time:** `next build` fails with `Error: Neither apiKey nor config.authenticator provided` during static page generation if your Stripe instance (or similar SDK) initializes globally without fallback keys. Always wrap SDK initialization or pass placeholder env vars during CI/build.
 - **Storage Full during Docker Build:** During `next build` inside a Docker BuildKit context on a VPS, the build might throw "no space left on device" errors or stall at static page generation if disk space is low. Run `docker system prune -af --volumes` to free up space.
 - **Port Collisions:** If deploying via Docker, remember that `0.0.0.0:3000` is commonly in use. Map the container port to a free host port (e.g., `3001:3000`) in `docker-compose.yml` to avoid `Bind for 0.0.0.0:3000 failed` errors.
 

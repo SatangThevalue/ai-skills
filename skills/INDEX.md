@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **454 skills** จัดระเบียบใน **27 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **464 skills** จัดระเบียบใน **31 หมวดหมู่**
 
 ---
 
@@ -8,35 +8,47 @@
 
 | หมวดหมู่ (Category) | จำนวน | ตัวอย่างสกิลเด่น |
 |---|:---:|---|
+| [.archive](#.archive) | **3** | `ocr-and-documents`, `ollama-local-inference`, `weights-and-biases` |
 | [api-integration](#api-integration) | **1** | `innovestx-open-api` |
 | [apple](#apple) | **5** | `apple-notes`, `apple-reminders`, `findmy` *(+อีก 2)* |
+| [architecture](#architecture) | **2** | `ddex-metadata-architecture`, `loop-engineering-onboarding` |
 | [automation](#automation) | **1** | `python-media-automation` |
-| [autonomous-ai-agents](#autonomous-ai-agents) | **25** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 22)* |
+| [autonomous-ai-agents](#autonomous-ai-agents) | **26** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 23)* |
 | [blockchain](#blockchain) | **3** | `evm`, `hyperliquid`, `solana` |
-| [business](#business) | **20** | `account-maintenance`, `account-opening-compliance`, `ai-boss-assistant` *(+อีก 17)* |
+| [business](#business) | **21** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 18)* |
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
 | [creative](#creative) | **21** | `abstract-strategy`, `architecture-diagram`, `ascii-art` *(+อีก 18)* |
 | [data-science](#data-science) | **3** | `data-science-and-engineering`, `jupyter-live-kernel`, `prefect-workflows` |
-| [devops](#devops) | **40** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 37)* |
+| [devops](#devops) | **41** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 38)* |
+| [domain-knowledge](#domain-knowledge) | **1** | `music-metadata-standards` |
 | [email](#email) | **1** | `himalaya` |
-| [finance](#finance) | **132** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 129)* |
+| [finance](#finance) | **133** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 130)* |
 | [gaming](#gaming) | **2** | `minecraft-modpack-server`, `pokemon-player` |
 | [github](#github) | **6** | `codebase-inspection`, `github-auth`, `github-code-review` *(+อีก 3)* |
-| [hermes-agent](#hermes-agent) | **4** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 1)* |
+| [hermes-agent](#hermes-agent) | **5** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 2)* |
 | [marketing](#marketing) | **21** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 18)* |
 | [mcp](#mcp) | **2** | `fastmcp`, `native-mcp` |
 | [media](#media) | **14** | `ai-avatar-generation-stack`, `broll-free-video-automation`, `ffmpeg-complex-filter-video-automation` *(+อีก 11)* |
 | [misc](#misc) | **12** | `adhd-assistant`, `AI Agent Wars 2026`, `ask-matt` *(+อีก 9)* |
-| [mlops](#mlops) | **12** | `audiocraft-audio-generation`, `dspy`, `evaluating-llms-harness` *(+อีก 9)* |
+| [mlops](#mlops) | **10** | `audiocraft-audio-generation`, `dspy`, `evaluating-llms-harness` *(+อีก 7)* |
 | [note-taking](#note-taking) | **1** | `obsidian` |
-| [productivity](#productivity) | **25** | `airtable`, `brain-hacking-and-productivity`, `business-analysis-frameworks` *(+อีก 22)* |
+| [productivity](#productivity) | **24** | `airtable`, `brain-hacking-and-productivity`, `business-analysis-frameworks` *(+อีก 21)* |
+| [project-management](#project-management) | **1** | `orchestrating-kanban-subagents` |
 | [red-teaming](#red-teaming) | **1** | `godmode` |
 | [research](#research) | **5** | `arxiv`, `blogwatcher`, `llm-wiki` *(+อีก 2)* |
 | [smart-home](#smart-home) | **1** | `openhue` |
 | [social-media](#social-media) | **1** | `xurl` |
-| [software-development](#software-development) | **93** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 90)* |
+| [software-development](#software-development) | **94** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 91)* |
 
 ---
+
+## <a id=".archive"></a>📂 .archive (3 skills)
+
+| Skill Name | Description | Path |
+|---|---|---|
+| `ocr-and-documents` | Extract text from PDFs/scans (pymupdf, marker-pdf). | `.archive/ocr-and-documents` |
+| `ollama-local-inference` | Run and manage local LLMs and embedding models using Ollama. | `.archive/ollama-local-inference` |
+| `weights-and-biases` | W&B: log ML experiments, sweeps, model registry, dashboards. | `.archive/weights-and-biases` |
 
 ## <a id="api-integration"></a>📂 api-integration (1 skills)
 
@@ -54,13 +66,20 @@
 | `imessage` | Send and receive iMessages/SMS via the imsg CLI on macOS. | `apple/imessage` |
 | `macos-computer-use` | / | `apple/macos-computer-use` |
 
+## <a id="architecture"></a>📂 architecture (2 skills)
+
+| Skill Name | Description | Path |
+|---|---|---|
+| `ddex-metadata-architecture` | Refactors flat music metadata into relational DDEX standards. | `architecture/ddex-metadata-architecture` |
+| `loop-engineering-onboarding` | Scaffolds Loop Engineering, tailwind v4, and binds subagents. | `architecture/loop-engineering-onboarding` |
+
 ## <a id="automation"></a>📂 automation (1 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
 | `python-media-automation` | Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated... | `automation/python-media-automation` |
 
-## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (25 skills)
+## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (26 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -70,6 +89,7 @@
 | `claude-code` | Delegate coding to Claude Code CLI (features, PRs). | `autonomous-ai-agents/claude-code` |
 | `claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. | `autonomous-ai-agents/claude-handoff` |
 | `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). | `autonomous-ai-agents/codex` |
+| `cron-job-workflows` | Guidelines and pitfalls for executing headless, non-interactive tasks as a scheduled cron job in Hermes. | `autonomous-ai-agents/cron-job-workflows` |
 | `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies | `autonomous-ai-agents/dispatching-parallel-agents` |
 | `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that ... | `autonomous-ai-agents/find-skills` |
 | `google-adk` | Use when building multi-agent systems with Google's Agent Development Kit (ADK), configuring agents, tools, workflows, state, and sessions. | `autonomous-ai-agents/google-adk` |
@@ -98,12 +118,13 @@
 | `hyperliquid` | Hyperliquid market data, account history, trade review. | `blockchain/hyperliquid` |
 | `solana` | Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection... | `blockchain/solana` |
 
-## <a id="business"></a>📂 business (20 skills)
+## <a id="business"></a>📂 business (21 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
 | `account-maintenance` | Process account maintenance requests across the account lifecycle. Use when changing a client address or contact info with identity verif... | `business/account-maintenance` |
 | `account-opening-compliance` | Embed compliance controls into account opening and verify regulatory readiness. Use when designing CIP/KYC identity verification gates, i... | `business/account-opening-compliance` |
+| `admin-hub-refactoring` | Audits and plans a complete e-commerce admin refactoring. | `business/admin-hub-refactoring` |
 | `ai-boss-assistant` | Transform any AI into a professional executive assistant with battle-tested personas and workflows. Complete templates for Google Workspa... | `business/ai-boss-assistant` |
 | `ai-product-strategy` | Help users define AI product strategy. Use when someone is building an AI product, deciding where to apply AI in their product, planning ... | `business/ai-product-strategy` |
 | `business-analyst` | Master modern business analysis with AI-powered analytics, real-time dashboards, and data-driven insights. Build comprehensive KPI framew... | `business/business-analyst` |
@@ -164,7 +185,7 @@
 | `jupyter-live-kernel` | Iterative Python via live Jupyter kernel (hamelnb). | `data-science/jupyter-live-kernel` |
 | `prefect-workflows` | Design, monitor, and run data orchestrations with Prefect. | `data-science/prefect-workflows` |
 
-## <a id="devops"></a>📂 devops (40 skills)
+## <a id="devops"></a>📂 devops (41 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -207,7 +228,14 @@
 | `Traefik` | Avoid common Traefik mistakes — router priority, TLS configuration, Docker labels syntax, and middleware ordering. | `devops/traefik` |
 | `traefik-docker29-fix` | Fix Traefik Docker API errors on Docker Engine 29.4 plus. | `devops/traefik-docker29-fix` |
 | `tts-audio-post-processing` | Techniques for processing, chunking, and mastering AI-generated Thai audio (Edge-TTS / gTTS). | `devops/tts-audio-post-processing` |
+| `vps-disk-space-recovery` | Recover emergency host disk space on constrained Linux VPS. | `devops/vps-disk-space-recovery` |
 | `webhook-subscriptions` | Webhook subscriptions: event-driven agent runs. | `devops/webhook-subscriptions` |
+
+## <a id="domain-knowledge"></a>📂 domain-knowledge (1 skills)
+
+| Skill Name | Description | Path |
+|---|---|---|
+| `music-metadata-standards` | DDEX and Believe compliant metadata structures for music catalogs. | `domain-knowledge/music-metadata-standards` |
 
 ## <a id="email"></a>📂 email (1 skills)
 
@@ -215,7 +243,7 @@
 |---|---|---|
 | `himalaya` | Himalaya CLI: IMAP/SMTP email from terminal. | `email/himalaya` |
 
-## <a id="finance"></a>📂 finance (132 skills)
+## <a id="finance"></a>📂 finance (133 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -328,6 +356,7 @@
 | `settrade-adaptive-survival-bot` | Deploy an adaptive algorithmic trading bot for Thai stocks. | `finance/settrade-adaptive-survival-bot` |
 | `settrade-dw-algo-trading` | คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้... | `finance/settrade-dw-algo-trading` |
 | `settrade-dw-daily-income-bot` | Deploy an automated DW trading bot using Settrade Open API. | `finance/settrade-dw-daily-income-bot` |
+| `settrade-dw-quant-execution` | Execute DW trading strategies via Settrade Open API. | `finance/settrade-dw-quant-execution` |
 | `settrade-marketrep-derivatives-python` | Guide and comprehensive API reference for Settrade Open API (MarketRep Derivatives SDK v2 for Python). | `finance/settrade-marketrep-derivatives-python` |
 | `settrade-multi-stock-scanner` | Deploy a multi-stock Settrade scanner via Hermes cronjob. | `finance/settrade-multi-stock-scanner` |
 | `settrade-order-debugging` | Debug Settrade API order rejections and OSS errors. | `finance/settrade-order-debugging` |
@@ -370,7 +399,7 @@
 | `github-pr-workflow` | GitHub PR lifecycle: branch, commit, open, CI, merge. | `github/github-pr-workflow` |
 | `github-repo-management` | Clone/create/fork repos; manage remotes, releases. | `github/github-repo-management` |
 
-## <a id="hermes-agent"></a>📂 hermes-agent (4 skills)
+## <a id="hermes-agent"></a>📂 hermes-agent (5 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -378,6 +407,7 @@
 | `ecosystem-knowledge-orchestration` | Convert continuous domain inputs into cross-linked modules. | `hermes-agent/ecosystem-knowledge-orchestration` |
 | `hermes-gateway-multiplexer-fix` | Fixes Hermes Gateway conflicts when multiplexing profiles. | `hermes-agent/hermes-gateway-multiplexer-fix` |
 | `iterative-domain-mapping` | Structure continuous domain expertise into linked skills. | `hermes-agent/iterative-domain-mapping` |
+| `multi-profile-skills-sync` | Sync and link agent skills across all profiles and GitHub. | `hermes-agent/multi-profile-skills-sync` |
 
 ## <a id="marketing"></a>📂 marketing (21 skills)
 
@@ -448,7 +478,7 @@
 | `research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user want... | `misc/research` |
 | `yuanbao` | Yuanbao (元宝) groups: @mention users, query info/members. | `misc/yuanbao` |
 
-## <a id="mlops"></a>📂 mlops (12 skills)
+## <a id="mlops"></a>📂 mlops (10 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -459,11 +489,9 @@
 | `llama-cpp` | llama.cpp local GGUF inference + HF Hub model discovery. | `mlops/inference/llama-cpp` |
 | `mlflow-dataset-tracking` | Guide and implementation patterns for measuring, tracking, and versioning datasets using MLflow (mlflow.data API). | `mlops/mlflow-dataset-tracking` |
 | `obliteratus` | OBLITERATUS: abliterate LLM refusals (diff-in-means). | `mlops/inference/obliteratus` |
-| `ollama-local-inference` | Run and manage local LLMs and embedding models using Ollama. | `mlops/ollama-local-inference` |
 | `pm-mlops-trading-framework` | Project Management framework and strict governance rules for building an end-to-end MLOps AI Trading Platform (MT5 + ONNX). | `mlops/pm-mlops-trading-framework` |
 | `segment-anything-model` | SAM: zero-shot image segmentation via points, boxes, masks. | `mlops/models/segment-anything` |
 | `serving-llms-vllm` | vLLM: high-throughput LLM serving, OpenAI API, quantization. | `mlops/inference/vllm` |
-| `weights-and-biases` | W&B: log ML experiments, sweeps, model registry, dashboards. | `mlops/evaluation/weights-and-biases` |
 
 ## <a id="note-taking"></a>📂 note-taking (1 skills)
 
@@ -471,7 +499,7 @@
 |---|---|---|
 | `obsidian` | Read, search, create, and edit notes in the Obsidian vault. Provides vault-first templates, canonical data schema, and repeatable scripts... | `note-taking/obsidian` |
 
-## <a id="productivity"></a>📂 productivity (25 skills)
+## <a id="productivity"></a>📂 productivity (24 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -488,7 +516,6 @@
 | `notion` | Notion API + ntn CLI: pages, databases, markdown, Workers. | `productivity/notion` |
 | `obsidian-personal-templates` | / | `productivity/obsidian-personal-templates` |
 | `obsidian-workflow` | / | `productivity/obsidian-workflow` |
-| `ocr-and-documents` | Extract text from PDFs/scans (pymupdf, marker-pdf). | `productivity/ocr-and-documents` |
 | `online-income-and-monetization` | Strategies for online monetization, content creation, digital products, and building a professional brand. | `productivity/online-income-and-monetization` |
 | `personal-productivity` | Build a Personal Productivity System Pack (weekly timebox plan, capture+to-do system, daily/weekly review rituals, and a 7-day rollout). ... | `productivity/personal-productivity` |
 | `petdex` | Install and select animated petdex mascots for Hermes. | `productivity/petdex` |
@@ -500,6 +527,12 @@
 | `time-management-and-productivity` | Guidelines for task prioritization, time blocking, and learning systems (Second Brain/Obsidian). | `productivity/time-management-and-productivity` |
 | `user-communication-preferences` | Embed a user's preferred communication style and action-oriented conventions for Hermes Agent sessions (tone, language, verbosity, action... | `productivity/user-communication-preferences` |
 | `vision-net-registrar` | Use when scraping or integrating academic data (schedules, grades, registration) from universities using Vision Net E-Registrar (e.g., RM... | `productivity/vision-net-registrar` |
+
+## <a id="project-management"></a>📂 project-management (1 skills)
+
+| Skill Name | Description | Path |
+|---|---|---|
+| `orchestrating-kanban-subagents` | Creates a master plan, sets up Kanban tasks, and schedules subagent dispatch. | `project-management/orchestrating-kanban-subagents` |
 
 ## <a id="red-teaming"></a>📂 red-teaming (1 skills)
 
@@ -529,7 +562,7 @@
 |---|---|---|
 | `xurl` | X/Twitter via xurl CLI: post, search, DM, media, v2 API. | `social-media/xurl` |
 
-## <a id="software-development"></a>📂 software-development (93 skills)
+## <a id="software-development"></a>📂 software-development (94 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -571,6 +604,7 @@
 | `liff-external-payment-integration` | Integrate external payments in LINE LIFF apps. | `software-development/web-development/liff-external-payment-integration` |
 | `line-liff-development` | Development guide and pitfalls for LINE Front-end Framework (LIFF) apps based on official documentation. | `software-development/web-development/line-liff-development` |
 | `line-mini-app-liff-serverless` | Create LINE MINI Apps using LIFF based on the SupremeTech serverless approach. Use when planning, designing, or building a LINE MINI App ... | `software-development/web-development/line-mini-app-liff-serverless` |
+| `loop-engineering-integration` | Sets up and integrates Loop Engineering boundaries (loop-init, loop-constraints) with Subagent-Driven Development. | `software-development/loop-engineering-integration` |
 | `loop-me` | Grill me about specs for the workflows I want to build, within this workspace. | `software-development/loop-me` |
 | `migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as` in tes... | `software-development/migrate-to-shoehorn` |
 | `multi-profile-messaging-gateway` | Configure and route multiple Hermes profiles within a single Discord/Telegram gateway (Multiplexer). | `software-development/multi-profile-discord-gateway` |

@@ -2,7 +2,7 @@
 
 > **Repository:** [SatangTheValue/ai-skills](https://github.com/SatangTheValue/ai-skills)  
 > **ผู้ดูแล:** Thanapol N (Satang) · ผู้ช่วย: ต้นทอง (Hermes Agent)  
-> **อัปเดตล่าสุด:** 2026-09-24
+> **อัปเดตล่าสุด:** 2026-09-28
 
 ---
 
@@ -26,7 +26,13 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (454 skills ใน 27 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (464 skills ใน 31 หมวดหมู่)
+
+### 📁 .ARCHIVE (3)
+
+- **`ocr-and-documents`**: Extract text from PDFs/scans (pymupdf, marker-pdf).
+- **`ollama-local-inference`**: Run and manage local LLMs and embedding models using Ollama.
+- **`weights-and-biases`**: W&B: log ML experiments, sweeps, model registry, dashboards.
 
 ### 📁 API-INTEGRATION (1)
 
@@ -40,11 +46,16 @@ hermes skills view <ชื่อ-skill>
 - **`imessage`**: Send and receive iMessages/SMS via the imsg CLI on macOS.
 - **`macos-computer-use`**: /
 
+### 📁 ARCHITECTURE (2)
+
+- **`ddex-metadata-architecture`**: Refactors flat music metadata into relational DDEX standards.
+- **`loop-engineering-onboarding`**: Scaffolds Loop Engineering, tailwind v4, and binds subagents.
+
 ### 📁 AUTOMATION (1)
 
 - **`python-media-automation`**: Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated pipelines or async servers.
 
-### 📁 AUTONOMOUS-AI-AGENTS (25)
+### 📁 AUTONOMOUS-AI-AGENTS (26)
 
 - **`agent-frameworks-integration`**: Use when designing, building, or orchestrating multi-agent systems via A2A or LangGraph.
 - **`agent-reach-integration`**: Install, configure, and operate the Agent Reach (Panniantong) framework to give agents internet channel access (X, Reddit, Bilibili, YouTube, Exa).
@@ -52,6 +63,7 @@ hermes skills view <ชื่อ-skill>
 - **`claude-code`**: Delegate coding to Claude Code CLI (features, PRs).
 - **`claude-handoff`**: Hand the current conversation off to a fresh background agent that picks up the work immediately.
 - **`codex`**: Delegate coding to OpenAI Codex CLI (features, PRs).
+- **`cron-job-workflows`**: Guidelines and pitfalls for executing headless, non-interactive tasks as a scheduled cron job in Hermes.
 - **`dispatching-parallel-agents`**: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
 - **`find-skills`**: Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.
 - **`google-adk`**: Use when building multi-agent systems with Google's Agent Development Kit (ADK), configuring agents, tools, workflows, state, and sessions.
@@ -78,10 +90,11 @@ hermes skills view <ชื่อ-skill>
 - **`hyperliquid`**: Hyperliquid market data, account history, trade review.
 - **`solana`**: Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection, and live network stats. Uses Solana RPC + CoinGecko. No API key required.
 
-### 📁 BUSINESS (20)
+### 📁 BUSINESS (21)
 
 - **`account-maintenance`**: Process account maintenance requests across the account lifecycle. Use when changing a client address or contact info with identity verification, updating beneficiary designations after marriage, divorce, birth, or death, re-registering or re-titling an account to a trust or new entity, selecting tax lot methods or fixing cost basis records, applying legal or compliance holds or Reg T freezes, setting up systematic withdrawals or standing instructions, processing a death notification and estate account setup, handling a QDRO, power of attorney, or guardianship, closing accounts and managing escheatment, or designing data quality review programs.
 - **`account-opening-compliance`**: Embed compliance controls into account opening and verify regulatory readiness. Use when designing CIP/KYC identity verification gates, implementing OFAC and sanctions screening at onboarding, collecting beneficial ownership certification for entity or trust accounts, building risk-based approval tiers that route applications by risk level, defining compliance screening requirements and exception tracking, adding senior investor protections (FINRA Rules 2165/4512) or trusted contact procedures, establishing CDD risk ratings and ongoing monitoring triggers, or preparing account opening procedures for SEC or FINRA examination. For the operational pipeline these controls plug into, see account-opening-workflow.
+- **`admin-hub-refactoring`**: Audits and plans a complete e-commerce admin refactoring.
 - **`ai-boss-assistant`**: Transform any AI into a professional executive assistant with battle-tested personas and workflows. Complete templates for Google Workspace integration (Gmail, Calendar, Drive), milestone delivery system, and security guidelines.
 - **`ai-product-strategy`**: Help users define AI product strategy. Use when someone is building an AI product, deciding where to apply AI in their product, planning an AI roadmap, evaluating build vs buy for AI capabilities, or figuring out how to integrate AI into existing products.
 - **`business-analyst`**: Master modern business analysis with AI-powered analytics, real-time dashboards, and data-driven insights. Build comprehensive KPI frameworks, predictive models, and strategic recommendations.
@@ -136,7 +149,7 @@ hermes skills view <ชื่อ-skill>
 - **`jupyter-live-kernel`**: Iterative Python via live Jupyter kernel (hamelnb).
 - **`prefect-workflows`**: Design, monitor, and run data orchestrations with Prefect.
 
-### 📁 DEVOPS (40)
+### 📁 DEVOPS (41)
 
 - **`9router`**: Entry point for 9Router — local/remote AI gateway with OpenAI-compatible REST for chat, image, TTS, embeddings, web search, web fetch. Use when the user mentions 9Router, NINEROUTER_URL, or wants AI without writing provider boilerplate. This skill covers setup + indexes capability skills; fetch the relevant capability SKILL.md from the URLs below when needed.
 - **`9router-chat`**: Chat / code generation via 9Router using OpenAI /v1/chat/completions or Anthropic /v1/messages format with streaming + auto-fallback combos. Use when the user wants to ask an LLM, generate code, summarize text, or run prompts through 9Router.
@@ -177,13 +190,18 @@ hermes skills view <ชื่อ-skill>
 - **`Traefik`**: Avoid common Traefik mistakes — router priority, TLS configuration, Docker labels syntax, and middleware ordering.
 - **`traefik-docker29-fix`**: Fix Traefik Docker API errors on Docker Engine 29.4 plus.
 - **`tts-audio-post-processing`**: Techniques for processing, chunking, and mastering AI-generated Thai audio (Edge-TTS / gTTS).
+- **`vps-disk-space-recovery`**: Recover emergency host disk space on constrained Linux VPS.
 - **`webhook-subscriptions`**: Webhook subscriptions: event-driven agent runs.
+
+### 📁 DOMAIN-KNOWLEDGE (1)
+
+- **`music-metadata-standards`**: DDEX and Believe compliant metadata structures for music catalogs.
 
 ### 📁 EMAIL (1)
 
 - **`himalaya`**: Himalaya CLI: IMAP/SMTP email from terminal.
 
-### 📁 FINANCE (132)
+### 📁 FINANCE (133)
 
 - **`3-statement-model`**: Build fully-integrated 3-statement models (IS, BS, CF) in Excel with working capital schedules, D&A roll-forwards, debt schedule, and the plugs that make cash and retained earnings tie. Pairs with excel-author.
 - **`ai-trading-continuous-learning`**: Architecture and guidelines for building a Continuous Learning Pipeline for AI Trading models (Data Lake to MT5 ONNX) targeting Risk-adjusted Returns.
@@ -294,6 +312,7 @@ hermes skills view <ชื่อ-skill>
 - **`settrade-adaptive-survival-bot`**: Deploy an adaptive algorithmic trading bot for Thai stocks.
 - **`settrade-dw-algo-trading`**: คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้วย Python พร้อมวิเคราะห์พารามิเตอร์แบบเจาะลึก
 - **`settrade-dw-daily-income-bot`**: Deploy an automated DW trading bot using Settrade Open API.
+- **`settrade-dw-quant-execution`**: Execute DW trading strategies via Settrade Open API.
 - **`settrade-marketrep-derivatives-python`**: Guide and comprehensive API reference for Settrade Open API (MarketRep Derivatives SDK v2 for Python).
 - **`settrade-multi-stock-scanner`**: Deploy a multi-stock Settrade scanner via Hermes cronjob.
 - **`settrade-order-debugging`**: Debug Settrade API order rejections and OSS errors.
@@ -332,12 +351,13 @@ hermes skills view <ชื่อ-skill>
 - **`github-pr-workflow`**: GitHub PR lifecycle: branch, commit, open, CI, merge.
 - **`github-repo-management`**: Clone/create/fork repos; manage remotes, releases.
 
-### 📁 HERMES-AGENT (4)
+### 📁 HERMES-AGENT (5)
 
 - **`cross-linked-skill-authoring`**: Build modular, cross-linked Hermes skills from raw domain input.
 - **`ecosystem-knowledge-orchestration`**: Convert continuous domain inputs into cross-linked modules.
 - **`hermes-gateway-multiplexer-fix`**: Fixes Hermes Gateway conflicts when multiplexing profiles.
 - **`iterative-domain-mapping`**: Structure continuous domain expertise into linked skills.
+- **`multi-profile-skills-sync`**: Sync and link agent skills across all profiles and GitHub.
 
 ### 📁 MARKETING (21)
 
@@ -400,7 +420,7 @@ hermes skills view <ชื่อ-skill>
 - **`research`**: Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.
 - **`yuanbao`**: Yuanbao (元宝) groups: @mention users, query info/members.
 
-### 📁 MLOPS (12)
+### 📁 MLOPS (10)
 
 - **`audiocraft-audio-generation`**: AudioCraft: MusicGen text-to-music, AudioGen text-to-sound.
 - **`dspy`**: DSPy: declarative LM programs, auto-optimize prompts, RAG.
@@ -409,17 +429,15 @@ hermes skills view <ชื่อ-skill>
 - **`llama-cpp`**: llama.cpp local GGUF inference + HF Hub model discovery.
 - **`mlflow-dataset-tracking`**: Guide and implementation patterns for measuring, tracking, and versioning datasets using MLflow (mlflow.data API).
 - **`obliteratus`**: OBLITERATUS: abliterate LLM refusals (diff-in-means).
-- **`ollama-local-inference`**: Run and manage local LLMs and embedding models using Ollama.
 - **`pm-mlops-trading-framework`**: Project Management framework and strict governance rules for building an end-to-end MLOps AI Trading Platform (MT5 + ONNX).
 - **`segment-anything-model`**: SAM: zero-shot image segmentation via points, boxes, masks.
 - **`serving-llms-vllm`**: vLLM: high-throughput LLM serving, OpenAI API, quantization.
-- **`weights-and-biases`**: W&B: log ML experiments, sweeps, model registry, dashboards.
 
 ### 📁 NOTE-TAKING (1)
 
 - **`obsidian`**: Read, search, create, and edit notes in the Obsidian vault. Provides vault-first templates, canonical data schema, and repeatable scripts for financial-ledger workflows in Obsidian.
 
-### 📁 PRODUCTIVITY (25)
+### 📁 PRODUCTIVITY (24)
 
 - **`airtable`**: Airtable REST API via curl. Records CRUD, filters, upserts.
 - **`brain-hacking-and-productivity`**: Neuroscience-based protocols for brain hacking, entering flow states, managing energy/dopamine, and optimizing cognitive execution.
@@ -434,7 +452,6 @@ hermes skills view <ชื่อ-skill>
 - **`notion`**: Notion API + ntn CLI: pages, databases, markdown, Workers.
 - **`obsidian-personal-templates`**: /
 - **`obsidian-workflow`**: /
-- **`ocr-and-documents`**: Extract text from PDFs/scans (pymupdf, marker-pdf).
 - **`online-income-and-monetization`**: Strategies for online monetization, content creation, digital products, and building a professional brand.
 - **`personal-productivity`**: Build a Personal Productivity System Pack (weekly timebox plan, capture+to-do system, daily/weekly review rituals, and a 7-day rollout). Use for timeboxing, calendar blocking, and staying on top of high-volume leadership work. Category: Career.
 - **`petdex`**: Install and select animated petdex mascots for Hermes.
@@ -446,6 +463,10 @@ hermes skills view <ชื่อ-skill>
 - **`time-management-and-productivity`**: Guidelines for task prioritization, time blocking, and learning systems (Second Brain/Obsidian).
 - **`user-communication-preferences`**: Embed a user's preferred communication style and action-oriented conventions for Hermes Agent sessions (tone, language, verbosity, action-first behavior).
 - **`vision-net-registrar`**: Use when scraping or integrating academic data (schedules, grades, registration) from universities using Vision Net E-Registrar (e.g., RMUTT, TU, WU).
+
+### 📁 PROJECT-MANAGEMENT (1)
+
+- **`orchestrating-kanban-subagents`**: Creates a master plan, sets up Kanban tasks, and schedules subagent dispatch.
 
 ### 📁 RED-TEAMING (1)
 
@@ -467,7 +488,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`xurl`**: X/Twitter via xurl CLI: post, search, DM, media, v2 API.
 
-### 📁 SOFTWARE-DEVELOPMENT (93)
+### 📁 SOFTWARE-DEVELOPMENT (94)
 
 - **`agent-skills-github-sync`**: Use when synchronizing Hermes Agent local skills with a remote GitHub repository. Guides the backup, management, and deployment of agent skills.
 - **`ai-content-studio-architecture`**: Architecture and workflows for the Satang AI Studio multi-agent content generation platform.
@@ -507,6 +528,7 @@ hermes skills view <ชื่อ-skill>
 - **`liff-external-payment-integration`**: Integrate external payments in LINE LIFF apps.
 - **`line-liff-development`**: Development guide and pitfalls for LINE Front-end Framework (LIFF) apps based on official documentation.
 - **`line-mini-app-liff-serverless`**: Create LINE MINI Apps using LIFF based on the SupremeTech serverless approach. Use when planning, designing, or building a LINE MINI App with LIFF, especially for membership management or m-commerce without a dedicated backend server.
+- **`loop-engineering-integration`**: Sets up and integrates Loop Engineering boundaries (loop-init, loop-constraints) with Subagent-Driven Development.
 - **`loop-me`**: Grill me about specs for the workflows I want to build, within this workspace.
 - **`migrate-to-shoehorn`**: Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as` in tests, or needs partial test data.
 - **`multi-profile-messaging-gateway`**: Configure and route multiple Hermes profiles within a single Discord/Telegram gateway (Multiplexer).

@@ -57,6 +57,18 @@ REPO=$(echo "$OWNER_REPO" | cut -d/ -f2)
 
 ## 1. Cloning Repositories
 
+**Pitfall: Author identity unknown**
+When agents clone a repo to a fresh environment (like a temporary workspace or container), `git commit` will fail with `Author identity unknown` because the global git config is missing.
+**Fix**: Always set the local identity before committing in a fresh clone:
+```bash
+git config user.email "bot@example.com"
+git config user.name "AI Bot"
+```
+
+**Pitfall: Find/Replace corrupting git index**
+When doing a whole-repo search and replace (e.g. renaming a project), always exclude the `.git/` directory, otherwise you will corrupt the repository and break `git status`.
+**Fix**: `find . -type f -not -path "*/\.git/*" -exec sed -i 's/old/new/g' {} +`
+
 Cloning is pure `git` — works identically either way:
 
 ```bash

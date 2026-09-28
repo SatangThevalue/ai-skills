@@ -22,7 +22,9 @@ Execute implementation plans by dispatching fresh subagents per task with system
 
 ## When to Use
 
-Use this skill when:
+**Cron Job Constraint:** If you are running as a scheduled cron job, do **NOT** use subagent-driven-development or `delegate_task` in background mode unless you have a blocking wait loop. Returning your final response immediately will kill the cron process and discard all running subagents. Use inline execution or `execute_code` instead.
+
+```dot
 - You have an implementation plan (from writing-plans skill or user requirements)
 - Tasks are mostly independent
 - Quality and spec compliance are important

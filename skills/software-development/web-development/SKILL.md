@@ -118,6 +118,18 @@ Saying "I've implemented it" / "fixed it" / "it should work" without evidence is
 - Do not delete or skip a failing test to make CI green — fix it, or explain why the test is actually wrong and change the test with justification.
 - Do not mark a task complete because "the code compiles". Compilation is the bare minimum, not the goal.
 
+### Tailwind CSS v4 in Next.js & Theme Overwrites
+- Tailwind v4 eliminates `tailwind.config.ts`.
+- Install `@tailwindcss/postcss` instead of the legacy `tailwindcss` PostCSS plugin.
+- In `globals.css`, use `@import "tailwindcss";` and define variables using `@theme { --color-background: #000; }`.
+- If Next.js builds throw `Cannot apply unknown utility class bg-background` or complain about missing `@reference`, you are likely mixing v3 config files with v4 dependencies. Remove `tailwind.config.ts` and migrate theme configurations directly to CSS variables.
+- **NEVER completely overwrite an existing `globals.css`** when migrating to Tailwind v4 or applying a new theme. Many Next.js projects contain hundreds of lines of critical layout/component CSS. Always `sed` or patch specific CSS variables (`--bg-primary`, etc.) to inject new colors without destroying the structural CSS.
+
+### Drizzle ORM vs Docker init.sql
+- When applying schema changes via `drizzle-kit push`, ensure the database is empty of seeded data.
+- If your `docker-compose.yml` mounts an `init.sql` script that inserts mock data, Drizzle will detect conflicts (like unique constraints) and prompt interactively to truncate tables. This interactive prompt crashes headless agents.
+- **Fix:** Remove `init.sql` from the `docker-compose.yml` volume mounts, run `drizzle-kit push`, and execute a separate data seeding script afterwards.
+
 ## When to use this skill
 
 Use this skill for Web engineering work such as:

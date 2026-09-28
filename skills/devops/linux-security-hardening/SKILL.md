@@ -12,6 +12,16 @@ description: Hardening Linux VPS environments, securing Docker ports, configurin
 
 ## 1. Hunting & Terminating Rogue Processes
 - **Detect resource hogs:** `ps -eo user,pid,%cpu,%mem,start,command --sort=-%cpu | head -n 20`
+- **Check failing/looping services:** Often high CPU spikes are caused by systemd user services stuck in crash loops (e.g. status 203/EXEC or duplicate process collisions):
+  ```bash
+  systemctl --user list-units --type=service --state=activating,failed
+  # Immediately halt and unregister runaway looping services:
+  systemctl --user disable --now <service_name>.service
+  ```
+- **Audit established outbound sockets:** Verify active external connections are benign cloud endpoints (Telegram, Cloudflare, Tailscale):
+  ```bash
+  python3 -c "import socket, struct; [print(f'{socket.inet_ntoa(struct.pack(\"<L\", int(p[1].split(\":\")[0], 16)))}:{int(p[1].split(\":\")[1], 16)} -> {socket.inet_ntoa(struct.pack(\"<L\", int(p[2].split(\":\")[0], 16)))}:{int(p[2].split(\":\")[1], 16)}') for p in [l.split() for l in open('/proc/net/tcp').readlines()[1:]] if p[3] == '01']"
+  ```
 - Look for unrecognized UIDs (e.g., `70`) or suspicious paths disguised as legitimate services (e.g., `/tmp/postgresql`).
 - **Sudo Workaround for Agents:** To kill processes owned by other users or `root`, `sudo` is required. If the user explicitly provides the `sudo` password for emergency response, automate execution without interactive prompts using `SUDO_ASKPASS`:
   ```bash

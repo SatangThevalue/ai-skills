@@ -169,6 +169,13 @@ function TodoList() {
 
 **Key Libraries:** MUI, Chakra UI, Radix UI, Headless UI for components. **@tanstack/react-virtual** for list virtualization. **Vitest + React Testing Library** for testing in Vite projects, **Jest + React Testing Library** for other setups, **Cypress** or **Playwright** for E2E.
 
+### Tailwind CSS v4 Integration
+React 2026 stack defaults to Tailwind CSS v4, which introduces significant changes:
+- Eliminates `tailwind.config.ts`.
+- Uses `@tailwindcss/postcss` instead of the legacy `tailwindcss` PostCSS plugin.
+- Relies on CSS variables via `@theme` directive in the main stylesheet (e.g., `@import "tailwindcss"; @theme { --color-background: #000; }`).
+- Mixing v3 config syntax in a v4 environment causes build errors like `Cannot apply unknown utility class` or missing `@reference`.
+
 ### Testing with Vitest
 
 For Vite projects, **Vitest** is the natural testing companion — it shares Vite's config, transforms, and plugin pipeline, so there's no separate test bundler to configure or keep in sync.
@@ -328,6 +335,8 @@ React in 2026 offers an abundance of choices:
 - **Port Collisions:** When running Next.js in Docker, map a free port (e.g., `3001:3000`) if the host's port 3000 is occupied by another service. Always check if the port is free with `curl` or by checking logs before committing to it.
 - **Middleware Deprecation:** Next.js 15+ routing configurations may trigger a warning: `The "middleware" file convention is deprecated. Please use "proxy" instead`. If encountering this, adhere to the framework's deprecation guidance.
 - **JSX compilation errors (`Unexpected token`):** Be very careful when using tools like `sed` to patch Next.js / React TSX files. Unescaped characters (like `<` or `>`) or incorrectly formatted HTML fragments (e.g. `</main>copy;` instead of `&copy;`) will immediately break the build and throw an "Unexpected token" error. When making substantial changes to a component, rewrite the file completely rather than attempting fragile inline sed replacements.
+
+- **Drizzle ORM vs Docker init.sql:** When managing schemas with `drizzle-kit push`, ensure your Postgres container doesn't use an `init.sql` script to pre-seed data. Drizzle will conflict with pre-existing data (prompting to truncate interactively, which breaks headless pipelines). Separate schema pushes from data seeding scripts.
 
 React is more powerful than ever. By choosing the right stack, you'll be well-equipped to build robust, scalable applications. Happy coding, and may your components re-render only when necessary!
 

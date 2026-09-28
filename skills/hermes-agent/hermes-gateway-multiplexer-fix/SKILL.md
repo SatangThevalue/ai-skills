@@ -41,13 +41,12 @@ Invoke diagnostic commands and systemctl fixes via the `terminal` tool. For the 
    ```bash
    journalctl --user -u hermes-gateway-<profile_name>.service -n 50 --no-pager
    ```
-   Look for the error: `The default gateway is running as a profile multiplexer and already serves profile...`
+   Look for the error: `The default gateway is running as a profile multiplexer and already serves profile...` or `❌ Gateway already running (PID ...)` (indicating an orphaned background process is blocking systemd).
 
 2. **Stop and Disable the Redundant Service**
-   Disable the profile-specific gateway so it stops fighting the multiplexer for port bindings and webhook/polling locks:
+   Disable the profile-specific gateway so it stops fighting the multiplexer or looping on duplicate PIDs:
    ```bash
-   systemctl --user stop hermes-gateway-<profile_name>.service
-   systemctl --user disable hermes-gateway-<profile_name>.service
+   systemctl --user disable --now hermes-gateway-<profile_name>.service
    ```
 
 3. **Enable the Multiplexer to Route All Profiles**
