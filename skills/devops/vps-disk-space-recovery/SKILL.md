@@ -32,6 +32,7 @@ Execute inspection and cleanup steps sequentially using the `terminal` tool.
 
 ## Quick Reference
 
+- Automated cleanup script: `bash ~/.hermes/skills/devops/vps-disk-space-recovery/scripts/clean_disk.sh`
 - Check root partition usage: `df -h /`
 - Vacuum journal logs: `/usr/bin/sudo -A journalctl --vacuum-size=100M`
 - Truncate runaway logs: `/usr/bin/sudo -A truncate -s 0 /var/log/syslog.1 /var/log/btmp /var/log/btmp.1`
