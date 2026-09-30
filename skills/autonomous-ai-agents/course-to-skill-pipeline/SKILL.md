@@ -70,5 +70,5 @@ cd ~/ai-skills && git add . && git commit -m "feat(skills): add <skill-name>" &&
 ## Verification
 Confirm the skill exists in the library and passes frontmatter parsing:
 ```bash
-hermes skills view course-to-skill-pipeline | grep -q "Convert course syllabi" && echo "SUCCESS: Skill loaded"
+grep -q "Convert course syllabi" ~/.hermes/skills/autonomous-ai-agents/course-to-skill-pipeline/SKILL.md && echo "SUCCESS: Skill loaded"
 ```
