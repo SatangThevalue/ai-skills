@@ -44,6 +44,7 @@ Invoke the task setup through the `terminal` tool, followed by the `cronjob` too
    ```bash
    hermes kanban create "Phase 1: Backend & DB Core Refactor"
    ```
+   *Note:* `hermes kanban create` accepts ONLY the title string. Passing a second argument for description causes a CLI error (`unrecognized arguments`). Always add descriptions in step 3 via `comment`.
 
 3. **Populate Task Details & Assignment**
    Use the `comment` command to add subagent assignments and specifics, then `assign` it to the active profile:
@@ -53,9 +54,12 @@ Invoke the task setup through the `terminal` tool, followed by the `cronjob` too
    ```
    *(Repeat Steps 2 and 3 for all phases)*
 
-4. **Schedule the Orchestrator (Cronjob)**
-   Use the `cronjob` tool (action="create") to schedule the execution. Provide a clear prompt instructing the orchestrator to read the Kanban board, load specifications, and fan out using `delegate_task`.
-   - **schedule:** `2026-09-28T21:01:28` (or use `in 2 hours` format if supported by your runtime version; otherwise use exact ISO timestamp).
+4. **Human Verification Gate (Strict Rule)**
+   Before dispatching execution subagents or starting background tasks, present the Kanban breakdown table to the user and wait for explicit confirmation ("ห้ามเริ่มทำงานก่อน ให้ฉันตรวจสอบก่อน"). Never start editing code or fanning out subagents until the user signs off on the roadmap.
+
+5. **Schedule or Dispatch the Orchestrator**
+   Use the `cronjob` tool (action="create") or sequential `delegate_task` calls to start the approved tasks. Cap parallel subagents to a maximum of 2 to prevent rate limits. Provide a clear prompt instructing the orchestrator to read the Kanban board, load specifications, and dispatch tasks.
+   - **schedule:** `2026-09-28T21:01:28` (or use exact ISO timestamp).
    - **enabled_toolsets:** `["coding", "terminal", "file", "delegation", "kanban"]`
    - **prompt example:**
      ```markdown
@@ -67,6 +71,8 @@ Invoke the task setup through the `terminal` tool, followed by the `cronjob` too
      ```
 
 ## Pitfalls
+- **Concurrent Subagent Quota (HTTP 429 & Protocol Violations):** Never dispatch 3 or more subagents in parallel with `delegate_task`. LLM providers enforce tight per-minute quotas that trigger `HTTP 503 / 429 Resource Exhausted`. Furthermore, monolithic tasks given to background agents can hit context limits, causing `Agent crash: worker exited cleanly without calling kanban_complete — protocol violation`. Keep concurrent subagents to a maximum of 2, and break large phases into micro-tasks (e.g., Phase 3.1, 3.2, 3.3).
+- **Kanban CLI Syntax:** `hermes kanban create "<title>"` takes only one positional argument. Do not pass description as a second parameter. Use `hermes kanban comment <id> "<desc>"` for specifications, and `hermes kanban complete <id> --summary "<summary>"` to finish.
 - **Cronjob Syntax:** Absolute ISO timestamps (e.g., `2026-09-28T21:01:28`) are the safest format. Relative human formats like "in 2 hours 42 minutes" are often rejected.
 - **Subagent Recursion:** Cronjobs invoking `delegate_task` will spawn background subagents. Ensure the cronjob prompt does not tell the subagent to spawn *more* subagents (max_spawn_depth defaults to 1).
 - **Tool Access:** Ensure the `cronjob` definition explicitly includes `"kanban"` and `"delegation"` in its `enabled_toolsets`, otherwise the cron agent will lack the tools to execute the plan.

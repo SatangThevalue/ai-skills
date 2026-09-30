@@ -33,7 +33,7 @@ Execute the procedure steps in order through the `terminal` and `patch` tools.
 ## Quick Reference
 - `npx @cobusgreyling/loop init`
 - `npm install -D @tailwindcss/postcss`
-- `drizzle-kit push --force`
+- `npx dotenv-cli -e .env.local -- npm run db:push --force`
 
 ## Procedure
 
@@ -65,7 +65,7 @@ Execute the procedure steps in order through the `terminal` and `patch` tools.
      },
    }
    ```
-   Patch `globals.css` to use v4 `@theme` block:
+   Patch `globals.css` to use v4 `@theme` block. CRITICAL: Ensure you do NOT overwrite existing complex CSS layouts. Only `patch` the `--color-background`, `--color-primary`, and `--color-text` values inside the original CSS, or insert the `@theme` block at the top without replacing the entire file. Overwriting the entire `globals.css` destroys custom component styling.
    ```css
    @import "tailwindcss";
 
@@ -108,6 +108,7 @@ Execute the procedure steps in order through the `terminal` and `patch` tools.
 - **Tailwind v4 Errors:** Next.js Turbopack might throw "Cannot apply unknown utility class `bg-background`" if `@tailwindcss/postcss` is not used. Avoid using `tailwindcss` directly in `postcss.config.js`.
 - **Drizzle Interactive Prompts:** `drizzle-kit push` fails in non-TTY environments. Always use the `--force` flag.
 - **Postgres Port Collisions:** Local port `5432` is often taken. Remapping to `5433:5432` prevents `EADDRINUSE` errors.
+- **Port 9999 Conflicts:** When running `npm run dev -- -p 9999` in background, subsequent identical calls will crash with `EADDRINUSE`. ALWAYS locate the previous background task (`lsof -t -i:9999`) and `kill -9` it before spawning a fresh Next.js dev server, or manage background processes natively with `hermes process`.
 
 ## Verification
 Run the dev server in the background and curl the endpoint to prove the application builds and serves successfully.

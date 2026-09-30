@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **464 skills** จัดระเบียบใน **31 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **466 skills** จัดระเบียบใน **31 หมวดหมู่**
 
 ---
 
@@ -15,7 +15,7 @@
 | [automation](#automation) | **1** | `python-media-automation` |
 | [autonomous-ai-agents](#autonomous-ai-agents) | **26** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 23)* |
 | [blockchain](#blockchain) | **3** | `evm`, `hyperliquid`, `solana` |
-| [business](#business) | **21** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 18)* |
+| [business](#business) | **22** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 19)* |
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
 | [creative](#creative) | **21** | `abstract-strategy`, `architecture-diagram`, `ascii-art` *(+อีก 18)* |
 | [data-science](#data-science) | **3** | `data-science-and-engineering`, `jupyter-live-kernel`, `prefect-workflows` |
@@ -26,7 +26,7 @@
 | [gaming](#gaming) | **2** | `minecraft-modpack-server`, `pokemon-player` |
 | [github](#github) | **6** | `codebase-inspection`, `github-auth`, `github-code-review` *(+อีก 3)* |
 | [hermes-agent](#hermes-agent) | **5** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 2)* |
-| [marketing](#marketing) | **21** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 18)* |
+| [marketing](#marketing) | **22** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 19)* |
 | [mcp](#mcp) | **2** | `fastmcp`, `native-mcp` |
 | [media](#media) | **14** | `ai-avatar-generation-stack`, `broll-free-video-automation`, `ffmpeg-complex-filter-video-automation` *(+อีก 11)* |
 | [misc](#misc) | **12** | `adhd-assistant`, `AI Agent Wars 2026`, `ask-matt` *(+อีก 9)* |
@@ -118,7 +118,7 @@
 | `hyperliquid` | Hyperliquid market data, account history, trade review. | `blockchain/hyperliquid` |
 | `solana` | Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection... | `blockchain/solana` |
 
-## <a id="business"></a>📂 business (21 skills)
+## <a id="business"></a>📂 business (22 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -139,6 +139,7 @@
 | `ecommerce-business-plan` | Create a comprehensive e-commerce business plan. Market analysis, financial projections, marketing strategy, operations planning, and mil... | `business/ecommerce-business-plan` |
 | `executive-dashboard-generator` | Transform raw data from CSVs, Google Sheets, or databases into executive-ready reports with visualizations, key metrics, trend analysis, ... | `business/executive-dashboard-generator` |
 | `founder-sales` | Help founders close their first customers and build repeatable sales processes. Use when someone is doing founder-led sales, trying to ge... | `business/founder-sales` |
+| `marketplace-bi-analytics` | Calculates marketplace GMV, take rate, and sales forecasts. | `business/marketplace-bi-analytics` |
 | `prefect-monetization-orchestration` | Blueprint for replacing n8n and simple cronjobs with Prefect 2.x/3.x for enterprise-grade, code-based orchestration of Thai monetization ... | `business/business-growth-skills/prefect-monetization-orchestration` |
 | `prefect-zero-touch-blueprint` | Enterprise architecture, strict coding standards, fallback rules, and Dockerized setup for the Zero-Touch Monetization suite using Prefect. | `business/business-growth-skills/prefect-zero-touch-blueprint` |
 | `thailand-monetization-2026` | Predictive trends and architectural strategies for generating income in Thailand (2026-2027), focusing on AI automation, algorithmic trad... | `business/business-growth-skills/thailand-monetization-2026` |
@@ -409,7 +410,7 @@
 | `iterative-domain-mapping` | Structure continuous domain expertise into linked skills. | `hermes-agent/iterative-domain-mapping` |
 | `multi-profile-skills-sync` | Sync and link agent skills across all profiles and GitHub. | `hermes-agent/multi-profile-skills-sync` |
 
-## <a id="marketing"></a>📂 marketing (21 skills)
+## <a id="marketing"></a>📂 marketing (22 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -425,6 +426,7 @@
 | `fb-reels-monetization-playbook` | ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า | `marketing/fb-reels-monetization-playbook` |
 | `shopee-affiliate-data-pipeline` | Fetch and score Shopee affiliate products using pricing and seasonal matrices. | `marketing/shopee-affiliate-data-pipeline` |
 | `social-seo-checklist` | > | `marketing/social-seo-checklist` |
+| `stop-scroll-video-framework` | สถาปัตยกรรมและเทคนิคการผลิตวิดีโอสั้นหยุดนิ้ว (Stop-Scroll High-Retention Reels) สไตล์แมนหยุดนิ้ว สำหรับ Facebook Reels / TikTok ด้วยเทคน... | `marketing/stop-scroll-video-framework` |
 | `thai-branding-strategy` | Use when creating, positioning, or executing personal and business branding strategies for individuals and businesses in Thailand, detail... | `marketing/thai-branding-strategy` |
 | `thai-business-marketing-guide` | Marketing & business strategy guide for all Thai business types. | `marketing/thai-business-marketing-guide` |
 | `thai-content-compliance` | Use when creating content for Thai audiences, checking for forbidden words, compliance with FDA (อย.) / CPB (สคบ.), and platform rules (T... | `marketing/thai-content-compliance` |

@@ -27,6 +27,10 @@ Invoke the analysis process through the `terminal` tool to draft a Markdown spec
 
 ## Quick Reference
 - Creates `docs/ADMIN_HUB_REFACTOR_SPEC.md`
+- Detailed metric formulas & Pareto SQL patterns: see `references/proactive-bi-analytics.md`
+
+## Human Approval Gate (Strict Rule)
+When the user requests an audit, refactor plan, or admin overhaul, **output the plan/summary ONLY and wait for explicit human approval before modifying code** ("ห้ามเริ่มทำงานก่อน ให้ฉันตรวจสอบก่อน"). Never start editing files or dispatching execution subagents until the user has reviewed and signed off on the roadmap.
 
 ## Procedure
 
@@ -68,13 +72,16 @@ Invoke the analysis process through the `terminal` tool to draft a Markdown spec
 
 3. **Establish Execution Timelines and Delegation**
    Do not modify files until the user reviews the generated plan. When approved:
-   - Use the `kanban` toolset (`hermes kanban create`, `hermes kanban assign`) to track execution.
-   - Schedule execution tasks using `hermes cron create` ensuring timestamps respect local offsets (e.g. `date -d '+23 hours 10 minutes' +'%Y-%m-%dT%H:%M:%S'`).
+   - Use the `kanban` toolset (`hermes kanban create`, `hermes kanban assign`) to track execution. Break the plan down into distinct smaller tickets rather than one monolithic task.
+   - Schedule execution tasks using `hermes cron create` ensuring absolute timestamps are used (e.g. `date -d '+23 hours 10 minutes' +'%Y-%m-%dT%H:%M:%S'`).
    - Use `delegate_task` to assign subsets of the plan to specific subagents (like `db_engineer`, `i18n_frontend_specialist`).
 
 ## Pitfalls
 - **Over-engineering:** Avoid detailing every single API endpoint in the PM plan; keep it focused on features and architecture.
 - **Mock Data Oversight:** Ensure the plan explicitly outlaws hardcoded logic or mock API returns.
+- **Unrequested Business Models:** When designing marketplace analytics, strictly respect the business model constraint (e.g. pure digital file sales for single tracks and albums). Do not introduce subscriptions or complex recurring billing models unless explicitly requested.
+- **Subagent Rate Limits (HTTP 429):** Fanning out 3+ background subagents concurrently frequently triggers API provider rate limits (429 Resource Exhausted). Cap parallel subagents to a maximum of 2, or serialize execution through the primary agent for multi-file refactoring.
+- **Agent Context Limits / Protocol Violations:** Do not assign a single subagent to execute a massive admin overhaul in one phase. The resulting diffs will exceed context bounds and the agent will crash with a `protocol violation` (rc=0 without completion). Break the execution into smaller, targeted phases (e.g., "Phase 3.1 Finance", "Phase 3.2 Moderation") and assign them separately.
 
 ## Verification
 Verify the document was created successfully:

@@ -35,7 +35,7 @@ Before declaring calendar or mail unauthorized in a cron job or headless run:
 
 If you are running in a background process or as a cron job, you will not have interactive access to the user to perform OAuth flows. Do not attempt to run `gws auth login` yourself via terminal, and do not fall into a retry loop if it fails. If tools like `gws` or `himalaya` fail due to missing setup/credentials, report this cleanly in the final delivery output and exit gracefully.
 
-Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
+Gmail, Calendar, Drive, Contacts, Sheets, Docs, and Tasks — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
 
 ## References
 
@@ -318,6 +318,20 @@ $GAPI docs create --title "Draft" --body "First paragraph..."
 $GAPI docs append DOC_ID --text "Additional content to append"
 ```
 
+### Tasks
+
+```bash
+# List task lists
+$GAPI tasks lists
+
+# List tasks in default list
+$GAPI tasks list
+$GAPI tasks list --tasklist TASKLIST_ID
+
+# Create task
+$GAPI tasks create --title "Deploy v1" --notes "Production release checklist" --due 2026-10-01T09:00:00Z
+```
+
 ## Output Format
 
 All commands return JSON. Parse with `jq` or read directly. Key fields:
@@ -353,10 +367,10 @@ All commands return JSON. Parse with `jq` or read directly. Key fields:
 | Problem | Fix |
 |---------|-----|
 | `NOT_AUTHENTICATED` | Run setup Steps 2-5 above |
-| `REFRESH_FAILED` | Token revoked or expired — redo Steps 3-5 |
+| `REFRESH_FAILED` / `invalid_grant` / `TOKEN_REVOKED` | Token revoked or expired. Google Cloud OAuth Apps in 'Testing' mode have refresh tokens that expire every 7 days. Re-run `$GSETUP --auth-url` and re-auth, or publish the OAuth consent screen to 'In Production' in Google Cloud Console. |
 | `HttpError 403: Insufficient Permission` | Missing API scope — `$GSETUP --revoke` then redo Steps 3-5 |
-| `AUTHENTICATED (partial)` or "Token missing scopes" | New write capabilities (Drive write/delete, Docs create/edit) require re-authorization. `$GSETUP --revoke` then redo Steps 3-5 to grant the upgraded scopes. |
-| `HttpError 403: Access Not Configured` | API not enabled — user needs to enable it in Google Cloud Console |
+| `AUTHENTICATED (partial)` or "Token missing scopes" | New write capabilities (Drive write/delete, Docs create/edit, Tasks) require re-authorization. `$GSETUP --revoke` then redo Steps 3-5 to grant the upgraded scopes. |
+| `HttpError 403: Access Not Configured` | API not enabled (e.g. Google Tasks API). Enable it in Google Cloud Console at `https://console.developers.google.com/apis/api/<api-name>.googleapis.com/overview?project=<project_id>`. |
 | `ModuleNotFoundError` | Run `$GSETUP --install-deps` |
 | Advanced Protection blocks auth | Workspace admin must allowlist the OAuth client ID |
 

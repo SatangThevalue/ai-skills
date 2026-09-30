@@ -87,6 +87,9 @@ Execute inspection and cleanup steps sequentially using the `terminal` tool.
    hermes cron pause <job_id>
    ```
 
+7. **Deploy Recurring Watchdog (Optional Prevention)**
+   Configure a silent zero-token watchdog via `cronjob(no_agent=True)` that monitors disk percentage and executes `clean_disk.sh` automatically when usage exceeds threshold. See `references/watchdog-automation.md` for full implementation details.
+
 ## Pitfalls
 
 - **Do Not `rm` Active Log Files:** Use `truncate -s 0` instead of `rm` on active log files (`syslog`, `auth.log`). Removing open files leaves disk space locked by active processes until service restart.

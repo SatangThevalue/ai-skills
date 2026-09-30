@@ -56,6 +56,9 @@ This will exchange the code for a refresh token and save it to `~/.hermes/google
 
 ## Pitfalls
 - **Test Users Limit**: For personal Google accounts, the OAuth app is usually in "Testing" mode. If the user's email is not explicitly added to the "Test users" list in Google Cloud Console, they will hit an `Error 403: access_denied` when clicking the auth URL.
+- **7-Day Token Expiration in Testing Mode**: When the GCP project publishing status is "Testing", refresh tokens expire after exactly 7 days, resulting in `TOKEN_REVOKED: invalid_grant: Token has been expired or revoked`. To prevent weekly re-authentication, publish the app to "In production" in Google Cloud Console.
+- **Service API Enablement Required**: Granting OAuth scope consent does NOT automatically enable the underlying service in Google Cloud Console. If calling an API (e.g., Tasks, People, Sheets) fails with `HttpError 403: ... API has not been used in project ... before or it is disabled`, navigate to `https://console.developers.google.com/apis/api/<service>.googleapis.com/overview?project=<project_id>` and click **Enable**.
+- **Google Tasks Scope in setup.py**: The default `SCOPES` list in `setup.py` must include `https://www.googleapis.com/auth/tasks` if task synchronization or management is required.
 - **Combined Arguments**: The `setup.py` script enforces separate invocations. Do NOT pass `--client-secret` and `--auth-url` in the same terminal command.
 - **Localhost Refusal**: The user will see `ERR_CONNECTION_REFUSED` or `This site can't be reached` on `localhost:1` after approving access. This is completely normal for Desktop OAuth flows; the vital information is the `code=` parameter embedded in that URL.
 

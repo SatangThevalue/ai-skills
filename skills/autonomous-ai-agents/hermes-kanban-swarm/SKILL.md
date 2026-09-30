@@ -102,3 +102,15 @@ By default, tasks use `scratch` workspaces located at `~/.hermes/kanban/workspac
 ### Shared Bot Token Conflicts
 - **Pitfall:** If multiple profiles attempt to launch the gateway (`hermes gateway run/start`) using the same Telegram or Discord bot token, the processes will block each other.
 - **Fix:** Run only one main gateway dispatcher. Let worker lanes execute as command-line agents (`hermes -p <profile> chat -q`) instead of standalone gateway bots.
+
+---
+
+## 5. External Task Synchronization (Google Tasks & Mobile Tracking)
+
+Hermes Kanban tasks can be automatically mirrored into Google Tasks, organized by profile/assignee for real-time mobile tracking and notifications.
+
+- **Flow Script**: `zero-touch-prefect/kanban_google_tasks_sync.py`
+- **Orchestration**: Runs as a Prefect 2.x Flow logging to `http://100.115.66.121:4200`
+- **Schedule**: Every 1 minute via crontab and lockfile wrapper (`~/.hermes/scripts/run_kanban_google_tasks_sync.sh`).
+- **Detailed Reference**: See `references/google_tasks_prefect_sync.md`.
+

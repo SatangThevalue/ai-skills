@@ -71,9 +71,19 @@ When designing the administrative view of a DDEX/Marketplace system, the overvie
    	instrument: text("instrument"),
    });
    EOF
+	unsyncedLyrics: text("unsyncedLyrics"),
+	syncedLyrics: text("syncedLyrics"),
+	canvasVideoKey: text("canvasVideoKey"),
+	digitalBookletKey: text("digitalBookletKey"),
+	originalIsrc: text("originalIsrc"),
+	isIsrcLocked: boolean("isIsrcLocked").default(false).notNull(),
+	md5Checksum: text("md5Checksum"),
+	youtubeContentIdEligible: boolean("youtubeContentIdEligible").default(true).notNull(),
+	isMadeForKids: boolean("isMadeForKids").default(false).notNull(),
+	trackVersionType: text("trackVersionType").default("original").notNull(),
    ```
-   Use `patch` to remove or deprecate (comment out) track-level fields (e.g., `isrc`, `vocalLanguage`, `explicitRating`) from the `product` (Release) level in `schema.ts`.
-
+   *Note on Next.js 16 / Drizzle integration:* If the `db:push` interactive prompts fail due to non-TTY CI environments, you MUST append the `--force` flag.
+   
 3. **Inject Localization Keys**
    Write a Python script via `terminal` to inject new translation keys for UI elements (e.g., Track Types, Lyrics Status, Add Contributor buttons) into `.json` dictionary files:
    ```bash

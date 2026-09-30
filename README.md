@@ -2,7 +2,7 @@
 
 > **Repository:** [SatangTheValue/ai-skills](https://github.com/SatangTheValue/ai-skills)  
 > **ผู้ดูแล:** Thanapol N (Satang) · ผู้ช่วย: ต้นทอง (Hermes Agent)  
-> **อัปเดตล่าสุด:** 2026-09-28
+> **อัปเดตล่าสุด:** 2026-09-30
 
 ---
 
@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (464 skills ใน 31 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (466 skills ใน 31 หมวดหมู่)
 
 ### 📁 .ARCHIVE (3)
 
@@ -90,7 +90,7 @@ hermes skills view <ชื่อ-skill>
 - **`hyperliquid`**: Hyperliquid market data, account history, trade review.
 - **`solana`**: Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection, and live network stats. Uses Solana RPC + CoinGecko. No API key required.
 
-### 📁 BUSINESS (21)
+### 📁 BUSINESS (22)
 
 - **`account-maintenance`**: Process account maintenance requests across the account lifecycle. Use when changing a client address or contact info with identity verification, updating beneficiary designations after marriage, divorce, birth, or death, re-registering or re-titling an account to a trust or new entity, selecting tax lot methods or fixing cost basis records, applying legal or compliance holds or Reg T freezes, setting up systematic withdrawals or standing instructions, processing a death notification and estate account setup, handling a QDRO, power of attorney, or guardianship, closing accounts and managing escheatment, or designing data quality review programs.
 - **`account-opening-compliance`**: Embed compliance controls into account opening and verify regulatory readiness. Use when designing CIP/KYC identity verification gates, implementing OFAC and sanctions screening at onboarding, collecting beneficial ownership certification for entity or trust accounts, building risk-based approval tiers that route applications by risk level, defining compliance screening requirements and exception tracking, adding senior investor protections (FINRA Rules 2165/4512) or trusted contact procedures, establishing CDD risk ratings and ongoing monitoring triggers, or preparing account opening procedures for SEC or FINRA examination. For the operational pipeline these controls plug into, see account-opening-workflow.
@@ -109,6 +109,7 @@ hermes skills view <ชื่อ-skill>
 - **`ecommerce-business-plan`**: Create a comprehensive e-commerce business plan. Market analysis, financial projections, marketing strategy, operations planning, and milestone roadmap for new or growing e-commerce businesses.
 - **`executive-dashboard-generator`**: Transform raw data from CSVs, Google Sheets, or databases into executive-ready reports with visualizations, key metrics, trend analysis, and actionable recommendations. Creates data-driven narratives for leadership. Use when users need to turn spreadsheets into executive summaries or board reports.
 - **`founder-sales`**: Help founders close their first customers and build repeatable sales processes. Use when someone is doing founder-led sales, trying to get their first customers, writing cold outreach, running early sales calls, or asking when to hire their first salesperson.
+- **`marketplace-bi-analytics`**: Calculates marketplace GMV, take rate, and sales forecasts.
 - **`prefect-monetization-orchestration`**: Blueprint for replacing n8n and simple cronjobs with Prefect 2.x/3.x for enterprise-grade, code-based orchestration of Thai monetization pipelines.
 - **`prefect-zero-touch-blueprint`**: Enterprise architecture, strict coding standards, fallback rules, and Dockerized setup for the Zero-Touch Monetization suite using Prefect.
 - **`thailand-monetization-2026`**: Predictive trends and architectural strategies for generating income in Thailand (2026-2027), focusing on AI automation, algorithmic trading, and SaaS.
@@ -359,7 +360,7 @@ hermes skills view <ชื่อ-skill>
 - **`iterative-domain-mapping`**: Structure continuous domain expertise into linked skills.
 - **`multi-profile-skills-sync`**: Sync and link agent skills across all profiles and GitHub.
 
-### 📁 MARKETING (21)
+### 📁 MARKETING (22)
 
 - **`30x-growth-marketing-panel`**: AI Growth Marketing Expert Panel with 11 world-class experts distilled from 4,000+ YouTube videos for Claude Code
 - **`ai-business-thai-platforms`**: Use when designing, building, or implementing AI strategies for Thai businesses across LINE, Facebook, YouTube, and Instagram.
@@ -373,6 +374,7 @@ hermes skills view <ชื่อ-skill>
 - **`fb-reels-monetization-playbook`**: ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า
 - **`shopee-affiliate-data-pipeline`**: Fetch and score Shopee affiliate products using pricing and seasonal matrices.
 - **`social-seo-checklist`**: >
+- **`stop-scroll-video-framework`**: สถาปัตยกรรมและเทคนิคการผลิตวิดีโอสั้นหยุดนิ้ว (Stop-Scroll High-Retention Reels) สไตล์แมนหยุดนิ้ว สำหรับ Facebook Reels / TikTok ด้วยเทคนิค Contrast Hook, Kinetic Subtitle และ Jump Cut
 - **`thai-branding-strategy`**: Use when creating, positioning, or executing personal and business branding strategies for individuals and businesses in Thailand, detailing steps, tools, and local ecosystem integration.
 - **`thai-business-marketing-guide`**: Marketing & business strategy guide for all Thai business types.
 - **`thai-content-compliance`**: Use when creating content for Thai audiences, checking for forbidden words, compliance with FDA (อย.) / CPB (สคบ.), and platform rules (TikTok, Shopee, Lazada, Facebook, YouTube).

@@ -51,6 +51,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/contacts.readonly",
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/documents",
+    "https://www.googleapis.com/auth/tasks",
 ]
 
 
@@ -1047,6 +1048,60 @@ def _docs_insert_text(doc_id: str, text: str, index: int) -> None:
 
 
 # =========================================================================
+# Tasks
+# =========================================================================
+
+
+def tasks_lists(args):
+    service = build_service("tasks", "v1")
+    results = service.tasklists().list(maxResults=args.max).execute()
+    lists = results.get("items", [])
+    output = [{"id": l["id"], "title": l["title"], "updated": l.get("updated", "")} for l in lists]
+    print(json.dumps(output, indent=2, ensure_ascii=False))
+
+
+def tasks_list(args):
+    service = build_service("tasks", "v1")
+    tasklist_id = args.tasklist or "@default"
+    results = service.tasks().list(
+        tasklist=tasklist_id,
+        maxResults=args.max,
+        showCompleted=args.show_completed,
+        showHidden=args.show_hidden,
+    ).execute()
+    tasks = results.get("items", [])
+    output = [
+        {
+            "id": t["id"],
+            "title": t.get("title", ""),
+            "status": t.get("status", ""),
+            "due": t.get("due", ""),
+            "notes": t.get("notes", ""),
+            "updated": t.get("updated", ""),
+        }
+        for t in tasks
+    ]
+    print(json.dumps(output, indent=2, ensure_ascii=False))
+
+
+def tasks_create(args):
+    service = build_service("tasks", "v1")
+    tasklist_id = args.tasklist or "@default"
+    body = {"title": args.title}
+    if args.notes:
+        body["notes"] = args.notes
+    if args.due:
+        body["due"] = _datetime_with_timezone(args.due)
+    result = service.tasks().insert(tasklist=tasklist_id, body=body).execute()
+    print(json.dumps({
+        "status": "created",
+        "id": result["id"],
+        "title": result.get("title", ""),
+        "tasklist": tasklist_id,
+    }, indent=2, ensure_ascii=False))
+
+
+# =========================================================================
 # CLI parser
 # =========================================================================
 
@@ -1216,6 +1271,28 @@ def main():
     p.add_argument("doc_id")
     p.add_argument("--text", required=True, help="Text to append to the end of the document")
     p.set_defaults(func=docs_append)
+
+    # --- Tasks ---
+    tasks = sub.add_parser("tasks")
+    tasks_sub = tasks.add_subparsers(dest="action", required=True)
+
+    p = tasks_sub.add_parser("lists")
+    p.add_argument("--max", type=int, default=20)
+    p.set_defaults(func=tasks_lists)
+
+    p = tasks_sub.add_parser("list")
+    p.add_argument("--tasklist", default="@default", help="Tasklist ID (defaults to @default)")
+    p.add_argument("--max", type=int, default=100)
+    p.add_argument("--show-completed", action="store_true", default=False)
+    p.add_argument("--show-hidden", action="store_true", default=False)
+    p.set_defaults(func=tasks_list)
+
+    p = tasks_sub.add_parser("create")
+    p.add_argument("--title", required=True)
+    p.add_argument("--tasklist", default="@default", help="Tasklist ID (defaults to @default)")
+    p.add_argument("--notes", default="")
+    p.add_argument("--due", default="", help="Due date (ISO 8601 with timezone)")
+    p.set_defaults(func=tasks_create)
 
     args = parser.parse_args()
     args.func(args)
