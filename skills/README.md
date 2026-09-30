@@ -2,7 +2,7 @@
 
 > **Repository:** [SatangTheValue/ai-skills](https://github.com/SatangTheValue/ai-skills)  
 > **ผู้ดูแล:** Thanapol N (Satang) · ผู้ช่วย: ต้นทอง (Hermes Agent)  
-> **อัปเดตล่าสุด:** 2026-09-30
+> **อัปเดตล่าสุด:** 2026-10-01
 
 ---
 
@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (470 skills ใน 31 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (475 skills ใน 32 หมวดหมู่)
 
 ### 📁 .ARCHIVE (3)
 
@@ -153,7 +153,11 @@ hermes skills view <ชื่อ-skill>
 - **`jupyter-live-kernel`**: Iterative Python via live Jupyter kernel (hamelnb).
 - **`prefect-workflows`**: Design, monitor, and run data orchestrations with Prefect.
 
-### 📁 DEVOPS (41)
+### 📁 DATA-STORYTELLING-PAGE-LAUNCH (1)
+
+- **`data-storytelling-page-launch`**: Plan, design, and automate data storytelling social media pages.
+
+### 📁 DEVOPS (42)
 
 - **`9router`**: Entry point for 9Router — local/remote AI gateway with OpenAI-compatible REST for chat, image, TTS, embeddings, web search, web fetch. Use when the user mentions 9Router, NINEROUTER_URL, or wants AI without writing provider boilerplate. This skill covers setup + indexes capability skills; fetch the relevant capability SKILL.md from the URLs below when needed.
 - **`9router-chat`**: Chat / code generation via 9Router using OpenAI /v1/chat/completions or Anthropic /v1/messages format with streaming + auto-fallback combos. Use when the user wants to ask an LLM, generate code, summarize text, or run prompts through 9Router.
@@ -191,6 +195,7 @@ hermes skills view <ชื่อ-skill>
 - **`prefect-orchestration`**: Set up and manage Prefect workflows, task queues, and auto-publishing pipelines.
 - **`prefect-orchestration-monetization`**: Schedule and monitor the Zero-Touch Monetization pipeline using Prefect, with Infisical and A2A integration.
 - **`tailscale-docker-zero-trust`**: Secure Docker container deployments by binding critical services explicitly to Tailscale VPN IPs (Zero-Trust) instead of 0.0.0.0 or 127.0.0.1.
+- **`telegram-polling-conflict-troubleshooting`**: Resolve Telegram bot getUpdates polling conflicts.
 - **`Traefik`**: Avoid common Traefik mistakes — router priority, TLS configuration, Docker labels syntax, and middleware ordering.
 - **`traefik-docker29-fix`**: Fix Traefik Docker API errors on Docker Engine 29.4 plus.
 - **`tts-audio-post-processing`**: Techniques for processing, chunking, and mastering AI-generated Thai audio (Edge-TTS / gTTS).
@@ -363,7 +368,7 @@ hermes skills view <ชื่อ-skill>
 - **`iterative-domain-mapping`**: Structure continuous domain expertise into linked skills.
 - **`multi-profile-skills-sync`**: Sync and link agent skills across all profiles and GitHub.
 
-### 📁 MARKETING (22)
+### 📁 MARKETING (25)
 
 - **`30x-growth-marketing-panel`**: AI Growth Marketing Expert Panel with 11 world-class experts distilled from 4,000+ YouTube videos for Claude Code
 - **`ai-business-thai-platforms`**: Use when designing, building, or implementing AI strategies for Thai businesses across LINE, Facebook, YouTube, and Instagram.
@@ -371,13 +376,16 @@ hermes skills view <ชื่อ-skill>
 - **`ai-fluency-social-seo`**: AI fluency และ Social SEO สำหรับการทำการตลาด 2026 - ใช้ AI เพื่อสร้างเนื้อหา เพิ่มการมีส่วนไข้เข้าชมโดยรวม 10 ขั้นตอน
 - **`ai-proposal-generator`**: Generate professional HTML proposals from meeting notes. Features 5 proposal styles (Corporate, Entrepreneur, Creative, Consultant, Minimal), 6+ color themes, and a Design Wizard for custom templates. Triggers on "create proposal", "proposal for [client]", "proposal wizard", "proposal from [notes]", "show proposal styles", "finalize proposal". Integrates with ai-meeting-notes for context. Outputs beautiful, responsive HTML ready to send or export as PDF.
 - **`content-marketing-2026-2027`**: >
+- **`content-quality-and-token-telemetry`**: Audit content quality and log token telemetry in DB.
 - **`design-trends-2026`**: Apply 2026's top graphic design trends to any creative brief. Based on Kittl × Savee's 2026 Design Trends Report (10 trends + 2 honorable mentions), backed by Adobe, Figma, and Pinterest data. Use when: **Designing a brand identity** — pick the right aesthetic for your audience; **Creating social media assets** — use trending visual languages that perform; **Briefing a designer or AI image tool** — give precise style direction with vocabulary and references; **Refreshing a visual identity** — know what's rising vs saturating; **Building mood boards** — combine trends intentionally with data-backed rationale.
 - **`digital-product-monetization`**: กรอบการทำงาน 5 ขั้นตอนในการสร้างและขาย Digital Product ให้ได้เงินหลักแสน (ถอดรหัสจากคลิปแนวคิด Alex Hormozi)
 - **`facebook-automation-suite`**: คู่มือและการสร้างสคริปต์สำหรับจัดการ Facebook Fanpage (โพสต์ออโต้, ดูดข้อมูล, ดึงคอมเมนต์) ผ่าน Python
 - **`fb-reels-monetization-playbook`**: ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า
+- **`prefect-social-media-factory`**: Orchestrate scheduled social media content workflows.
 - **`shopee-affiliate-data-pipeline`**: Fetch and score Shopee affiliate products using pricing and seasonal matrices.
 - **`social-seo-checklist`**: >
 - **`stop-scroll-video-framework`**: สถาปัตยกรรมและเทคนิคการผลิตวิดีโอสั้นหยุดนิ้ว (Stop-Scroll High-Retention Reels) สไตล์แมนหยุดนิ้ว สำหรับ Facebook Reels / TikTok ด้วยเทคนิค Contrast Hook, Kinetic Subtitle และ Jump Cut
+- **`telegram-chat-ui-ux`**: Design rich interactive UI/UX in Telegram chat interfaces.
 - **`thai-branding-strategy`**: Use when creating, positioning, or executing personal and business branding strategies for individuals and businesses in Thailand, detailing steps, tools, and local ecosystem integration.
 - **`thai-business-marketing-guide`**: Marketing & business strategy guide for all Thai business types.
 - **`thai-content-compliance`**: Use when creating content for Thai audiences, checking for forbidden words, compliance with FDA (อย.) / CPB (สคบ.), and platform rules (TikTok, Shopee, Lazada, Facebook, YouTube).

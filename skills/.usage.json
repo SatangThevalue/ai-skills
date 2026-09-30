@@ -584,6 +584,19 @@
     "use_count": 11,
     "view_count": 11
   },
+  "content-quality-and-token-telemetry": {
+    "archived_at": null,
+    "created_at": "2026-09-30T13:32:38.910075+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-09-30T15:18:05.318745+00:00",
+    "last_used_at": "2026-09-30T15:18:18.065072+00:00",
+    "last_viewed_at": "2026-09-30T15:18:18.040610+00:00",
+    "patch_count": 25,
+    "pinned": false,
+    "state": "active",
+    "use_count": 15,
+    "view_count": 15
+  },
   "cost-accounting-inventory": {
     "archived_at": null,
     "created_at": "2026-06-28T02:36:30.091915+00:00",
@@ -635,6 +648,19 @@
     "state": "active",
     "use_count": 1,
     "view_count": 1
+  },
+  "data-storytelling-page-launch": {
+    "archived_at": null,
+    "created_at": "2026-09-30T10:47:07.255341+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-09-30T16:48:20.299481+00:00",
+    "last_used_at": "2026-09-30T16:47:46.933383+00:00",
+    "last_viewed_at": "2026-09-30T16:47:46.923749+00:00",
+    "patch_count": 11,
+    "pinned": false,
+    "state": "active",
+    "use_count": 6,
+    "view_count": 6
   },
   "ddex-metadata-architecture": {
     "archived_at": null,
@@ -809,14 +835,14 @@
     "archived_at": null,
     "created_at": "2026-09-18T12:58:37.970989+00:00",
     "created_by": null,
-    "last_patched_at": "2026-09-30T05:10:50.525634+00:00",
-    "last_used_at": "2026-09-30T05:10:45.123783+00:00",
-    "last_viewed_at": "2026-09-30T05:10:45.105498+00:00",
-    "patch_count": 6,
+    "last_patched_at": "2026-09-30T14:42:26.436707+00:00",
+    "last_used_at": "2026-09-30T13:41:59.073979+00:00",
+    "last_viewed_at": "2026-09-30T13:41:59.062516+00:00",
+    "patch_count": 8,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 7,
+    "view_count": 7
   },
   "farmed-hedge-yield-strategy": {
     "archived_at": null,
@@ -1057,13 +1083,13 @@
     "created_at": "2026-06-24T16:08:15.592220+00:00",
     "created_by": null,
     "last_patched_at": "2026-09-29T05:40:59.260875+00:00",
-    "last_used_at": "2026-09-30T00:00:48.603855+00:00",
-    "last_viewed_at": "2026-09-30T00:00:48.593267+00:00",
+    "last_used_at": "2026-09-30T13:58:40.843075+00:00",
+    "last_viewed_at": "2026-09-30T13:58:40.832592+00:00",
     "patch_count": 10,
     "pinned": false,
     "state": "active",
-    "use_count": 29,
-    "view_count": 29
+    "use_count": 30,
+    "view_count": 30
   },
   "google-workspace-oauth-setup": {
     "archived_at": null,
@@ -2222,6 +2248,19 @@
     "use_count": 0,
     "view_count": 0
   },
+  "prefect-social-media-factory": {
+    "archived_at": null,
+    "created_at": "2026-09-30T17:02:23.990004+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-09-30T17:02:23.990050+00:00",
+    "last_used_at": null,
+    "last_viewed_at": null,
+    "patch_count": 1,
+    "pinned": false,
+    "state": "active",
+    "use_count": 0,
+    "view_count": 0
+  },
   "prefect-workflows": {
     "archived_at": null,
     "created_at": "2026-06-24T16:19:45.451090+00:00",
@@ -2988,6 +3027,19 @@
     "state": "stale",
     "use_count": 0,
     "view_count": 0
+  },
+  "telegram-chat-ui-ux": {
+    "archived_at": null,
+    "created_at": "2026-09-30T14:47:22.331658+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-09-30T15:19:08.496973+00:00",
+    "last_used_at": "2026-09-30T16:47:56.276503+00:00",
+    "last_viewed_at": "2026-09-30T16:47:56.267145+00:00",
+    "patch_count": 3,
+    "pinned": false,
+    "state": "active",
+    "use_count": 2,
+    "view_count": 2
   },
   "test-driven-development": {
     "archived_at": null,

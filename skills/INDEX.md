@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **470 skills** จัดระเบียบใน **31 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **475 skills** จัดระเบียบใน **32 หมวดหมู่**
 
 ---
 
@@ -19,14 +19,15 @@
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
 | [creative](#creative) | **21** | `abstract-strategy`, `architecture-diagram`, `ascii-art` *(+อีก 18)* |
 | [data-science](#data-science) | **3** | `data-science-and-engineering`, `jupyter-live-kernel`, `prefect-workflows` |
-| [devops](#devops) | **41** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 38)* |
+| [data-storytelling-page-launch](#data-storytelling-page-launch) | **1** | `data-storytelling-page-launch` |
+| [devops](#devops) | **42** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 39)* |
 | [domain-knowledge](#domain-knowledge) | **1** | `music-metadata-standards` |
 | [email](#email) | **1** | `himalaya` |
 | [finance](#finance) | **133** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 130)* |
 | [gaming](#gaming) | **2** | `minecraft-modpack-server`, `pokemon-player` |
 | [github](#github) | **6** | `codebase-inspection`, `github-auth`, `github-code-review` *(+อีก 3)* |
 | [hermes-agent](#hermes-agent) | **5** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 2)* |
-| [marketing](#marketing) | **22** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 19)* |
+| [marketing](#marketing) | **25** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 22)* |
 | [mcp](#mcp) | **2** | `fastmcp`, `native-mcp` |
 | [media](#media) | **14** | `ai-avatar-generation-stack`, `broll-free-video-automation`, `ffmpeg-complex-filter-video-automation` *(+อีก 11)* |
 | [misc](#misc) | **12** | `adhd-assistant`, `AI Agent Wars 2026`, `ask-matt` *(+อีก 9)* |
@@ -189,7 +190,13 @@
 | `jupyter-live-kernel` | Iterative Python via live Jupyter kernel (hamelnb). | `data-science/jupyter-live-kernel` |
 | `prefect-workflows` | Design, monitor, and run data orchestrations with Prefect. | `data-science/prefect-workflows` |
 
-## <a id="devops"></a>📂 devops (41 skills)
+## <a id="data-storytelling-page-launch"></a>📂 data-storytelling-page-launch (1 skills)
+
+| Skill Name | Description | Path |
+|---|---|---|
+| `data-storytelling-page-launch` | Plan, design, and automate data storytelling social media pages. | `data-storytelling-page-launch` |
+
+## <a id="devops"></a>📂 devops (42 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -229,6 +236,7 @@
 | `prefect-orchestration` | Set up and manage Prefect workflows, task queues, and auto-publishing pipelines. | `devops/prefect-orchestration` |
 | `prefect-orchestration-monetization` | Schedule and monitor the Zero-Touch Monetization pipeline using Prefect, with Infisical and A2A integration. | `devops/prefect-orchestration-monetization` |
 | `tailscale-docker-zero-trust` | Secure Docker container deployments by binding critical services explicitly to Tailscale VPN IPs (Zero-Trust) instead of 0.0.0.0 or 127.0... | `devops/tailscale-docker-zero-trust` |
+| `telegram-polling-conflict-troubleshooting` | Resolve Telegram bot getUpdates polling conflicts. | `devops/telegram-polling-conflict-troubleshooting` |
 | `Traefik` | Avoid common Traefik mistakes — router priority, TLS configuration, Docker labels syntax, and middleware ordering. | `devops/traefik` |
 | `traefik-docker29-fix` | Fix Traefik Docker API errors on Docker Engine 29.4 plus. | `devops/traefik-docker29-fix` |
 | `tts-audio-post-processing` | Techniques for processing, chunking, and mastering AI-generated Thai audio (Edge-TTS / gTTS). | `devops/tts-audio-post-processing` |
@@ -413,7 +421,7 @@
 | `iterative-domain-mapping` | Structure continuous domain expertise into linked skills. | `hermes-agent/iterative-domain-mapping` |
 | `multi-profile-skills-sync` | Sync and link agent skills across all profiles and GitHub. | `hermes-agent/multi-profile-skills-sync` |
 
-## <a id="marketing"></a>📂 marketing (22 skills)
+## <a id="marketing"></a>📂 marketing (25 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -423,13 +431,16 @@
 | `ai-fluency-social-seo` | AI fluency และ Social SEO สำหรับการทำการตลาด 2026 - ใช้ AI เพื่อสร้างเนื้อหา เพิ่มการมีส่วนไข้เข้าชมโดยรวม 10 ขั้นตอน | `marketing/ai-fluency-social-seo` |
 | `ai-proposal-generator` | Generate professional HTML proposals from meeting notes. Features 5 proposal styles (Corporate, Entrepreneur, Creative, Consultant, Minim... | `marketing/ai-proposal-generator` |
 | `content-marketing-2026-2027` | > | `marketing/content-marketing-2026-2027` |
+| `content-quality-and-token-telemetry` | Audit content quality and log token telemetry in DB. | `marketing/content-quality-and-token-telemetry` |
 | `design-trends-2026` | Apply 2026's top graphic design trends to any creative brief. Based on Kittl × Savee's 2026 Design Trends Report (10 trends + 2 honorable... | `marketing/design-trends-2026` |
 | `digital-product-monetization` | กรอบการทำงาน 5 ขั้นตอนในการสร้างและขาย Digital Product ให้ได้เงินหลักแสน (ถอดรหัสจากคลิปแนวคิด Alex Hormozi) | `marketing/digital-product-monetization` |
 | `facebook-automation-suite` | คู่มือและการสร้างสคริปต์สำหรับจัดการ Facebook Fanpage (โพสต์ออโต้, ดูดข้อมูล, ดึงคอมเมนต์) ผ่าน Python | `marketing/facebook-automation-suite` |
 | `fb-reels-monetization-playbook` | ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า | `marketing/fb-reels-monetization-playbook` |
+| `prefect-social-media-factory` | Orchestrate scheduled social media content workflows. | `marketing/prefect-social-media-factory` |
 | `shopee-affiliate-data-pipeline` | Fetch and score Shopee affiliate products using pricing and seasonal matrices. | `marketing/shopee-affiliate-data-pipeline` |
 | `social-seo-checklist` | > | `marketing/social-seo-checklist` |
 | `stop-scroll-video-framework` | สถาปัตยกรรมและเทคนิคการผลิตวิดีโอสั้นหยุดนิ้ว (Stop-Scroll High-Retention Reels) สไตล์แมนหยุดนิ้ว สำหรับ Facebook Reels / TikTok ด้วยเทคน... | `marketing/stop-scroll-video-framework` |
+| `telegram-chat-ui-ux` | Design rich interactive UI/UX in Telegram chat interfaces. | `marketing/telegram-chat-ui-ux` |
 | `thai-branding-strategy` | Use when creating, positioning, or executing personal and business branding strategies for individuals and businesses in Thailand, detail... | `marketing/thai-branding-strategy` |
 | `thai-business-marketing-guide` | Marketing & business strategy guide for all Thai business types. | `marketing/thai-business-marketing-guide` |
 | `thai-content-compliance` | Use when creating content for Thai audiences, checking for forbidden words, compliance with FDA (อย.) / CPB (สคบ.), and platform rules (T... | `marketing/thai-content-compliance` |

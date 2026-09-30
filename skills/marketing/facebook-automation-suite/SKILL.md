@@ -218,3 +218,11 @@ def scrape_public_page_info(url: str):
 - **Token Expiry:** `PAGE_ACCESS_TOKEN` ของ Facebook Business API มักจะหมดอายุใน 60 วัน ต้องหาวิธีต่ออายุ (Extend Token) หรือสร้างแบบ Never-expire
 - **Multi-Page Posting Detection:** เมื่อโพสต์หลายเพจพร้อมกัน (เช่น 10-15 เพจ) ห้ามยิง API พร้อมกันในเสี้ยววินาทีเด็ดขาด เพราะ Meta จะ Flag ว่าเป็น Spam Bot จาก IP เดียวกัน ให้ตั้ง `random.uniform(120, 420)` (หน่วงเวลา 2–7 นาที) ระหว่างการโพสต์แต่ละเพจเสมอ
 - **Audio Duplicate / Shadowban:** เสียงพากย์ AI ห้ามใช้โทนและสปีดเดิม 100% กับทุกเพจ ให้สลับเสียง (เช่น นิวัฒน์ สลับ พรหมวดี) และสุ่มปรับ pitch ±3-5% ในการเรนเดอร์คลิปแต่ละเพจ
+- **Bot-like Posting Times:** ห้ามตั้งเวลาโพสต์ตรงหลักนาทีเป๊ะ (เช่น 16:30:00) ให้ใช้ระบบสุ่มนาทีเป็นธรรมชาติ (Human Jitter) เช่น 16:37 หรือ 16:54 เพื่อเลี่ยงการตรวจจับบ็อต
+
+## 7. Enterprise Zero-Token Publishing & Human Approval Pipeline
+ดูรายละเอียดพิมพ์เขียวและโค้ดต้นแบบใน `references/enterprise-publishing-and-prefect-pipeline.md`:
+- **Prefect Zero-Token Sweeper:** ใช้ Python Prefect เป็น Watchdog คอยตรวจคิวงานทุก 15 นาที โดยไม่เสีย LLM Token
+- **Human-in-the-Loop State Machine:** สถานะตั้งต้น `PENDING_REVIEW` -> โพสต์เมื่อได้รับ `APPROVED_BY_USER` เท่านั้น (วันไหนขี้เกียจไม่กด ระบบจะไม่ยิงโพสต์หลุด)
+- **Compact Asset Naming:** ตั้งชื่อไฟล์สั้นกระชับ `{YYYYMMDD}-{XXXX}.png` (เช่น `20261001-0001.png`) ข้อมูลอื่นเก็บใน PostgreSQL
+- **Smart Engagement Filter:** ไม่ตอบคอมเมนต์ทั้งหมด กรองตอบเฉพาะ High-Intent Questions ไม่เกิน 3-5 คอมเมนต์/โพสต์ ประหยัดต้นทุน AI
