@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **468 skills** จัดระเบียบใน **31 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **469 skills** จัดระเบียบใน **31 หมวดหมู่**
 
 ---
 
@@ -15,7 +15,7 @@
 | [automation](#automation) | **1** | `python-media-automation` |
 | [autonomous-ai-agents](#autonomous-ai-agents) | **27** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 24)* |
 | [blockchain](#blockchain) | **3** | `evm`, `hyperliquid`, `solana` |
-| [business](#business) | **22** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 19)* |
+| [business](#business) | **23** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 20)* |
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
 | [creative](#creative) | **21** | `abstract-strategy`, `architecture-diagram`, `ascii-art` *(+อีก 18)* |
 | [data-science](#data-science) | **3** | `data-science-and-engineering`, `jupyter-live-kernel`, `prefect-workflows` |
@@ -119,7 +119,7 @@
 | `hyperliquid` | Hyperliquid market data, account history, trade review. | `blockchain/hyperliquid` |
 | `solana` | Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection... | `blockchain/solana` |
 
-## <a id="business"></a>📂 business (22 skills)
+## <a id="business"></a>📂 business (23 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -141,6 +141,7 @@
 | `executive-dashboard-generator` | Transform raw data from CSVs, Google Sheets, or databases into executive-ready reports with visualizations, key metrics, trend analysis, ... | `business/executive-dashboard-generator` |
 | `founder-sales` | Help founders close their first customers and build repeatable sales processes. Use when someone is doing founder-led sales, trying to ge... | `business/founder-sales` |
 | `marketplace-bi-analytics` | Calculates marketplace GMV, take rate, and sales forecasts. | `business/marketplace-bi-analytics` |
+| `open-source-ai-monetization` | Deploy open-source AI repos into profitable businesses. | `business/open-source-ai-monetization` |
 | `prefect-monetization-orchestration` | Blueprint for replacing n8n and simple cronjobs with Prefect 2.x/3.x for enterprise-grade, code-based orchestration of Thai monetization ... | `business/business-growth-skills/prefect-monetization-orchestration` |
 | `prefect-zero-touch-blueprint` | Enterprise architecture, strict coding standards, fallback rules, and Dockerized setup for the Zero-Touch Monetization suite using Prefect. | `business/business-growth-skills/prefect-zero-touch-blueprint` |
 | `thailand-monetization-2026` | Predictive trends and architectural strategies for generating income in Thailand (2026-2027), focusing on AI automation, algorithmic trad... | `business/business-growth-skills/thailand-monetization-2026` |

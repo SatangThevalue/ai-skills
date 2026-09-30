@@ -113,6 +113,8 @@ When designing the administrative view of a DDEX/Marketplace system, the overvie
    ```
 
 ## Pitfalls
+- **Drizzle Table Declaration Order (TDZ):** In Drizzle ORM schemas, when a `relations` definition references a table (e.g. `orderRelations` referencing `review`), the target `pgTable` definition MUST be placed *above* the `relations` block. In JavaScript/TypeScript ES modules, `const` table definitions are not hoisted; placing the table below the relations block throws runtime `ReferenceError: <table_name> is not defined`.
+- **Server/Client Helper Import Boundary:** In Next.js App Router, Server Components must never import utility/helper functions from files marked with `"use client"`. This triggers `Attempted to call client function from the server`. Keep pure helpers in `src/lib/` without `"use client"`.
 - **Breaking Changes:** Removing fields like `isrc` from `product` can break existing production queries. Always comment out or deprecate fields first before doing a destructive migration.
 - **Port Collisions:** Ensure PostgreSQL docker instances don't clash on port 5432 during testing.
 - **Missing Locales:** If keys are injected into `en.json` but not others (like `th.json`), the UI might crash or show raw string keys.

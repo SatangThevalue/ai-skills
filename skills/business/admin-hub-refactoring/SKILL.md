@@ -27,6 +27,7 @@ Invoke the analysis process through the `terminal` tool to draft a Markdown spec
 
 ## Quick Reference
 - Creates `docs/ADMIN_HUB_REFACTOR_SPEC.md`
+- Multi-persona audit framework (Operator, Buyer, Seller, BI): see `references/marketplace-persona-audits.md`
 - Detailed metric formulas & Pareto SQL patterns: see `references/proactive-bi-analytics.md`
 
 ## Human Approval Gate (Strict Rule)

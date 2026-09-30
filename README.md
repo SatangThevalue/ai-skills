@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (468 skills ใน 31 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (469 skills ใน 31 หมวดหมู่)
 
 ### 📁 .ARCHIVE (3)
 
@@ -91,7 +91,7 @@ hermes skills view <ชื่อ-skill>
 - **`hyperliquid`**: Hyperliquid market data, account history, trade review.
 - **`solana`**: Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection, and live network stats. Uses Solana RPC + CoinGecko. No API key required.
 
-### 📁 BUSINESS (22)
+### 📁 BUSINESS (23)
 
 - **`account-maintenance`**: Process account maintenance requests across the account lifecycle. Use when changing a client address or contact info with identity verification, updating beneficiary designations after marriage, divorce, birth, or death, re-registering or re-titling an account to a trust or new entity, selecting tax lot methods or fixing cost basis records, applying legal or compliance holds or Reg T freezes, setting up systematic withdrawals or standing instructions, processing a death notification and estate account setup, handling a QDRO, power of attorney, or guardianship, closing accounts and managing escheatment, or designing data quality review programs.
 - **`account-opening-compliance`**: Embed compliance controls into account opening and verify regulatory readiness. Use when designing CIP/KYC identity verification gates, implementing OFAC and sanctions screening at onboarding, collecting beneficial ownership certification for entity or trust accounts, building risk-based approval tiers that route applications by risk level, defining compliance screening requirements and exception tracking, adding senior investor protections (FINRA Rules 2165/4512) or trusted contact procedures, establishing CDD risk ratings and ongoing monitoring triggers, or preparing account opening procedures for SEC or FINRA examination. For the operational pipeline these controls plug into, see account-opening-workflow.
@@ -111,6 +111,7 @@ hermes skills view <ชื่อ-skill>
 - **`executive-dashboard-generator`**: Transform raw data from CSVs, Google Sheets, or databases into executive-ready reports with visualizations, key metrics, trend analysis, and actionable recommendations. Creates data-driven narratives for leadership. Use when users need to turn spreadsheets into executive summaries or board reports.
 - **`founder-sales`**: Help founders close their first customers and build repeatable sales processes. Use when someone is doing founder-led sales, trying to get their first customers, writing cold outreach, running early sales calls, or asking when to hire their first salesperson.
 - **`marketplace-bi-analytics`**: Calculates marketplace GMV, take rate, and sales forecasts.
+- **`open-source-ai-monetization`**: Deploy open-source AI repos into profitable businesses.
 - **`prefect-monetization-orchestration`**: Blueprint for replacing n8n and simple cronjobs with Prefect 2.x/3.x for enterprise-grade, code-based orchestration of Thai monetization pipelines.
 - **`prefect-zero-touch-blueprint`**: Enterprise architecture, strict coding standards, fallback rules, and Dockerized setup for the Zero-Touch Monetization suite using Prefect.
 - **`thailand-monetization-2026`**: Predictive trends and architectural strategies for generating income in Thailand (2026-2027), focusing on AI automation, algorithmic trading, and SaaS.
