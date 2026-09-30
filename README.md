@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (469 skills ใน 31 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (470 skills ใน 31 หมวดหมู่)
 
 ### 📁 .ARCHIVE (3)
 
@@ -55,7 +55,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`python-media-automation`**: Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated pipelines or async servers.
 
-### 📁 AUTONOMOUS-AI-AGENTS (27)
+### 📁 AUTONOMOUS-AI-AGENTS (28)
 
 - **`agent-frameworks-integration`**: Use when designing, building, or orchestrating multi-agent systems via A2A or LangGraph.
 - **`agent-reach-integration`**: Install, configure, and operate the Agent Reach (Panniantong) framework to give agents internet channel access (X, Reddit, Bilibili, YouTube, Exa).
@@ -63,6 +63,7 @@ hermes skills view <ชื่อ-skill>
 - **`claude-code`**: Delegate coding to Claude Code CLI (features, PRs).
 - **`claude-handoff`**: Hand the current conversation off to a fresh background agent that picks up the work immediately.
 - **`codex`**: Delegate coding to OpenAI Codex CLI (features, PRs).
+- **`course-to-skill-pipeline`**: Convert course syllabi into actionable skills with rubrics.
 - **`cron-job-workflows`**: Guidelines and pitfalls for executing headless, non-interactive tasks as a scheduled cron job in Hermes.
 - **`dispatching-parallel-agents`**: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
 - **`find-skills`**: Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.

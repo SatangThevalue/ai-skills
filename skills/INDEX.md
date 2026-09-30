@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **469 skills** จัดระเบียบใน **31 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **470 skills** จัดระเบียบใน **31 หมวดหมู่**
 
 ---
 
@@ -13,7 +13,7 @@
 | [apple](#apple) | **5** | `apple-notes`, `apple-reminders`, `findmy` *(+อีก 2)* |
 | [architecture](#architecture) | **2** | `ddex-metadata-architecture`, `loop-engineering-onboarding` |
 | [automation](#automation) | **1** | `python-media-automation` |
-| [autonomous-ai-agents](#autonomous-ai-agents) | **27** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 24)* |
+| [autonomous-ai-agents](#autonomous-ai-agents) | **28** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 25)* |
 | [blockchain](#blockchain) | **3** | `evm`, `hyperliquid`, `solana` |
 | [business](#business) | **23** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 20)* |
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
@@ -79,7 +79,7 @@
 |---|---|---|
 | `python-media-automation` | Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated... | `automation/python-media-automation` |
 
-## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (27 skills)
+## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (28 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -89,6 +89,7 @@
 | `claude-code` | Delegate coding to Claude Code CLI (features, PRs). | `autonomous-ai-agents/claude-code` |
 | `claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. | `autonomous-ai-agents/claude-handoff` |
 | `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). | `autonomous-ai-agents/codex` |
+| `course-to-skill-pipeline` | Convert course syllabi into actionable skills with rubrics. | `autonomous-ai-agents/course-to-skill-pipeline` |
 | `cron-job-workflows` | Guidelines and pitfalls for executing headless, non-interactive tasks as a scheduled cron job in Hermes. | `autonomous-ai-agents/cron-job-workflows` |
 | `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies | `autonomous-ai-agents/dispatching-parallel-agents` |
 | `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that ... | `autonomous-ai-agents/find-skills` |
