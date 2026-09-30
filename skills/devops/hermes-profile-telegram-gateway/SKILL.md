@@ -160,6 +160,8 @@ Expected output: `enabled` and `active running`.
 - **multiplex_profiles: false**: When each profile has its own bot token, DO NOT use multiplexer mode. Each profile needs its own gateway process on its own port/PID.
 - **`allowed_users` format**: Must be a quoted string `'"7789252439"'` not a bare integer — hermes config set treats unquoted numbers as strings anyway but quoting prevents ambiguity.
 - **Linger not enabled**: On headless VPS, user services die on logout. Fix: `sudo loginctl enable-linger $USER`.
+- **Cloned profile .env token conflict**: When creating a profile via `hermes profile create <name> --clone`, `.env` inherits the source profile's `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_USERS`, and `TELEGRAM_HOME_CHANNEL`. You MUST replace these lines in `~/.hermes/profiles/<name>/.env` before launching the gateway to prevent two bots colliding or running with the wrong identity.
+- **`gateway install` prompts**: `hermes -p <profile> gateway install` asks confirmation prompts to start now and auto-start on boot. In scripts or automated pipelines, provide `yes '' | hermes -p <profile> gateway install` or accept defaults.
 
 ## Verification
 

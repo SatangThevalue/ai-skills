@@ -21,6 +21,7 @@ This skill covers integrating Hermes with other AI agents and frameworks, specif
 - **A2A Inbound (Callable Service):** Enable via `hermes gateway setup` -> A2A.
 - **A2A Outbound (Calling Others):** Enable via `hermes tools enable a2a`.
 - **A2A Tools:** `a2a_discover(url)`, `a2a_call(agent, message)`, `a2a_orchestrate(capability, message)`.
+- **Framework Compatibility (CrewAI/LangGraph/AutoGen/CAMEL):** See [`references/framework-install-and-compatibility.md`](references/framework-install-and-compatibility.md) for unified venv setup, import syntax, and disk recovery.
 
 ## 1. A2A Protocol Overview
 

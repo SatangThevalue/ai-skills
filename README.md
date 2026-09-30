@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (466 skills ใน 31 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (468 skills ใน 31 หมวดหมู่)
 
 ### 📁 .ARCHIVE (3)
 
@@ -55,7 +55,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`python-media-automation`**: Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated pipelines or async servers.
 
-### 📁 AUTONOMOUS-AI-AGENTS (26)
+### 📁 AUTONOMOUS-AI-AGENTS (27)
 
 - **`agent-frameworks-integration`**: Use when designing, building, or orchestrating multi-agent systems via A2A or LangGraph.
 - **`agent-reach-integration`**: Install, configure, and operate the Agent Reach (Panniantong) framework to give agents internet channel access (X, Reddit, Bilibili, YouTube, Exa).
@@ -73,6 +73,7 @@ hermes skills view <ชื่อ-skill>
 - **`hermes-gateway-resilience`**: Restore and harden the Hermes Messaging Gateway on Linux when it goes inactive, drops platform connections, or fails under low-disk pressure.
 - **`hermes-kanban-swarm`**: Orchestrate, configure, and execute multi-agent workflows (Swarms) using Hermes Kanban boards and profiles.
 - **`hermes-profile-customization`**: Create and customize isolated profiles in Hermes.
+- **`hermes-telegram-agent-provisioning`**: Provision an isolated profile as a Telegram daemon.
 - **`hermes-workspace-setup`**: Set up and run Hermes Workspace on a VPS with gateway auth.
 - **`kanban-codex-lane`**: Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane while Hermes keeps ownership of task lifecycle, reconciliation, testing, and handoff.
 - **`opencode`**: Delegate coding to OpenCode CLI (features, PR review).
@@ -490,7 +491,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`xurl`**: X/Twitter via xurl CLI: post, search, DM, media, v2 API.
 
-### 📁 SOFTWARE-DEVELOPMENT (94)
+### 📁 SOFTWARE-DEVELOPMENT (95)
 
 - **`agent-skills-github-sync`**: Use when synchronizing Hermes Agent local skills with a remote GitHub repository. Guides the backup, management, and deployment of agent skills.
 - **`ai-content-studio-architecture`**: Architecture and workflows for the Satang AI Studio multi-agent content generation platform.
@@ -518,6 +519,7 @@ hermes skills view <ชื่อ-skill>
 - **`finishing-a-development-branch`**: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work
 - **`free-api-python-monetization-stack`**: 100 free Python libraries and APIs for TTS, AI, scraping, finance, and automation.
 - **`git-guardrails-claude-code`**: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code.
+- **`grill-with-docs`**: A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.
 - **`hermes-9router-integration`**: Deploy 9Router and integrate it with Hermes Agent profiles.
 - **`hermes-agent-skill-authoring`**: Author in-repo SKILL.md: frontmatter, validator, structure.
 - **`hermes-profile-isolation`**: Set up and configure isolated Hermes Agent profiles for different projects.

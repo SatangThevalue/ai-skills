@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **466 skills** จัดระเบียบใน **31 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **468 skills** จัดระเบียบใน **31 หมวดหมู่**
 
 ---
 
@@ -13,7 +13,7 @@
 | [apple](#apple) | **5** | `apple-notes`, `apple-reminders`, `findmy` *(+อีก 2)* |
 | [architecture](#architecture) | **2** | `ddex-metadata-architecture`, `loop-engineering-onboarding` |
 | [automation](#automation) | **1** | `python-media-automation` |
-| [autonomous-ai-agents](#autonomous-ai-agents) | **26** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 23)* |
+| [autonomous-ai-agents](#autonomous-ai-agents) | **27** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 24)* |
 | [blockchain](#blockchain) | **3** | `evm`, `hyperliquid`, `solana` |
 | [business](#business) | **22** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 19)* |
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
@@ -38,7 +38,7 @@
 | [research](#research) | **5** | `arxiv`, `blogwatcher`, `llm-wiki` *(+อีก 2)* |
 | [smart-home](#smart-home) | **1** | `openhue` |
 | [social-media](#social-media) | **1** | `xurl` |
-| [software-development](#software-development) | **94** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 91)* |
+| [software-development](#software-development) | **95** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 92)* |
 
 ---
 
@@ -79,7 +79,7 @@
 |---|---|---|
 | `python-media-automation` | Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated... | `automation/python-media-automation` |
 
-## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (26 skills)
+## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (27 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -99,6 +99,7 @@
 | `hermes-gateway-resilience` | Restore and harden the Hermes Messaging Gateway on Linux when it goes inactive, drops platform connections, or fails under low-disk press... | `autonomous-ai-agents/hermes-gateway-resilience` |
 | `hermes-kanban-swarm` | Orchestrate, configure, and execute multi-agent workflows (Swarms) using Hermes Kanban boards and profiles. | `autonomous-ai-agents/hermes-kanban-swarm` |
 | `hermes-profile-customization` | Create and customize isolated profiles in Hermes. | `autonomous-ai-agents/hermes-profile-customization` |
+| `hermes-telegram-agent-provisioning` | Provision an isolated profile as a Telegram daemon. | `autonomous-ai-agents/hermes-telegram-agent-provisioning` |
 | `hermes-workspace-setup` | Set up and run Hermes Workspace on a VPS with gateway auth. | `autonomous-ai-agents/hermes-workspace-setup` |
 | `kanban-codex-lane` | Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane while Hermes keeps ownership of task lifecycle,... | `autonomous-ai-agents/kanban-codex-lane` |
 | `opencode` | Delegate coding to OpenCode CLI (features, PR review). | `autonomous-ai-agents/opencode` |
@@ -564,7 +565,7 @@
 |---|---|---|
 | `xurl` | X/Twitter via xurl CLI: post, search, DM, media, v2 API. | `social-media/xurl` |
 
-## <a id="software-development"></a>📂 software-development (94 skills)
+## <a id="software-development"></a>📂 software-development (95 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -594,6 +595,7 @@
 | `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work | `software-development/finishing-a-development-branch` |
 | `free-api-python-monetization-stack` | 100 free Python libraries and APIs for TTS, AI, scraping, finance, and automation. | `software-development/free-api-python-monetization-stack` |
 | `git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user ... | `software-development/git-guardrails-claude-code` |
+| `grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. | `software-development/grill-with-docs` |
 | `hermes-9router-integration` | Deploy 9Router and integrate it with Hermes Agent profiles. | `software-development/hermes-9router-integration` |
 | `hermes-agent-skill-authoring` | Author in-repo SKILL.md: frontmatter, validator, structure. | `software-development/hermes-agent-skill-authoring` |
 | `hermes-profile-isolation` | Set up and configure isolated Hermes Agent profiles for different projects. | `software-development/hermes-profile-isolation` |

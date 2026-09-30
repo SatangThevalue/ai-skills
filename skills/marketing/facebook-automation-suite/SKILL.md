@@ -99,15 +99,53 @@ def reply_to_comment(comment_id: str, reply_message: str):
 def auto_post_video(page_id: str, video_filepath: str, description: str):
     page = Page(page_id)
     try:
-        page.create_video(params={
+        video = page.create_video(params={
             'description': description,
             'published': 'true'
         }, files={
             'source': video_filepath
         })
-        print("✅ Video posted successfully!")
+        print(f"✅ Video posted successfully! ID: {video.get('id')}")
+        return video.get('id')
     except Exception as e:
         print(f"❌ Video upload failed: {e}")
+        return None
+
+### Recipe 3.1.3: Auto-Pin Comment สำหรับ Reels & Affiliate Link
+*Facebook Reels ในไทยไม่มีปุ่มตะกร้าเหมือน TikTok กลยุทธ์หลักในการทำ Affiliate และขายของคือ "ยิงคอมเมนต์แรกอัตโนมัติแล้วสั่งปักหมุด (Pin Comment)" ทันทีที่วิดีโอโพสต์สำเร็จ*
+
+```python
+import requests
+
+def post_and_pin_first_comment(page_access_token: str, post_id: str, comment_text: str):
+    """
+    สร้างคอมเมนต์แรกใต้โพสต์/Reel แล้วสั่งปักหมุด (Pinned Comment)
+    """
+    url = f"https://graph.facebook.com/v19.0/{post_id}/comments"
+    params = {
+        "access_token": page_access_token,
+        "message": comment_text
+    }
+    resp = requests.post(url, data=params).json()
+    comment_id = resp.get("id")
+    if not comment_id:
+        print(f"❌ Create comment failed: {resp}")
+        return False
+
+    # สั่งปักหมุดคอมเมนต์ผ่าน Graph API
+    pin_url = f"https://graph.facebook.com/v19.0/{post_id}"
+    pin_params = {
+        "access_token": page_access_token,
+        "pinned_comment_id": comment_id
+    }
+    pin_resp = requests.post(pin_url, data=pin_params).json()
+    if pin_resp.get("success"):
+        print(f"✅ Comment {comment_id} pinned successfully!")
+        return True
+    else:
+        print(f"⚠️ Pinning note: {pin_resp}")
+        return True
+```
 ```
 
 ### Recipe 3.2: สแครปข้อมูลและคอมเมนต์จากเพจอื่น (สายดูดข้อมูล)
@@ -154,6 +192,7 @@ def scrape_competitor_page(page_name: str, pages_limit: int = 1):
 1. **[Data Extraction]:** ใช้ `facebook-scraper` วิ่งไปดูดโพสต์สินค้าขายดีของเพจร้านดัง หรือเพจคู่แข่ง (ดูว่าลูกค้าคอมเมนต์ด่า หรือชมเรื่องอะไร)
 2. **[AI Ideation]:** นำข้อความที่ดึงมา (เช่น ลูกค้าด่าว่าสายชาร์จพังง่าย) ไปบอก LLM (CLIProxyAPI) ให้เขียนสคริปต์วิดีโอของเรา โดยเน้น Hook เรื่อง "สายชาร์จถึกทน"
 3. **[Auto-Publish]:** เมื่อ AI ทำคลิปและ Caption พร้อม HashTag เสร็จ ก็ใช้ `facebook-python-business-sdk` (Official) สั่งโพสต์คลิปนั้นลงเพจ Facebook / Reels ของเราเองอัตโนมัติ
+4. **[Auto-Pin & Multi-Page Flipping]:** ปั้นชุดเพจ 10-15 เพจกระจาย 4 Niche (จิตวิทยา, พัฒนาตัวเอง, คำคม, การเงิน) โดยยิงคลิปสั้น 15-20 วินาที พร้อม Auto-Pin คอมเมนต์ดึงคนไป Affiliate หรือสะสมผู้ติดตาม 5,000-10,000 คนเพื่อขายต่อ (Flipping) ดูรายละเอียดแผนธุรกิจและเมทริกซ์ความเสี่ยงใน `references/page-flipping-and-anti-ban.md`
 
 ## 5. การวิเคราะห์ข้อมูลเพจด้วย requests + BeautifulSoup (ทางเลือกสำหรับเพจสาธารณะ)
 ในกรณีที่ `facebook-scraper` ถูกบล็อกหรือติดข้อจำกัด สามารถใช้ Python พื้นฐาน (requests + BeautifulSoup) เพื่อดึง meta tags สำคัญ (og:title, og:description) หรือค้นหาข้อมูลใน HTML ของเพจสาธารณะได้ เหมาะสำหรับการสกัดข้อมูลพื้นฐาน เช่น ยอดผู้ติดตาม, บริการ, หรือสโลแกนเพจ
@@ -177,3 +216,5 @@ def scrape_public_page_info(url: str):
 ## 6. ข้อควรระวัง (Pitfalls)
 - **Account Ban:** ห้ามใช้แอคเคาท์จริงของตัวเองในการใช้ `facebook-scraper` เพื่อดึงข้อมูล (หลีกเลี่ยงการส่ง cookies) ให้ใช้แบบ Guest Mode (ไม่ล็อกอิน) เพื่อลดความเสี่ยงที่เฟสส่วนตัวจะบิน
 - **Token Expiry:** `PAGE_ACCESS_TOKEN` ของ Facebook Business API มักจะหมดอายุใน 60 วัน ต้องหาวิธีต่ออายุ (Extend Token) หรือสร้างแบบ Never-expire
+- **Multi-Page Posting Detection:** เมื่อโพสต์หลายเพจพร้อมกัน (เช่น 10-15 เพจ) ห้ามยิง API พร้อมกันในเสี้ยววินาทีเด็ดขาด เพราะ Meta จะ Flag ว่าเป็น Spam Bot จาก IP เดียวกัน ให้ตั้ง `random.uniform(120, 420)` (หน่วงเวลา 2–7 นาที) ระหว่างการโพสต์แต่ละเพจเสมอ
+- **Audio Duplicate / Shadowban:** เสียงพากย์ AI ห้ามใช้โทนและสปีดเดิม 100% กับทุกเพจ ให้สลับเสียง (เช่น นิวัฒน์ สลับ พรหมวดี) และสุ่มปรับ pitch ±3-5% ในการเรนเดอร์คลิปแต่ละเพจ
