@@ -1213,13 +1213,13 @@
     "created_at": "2026-06-24T16:08:12.137142+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-09-19T11:16:57.397305+00:00",
-    "last_viewed_at": "2026-09-19T11:16:57.388364+00:00",
+    "last_used_at": "2026-10-01T21:13:33.255037+00:00",
+    "last_viewed_at": "2026-10-01T21:13:32.180355+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 38,
-    "view_count": 38
+    "use_count": 39,
+    "view_count": 39
   },
   "hermes-dashboard-traefik": {
     "archived_at": null,
@@ -1849,14 +1849,14 @@
     "archived_at": null,
     "created_at": "2026-09-23T23:24:20.951703+00:00",
     "created_by": null,
-    "last_patched_at": "2026-09-23T23:24:20.951743+00:00",
-    "last_used_at": "2026-09-30T10:28:46.410833+00:00",
-    "last_viewed_at": "2026-09-30T10:28:43.825711+00:00",
-    "patch_count": 1,
+    "last_patched_at": "2026-10-01T21:13:54.909416+00:00",
+    "last_used_at": "2026-10-01T21:13:22.938959+00:00",
+    "last_viewed_at": "2026-10-01T21:13:22.922497+00:00",
+    "patch_count": 3,
     "pinned": false,
     "state": "active",
-    "use_count": 1,
-    "view_count": 1
+    "use_count": 2,
+    "view_count": 2
   },
   "multidim-quant-dw-pipeline": {
     "archived_at": null,
@@ -2921,6 +2921,19 @@
     "patch_count": 0,
     "pinned": false,
     "state": "archived",
+    "use_count": 0,
+    "view_count": 0
+  },
+  "skill-credential-sanitization": {
+    "archived_at": null,
+    "created_at": "2026-10-01T21:36:57.507506+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-10-01T21:37:27.849071+00:00",
+    "last_used_at": null,
+    "last_viewed_at": null,
+    "patch_count": 2,
+    "pinned": false,
+    "state": "active",
     "use_count": 0,
     "view_count": 0
   },

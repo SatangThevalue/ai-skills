@@ -69,7 +69,14 @@ Execute the categorization, symlinking, and git synchronization through the `ter
    python3 ~/.hermes/skills/hermes-agent/multi-profile-skills-sync/scripts/sync_skills_index.py
    ```
 
-5. **Sync and Push to Remote Git Repository**
+5. **Pre-Push Secret Sanitization**
+   Scan all skill directories and supporting scripts to ensure no live bot tokens, passwords, or API keys are committed:
+   ```bash
+   python3 ~/.hermes/skills/hermes-agent/multi-profile-skills-sync/scripts/scan_secrets.py
+   ```
+   Ensure any detected secrets are replaced with `os.getenv(...)` or `<PLACEHOLDER>` before staging.
+
+6. **Sync and Push to Remote Git Repository**
    Mirror the organized skills directory to the git workspace, commit, and push:
    ```bash
    rsync -av --delete ~/.hermes/skills/ ~/ai-skills/skills/
@@ -81,6 +88,7 @@ Execute the categorization, symlinking, and git synchronization through the `ter
 
 ## Pitfalls
 
+- **Credential Leakage in Skill Files:** Supporting scripts (`scripts/`), references (`references/`), and templates (`templates/`) must never store raw Telegram bot tokens, broker API secrets, or passwords. Always sanitize with environment variables (`os.getenv()`) prior to syncing to GitHub.
 - **Broken Relative Symlinks:** Always use absolute target paths (`/home/.../.hermes/skills`) when creating profile symlinks to avoid broken link resolutions.
 - **Accidental Deletions:** Always inspect and copy unique profile-specific skills into `~/.hermes/skills/` before executing `rm -rf` on profile directories.
 - **Git Hook Conflicts:** Verify TOC and README generation succeeds before pushing to prevent CI/README sync validation failures.

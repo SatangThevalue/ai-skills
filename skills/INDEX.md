@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **480 skills** จัดระเบียบใน **28 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **481 skills** จัดระเบียบใน **28 หมวดหมู่**
 
 ---
 
@@ -20,7 +20,7 @@
 | [creative](#creative) | **7** | `abstract-strategy`, `baoyu-article-illustrator`, `baoyu-comic` *(+อีก 4)* |
 | [data-science](#data-science) | **2** | `data-science-and-engineering`, `prefect-workflows` |
 | [data-storytelling-page-launch](#data-storytelling-page-launch) | **1** | `data-storytelling-page-launch` |
-| [devops](#devops) | **42** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 39)* |
+| [devops](#devops) | **43** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 40)* |
 | [domain-knowledge](#domain-knowledge) | **1** | `music-metadata-standards` |
 | [email](#email) | **1** | `himalaya` |
 | [finance](#finance) | **134** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 131)* |
@@ -234,7 +234,7 @@
 |---|---|---|
 | `data-storytelling-page-launch` | Plan, design, and automate data storytelling social media pages. | `data-storytelling-page-launch` |
 
-## <a id="devops"></a>📂 devops (42 skills)
+## <a id="devops"></a>📂 devops (43 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -273,6 +273,7 @@
 | `postgresql` | Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features | `devops/postgresql` |
 | `prefect-orchestration` | Set up and manage Prefect workflows, task queues, and auto-publishing pipelines. | `devops/prefect-orchestration` |
 | `prefect-orchestration-monetization` | Schedule and monitor the Zero-Touch Monetization pipeline using Prefect, with Infisical and A2A integration. | `devops/prefect-orchestration-monetization` |
+| `skill-credential-sanitization` | Sanitize credentials and secrets in skill repositories. | `devops/skill-credential-sanitization` |
 | `tailscale-docker-zero-trust` | Secure Docker container deployments by binding critical services explicitly to Tailscale VPN IPs (Zero-Trust) instead of 0.0.0.0 or 127.0... | `devops/tailscale-docker-zero-trust` |
 | `telegram-polling-conflict-troubleshooting` | Resolve Telegram bot getUpdates polling conflicts. | `devops/telegram-polling-conflict-troubleshooting` |
 | `Traefik` | Avoid common Traefik mistakes — router priority, TLS configuration, Docker labels syntax, and middleware ordering. | `devops/traefik` |

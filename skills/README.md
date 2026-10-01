@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (480 skills ใน 28 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (481 skills ใน 28 หมวดหมู่)
 
 ### 📁 .ARCHIVE (66)
 
@@ -199,7 +199,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`data-storytelling-page-launch`**: Plan, design, and automate data storytelling social media pages.
 
-### 📁 DEVOPS (42)
+### 📁 DEVOPS (43)
 
 - **`9router`**: Entry point for 9Router — local/remote AI gateway with OpenAI-compatible REST for chat, image, TTS, embeddings, web search, web fetch. Use when the user mentions 9Router, NINEROUTER_URL, or wants AI without writing provider boilerplate. This skill covers setup + indexes capability skills; fetch the relevant capability SKILL.md from the URLs below when needed.
 - **`9router-chat`**: Chat / code generation via 9Router using OpenAI /v1/chat/completions or Anthropic /v1/messages format with streaming + auto-fallback combos. Use when the user wants to ask an LLM, generate code, summarize text, or run prompts through 9Router.
@@ -236,6 +236,7 @@ hermes skills view <ชื่อ-skill>
 - **`postgresql`**: Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
 - **`prefect-orchestration`**: Set up and manage Prefect workflows, task queues, and auto-publishing pipelines.
 - **`prefect-orchestration-monetization`**: Schedule and monitor the Zero-Touch Monetization pipeline using Prefect, with Infisical and A2A integration.
+- **`skill-credential-sanitization`**: Sanitize credentials and secrets in skill repositories.
 - **`tailscale-docker-zero-trust`**: Secure Docker container deployments by binding critical services explicitly to Tailscale VPN IPs (Zero-Trust) instead of 0.0.0.0 or 127.0.0.1.
 - **`telegram-polling-conflict-troubleshooting`**: Resolve Telegram bot getUpdates polling conflicts.
 - **`Traefik`**: Avoid common Traefik mistakes — router priority, TLS configuration, Docker labels syntax, and middleware ordering.
