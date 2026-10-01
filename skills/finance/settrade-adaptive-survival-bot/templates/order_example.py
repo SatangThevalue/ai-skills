@@ -13,7 +13,7 @@ investor = Investor(
     broker_id=BROKER_ID,
     is_auto_queue=False
 )
-equity = investor.Equity(account_no="satang-E")
+equity = investor.Equity(account_no=os.getenv("SETTRADE_ACCOUNT_NO", "YOUR_ACCOUNT_NO"))
 
 # RIGHT WAY to place a Market Order (กวาดราคาตลาด)
 # MP-MKT MUST be paired with FOK or IOC.

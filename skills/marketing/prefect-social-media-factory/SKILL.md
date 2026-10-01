@@ -47,6 +47,9 @@ Orchestrates multi-channel content production, upstream dataset harvesting, Tele
 | Morning Executive Briefing | `terminal` | `python3 /home/thaieasyvps/satang_content_studio/prefect_morning_briefing.py` |
 | Auto-Publisher Sweeper | `terminal` | `python3 /home/thaieasyvps/satang_prefect_sweeper.py` |
 | Telegram Bot Daemon | `terminal` | `python3 /home/thaieasyvps/satang_content_studio/telegram_bot_daemon.py` |
+| Telegram Webhook Block | `terminal` | `python3 /home/thaieasyvps/satang_content_studio/prefect_notifications.py` |
+
+For detailed block configuration and hook patterns, see `references/prefect_telegram_webhook_notifications.md`.
 
 ## Procedure
 
@@ -89,7 +92,8 @@ Orchestrates multi-channel content production, upstream dataset harvesting, Tele
 
 ## Pitfalls
 
-- **Prefect Server Ephemeral Mode Timeout:** When running raw flows from CLI without setting `PREFECT_API_URL`, Prefect may spin up a temporary server that times out under load. Always ensure `PREFECT_API_URL` points to your dedicated server (e.g. `http://100.115.66.121:4200/api`) or keep tasks lightweight.
+- **Prefect Client/Server Version Mismatch:** Connecting a Prefect 3.x client to a Prefect 2.x server container throws `RuntimeError: Found incompatible versions: client: 3.x, server: 2.x. Major versions must match.` Upgrade the server container to `prefecthq/prefect:3-python3.11` to keep versions aligned.
+- **Prefect Server Ephemeral Mode Timeout:** When running raw flows from CLI without setting `PREFECT_API_URL`, Prefect may spin up a temporary server that times out under load. Always ensure `PREFECT_API_URL` points to your dedicated server (e.g. `http://100.115.66.121:4200/api`) or set a permanent profile (`prefect profile use local-server`).
 - **Fixed-Time Posting Bot Flags:** Publishing at exact zero-second marks (`16:30:00`) repeatedly causes Meta spam filters to throttle page Reach. Always calculate a human-jitter minute (`random.randint(30, 58)`) and second (`random.randint(10, 50)`).
 - **Telegram Bot Multi-User Security:** Unrestricted callback handlers allow unauthorized chat members to approve or delete posts. Always enforce `if user_id != AUTHORIZED_USER_ID: return` before processing callbacks.
 

@@ -15,11 +15,11 @@ from adaptive_survival_system_v4 import AdaptiveSurvivalSystemV4, SETMarketScann
 # ==========================================
 # ⚙️ CONFIG — Sandbox Credentials
 # ==========================================
-APP_ID       = "MSqUZuOvJlnV7Wrj"
-APP_SECRET   = "AP6FRjAgWX6yEyue4CUBDCTqpG/0mJvC6TqFoGgArsZ+"
+APP_ID       = os.getenv("SETTRADE_APP_ID", "YOUR_APP_ID")
+APP_SECRET   = os.getenv("SETTRADE_APP_SECRET", "YOUR_APP_SECRET")
 BROKER_ID    = "SANDBOX"
 APP_CODE     = "SANDBOX"
-ACCOUNT_NO   = "satang-E"
+ACCOUNT_NO   = os.getenv("SETTRADE_ACCOUNT_NO", "YOUR_ACCOUNT_NO")
 PIN          = "000000"
 STATE_FILE   = "/home/thaieasyvps/sandbox_bot_state.json"
 

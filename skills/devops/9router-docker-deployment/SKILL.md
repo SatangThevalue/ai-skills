@@ -19,7 +19,7 @@ services:
     restart: always
     environment:
       - DATA_DIR=/app/data
-      - INITIAL_PASSWORD=15974201
+      - INITIAL_PASSWORD=${INITIAL_PASSWORD:-your_password}
       - PORT=20128
       - HOSTNAME=0.0.0.0
     ports:

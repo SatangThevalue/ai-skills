@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/home/thaieasyvps/.hermes/profiles/ton-crassula/logs/curator/20260924-113837",
-  "last_run_at": "2026-09-24T11:38:37.716647+00:00",
-  "last_run_duration_seconds": 4.355175,
-  "last_run_summary": "auto: 7 marked stale, 3 archived, 7 reactivated; llm: skipped (consolidation off)",
+  "last_report_path": "/home/thaieasyvps/.hermes/profiles/ton-crassula/logs/curator/20261001-114648",
+  "last_run_at": "2026-10-01T11:46:48.758533+00:00",
+  "last_run_duration_seconds": 15.023239,
+  "last_run_summary": "auto: 63 archived, 4 reactivated; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 13
+  "run_count": 14
 }

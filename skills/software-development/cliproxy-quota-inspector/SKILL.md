@@ -22,7 +22,7 @@ This skill allows the agent to interact with the CLIProxyAPI backend (running lo
 
 ## Prerequisites
 - A running CLIProxyAPI instance listening on port `42869` with remote management secret set.
-- `satangza15974201` set as the management key.
+- `YOUR_MANAGEMENT_KEY` set as the management key.
 
 ## How to Run
 - Retrieve account statuses using Python scripts invoking the management API through the `terminal` tool.
@@ -42,7 +42,7 @@ Execute a query to retrieve all configured authentication files, including reque
 ```bash
 python3 -c "
 import urllib.request, json
-req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer satangza15974201'})
+req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer YOUR_MANAGEMENT_KEY'})
 try:
     with urllib.request.urlopen(req) as r:
         res = json.loads(r.read().decode())
@@ -78,7 +78,7 @@ Confirm connectivity and verify accounts list retrieval:
 ```bash
 python3 -c "
 import urllib.request
-req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer satangza15974201'})
+req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer YOUR_MANAGEMENT_KEY'})
 print(urllib.request.urlopen(req).status == 200)
 "
 ```

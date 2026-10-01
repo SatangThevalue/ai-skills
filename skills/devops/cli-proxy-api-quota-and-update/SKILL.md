@@ -21,7 +21,7 @@ Check account health (success/failure rates) and upgrade the CLIProxyAPI binary 
 ## Prerequisites
 
 - CLIProxyAPI installed at `/opt/cli-proxy-api/cli-proxy-api`.
-- Management endpoint enabled on port `42869` with secret `satangza15974201`.
+- Management endpoint enabled on port `42869` with secret `YOUR_MANAGEMENT_KEY`.
 - Systemd service `cliproxy.service` (system-level, not user).
 - `wget`, `tar`, `curl`, `sudo` available.
 
@@ -33,7 +33,7 @@ Invoke through the `terminal` tool:
 # Check quota
 python3 -c "
 import urllib.request, json
-req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer satangza15974201'})
+req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer YOUR_MANAGEMENT_KEY'})
 with urllib.request.urlopen(req) as r:
     res = json.loads(r.read().decode())
     for f in res.get('files', []):
@@ -55,7 +55,7 @@ sudo systemctl restart cliproxy.service
 
 | Action | Command |
 |--------|---------|
-| Quota check | `curl -H "Authorization: Bearer satangza15974201" http://127.0.0.1:42869/v0/management/auth-files` |
+| Quota check | `curl -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" http://127.0.0.1:42869/v0/management/auth-files` |
 | List models | `curl -s http://127.0.0.1:42869/v1/models` |
 | Latest release | `curl -s https://api.github.com/repos/router-for-me/CLIProxyAPI/releases/latest \| grep tag_name` |
 | Binary path | `/opt/cli-proxy-api/cli-proxy-api` |
@@ -74,7 +74,7 @@ sudo systemctl restart cliproxy.service
    ```bash
    python3 -c "
    import urllib.request, json
-   req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer satangza15974201'})
+   req = urllib.request.Request('http://127.0.0.1:42869/v0/management/auth-files', headers={'Authorization': 'Bearer YOUR_MANAGEMENT_KEY'})
    with urllib.request.urlopen(req) as r:
        res = json.loads(r.read().decode())
        for f in res.get('files', []):
@@ -106,7 +106,7 @@ sudo systemctl restart cliproxy.service
 
 6. **Verify service healthy**
    ```bash
-   curl -s -H "Authorization: Bearer satangza15974201" http://127.0.0.1:42869/v0/management/auth-files
+   curl -s -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" http://127.0.0.1:42869/v0/management/auth-files
    ```
 
 ## Pitfalls
@@ -125,7 +125,7 @@ sudo systemctl restart cliproxy.service
 /opt/cli-proxy-api/cli-proxy-api --version 2>&1 | grep BuiltAt
 
 # Service active and responding
-systemctl is-active cliproxy.service && curl -s -H "Authorization: Bearer satangza15974201" http://127.0.0.1:42869/v0/management/auth-files | jq '.files[].status'
+systemctl is-active cliproxy.service && curl -s -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" http://127.0.0.1:42869/v0/management/auth-files | jq '.files[].status'
 ```
 
 All accounts should show `"active"` and success rate ≥ 95%.

@@ -66,12 +66,13 @@ def auto_publisher_sweeper_flow():
         print(f"[PREFECT SWEEPER] Post {eval_id} successfully published and logged!")
         try:
             import requests
-            bot_token = "7803942401:AAEYZV95wsS6JSCwGbpVhr7wkhTcl2KLkuU"
-            chat_id = 7789252439
-            msg = f"<b>🎉 โพสต์สำเร็จเรียบร้อยแล้ว!</b>\n\n<b>หัวข้อ:</b> {target['headline']}\n<b>สถานะ:</b> เผยแพร่ขึ้น Facebook Feed เรียบร้อย พร้อมปักหมุดลิงก์สร้างรายได้ (Affiliate)\n\n<i>ระบบ Prefect ดำเนินการยิงโพสต์ตรงเวลาเสร็จสิ้น (0 Tokens)</i>"
-            requests.post(f"https://api.telegram.org/bot{bot_token}/sendMessage", json={
-                "chat_id": chat_id, "text": msg, "parse_mode": "HTML"
-            }, timeout=10)
+            bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+            chat_id = os.getenv("TELEGRAM_CHAT_ID", "7789252439")
+            if bot_token:
+                msg = f"<b>🎉 โพสต์สำเร็จเรียบร้อยแล้ว!</b>\n\n<b>หัวข้อ:</b> {target['headline']}\n<b>สถานะ:</b> เผยแพร่ขึ้น Facebook Feed เรียบร้อย พร้อมปักหมุดลิงก์สร้างรายได้ (Affiliate)\n\n<i>ระบบ Prefect ดำเนินการยิงโพสต์ตรงเวลาเสร็จสิ้น (0 Tokens)</i>"
+                requests.post(f"https://api.telegram.org/bot{bot_token}/sendMessage", json={
+                    "chat_id": chat_id, "text": msg, "parse_mode": "HTML"
+                }, timeout=10)
         except Exception:
             pass
         return f"SUCCESS_PUBLISHED_{eval_id}"

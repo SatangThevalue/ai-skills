@@ -122,7 +122,7 @@ failed to create request body temp file, falling back to direct write error=writ
 
 ```bash
 # 1. Account status
-curl -H "Authorization: Bearer satangza15974201" http://127.0.0.1:42869/v0/management/auth-files
+curl -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" http://127.0.0.1:42869/v0/management/auth-files
 
 # 2. Available models
 curl -s http://127.0.0.1:42869/v1/models

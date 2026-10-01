@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **475 skills** จัดระเบียบใน **32 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **480 skills** จัดระเบียบใน **28 หมวดหมู่**
 
 ---
 
@@ -8,48 +8,107 @@
 
 | หมวดหมู่ (Category) | จำนวน | ตัวอย่างสกิลเด่น |
 |---|:---:|---|
-| [.archive](#.archive) | **3** | `ocr-and-documents`, `ollama-local-inference`, `weights-and-biases` |
+| [.archive](#.archive) | **66** | `airtable`, `apple-notes`, `apple-reminders` *(+อีก 63)* |
 | [api-integration](#api-integration) | **1** | `innovestx-open-api` |
-| [apple](#apple) | **5** | `apple-notes`, `apple-reminders`, `findmy` *(+อีก 2)* |
+| [apple](#apple) | **1** | `macos-computer-use` |
 | [architecture](#architecture) | **2** | `ddex-metadata-architecture`, `loop-engineering-onboarding` |
 | [automation](#automation) | **1** | `python-media-automation` |
-| [autonomous-ai-agents](#autonomous-ai-agents) | **28** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 25)* |
+| [autonomous-ai-agents](#autonomous-ai-agents) | **25** | `agent-frameworks-integration`, `agent-reach-integration`, `agent-swarm` *(+อีก 22)* |
 | [blockchain](#blockchain) | **3** | `evm`, `hyperliquid`, `solana` |
-| [business](#business) | **23** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 20)* |
+| [business](#business) | **24** | `account-maintenance`, `account-opening-compliance`, `admin-hub-refactoring` *(+อีก 21)* |
 | [business-operations](#business-operations) | **2** | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)`, `wholesale-chicken-distribution` |
-| [creative](#creative) | **21** | `abstract-strategy`, `architecture-diagram`, `ascii-art` *(+อีก 18)* |
-| [data-science](#data-science) | **3** | `data-science-and-engineering`, `jupyter-live-kernel`, `prefect-workflows` |
+| [creative](#creative) | **7** | `abstract-strategy`, `baoyu-article-illustrator`, `baoyu-comic` *(+อีก 4)* |
+| [data-science](#data-science) | **2** | `data-science-and-engineering`, `prefect-workflows` |
 | [data-storytelling-page-launch](#data-storytelling-page-launch) | **1** | `data-storytelling-page-launch` |
 | [devops](#devops) | **42** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 39)* |
 | [domain-knowledge](#domain-knowledge) | **1** | `music-metadata-standards` |
 | [email](#email) | **1** | `himalaya` |
-| [finance](#finance) | **133** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 130)* |
+| [finance](#finance) | **134** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 131)* |
 | [gaming](#gaming) | **2** | `minecraft-modpack-server`, `pokemon-player` |
-| [github](#github) | **6** | `codebase-inspection`, `github-auth`, `github-code-review` *(+อีก 3)* |
+| [github](#github) | **1** | `github-repo-management` |
 | [hermes-agent](#hermes-agent) | **5** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 2)* |
-| [marketing](#marketing) | **25** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 22)* |
+| [marketing](#marketing) | **27** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 24)* |
 | [mcp](#mcp) | **2** | `fastmcp`, `native-mcp` |
-| [media](#media) | **14** | `ai-avatar-generation-stack`, `broll-free-video-automation`, `ffmpeg-complex-filter-video-automation` *(+อีก 11)* |
-| [misc](#misc) | **12** | `adhd-assistant`, `AI Agent Wars 2026`, `ask-matt` *(+อีก 9)* |
-| [mlops](#mlops) | **10** | `audiocraft-audio-generation`, `dspy`, `evaluating-llms-harness` *(+อีก 7)* |
-| [note-taking](#note-taking) | **1** | `obsidian` |
-| [productivity](#productivity) | **24** | `airtable`, `brain-hacking-and-productivity`, `business-analysis-frameworks` *(+อีก 21)* |
+| [media](#media) | **10** | `ai-avatar-generation-stack`, `broll-free-video-automation`, `ffmpeg-complex-filter-video-automation` *(+อีก 7)* |
+| [misc](#misc) | **10** | `adhd-assistant`, `AI Agent Wars 2026`, `ask-matt` *(+อีก 7)* |
+| [mlops](#mlops) | **4** | `dspy`, `mlflow-dataset-tracking`, `obliteratus` *(+อีก 1)* |
+| [productivity](#productivity) | **17** | `brain-hacking-and-productivity`, `business-analysis-frameworks`, `deep-productivity` *(+อีก 14)* |
 | [project-management](#project-management) | **1** | `orchestrating-kanban-subagents` |
 | [red-teaming](#red-teaming) | **1** | `godmode` |
-| [research](#research) | **5** | `arxiv`, `blogwatcher`, `llm-wiki` *(+อีก 2)* |
-| [smart-home](#smart-home) | **1** | `openhue` |
-| [social-media](#social-media) | **1** | `xurl` |
-| [software-development](#software-development) | **95** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 92)* |
+| [software-development](#software-development) | **87** | `agent-skills-github-sync`, `ai-content-studio-architecture`, `audio-tts-post-processing` *(+อีก 84)* |
 
 ---
 
-## <a id=".archive"></a>📂 .archive (3 skills)
+## <a id=".archive"></a>📂 .archive (66 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
+| `airtable` | Airtable REST API via curl. Records CRUD, filters, upserts. | `.archive/airtable` |
+| `apple-notes` | Manage Apple Notes via memo CLI: create, search, edit. | `.archive/apple-notes` |
+| `apple-reminders` | Apple Reminders via remindctl: add, list, complete. | `.archive/apple-reminders` |
+| `architecture-diagram` | Dark-themed SVG architecture/cloud/infra diagrams as HTML. | `.archive/architecture-diagram` |
+| `arxiv` | Search arXiv papers by keyword, author, category, or ID. | `.archive/arxiv` |
+| `ascii-art` | ASCII art: pyfiglet, cowsay, boxes, image-to-ascii. | `.archive/ascii-art` |
+| `ascii-video` | ASCII video: convert video/audio to colored ASCII MP4/GIF. | `.archive/ascii-video` |
+| `audiocraft-audio-generation` | AudioCraft: MusicGen text-to-music, AudioGen text-to-sound. | `.archive/audiocraft` |
+| `baoyu-infographic` | Infographics: 21 layouts x 21 styles (信息图, 可视化). | `.archive/baoyu-infographic` |
+| `blogwatcher` | Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool. | `.archive/blogwatcher` |
+| `claude-code` | Delegate coding to Claude Code CLI (features, PRs). | `.archive/claude-code` |
+| `codebase-inspection` | Inspect codebases w/ pygount: LOC, languages, ratios. | `.archive/codebase-inspection` |
+| `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). | `.archive/codex` |
+| `comfyui` | Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter injection. Uses the o... | `.archive/comfyui` |
+| `computer-use` | / | `.archive/computer-use` |
+| `design-md` | Author/validate/export Google's DESIGN.md token spec files. | `.archive/design-md` |
+| `dogfood` | Exploratory QA of web apps: find bugs, evidence, reports. | `.archive/dogfood` |
+| `evaluating-llms-harness` | lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.). | `.archive/lm-evaluation-harness` |
+| `excalidraw` | Hand-drawn Excalidraw JSON diagrams (arch, flow, seq). | `.archive/excalidraw` |
+| `findmy` | Track Apple devices/AirTags via FindMy.app on macOS. | `.archive/findmy` |
+| `gif-search` | Search/download GIFs from Tenor via curl + jq. | `.archive/gif-search` |
+| `github-auth` | GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login. | `.archive/github-auth` |
+| `github-code-review` | Review PRs: diffs, inline comments via gh or REST. | `.archive/github-code-review` |
+| `github-issues` | Create, triage, label, assign GitHub issues via gh or REST. | `.archive/github-issues` |
+| `github-pr-workflow` | GitHub PR lifecycle: branch, commit, open, CI, merge. | `.archive/github-pr-workflow` |
+| `heartmula` | HeartMuLa: Suno-like song generation from lyrics + tags. | `.archive/heartmula` |
+| `huggingface-hub` | HuggingFace hf CLI: search/download/upload models, datasets. | `.archive/huggingface-hub` |
+| `humanizer` | Humanize text: strip AI-isms and add real voice. | `.archive/humanizer` |
+| `imessage` | Send and receive iMessages/SMS via the imsg CLI on macOS. | `.archive/imessage` |
+| `jupyter-live-kernel` | Iterative Python via live Jupyter kernel (hamelnb). | `.archive/jupyter-live-kernel` |
+| `llama-cpp` | llama.cpp local GGUF inference + HF Hub model discovery. | `.archive/llama-cpp` |
+| `llm-wiki` | Karpathy's LLM Wiki: build/query interlinked markdown KB. | `.archive/llm-wiki` |
+| `manim-video` | Manim CE animations: 3Blue1Brown math/algo videos. | `.archive/manim-video` |
+| `maps` | Geocode, POIs, routes, timezones via OpenStreetMap/OSRM. | `.archive/maps` |
+| `nano-pdf` | Edit PDF text/typos/titles via nano-pdf CLI (NL prompts). | `.archive/nano-pdf` |
+| `node-inspect-debugger` | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. | `.archive/node-inspect-debugger` |
+| `notion` | Notion API + ntn CLI: pages, databases, markdown, Workers. | `.archive/notion` |
+| `obsidian` | Read, search, create, and edit notes in the Obsidian vault. Provides vault-first templates, canonical data schema, and repeatable scripts... | `.archive/obsidian` |
 | `ocr-and-documents` | Extract text from PDFs/scans (pymupdf, marker-pdf). | `.archive/ocr-and-documents` |
 | `ollama-local-inference` | Run and manage local LLMs and embedding models using Ollama. | `.archive/ollama-local-inference` |
+| `opencode` | Delegate coding to OpenCode CLI (features, PR review). | `.archive/opencode` |
+| `openhue` | Control Philips Hue lights, scenes, rooms via OpenHue CLI. | `.archive/openhue` |
+| `p5js` | p5.js sketches: gen art, shaders, interactive, 3D. | `.archive/p5js` |
+| `petdex` | Install and select animated petdex mascots for Hermes. | `.archive/petdex` |
+| `polymarket` | Query Polymarket: markets, prices, orderbooks, history. | `.archive/polymarket` |
+| `popular-web-designs` | 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS. | `.archive/popular-web-designs` |
+| `powerpoint` | Create, read, edit .pptx decks, slides, notes, templates. | `.archive/powerpoint` |
+| `pretext` | Use when building creative browser demos with @chenglou/pretext — DOM-free text layout for ASCII art, typographic flow around obstacles, ... | `.archive/pretext` |
+| `python-debugpy` | Debug Python: pdb REPL + debugpy remote (DAP). | `.archive/python-debugpy` |
+| `requesting-code-review` | Pre-commit review: security scan, quality gates, auto-fix. | `.archive/requesting-code-review` |
+| `research-paper-writing` | Write ML papers for NeurIPS/ICML/ICLR: design→submit. | `.archive/research-paper-writing` |
+| `segment-anything-model` | SAM: zero-shot image segmentation via points, boxes, masks. | `.archive/segment-anything` |
+| `serving-llms-vllm` | vLLM: high-throughput LLM serving, OpenAI API, quantization. | `.archive/vllm` |
+| `simplify-code` | Parallel 3-agent cleanup of recent code changes. | `.archive/simplify-code` |
+| `sketch` | Throwaway HTML mockups: 2-3 design variants to compare. | `.archive/sketch` |
+| `songsee` | Audio spectrograms/features (mel, chroma, MFCC) via CLI. | `.archive/songsee` |
+| `spike` | Throwaway experiments to validate an idea before build. | `.archive/spike` |
+| `systematic-debugging` | 4-phase root cause debugging: understand bugs before fixing. | `.archive/systematic-debugging` |
+| `teams-meeting-pipeline` | Operate the Teams meeting summary pipeline via Hermes CLI — summarize meetings, inspect pipeline status, replay jobs, manage Microsoft Gr... | `.archive/teams-meeting-pipeline` |
+| `test-driven-development` | TDD: enforce RED-GREEN-REFACTOR, tests before code. | `.archive/test-driven-development` |
+| `thai-finance-legal-guide` | Reference for Thai tax, stock, and crypto regulations. | `.archive/thai-finance-legal-guide` |
+| `touchdesigner-mcp` | Control a running TouchDesigner instance via twozero MCP — create operators, set parameters, wire connections, execute Python, build real... | `.archive/touchdesigner-mcp` |
 | `weights-and-biases` | W&B: log ML experiments, sweeps, model registry, dashboards. | `.archive/weights-and-biases` |
+| `xurl` | X/Twitter via xurl CLI: post, search, DM, media, v2 API. | `.archive/xurl` |
+| `youtube-content` | YouTube transcripts to summaries, threads, blogs. | `.archive/youtube-content` |
+| `yuanbao` | Yuanbao (元宝) groups: @mention users, query info/members. | `.archive/yuanbao` |
 
 ## <a id="api-integration"></a>📂 api-integration (1 skills)
 
@@ -57,14 +116,10 @@
 |---|---|---|
 | `innovestx-open-api` | Guide and implementation details for using InnovestX Digital Asset Open API. | `api-integration/innovestx-open-api` |
 
-## <a id="apple"></a>📂 apple (5 skills)
+## <a id="apple"></a>📂 apple (1 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
-| `apple-notes` | Manage Apple Notes via memo CLI: create, search, edit. | `apple/apple-notes` |
-| `apple-reminders` | Apple Reminders via remindctl: add, list, complete. | `apple/apple-reminders` |
-| `findmy` | Track Apple devices/AirTags via FindMy.app on macOS. | `apple/findmy` |
-| `imessage` | Send and receive iMessages/SMS via the imsg CLI on macOS. | `apple/imessage` |
 | `macos-computer-use` | / | `apple/macos-computer-use` |
 
 ## <a id="architecture"></a>📂 architecture (2 skills)
@@ -80,16 +135,14 @@
 |---|---|---|
 | `python-media-automation` | Best practices, pitfalls, and configuration fixes for running Python media libraries (MoviePy, Piper TTS, Pedalboard, PyDub) in automated... | `automation/python-media-automation` |
 
-## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (28 skills)
+## <a id="autonomous-ai-agents"></a>📂 autonomous-ai-agents (25 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
 | `agent-frameworks-integration` | Use when designing, building, or orchestrating multi-agent systems via A2A or LangGraph. | `autonomous-ai-agents/agent-frameworks-integration` |
 | `agent-reach-integration` | Install, configure, and operate the Agent Reach (Panniantong) framework to give agents internet channel access (X, Reddit, Bilibili, YouT... | `autonomous-ai-agents/agent-reach-integration` |
 | `agent-swarm` | Agent skill for swarm - invoke with $agent-swarm | `autonomous-ai-agents/agent-swarm` |
-| `claude-code` | Delegate coding to Claude Code CLI (features, PRs). | `autonomous-ai-agents/claude-code` |
 | `claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. | `autonomous-ai-agents/claude-handoff` |
-| `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). | `autonomous-ai-agents/codex` |
 | `course-to-skill-pipeline` | Convert course syllabi into actionable skills with rubrics. | `autonomous-ai-agents/course-to-skill-pipeline` |
 | `cron-job-workflows` | Guidelines and pitfalls for executing headless, non-interactive tasks as a scheduled cron job in Hermes. | `autonomous-ai-agents/cron-job-workflows` |
 | `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies | `autonomous-ai-agents/dispatching-parallel-agents` |
@@ -104,7 +157,6 @@
 | `hermes-telegram-agent-provisioning` | Provision an isolated profile as a Telegram daemon. | `autonomous-ai-agents/hermes-telegram-agent-provisioning` |
 | `hermes-workspace-setup` | Set up and run Hermes Workspace on a VPS with gateway auth. | `autonomous-ai-agents/hermes-workspace-setup` |
 | `kanban-codex-lane` | Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane while Hermes keeps ownership of task lifecycle,... | `autonomous-ai-agents/kanban-codex-lane` |
-| `opencode` | Delegate coding to OpenCode CLI (features, PR review). | `autonomous-ai-agents/opencode` |
 | `research-to-skill-pipeline` | Research and author Hermes skills on demand from the web. | `autonomous-ai-agents/research-to-skill-pipeline` |
 | `satang-ai-gateway` | Satang AI: Integration patterns for FastAPI Gateway, Better Auth, and LINE OA. | `autonomous-ai-agents/satang-ai-gateway` |
 | `skillopt-sleep` | Validate and refine agent skills through nightly sleep cycles with held-out gates. Wraps Microsoft's SkillOpt-Sleep engine. | `autonomous-ai-agents/skillopt-sleep` |
@@ -121,7 +173,7 @@
 | `hyperliquid` | Hyperliquid market data, account history, trade review. | `blockchain/hyperliquid` |
 | `solana` | Query Solana blockchain data with USD pricing — wallet balances, token portfolios with values, transaction details, NFTs, whale detection... | `blockchain/solana` |
 
-## <a id="business"></a>📂 business (23 skills)
+## <a id="business"></a>📂 business (24 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -138,6 +190,7 @@
 | `business-writing` | You are a professional business analyst, skilled in writing various industry research reports, business insights, consulting analyses, co... | `business/business-writing` |
 | `claim-investigation` | Systematically investigate social media claims and viral content. Use when fact-checking complex claims, when decomposing multi-part asse... | `business/claim-investigation` |
 | `competitor-price-analysis` | Competitor pricing strategy analysis and market positioning. Price mapping, pricing gaps identification, elasticity signals evaluation, a... | `business/competitor-price-analysis` |
+| `creator-operations-architecture` | Builds music creator dashboards, payouts, and analytics. | `business/creator-operations-architecture` |
 | `designing-growth-loops` | Help users design and optimize growth loops. Use when someone is building viral mechanics, designing referral programs, creating product-... | `business/designing-growth-loops` |
 | `ecommerce-business-plan` | Create a comprehensive e-commerce business plan. Market analysis, financial projections, marketing strategy, operations planning, and mil... | `business/ecommerce-business-plan` |
 | `executive-dashboard-generator` | Transform raw data from CSVs, Google Sheets, or databases into executive-ready reports with visualizations, key metrics, trend analysis, ... | `business/executive-dashboard-generator` |
@@ -156,38 +209,23 @@
 | `HR จัดการแรงงานไทย-ต่างชาติ (พม่า, ไทย, เขมร)` | คำแนะนำการจัดการ HR แรงงานชาวไทยและชาวต่างชาติ (พม่า, ไทย, เขมร) รวมถึงกฎหมาย, ระบบเงินเดือน, ประกันสังคม และเอกสารที่ต้องมี | `business-operations/hr-thai-and-myanmar-worker-management` |
 | `wholesale-chicken-distribution` | คู่มือการดำเนินธุรกิจและขั้นตอนทางกฎหมายสำหรับการซื้อไก่สดจากโรงงานเพื่อขายส่งและขนส่งไปต่างจังหวัดในประเทศไทย | `business-operations/wholesale-chicken-distribution` |
 
-## <a id="creative"></a>📂 creative (21 skills)
+## <a id="creative"></a>📂 creative (7 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
 | `abstract-strategy` | Design abstract strategy games with perfect information, no randomness, and strategic depth. Use when designing a board game, exploring a... | `creative/abstract-strategy` |
-| `architecture-diagram` | Dark-themed SVG architecture/cloud/infra diagrams as HTML. | `creative/architecture-diagram` |
-| `ascii-art` | ASCII art: pyfiglet, cowsay, boxes, image-to-ascii. | `creative/ascii-art` |
-| `ascii-video` | ASCII video: convert video/audio to colored ASCII MP4/GIF. | `creative/ascii-video` |
 | `baoyu-article-illustrator` | Article illustrations: type × style × palette consistency. | `creative/baoyu-article-illustrator` |
 | `baoyu-comic` | Knowledge comics (知识漫画): educational, biography, tutorial. | `creative/baoyu-comic` |
-| `baoyu-infographic` | Infographics: 21 layouts x 21 styles (信息图, 可视化). | `creative/baoyu-infographic` |
 | `claude-design` | Design one-off HTML artifacts (landing, deck, prototype). | `creative/claude-design` |
-| `comfyui` | Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter injection. Uses the o... | `creative/comfyui` |
-| `design-md` | Author/validate/export Google's DESIGN.md token spec files. | `creative/design-md` |
-| `excalidraw` | Hand-drawn Excalidraw JSON diagrams (arch, flow, seq). | `creative/excalidraw` |
-| `humanizer` | Humanize text: strip AI-isms and add real voice. | `creative/humanizer` |
 | `ideation` | Generate project ideas via creative constraints. | `creative/creative-ideation` |
-| `manim-video` | Manim CE animations: 3Blue1Brown math/algo videos. | `creative/manim-video` |
-| `p5js` | p5.js sketches: gen art, shaders, interactive, 3D. | `creative/p5js` |
 | `pixel-art` | Pixel art w/ era palettes (NES, Game Boy, PICO-8). | `creative/pixel-art` |
-| `popular-web-designs` | 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS. | `creative/popular-web-designs` |
-| `pretext` | Use when building creative browser demos with @chenglou/pretext — DOM-free text layout for ASCII art, typographic flow around obstacles, ... | `creative/pretext` |
-| `sketch` | Throwaway HTML mockups: 2-3 design variants to compare. | `creative/sketch` |
 | `songwriting-and-ai-music` | Songwriting craft and Suno AI music prompts. | `creative/songwriting-and-ai-music` |
-| `touchdesigner-mcp` | Control a running TouchDesigner instance via twozero MCP — create operators, set parameters, wire connections, execute Python, build real... | `creative/touchdesigner-mcp` |
 
-## <a id="data-science"></a>📂 data-science (3 skills)
+## <a id="data-science"></a>📂 data-science (2 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
 | `data-science-and-engineering` | Principles, methods, techniques, and workflows for Data Science (DS) and Data Engineering (DE). | `data-science/data-science-and-engineering` |
-| `jupyter-live-kernel` | Iterative Python via live Jupyter kernel (hamelnb). | `data-science/jupyter-live-kernel` |
 | `prefect-workflows` | Design, monitor, and run data orchestrations with Prefect. | `data-science/prefect-workflows` |
 
 ## <a id="data-storytelling-page-launch"></a>📂 data-storytelling-page-launch (1 skills)
@@ -255,7 +293,7 @@
 |---|---|---|
 | `himalaya` | Himalaya CLI: IMAP/SMTP email from terminal. | `email/himalaya` |
 
-## <a id="finance"></a>📂 finance (133 skills)
+## <a id="finance"></a>📂 finance (134 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -326,6 +364,7 @@
 | `mt5-farmed-hedge-yield-strategy` | Analysis and reverse-engineering of the MQL5 'Farmed Hedge Yield II' market-neutral hedging strategy, adapted for survival-first principles. | `finance/mt5-farmed-hedge-yield-strategy` |
 | `mt5-onnx-ai-trading-pipeline` | Data Science pipeline and architecture for building AI Trading Systems for MT5 via ONNX. | `finance/mt5-onnx-ai-trading-pipeline` |
 | `mt5-python-trading` | Guide and best practices for automated trading using Python and MetaTrader 5 (MT5), including Linux workarounds. | `finance/mt5-python-trading` |
+| `multidim-quant-dw-pipeline` | Execute multi-dimensional quant screening and DW trading. | `finance/multidim-quant-dw-pipeline` |
 | `personal-finance-and-investment` | Guide for personal finance management, asset allocation, and algorithmic trading portfolio risk control. | `finance/personal-finance-and-investment` |
 | `pm-quant-system-roadmap` | แผนการพัฒนาสถาปัตยกรรมระบบ Quant Trading ในมุมมอง PM + Quant Architect โดยเน้น Real PnL Impact (Execution, Risk, Portfolio) มากกว่าความซั... | `finance/pm-quant-system-roadmap` |
 | `pptx-author` | Build PowerPoint decks headless with python-pptx. Pairs with excel-author for model-backed decks where every number traces to a workbook ... | `finance/pptx-author` |
@@ -366,6 +405,7 @@
 | `risk-management` | Portfolio-level risk controls, drawdown management, exposure limits, and circuit breakers for crypto trading | `finance/risk-management` |
 | `risk-management-specialist` | Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evaluation, r... | `finance/risk-management-specialist` |
 | `settrade-adaptive-survival-bot` | Deploy an adaptive algorithmic trading bot for Thai stocks. | `finance/settrade-adaptive-survival-bot` |
+| `settrade-api-sandbox-connection` | Establish and verify connection to the Settrade Sandbox API. | `finance/settrade-api-sandbox-connection` |
 | `settrade-dw-algo-trading` | คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้... | `finance/settrade-dw-algo-trading` |
 | `settrade-dw-daily-income-bot` | Deploy an automated DW trading bot using Settrade Open API. | `finance/settrade-dw-daily-income-bot` |
 | `settrade-dw-quant-execution` | Execute DW trading strategies via Settrade Open API. | `finance/settrade-dw-quant-execution` |
@@ -384,7 +424,6 @@
 | `thai-digital-accounting` | ทักษะและความรู้ด้านการบัญชีดิจิทัล ระบบภาษีอิเล็กทรอนิกส์ (e-Tax & e-Withholding Tax) และการวิเคราะห์ข้อมูลสำหรับธุรกิจในประเทศไทย | `finance/thai-digital-accounting` |
 | `thai-dw-price-table` | คู่มือและวิธีการดึงข้อมูลตารางราคา DW (Derivative Warrants) ของแต่ละบริษัทผู้ออกหลักทรัพย์ในตลาดหุ้นไทย | `finance/thai-dw-price-table` |
 | `thai-dw-trading-strategy` | คู่มือกลยุทธ์, การคำนวณ, และข้อควรระวังในการเทรด DW (Derivative Warrants) ในตลาดหุ้นไทย | `finance/thai-dw-trading-strategy` |
-| `thai-finance-legal-guide` | Reference for Thai tax, stock, and crypto regulations. | `finance/thai-finance-legal-guide` |
 | `thai-financial-operating-rules` | กฎการเงินส่วนตัวสำหรับผู้อาศัยในไทย — ภาษี, ธนาคาร, การลงทุน, ป้องกันความเสี่ยง | `finance/thai-financial-operating-rules` |
 | `thai-personal-accounting-and-finance` | คู่มือและเครื่องมือการทำบัญชีส่วนบุคคล งบการเงิน และการวิเคราะห์อัตราส่วนสุขภาพทางการเงินตามมาตรฐานตลาดหลักทรัพย์แห่งประเทศไทย (SET Happy... | `finance/thai-personal-accounting-and-finance` |
 | `thai-stock-seasonal-strategy` | คู่มือและกลยุทธ์การเลือกหุ้นไทยด้วยปัจจัยพื้นฐาน ผสมผสานกับการเก็งกำไรตามฤดูกาล (Seasonal Effect) ในแต่ละไตรมาส | `finance/thai-stock-seasonal-strategy` |
@@ -400,15 +439,10 @@
 | `minecraft-modpack-server` | Host modded Minecraft servers (CurseForge, Modrinth). | `gaming/minecraft-modpack-server` |
 | `pokemon-player` | Play Pokemon via headless emulator + RAM reads. | `gaming/pokemon-player` |
 
-## <a id="github"></a>📂 github (6 skills)
+## <a id="github"></a>📂 github (1 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
-| `codebase-inspection` | Inspect codebases w/ pygount: LOC, languages, ratios. | `github/codebase-inspection` |
-| `github-auth` | GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login. | `github/github-auth` |
-| `github-code-review` | Review PRs: diffs, inline comments via gh or REST. | `github/github-code-review` |
-| `github-issues` | Create, triage, label, assign GitHub issues via gh or REST. | `github/github-issues` |
-| `github-pr-workflow` | GitHub PR lifecycle: branch, commit, open, CI, merge. | `github/github-pr-workflow` |
 | `github-repo-management` | Clone/create/fork repos; manage remotes, releases. | `github/github-repo-management` |
 
 ## <a id="hermes-agent"></a>📂 hermes-agent (5 skills)
@@ -421,7 +455,7 @@
 | `iterative-domain-mapping` | Structure continuous domain expertise into linked skills. | `hermes-agent/iterative-domain-mapping` |
 | `multi-profile-skills-sync` | Sync and link agent skills across all profiles and GitHub. | `hermes-agent/multi-profile-skills-sync` |
 
-## <a id="marketing"></a>📂 marketing (25 skills)
+## <a id="marketing"></a>📂 marketing (27 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -430,11 +464,13 @@
 | `ai-fluency-framework` | > | `marketing/ai-fluency-framework` |
 | `ai-fluency-social-seo` | AI fluency และ Social SEO สำหรับการทำการตลาด 2026 - ใช้ AI เพื่อสร้างเนื้อหา เพิ่มการมีส่วนไข้เข้าชมโดยรวม 10 ขั้นตอน | `marketing/ai-fluency-social-seo` |
 | `ai-proposal-generator` | Generate professional HTML proposals from meeting notes. Features 5 proposal styles (Corporate, Entrepreneur, Creative, Consultant, Minim... | `marketing/ai-proposal-generator` |
+| `content-creation-github-stack` | Curated open-source stack for multi-channel content creation. | `marketing/content-creation-github-stack` |
 | `content-marketing-2026-2027` | > | `marketing/content-marketing-2026-2027` |
 | `content-quality-and-token-telemetry` | Audit content quality and log token telemetry in DB. | `marketing/content-quality-and-token-telemetry` |
 | `design-trends-2026` | Apply 2026's top graphic design trends to any creative brief. Based on Kittl × Savee's 2026 Design Trends Report (10 trends + 2 honorable... | `marketing/design-trends-2026` |
 | `digital-product-monetization` | กรอบการทำงาน 5 ขั้นตอนในการสร้างและขาย Digital Product ให้ได้เงินหลักแสน (ถอดรหัสจากคลิปแนวคิด Alex Hormozi) | `marketing/digital-product-monetization` |
 | `facebook-automation-suite` | คู่มือและการสร้างสคริปต์สำหรับจัดการ Facebook Fanpage (โพสต์ออโต้, ดูดข้อมูล, ดึงคอมเมนต์) ผ่าน Python | `marketing/facebook-automation-suite` |
+| `facebook-monetized-content-engine` | Produce SEO-optimized monetized social media content. | `marketing/facebook-monetized-content-engine` |
 | `fb-reels-monetization-playbook` | ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า | `marketing/fb-reels-monetization-playbook` |
 | `prefect-social-media-factory` | Orchestrate scheduled social media content workflows. | `marketing/prefect-social-media-factory` |
 | `shopee-affiliate-data-pipeline` | Fetch and score Shopee affiliate products using pricing and seasonal matrices. | `marketing/shopee-affiliate-data-pipeline` |
@@ -458,7 +494,7 @@
 | `fastmcp` | Build, test, inspect, install, and deploy MCP servers with FastMCP in Python. Use when creating a new MCP server, wrapping an API or data... | `mcp/fastmcp` |
 | `native-mcp` | MCP client: connect servers, register tools (stdio/HTTP). | `mcp/native-mcp` |
 
-## <a id="media"></a>📂 media (14 skills)
+## <a id="media"></a>📂 media (10 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -467,17 +503,13 @@
 | `ffmpeg-complex-filter-video-automation` | Best practices for building fully automated video pipelines (templates, shorts, overlays) entirely in FFmpeg without MoviePy. | `media/ffmpeg-complex-filter-video-automation` |
 | `ffmpeg-thai-drawtext-pipeline` | Assemble vertical videos with typewriter effects and Thai text using pure FFmpeg. | `media/ffmpeg-thai-drawtext-pipeline` |
 | `ffmpeg-video-automation` | FFmpeg complex filter recipes for automated social media video generation (TikTok, Shorts) | `media/ffmpeg-video-automation` |
-| `gif-search` | Search/download GIFs from Tenor via curl + jq. | `media/gif-search` |
-| `heartmula` | HeartMuLa: Suno-like song generation from lyrics + tags. | `media/heartmula` |
 | `python-ai-video-monetization` | 10 Python AI video libraries categorized for monetization. | `media/python-ai-video-monetization` |
-| `songsee` | Audio spectrograms/features (mel, chroma, MFCC) via CLI. | `media/songsee` |
 | `spotify` | Spotify: play, search, queue, manage playlists and devices. | `media/spotify` |
 | `thai-faceless-video-automation` | Pipeline for rendering Thai-language vertical videos with accurate text overlays. | `media/thai-faceless-video-automation` |
 | `video-vision-analysis` | Framework for scoring and reviewing AI-generated videos before publishing. | `media/video-vision-analysis` |
-| `youtube-content` | YouTube transcripts to summaries, threads, blogs. | `media/youtube-content` |
 | `youtube-data-extraction` | Fetch YouTube channel videos, metadata, and transcripts using yt-dlp and APIs. | `media/youtube-data-extraction` |
 
-## <a id="misc"></a>📂 misc (12 skills)
+## <a id="misc"></a>📂 misc (10 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -487,39 +519,24 @@
 | `backup-global-cognitive-brain-20260316-100703` | - | `misc/backup-global-cognitive-brain-20260316-100703` |
 | `badman-agent-rental` | - | `misc/badman-agent-rental` |
 | `boss-ai-agent` | Boss AI Agent — AI management advisor and team operations middleware. Use this skill whenever the user needs management advice, leadershi... | `misc/boss-ai-agent` |
-| `computer-use` | / | `misc/computer-use` |
 | `grill-me` | A relentless interview to sharpen a plan or design. | `misc/grill-me` |
 | `grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. | `misc/grill-with-docs` |
 | `grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' t... | `misc/grilling` |
 | `research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user want... | `misc/research` |
-| `yuanbao` | Yuanbao (元宝) groups: @mention users, query info/members. | `misc/yuanbao` |
 
-## <a id="mlops"></a>📂 mlops (10 skills)
+## <a id="mlops"></a>📂 mlops (4 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
-| `audiocraft-audio-generation` | AudioCraft: MusicGen text-to-music, AudioGen text-to-sound. | `mlops/models/audiocraft` |
 | `dspy` | DSPy: declarative LM programs, auto-optimize prompts, RAG. | `mlops/research/dspy` |
-| `evaluating-llms-harness` | lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.). | `mlops/evaluation/lm-evaluation-harness` |
-| `huggingface-hub` | HuggingFace hf CLI: search/download/upload models, datasets. | `mlops/huggingface-hub` |
-| `llama-cpp` | llama.cpp local GGUF inference + HF Hub model discovery. | `mlops/inference/llama-cpp` |
 | `mlflow-dataset-tracking` | Guide and implementation patterns for measuring, tracking, and versioning datasets using MLflow (mlflow.data API). | `mlops/mlflow-dataset-tracking` |
 | `obliteratus` | OBLITERATUS: abliterate LLM refusals (diff-in-means). | `mlops/inference/obliteratus` |
 | `pm-mlops-trading-framework` | Project Management framework and strict governance rules for building an end-to-end MLOps AI Trading Platform (MT5 + ONNX). | `mlops/pm-mlops-trading-framework` |
-| `segment-anything-model` | SAM: zero-shot image segmentation via points, boxes, masks. | `mlops/models/segment-anything` |
-| `serving-llms-vllm` | vLLM: high-throughput LLM serving, OpenAI API, quantization. | `mlops/inference/vllm` |
 
-## <a id="note-taking"></a>📂 note-taking (1 skills)
+## <a id="productivity"></a>📂 productivity (17 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
-| `obsidian` | Read, search, create, and edit notes in the Obsidian vault. Provides vault-first templates, canonical data schema, and repeatable scripts... | `note-taking/obsidian` |
-
-## <a id="productivity"></a>📂 productivity (24 skills)
-
-| Skill Name | Description | Path |
-|---|---|---|
-| `airtable` | Airtable REST API via curl. Records CRUD, filters, upserts. | `productivity/airtable` |
 | `brain-hacking-and-productivity` | Neuroscience-based protocols for brain hacking, entering flow states, managing energy/dopamine, and optimizing cognitive execution. | `productivity/brain-hacking-and-productivity` |
 | `business-analysis-frameworks` | Use when analyzing business strategy, evaluating strengths/weaknesses (SWOT/TOWS), defining growth paths (Ansoff/BCG), assessing competit... | `productivity/business-analysis-frameworks` |
 | `deep-productivity` | Master deep work productivity through the three types of work framework (Building, Maintenance, Recovery). Use when user needs to: (1) Bu... | `productivity/deep-productivity` |
@@ -527,18 +544,12 @@
 | `google-workspace-oauth-setup` | Process for enabling Hermes access to personal Google accounts. | `productivity/google-workspace-oauth-setup` |
 | `here.now` | Publish static sites to {slug}.here.now and store private files in cloud Drives for agent-to-agent handoff. | `productivity/here-now` |
 | `linear` | Linear: manage issues, projects, teams via GraphQL + curl. | `productivity/linear` |
-| `maps` | Geocode, POIs, routes, timezones via OpenStreetMap/OSRM. | `productivity/maps` |
-| `nano-pdf` | Edit PDF text/typos/titles via nano-pdf CLI (NL prompts). | `productivity/nano-pdf` |
-| `notion` | Notion API + ntn CLI: pages, databases, markdown, Workers. | `productivity/notion` |
 | `obsidian-personal-templates` | / | `productivity/obsidian-personal-templates` |
 | `obsidian-workflow` | / | `productivity/obsidian-workflow` |
 | `online-income-and-monetization` | Strategies for online monetization, content creation, digital products, and building a professional brand. | `productivity/online-income-and-monetization` |
 | `personal-productivity` | Build a Personal Productivity System Pack (weekly timebox plan, capture+to-do system, daily/weekly review rituals, and a 7-day rollout). ... | `productivity/personal-productivity` |
-| `petdex` | Install and select animated petdex mascots for Hermes. | `productivity/petdex` |
-| `powerpoint` | Create, read, edit .pptx decks, slides, notes, templates. | `productivity/powerpoint` |
 | `saas-productivity` | Use when designing animations for business tools, project management, collaboration software, or productivity apps | `productivity/saas-productivity` |
 | `teach` | Teach the user a new skill or concept, within this workspace. | `productivity/teach` |
-| `teams-meeting-pipeline` | Operate the Teams meeting summary pipeline via Hermes CLI — summarize meetings, inspect pipeline status, replay jobs, manage Microsoft Gr... | `productivity/teams-meeting-pipeline` |
 | `thai-business-excellence` | Use when establishing, auditing, or improving business operations in Thailand using frameworks like TQA (Thailand Quality Award), PMQA, E... | `productivity/thai-business-excellence` |
 | `time-management-and-productivity` | Guidelines for task prioritization, time blocking, and learning systems (Second Brain/Obsidian). | `productivity/time-management-and-productivity` |
 | `user-communication-preferences` | Embed a user's preferred communication style and action-oriented conventions for Hermes Agent sessions (tone, language, verbosity, action... | `productivity/user-communication-preferences` |
@@ -556,29 +567,7 @@
 |---|---|---|
 | `godmode` | Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN. | `red-teaming/godmode` |
 
-## <a id="research"></a>📂 research (5 skills)
-
-| Skill Name | Description | Path |
-|---|---|---|
-| `arxiv` | Search arXiv papers by keyword, author, category, or ID. | `research/arxiv` |
-| `blogwatcher` | Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool. | `research/blogwatcher` |
-| `llm-wiki` | Karpathy's LLM Wiki: build/query interlinked markdown KB. | `research/llm-wiki` |
-| `polymarket` | Query Polymarket: markets, prices, orderbooks, history. | `research/polymarket` |
-| `research-paper-writing` | Write ML papers for NeurIPS/ICML/ICLR: design→submit. | `research/research-paper-writing` |
-
-## <a id="smart-home"></a>📂 smart-home (1 skills)
-
-| Skill Name | Description | Path |
-|---|---|---|
-| `openhue` | Control Philips Hue lights, scenes, rooms via OpenHue CLI. | `smart-home/openhue` |
-
-## <a id="social-media"></a>📂 social-media (1 skills)
-
-| Skill Name | Description | Path |
-|---|---|---|
-| `xurl` | X/Twitter via xurl CLI: post, search, DM, media, v2 API. | `social-media/xurl` |
-
-## <a id="software-development"></a>📂 software-development (95 skills)
+## <a id="software-development"></a>📂 software-development (87 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -600,7 +589,6 @@
 | `deep-agents-python` | Guide and best practices for using LangChain's Deep Agents framework (langchain-ai/deepagents), an opinionated agent harness built on Lan... | `software-development/deep-agents-python` |
 | `diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken/thr... | `software-development/diagnosing-bugs` |
 | `diagnosing-superpowers` | Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results... | `software-development/diagnosing-superpowers` |
-| `dogfood` | Exploratory QA of web apps: find bugs, evidence, reports. | `software-development/dogfood` |
 | `domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a CONTEXT.md, or recording or ed... | `software-development/domain-modeling` |
 | `executing-plans` | Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution,... | `software-development/executing-plans` |
 | `fastapi` | FastAPI best practices and conventions. Use when working with FastAPI APIs and Pydantic models for them. Keeps FastAPI code clean and up ... | `software-development/fastapi` |
@@ -630,16 +618,13 @@
 | `nextjs-liff-fastapi-backend` | Build a Next.js LIFF app using Python FastAPI with LangChain | `software-development/web-development/nextjs-liff-fastapi-backend` |
 | `nextjs-spa-static-export` | Best practices for building Single-Page Applications (SPA) and static sites with Next.js using the Static Export feature. | `software-development/nextjs-spa-static-export` |
 | `nextjs-ui-libraries` | Top UI libraries and UX frameworks for Next.js (shadcn/ui, Tailwind, NextUI, Chakra) to speed up frontend development. | `software-development/nextjs-ui-libraries` |
-| `node-inspect-debugger` | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. | `software-development/node-inspect-debugger` |
 | `plan` | Plan mode: write markdown plan to .hermes/plans/, no exec. | `software-development/plan` |
 | `playwright-python` | Playwright Python Best Practices and Techniques (Sync/Async, POM, Locators) | `software-development/playwright-python` |
 | `pr` | Use when writing a PR body. | `software-development/pr` |
 | `prototype` | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels rig... | `software-development/prototype` |
-| `python-debugpy` | Debug Python: pdb REPL + debugpy remote (DAP). | `software-development/python-debugpy` |
 | `react-2026` | Provides a comprehensive guide to the modern React 2026 stack. Use when starting a new React project or modernizing an existing one with ... | `software-development/react-2026` |
 | `react-composition-2026` | Teaches modern React composition patterns for 2025/2026. Use when designing component APIs, building shared UI libraries, or refactoring ... | `software-development/react-composition-2026` |
 | `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionabl... | `software-development/receiving-code-review` |
-| `requesting-code-review` | Pre-commit review: security scan, quality gates, auto-fix. | `software-development/requesting-code-review` |
 | `resolving-merge-conflicts` | Use when you need to resolve an in-progress git merge/rebase conflict. | `software-development/resolving-merge-conflicts` |
 | `retro` | Conduct a retrospective on a coding session. | `software-development/retro` |
 | `satang-ai-gateway-dev` | Development guide for the Satang AI Monorepo: FastAPI Gateway, Better-Auth integration, and Prefect orchestration. | `software-development/satang-ai-gateway-dev` |
@@ -651,13 +636,9 @@
 | `setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-c... | `software-development/setup-pre-commit` |
 | `setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable o... | `software-development/setup-ts-deep-modules` |
 | `shadcn-ui` | Provides complete shadcn/ui component library patterns including installation, configuration, and implementation of accessible React comp... | `software-development/shadcn-ui` |
-| `simplify-code` | Parallel 3-agent cleanup of recent code changes. | `software-development/simplify-code` |
 | `smart-context-usage` | Guidelines for maintaining token efficiency and executing context compression in Hermes | `software-development/smart-context-usage` |
-| `spike` | Throwaway experiments to validate an idea before build. | `software-development/spike` |
 | `subagent-driven-development` | Execute plans via delegate_task subagents (2-stage review). | `software-development/subagent-driven-development` |
-| `systematic-debugging` | 4-phase root cause debugging: understand bugs before fixing. | `software-development/systematic-debugging` |
 | `tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integr... | `software-development/tdd` |
-| `test-driven-development` | TDD: enforce RED-GREEN-REFACTOR, tests before code. | `software-development/test-driven-development` |
 | `to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. | `software-development/to-questionnaire` |
 | `to-spec` | Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've alread... | `software-development/to-spec` |
 | `to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the ... | `software-development/to-tickets` |

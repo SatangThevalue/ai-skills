@@ -43,7 +43,7 @@ Diagnoses "User not found" and "User is inactive" errors from the Settrade Open 
    from settrade_v2 import Investor
    try:
        investor = Investor(app_id="APP_ID", app_secret="APP_SECRET", broker_id="SANDBOX", app_code="SANDBOX", is_auto_queue=False)
-       equity = investor.Equity(account_no="satang-E")
+       equity = investor.Equity(account_no=os.getenv("SETTRADE_ACCOUNT_NO", "YOUR_ACCOUNT_NO"))
        info = equity.get_account_info()
        print(f"Equity connection successful. Line Available: {info.get('lineAvailable')}")
    except Exception as e:

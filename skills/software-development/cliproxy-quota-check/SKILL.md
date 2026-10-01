@@ -22,7 +22,7 @@ This skill does NOT manage or modify quotas — it only reads current statistics
 ## Prerequisites
 
 - CLIProxyAPI running locally on port `42869`.
-- Management secret configured as `satangza15974201` (or update the script accordingly).
+- Management secret configured as `YOUR_MANAGEMENT_KEY` (or update the script accordingly).
 
 ## How to Run
 
@@ -31,7 +31,7 @@ Use `terminal` and `curl` to query the management endpoint and process with `jq`
 ## Quick Reference
 
 - **Management endpoint:** `http://127.0.0.1:42869/v0/management/auth-files`
-- **Authorization header:** `Authorization: Bearer satangza15974201`
+- **Authorization header:** `Authorization: Bearer YOUR_MANAGEMENT_KEY`
 - **Models endpoint:** `http://127.0.0.1:42869/v1/models` (lists available models per provider)
 - **Error logs:** `~/.cli-proxy-api/logs/error-v1-chat-completions-*.log`
 
@@ -39,7 +39,7 @@ Use `terminal` and `curl` to query the management endpoint and process with `jq`
 
 ### 1. Query Account Status and Quota
 ```bash
-curl -H "Authorization: Bearer satangza15974201" http://127.0.0.1:42869/v0/management/auth-files
+curl -H "Authorization: Bearer YOUR_MANAGEMENT_KEY" http://127.0.0.1:42869/v0/management/auth-files
 ```
 
 ### 2. List Available Models
@@ -119,6 +119,6 @@ Confirm the connection and parse output successfully:
 import urllib.request
 req = urllib.request.Request(
     'http://127.0.0.1:42869/v0/management/auth-files',
-    headers={'Authorization': 'Bearer satangza15974201'}
+    headers={'Authorization': 'Bearer YOUR_MANAGEMENT_KEY'}
 )
 print('Status code:', urllib.request.urlopen(req).status)
