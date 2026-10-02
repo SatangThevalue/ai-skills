@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (481 skills ใน 28 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (504 skills ใน 28 หมวดหมู่)
 
 ### 📁 .ARCHIVE (66)
 
@@ -253,7 +253,7 @@ hermes skills view <ชื่อ-skill>
 
 - **`himalaya`**: Himalaya CLI: IMAP/SMTP email from terminal.
 
-### 📁 FINANCE (134)
+### 📁 FINANCE (157)
 
 - **`3-statement-model`**: Build fully-integrated 3-statement models (IS, BS, CF) in Excel with working capital schedules, D&A roll-forwards, debt schedule, and the plugs that make cash and retained earnings tie. Pairs with excel-author.
 - **`ai-trading-continuous-learning`**: Architecture and guidelines for building a Continuous Learning Pipeline for AI Trading models (Data Lake to MT5 ONNX) targeting Risk-adjusted Returns.
@@ -266,7 +266,9 @@ hermes skills view <ชื่อ-skill>
 - **`backtesting-py-mean-reversion`**: วิธีเขียนโค้ดและทำ Optimization กลยุทธ์ Mean Reversion ด้วยไลบรารี Backtesting.py
 - **`backtesting-trading-strategies`**: /
 - **`build-ea-python-strategy`**: Guidelines and architecture for building Expert Advisors using Python and MT5.
+- **`business-investment-advisor`**: >
 - **`business-ledger-and-inventory`**: สกิลการวางผังบัญชี 5 หมวด การจดบันทึกทางการเงิน และการบริหารจัดการคลังสินค้าสำหรับธุรกิจ SME ในประเทศไทย
+- **`catalyst-map`**: Build a ranked map of the catalysts that could move a watchlist, theme, or portfolio by showing what matters, when it matters, and how those events could transmit across related names or exposures.
 - **`CFO / Chief Financial Officer`**: Be the CFO with financial planning, cash management, fundraising, capital allocation, and strategic financial leadership.
 - **`chicken-business-scale-up`**: Scale a fresh chicken shop from local market to regional or national level.
 - **`comps-analysis`**: Build comparable company analysis in Excel — operating metrics, valuation multiples, statistical benchmarking vs peer sets. Pairs with excel-author. Use for public-company valuation, IPO pricing, sector benchmarking, or outlier detection.
@@ -276,6 +278,7 @@ hermes skills view <ชื่อ-skill>
 - **`crypto-market-rank`**: /
 - **`crypto-protocol-diagram`**: Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.spthy) models and generates Mermaid sequenceDiagrams with cryptographic annotations. Use when diagramming a crypto protocol, visualizing a handshake or key exchange flow, extracting message flow from a spec or RFC, diagramming a ProVerif or Tamarin model, or drawing sequence diagrams for TLS, Noise, Signal, X3DH, Double Ratchet, FROST, DH, or ECDH protocols.
 - **`crypto-report`**: Analyze cryptocurrency projects with tokenomics, on-chain metrics, and market analysis. Generate comprehensive crypto research reports.
+- **`day-trading-investor-pro`**: Professional AI Trading Mentor. Master price action, technical analysis, and risk management logic. Companion logic model for the Day Trading Investor Course.
 - **`dcf-model`**: Build institutional-quality DCF valuation models in Excel — revenue projections, FCF build, WACC, terminal value, Bear/Base/Bull scenarios, 5x5 sensitivity tables. Pairs with excel-author. Use for intrinsic-value equity analysis.
 - **`diy-accounting-setup`**: คู่มือและขั้นตอนการวางระบบบัญชี เอกสารควบคุมภายใน และปฏิทินภาษีด้วยตนเองสำหรับธุรกิจ SME และสตาร์ทอัพในประเทศไทย
 - **`dw-money-management-strategy`**: กลยุทธ์การบริหารเงิน (Money Management) และการบริหารความเสี่ยงสำหรับ DW
@@ -285,10 +288,16 @@ hermes skills view <ชื่อ-skill>
 - **`ea-dashboard-architecture`**: สถาปัตยกรรมและพารามิเตอร์สำหรับสร้าง Dashboard และระบบตั้งค่า EA (Python/MT5)
 - **`ea-news-filter-architecture`**: แนวทางและสถาปัตยกรรมในการสร้างระบบ News Filter สำหรับ EA และ Python Bot
 - **`eamt5-python-architecture`**: แนวทางและโครงสร้างการสร้าง EA บน MT5 เชื่อมต่อกับ Python สำหรับระบบเทรดอัตโนมัติ
+- **`earnings-preview`**: Prepare for an upcoming earnings report or earnings week by identifying the reports that matter, framing the key debates, and surfacing the read-through risk that could affect the user's watchlist or positions.
+- **`earnings-trade-prep`**: Orchestrate a disciplined earnings-event workflow by deciding which names deserve prep, mapping the key debates and read-through paths, pressure-testing the thesis and structure, and ending with a clear pre-earnings hold, avoid, or trade decision.
+- **`etoro`**: Use when the user wants an agent to interact with the eToro API for market data, portfolio and social features, or trade execution.
+- **`evidence-gap-check`**: Identify the most important missing facts, assumptions, and unresolved questions that should be answered before a trade or investment idea is trusted, sized, or acted on.
 - **`excel-author`**: Build auditable Excel workbooks headless with openpyxl — blue/black/green cell conventions, formulas over hardcodes, named ranges, balance checks, sensitivity tables. Use for financial models, audit outputs, reconciliations.
+- **`execution-plan-check`**: Review whether a trade plan is operationally executable by checking order type logic, liquidity and spread risk, event timing, stop realism, and whether the user can actually implement the plan cleanly.
 - **`factor-investing`**: Apply factor models to portfolio construction and fund evaluation, from CAPM through the Fama-French 3- and 5-factor models plus momentum. Use when the user asks about 'Fama-French', 'value factor', 'smart beta', 'factor tilt', 'momentum exposure', or the 'factor zoo', wants to run or interpret a factor regression (loadings, alpha after controlling for factors, R-squared, t-stats), decompose a manager's returns into factor exposures versus skill, or asks 'is my fund closet indexing'. Also trigger on SMB, HML, RMW, CMA, UMD, size/value/quality/profitability/low-vol premia, factor ETF or smart-beta product evaluation (factor purity, turnover, capacity, fees), factor cyclicality and the danger of factor timing, factor crowding, long-short academic factors versus long-only implementable tilts, and post-publication factor decay.
 - **`farmed-hedge-yield-strategy`**: กลยุทธ์การเทรดแบบ Systematic Hedging และ Yield Farming จาก Farmed Hedge Yield Copy I พร้อมการปรับใช้ด้วย Python/MT5
 - **`finance-os-tracker`**: Process daily financial transactions and route them to FinanceOS double-entry system via MCP tools.
+- **`financial-analyst`**: >
 - **`forex-exness-backtesting`**: การทดสอบสภาพแวดล้อมเสมือนจริงของ Exness (Free Swap) บน Python
 - **`forex-fundamental-analysis`**: Framework for analyzing macroeconomic fundamentals to select Forex currency pairs.
 - **`forex-mean-reversion-indicators`**: คู่มือการเลือกใช้อินดิเคเตอร์สำหรับระบบเทรด Mean Reversion และ Scalping
@@ -300,8 +309,11 @@ hermes skills view <ชื่อ-skill>
 - **`innovestx-api`**: InnovestX Digital Asset Open API integration guide and Python client implementation.
 - **`intelligent-investor-graham`**: Use Graham value investing for Is this investment or speculation, defensive
 - **`investment-memo`**: Write professional investment memorandums for VC, PE, or public market investments. Structure thesis, risks, and recommendations clearly.
+- **`journal-pattern-analyzer`**: Use when the user has a trade journal or trade log and wants repeated strengths, mistakes, environment-dependent patterns, and process changes without turning the review into hindsight theater.
 - **`lbo-model`**: Build leveraged buyout models in Excel — sources & uses, debt schedule, cash sweep, exit multiple, IRR/MOIC sensitivity. Pairs with excel-author. Use for PE screening, sponsor-case valuation, or illustrative LBO in a pitch.
 - **`lightgbm-mt5-onnx-pipeline`**: Architecture for LightGBM-based MT5 algorithmic trading bots using Walk-Forward testing and ONNX deployment.
+- **`macro-event-analysis`**: Prepare for upcoming macro catalysts by identifying the events that matter, mapping the likely transmission channels, and surfacing timing risk for the user's markets or positions.
+- **`market-regime-analysis`**: Analyze current market context through trend, volatility, breadth, and event backdrop so the user can choose tactics that fit the environment without relying on black-box regime claims.
 - **`market-regime-detection-quant`**: สถาปัตยกรรมและเทคนิคการสร้าง Market Regime Detection สำหรับระบบ AI Trading เพื่อแก้ปัญหาโมเดลขาดทุนเมื่อสภาวะตลาดเปลี่ยน
 - **`merger-model`**: Build accretion/dilution (merger) models in Excel — pro-forma P&L, synergies, financing mix, EPS impact. Pairs with excel-author. Use for M&A pitches, board materials, or deal evaluation.
 - **`metatrader5-docker-python`**: Run MT5 in Docker and trade via Python on Linux.
@@ -325,7 +337,14 @@ hermes skills view <ชื่อ-skill>
 - **`multidim-quant-dw-pipeline`**: Execute multi-dimensional quant screening and DW trading.
 - **`personal-finance-and-investment`**: Guide for personal finance management, asset allocation, and algorithmic trading portfolio risk control.
 - **`pm-quant-system-roadmap`**: แผนการพัฒนาสถาปัตยกรรมระบบ Quant Trading ในมุมมอง PM + Quant Architect โดยเน้น Real PnL Impact (Execution, Risk, Portfolio) มากกว่าความซับซ้อนของโมเดล
+- **`portfolio-concentration`**: Evaluate whether a portfolio, account, or planned position is too dependent on a small number of issuers, sectors, themes, or correlated exposures before the user adds or holds more risk.
+- **`portfolio-risk-review`**: Orchestrate a whole-book risk review by checking concentration, correlated exposure, catalyst clustering, market-context sensitivity, and live-position fragility before the user adds, holds, or reduces portfolio risk.
+- **`position-management`**: Review an open position and decide whether to hold, trim, tighten risk, close, or wait by comparing current behavior against the original thesis, invalidation logic, catalyst calendar, and execution constraints.
+- **`position-sizing`**: Use when the user needs a conservative position size from account equity, risk budget, entry, stop, and trading friction before entering a trade.
+- **`post-trade-debrief`**: Orchestrate a disciplined post-trade workflow by reconstructing the original plan, reviewing execution and rule adherence, and deciding whether the lesson is trade-specific or part of a larger repeatable pattern.
+- **`post-trade-review`**: Guide a disciplined post-trade review across thesis quality, setup quality, execution, adherence, mistakes, and lessons without turning the result into hindsight theater.
 - **`pptx-author`**: Build PowerPoint decks headless with python-pptx. Pairs with excel-author for model-backed decks where every number traces to a workbook cell. Use for pitch decks, IC memos, earnings notes.
+- **`pre-trade-check`**: Orchestrate a disciplined pre-trade workflow by routing a watchlist or trade idea through the minimum set of underlying skills needed to decide whether the trade is ready, not ready, or should be resized or reworked first.
 - **`prefect-quant-orchestration`**: สถาปัตยกรรม MLOps สำหรับ Quant Trading โดยใช้ Prefect เป็น Orchestrator ผสาน Data Sources, MLflow, ONNX และ MT5 เข้าด้วยกัน
 - **`prefect-quant-pipeline-implementation`**: คู่มือการเขียนโค้ดและขึ้นระบบ Prefect Orchestration สำหรับ Quant Trading (ต่อยอดกับ MLflow, PostgreSQL, Optuna, ONNX)
 - **`python-advanced-quant-trading`**: Advanced Python libraries for Candlestick pattern recognition, Price Action (Support/Resistance), Statistical indicators, and Strategy Performance metrics.
@@ -360,8 +379,10 @@ hermes skills view <ชื่อ-skill>
 - **`quant-walk-forward-validation`**: คู่มือทำ Walk Forward Validation แบบ Rolling Window และการวิเคราะห์ความเสถียร (Stability) เชิง Quant
 - **`quantum-omnigold-architecture`**: สถาปัตยกรรมและกลยุทธ์การเทรดทองคำ (XAUUSD) เลียนแบบ Quantum OmniGold EA
 - **`research-backed-investing`**: Use when designing asset allocation frameworks, developing algorithmic trading strategies, or selecting investment vehicles across Stocks, Mutual Funds, Forex, and Crypto using academic research-backed methodologies.
+- **`research-finance`**: >
 - **`risk-management`**: Portfolio-level risk controls, drawdown management, exposure limits, and circuit breakers for crypto trading
 - **`risk-management-specialist`**: Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evaluation, risk control, and post-production information analysis. Use when user mentions risk management, ISO 14971, risk analysis, FMEA, fault tree analysis, hazard identification, risk control, risk matrix, benefit-risk analysis, residual risk, risk acceptability, or post-market risk.
+- **`risk-reward-sanity-check`**: Use when the user wants to test whether a proposed entry, stop, and target structure is coherent, asymmetric enough, and vulnerable to obvious failure modes before the trade is placed.
 - **`settrade-adaptive-survival-bot`**: Deploy an adaptive algorithmic trading bot for Thai stocks.
 - **`settrade-api-sandbox-connection`**: Establish and verify connection to the Settrade Sandbox API.
 - **`settrade-dw-algo-trading`**: คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้วย Python พร้อมวิเคราะห์พารามิเตอร์แบบเจาะลึก
@@ -387,8 +408,10 @@ hermes skills view <ชื่อ-skill>
 - **`thai-stock-seasonal-strategy`**: คู่มือและกลยุทธ์การเลือกหุ้นไทยด้วยปัจจัยพื้นฐาน ผสมผสานกับการเก็งกำไรตามฤดูกาล (Seasonal Effect) ในแต่ละไตรมาส
 - **`thai-tax-planning-strategy`**: Guide and strategies for legal tax planning and tax optimization (Tax Avoidance) in Thailand for individuals and businesses.
 - **`thai-trading-business`**: คู่มือและขั้นตอนปฏิบัติการทำธุรกิจซื้อมาขายไป (Trading Business) ในประเทศไทย ครอบคลุมการตั้งค่าระบบบัญชี คลังสินค้า ภาษีบุคคล/นิติบุคคล และข้อกฎหมายที่เกี่ยวข้อง
+- **`thesis-validation`**: Pressure-test a trade or investment thesis by clarifying the core claim, evidence, invalidation, timeframe, and dependency chain before the user turns it into an entry, stop, or size.
 - **`top5-dw-issuers-thailand`**: รายชื่อผู้ออก DW (Derivative Warrants) ในประเทศไทยที่มี Market Share ยอดนิยม 5 อันดับแรก
 - **`topdown-stock-analysis`**: กรอบการวิเคราะห์หุ้นแบบ Top-Down Approach (Global -> Thai -> Stock)
+- **`watchlist-review`**: Review a watchlist and rank which names deserve active attention, background monitoring, or removal based on catalysts, tradability, redundancy, and evidence quality for the user's style and timeframe.
 
 ### 📁 GAMING (2)
 
