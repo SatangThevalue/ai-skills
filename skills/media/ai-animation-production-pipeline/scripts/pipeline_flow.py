@@ -114,6 +114,8 @@ def generate_storyboard(concept: str) -> dict:
     system_prompt = (
         "You are an expert AI Animation Director specializing in Studio Ghibli aesthetics "
         "and authentic Southeast Asian/Thai cultural storytelling. "
+        "CRITICAL: Enforce the Studio Ghibli Natural Color Palette Rule: 60% Lush Emerald Green (Nature/Leaves/Grass), "
+        "30% Clear Sky Blue/Water, and maximum 10% for accent colors. Never wash the entire scene in pink or magenta. "
         "Return ONLY a valid JSON object with keys: title, target_duration, "
         "beats (list of 4 objects: beat_number, time_range, shot_type, camera_lens, "
         "action_description, thai_cultural_anchors)."
@@ -154,6 +156,7 @@ def compile_scene_keyframes(storyboard: dict, master_assets: dict) -> list:
         "You are a production prompt engineer for FLUX.1 and Midjourney v6. "
         "Combine the master character visual DNA with each storyboard beat into ready-to-run "
         "Image-to-Image / Start Frame prompts. Enforce 9:16 safe zone and lighting details. "
+        "CRITICAL: Enforce the Studio Ghibli Natural Color Palette Rule: 60% Lush Emerald Green, 30% Clear Blue, max 10% Pink/Accent. "
         "Return ONLY a valid JSON array of objects: (beat_number, keyframe_prompt, safe_zone_notes)."
     )
     user_prompt = f"Storyboard: {json.dumps(storyboard, ensure_ascii=False)}\nMaster Assets: {json.dumps(master_assets, ensure_ascii=False)}"
