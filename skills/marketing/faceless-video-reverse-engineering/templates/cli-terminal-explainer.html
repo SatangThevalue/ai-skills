@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <title>CLI Terminal Tech Explainer Template</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0; background: #000; color: #FFF;
+      font-family: 'Prompt', -apple-system, sans-serif; overflow: hidden;
+    }
+    #root {
+      position: relative; width: 1080px; height: 1920px;
+      background: radial-gradient(circle at 50% 35%, #101B33 0%, #060B14 70%);
+      overflow: hidden;
+    }
+    .top-header { position: absolute; top: 90px; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; z-index: 30; }
+    .brand-title { font-size: 52px; font-weight: 800; color: #FFF; display: flex; align-items: center; gap: 8px; }
+    .brand-mic { color: #00E5FF; font-size: 44px; }
+    .brand-sub { font-size: 26px; color: #90A4AE; letter-spacing: 2px; margin-top: 4px; }
+    .stage { position: absolute; top: 260px; left: 60px; width: 960px; height: 1300px; z-index: 20; }
+    .scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .terminal-window {
+      width: 100%; background: #0A111E; border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); overflow: hidden;
+    }
+    .terminal-bar {
+      height: 60px; background: #131E30; display: flex; align-items: center;
+      padding: 0 24px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .terminal-dots { display: flex; gap: 10px; }
+    .dot { width: 16px; height: 16px; border-radius: 50%; }
+    .dot-red { background: #FF5F56; }
+    .dot-yellow { background: #FFBD2E; }
+    .dot-green { background: #27C93F; }
+    .terminal-title { position: absolute; left: 0; right: 0; text-align: center; font-size: 22px; color: #78909C; font-weight: 600; }
+    .terminal-body { padding: 44px 36px; font-family: monospace; font-size: 38px; line-height: 1.6; }
+    .cli-prompt { color: #00E5FF; font-weight: 700; }
+    .cli-cmd { color: #00E676; font-weight: 700; }
+    .checklist-title { font-size: 52px; font-weight: 800; color: #FFF; text-align: center; margin-bottom: 40px; }
+    .checklist-grid { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+    .check-card {
+      background: rgba(16, 27, 48, 0.85); border: 1.5px solid rgba(0, 229, 255, 0.3);
+      border-radius: 22px; padding: 26px 30px; display: flex; align-items: center; gap: 24px;
+    }
+    .check-num { font-size: 32px; font-weight: 800; color: #00E5FF; background: rgba(0, 229, 255, 0.1); padding: 6px 16px; border-radius: 12px; }
+    .check-text { font-size: 32px; font-weight: 700; color: #ECEFF1; flex: 1; }
+    .bottom-subtitle-box {
+      position: absolute; bottom: 80px; left: 60px; right: 60px;
+      background: rgba(10, 17, 30, 0.92); border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px; padding: 32px 36px; min-height: 140px;
+      display: flex; align-items: center; justify-content: center; text-align: center; z-index: 30;
+    }
+    .subtitle-text { font-size: 36px; font-weight: 700; color: #FFF; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="cli-explainer" data-duration="20">
+    <div class="top-header">
+      <div class="brand-title"><span class="brand-mic">🎙</span> {{BRAND_TITLE}}</div>
+      <div class="brand-sub">{{BRAND_SUB}}</div>
+    </div>
+    <div class="stage">
+      <div id="scene-1" class="scene">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+            <div class="terminal-title">{{SESSION_TITLE}}</div>
+          </div>
+          <div class="terminal-body">
+            <span class="cli-prompt">&gt;</span> <span class="cli-cmd">{{COMMAND_TEXT}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-subtitle-box">
+      <div class="subtitle-text">{{SUBTITLE_TEXT}}</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines = { "cli-explainer": tl };
+  </script>
+</body>
+</html>
