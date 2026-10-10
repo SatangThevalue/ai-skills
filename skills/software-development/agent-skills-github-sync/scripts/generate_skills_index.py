@@ -133,7 +133,8 @@ def write_readme(skills_dir, categories):
         skills = sorted(categories[cat], key=lambda x: x[0].lower())
         lines.append(f'### 📁 {cat.upper()} ({len(skills)})')
         lines.append('')
-        for name, desc in skills:
+        for item in skills:
+            name, desc = item[0], item[1]
             lines.append(f'- **`{name}`**: {desc}')
         lines.append('')
 

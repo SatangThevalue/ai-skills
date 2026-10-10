@@ -1,6 +1,6 @@
 # 📚 Hermes Skills Directory Index
 
-> คลังทักษะทั้งหมดของ Hermes Agent: **481 skills** จัดระเบียบใน **28 หมวดหมู่**
+> คลังทักษะทั้งหมดของ Hermes Agent: **508 skills** จัดระเบียบใน **28 หมวดหมู่**
 
 ---
 
@@ -23,13 +23,13 @@
 | [devops](#devops) | **43** | `9router`, `9router-chat`, `9router-docker-deployment` *(+อีก 40)* |
 | [domain-knowledge](#domain-knowledge) | **1** | `music-metadata-standards` |
 | [email](#email) | **1** | `himalaya` |
-| [finance](#finance) | **134** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 131)* |
+| [finance](#finance) | **157** | `3-statement-model`, `ai-trading-continuous-learning`, `aicoin-trading` *(+อีก 154)* |
 | [gaming](#gaming) | **2** | `minecraft-modpack-server`, `pokemon-player` |
 | [github](#github) | **1** | `github-repo-management` |
 | [hermes-agent](#hermes-agent) | **5** | `cross-linked-skill-authoring`, `ecosystem-knowledge-orchestration`, `hermes-gateway-multiplexer-fix` *(+อีก 2)* |
-| [marketing](#marketing) | **27** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 24)* |
+| [marketing](#marketing) | **28** | `30x-growth-marketing-panel`, `ai-business-thai-platforms`, `ai-fluency-framework` *(+อีก 25)* |
 | [mcp](#mcp) | **2** | `fastmcp`, `native-mcp` |
-| [media](#media) | **10** | `ai-avatar-generation-stack`, `broll-free-video-automation`, `ffmpeg-complex-filter-video-automation` *(+อีก 7)* |
+| [media](#media) | **13** | `ai-animation-production-pipeline`, `ai-avatar-generation-stack`, `broll-free-video-automation` *(+อีก 10)* |
 | [misc](#misc) | **10** | `adhd-assistant`, `AI Agent Wars 2026`, `ask-matt` *(+อีก 7)* |
 | [mlops](#mlops) | **4** | `dspy`, `mlflow-dataset-tracking`, `obliteratus` *(+อีก 1)* |
 | [productivity](#productivity) | **17** | `brain-hacking-and-productivity`, `business-analysis-frameworks`, `deep-productivity` *(+อีก 14)* |
@@ -294,7 +294,7 @@
 |---|---|---|
 | `himalaya` | Himalaya CLI: IMAP/SMTP email from terminal. | `email/himalaya` |
 
-## <a id="finance"></a>📂 finance (134 skills)
+## <a id="finance"></a>📂 finance (157 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -309,7 +309,9 @@
 | `backtesting-py-mean-reversion` | วิธีเขียนโค้ดและทำ Optimization กลยุทธ์ Mean Reversion ด้วยไลบรารี Backtesting.py | `finance/backtesting-py-mean-reversion` |
 | `backtesting-trading-strategies` | / | `finance/backtesting-trading-strategies` |
 | `build-ea-python-strategy` | Guidelines and architecture for building Expert Advisors using Python and MT5. | `finance/build-ea-python-strategy` |
+| `business-investment-advisor` | > | `finance/business-investment-advisor` |
 | `business-ledger-and-inventory` | สกิลการวางผังบัญชี 5 หมวด การจดบันทึกทางการเงิน และการบริหารจัดการคลังสินค้าสำหรับธุรกิจ SME ในประเทศไทย | `finance/business-ledger-and-inventory` |
+| `catalyst-map` | Build a ranked map of the catalysts that could move a watchlist, theme, or portfolio by showing what matters, when it matters, and how th... | `finance/catalyst-map` |
 | `CFO / Chief Financial Officer` | Be the CFO with financial planning, cash management, fundraising, capital allocation, and strategic financial leadership. | `finance/cfo` |
 | `chicken-business-scale-up` | Scale a fresh chicken shop from local market to regional or national level. | `finance/chicken-business-scale-up` |
 | `comps-analysis` | Build comparable company analysis in Excel — operating metrics, valuation multiples, statistical benchmarking vs peer sets. Pairs with ex... | `finance/comps-analysis` |
@@ -319,6 +321,7 @@
 | `crypto-market-rank` | / | `finance/crypto-market-rank` |
 | `crypto-protocol-diagram` | Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.spthy) m... | `finance/crypto-protocol-diagram` |
 | `crypto-report` | Analyze cryptocurrency projects with tokenomics, on-chain metrics, and market analysis. Generate comprehensive crypto research reports. | `finance/crypto-report` |
+| `day-trading-investor-pro` | Professional AI Trading Mentor. Master price action, technical analysis, and risk management logic. Companion logic model for the Day Tra... | `finance/day-trading-investor-pro` |
 | `dcf-model` | Build institutional-quality DCF valuation models in Excel — revenue projections, FCF build, WACC, terminal value, Bear/Base/Bull scenario... | `finance/dcf-model` |
 | `diy-accounting-setup` | คู่มือและขั้นตอนการวางระบบบัญชี เอกสารควบคุมภายใน และปฏิทินภาษีด้วยตนเองสำหรับธุรกิจ SME และสตาร์ทอัพในประเทศไทย | `finance/diy-accounting-setup` |
 | `dw-money-management-strategy` | กลยุทธ์การบริหารเงิน (Money Management) และการบริหารความเสี่ยงสำหรับ DW | `finance/dw-money-management-strategy` |
@@ -328,10 +331,16 @@
 | `ea-dashboard-architecture` | สถาปัตยกรรมและพารามิเตอร์สำหรับสร้าง Dashboard และระบบตั้งค่า EA (Python/MT5) | `finance/ea-dashboard-architecture` |
 | `ea-news-filter-architecture` | แนวทางและสถาปัตยกรรมในการสร้างระบบ News Filter สำหรับ EA และ Python Bot | `finance/ea-news-filter-architecture` |
 | `eamt5-python-architecture` | แนวทางและโครงสร้างการสร้าง EA บน MT5 เชื่อมต่อกับ Python สำหรับระบบเทรดอัตโนมัติ | `finance/eamt5-python-architecture` |
+| `earnings-preview` | Prepare for an upcoming earnings report or earnings week by identifying the reports that matter, framing the key debates, and surfacing t... | `finance/earnings-preview` |
+| `earnings-trade-prep` | Orchestrate a disciplined earnings-event workflow by deciding which names deserve prep, mapping the key debates and read-through paths, p... | `finance/earnings-trade-prep` |
+| `etoro` | Use when the user wants an agent to interact with the eToro API for market data, portfolio and social features, or trade execution. | `finance/etoro` |
+| `evidence-gap-check` | Identify the most important missing facts, assumptions, and unresolved questions that should be answered before a trade or investment ide... | `finance/evidence-gap-check` |
 | `excel-author` | Build auditable Excel workbooks headless with openpyxl — blue/black/green cell conventions, formulas over hardcodes, named ranges, balanc... | `finance/excel-author` |
+| `execution-plan-check` | Review whether a trade plan is operationally executable by checking order type logic, liquidity and spread risk, event timing, stop reali... | `finance/execution-plan-check` |
 | `factor-investing` | Apply factor models to portfolio construction and fund evaluation, from CAPM through the Fama-French 3- and 5-factor models plus momentum... | `finance/factor-investing` |
 | `farmed-hedge-yield-strategy` | กลยุทธ์การเทรดแบบ Systematic Hedging และ Yield Farming จาก Farmed Hedge Yield Copy I พร้อมการปรับใช้ด้วย Python/MT5 | `finance/algorithmic-trading/farmed-hedge-yield-strategy` |
 | `finance-os-tracker` | Process daily financial transactions and route them to FinanceOS double-entry system via MCP tools. | `finance/finance-os-tracker` |
+| `financial-analyst` | > | `finance/financial-analyst` |
 | `forex-exness-backtesting` | การทดสอบสภาพแวดล้อมเสมือนจริงของ Exness (Free Swap) บน Python | `finance/forex-exness-backtesting` |
 | `forex-fundamental-analysis` | Framework for analyzing macroeconomic fundamentals to select Forex currency pairs. | `finance/forex-fundamental-analysis` |
 | `forex-mean-reversion-indicators` | คู่มือการเลือกใช้อินดิเคเตอร์สำหรับระบบเทรด Mean Reversion และ Scalping | `finance/forex-mean-reversion-indicators` |
@@ -343,8 +352,11 @@
 | `innovestx-api` | InnovestX Digital Asset Open API integration guide and Python client implementation. | `finance/innovestx-api` |
 | `intelligent-investor-graham` | Use Graham value investing for Is this investment or speculation, defensive | `finance/intelligent-investor-graham` |
 | `investment-memo` | Write professional investment memorandums for VC, PE, or public market investments. Structure thesis, risks, and recommendations clearly. | `finance/investment-memo` |
+| `journal-pattern-analyzer` | Use when the user has a trade journal or trade log and wants repeated strengths, mistakes, environment-dependent patterns, and process ch... | `finance/journal-pattern-analyzer` |
 | `lbo-model` | Build leveraged buyout models in Excel — sources & uses, debt schedule, cash sweep, exit multiple, IRR/MOIC sensitivity. Pairs with excel... | `finance/lbo-model` |
 | `lightgbm-mt5-onnx-pipeline` | Architecture for LightGBM-based MT5 algorithmic trading bots using Walk-Forward testing and ONNX deployment. | `finance/lightgbm-mt5-onnx-pipeline` |
+| `macro-event-analysis` | Prepare for upcoming macro catalysts by identifying the events that matter, mapping the likely transmission channels, and surfacing timin... | `finance/macro-event-analysis` |
+| `market-regime-analysis` | Analyze current market context through trend, volatility, breadth, and event backdrop so the user can choose tactics that fit the environ... | `finance/market-regime-analysis` |
 | `market-regime-detection-quant` | สถาปัตยกรรมและเทคนิคการสร้าง Market Regime Detection สำหรับระบบ AI Trading เพื่อแก้ปัญหาโมเดลขาดทุนเมื่อสภาวะตลาดเปลี่ยน | `finance/market-regime-detection-quant` |
 | `merger-model` | Build accretion/dilution (merger) models in Excel — pro-forma P&L, synergies, financing mix, EPS impact. Pairs with excel-author. Use for... | `finance/merger-model` |
 | `metatrader5-docker-python` | Run MT5 in Docker and trade via Python on Linux. | `finance/metatrader5-docker-python` |
@@ -368,7 +380,14 @@
 | `multidim-quant-dw-pipeline` | Execute multi-dimensional quant screening and DW trading. | `finance/multidim-quant-dw-pipeline` |
 | `personal-finance-and-investment` | Guide for personal finance management, asset allocation, and algorithmic trading portfolio risk control. | `finance/personal-finance-and-investment` |
 | `pm-quant-system-roadmap` | แผนการพัฒนาสถาปัตยกรรมระบบ Quant Trading ในมุมมอง PM + Quant Architect โดยเน้น Real PnL Impact (Execution, Risk, Portfolio) มากกว่าความซั... | `finance/pm-quant-system-roadmap` |
+| `portfolio-concentration` | Evaluate whether a portfolio, account, or planned position is too dependent on a small number of issuers, sectors, themes, or correlated ... | `finance/portfolio-concentration` |
+| `portfolio-risk-review` | Orchestrate a whole-book risk review by checking concentration, correlated exposure, catalyst clustering, market-context sensitivity, and... | `finance/portfolio-risk-review` |
+| `position-management` | Review an open position and decide whether to hold, trim, tighten risk, close, or wait by comparing current behavior against the original... | `finance/position-management` |
+| `position-sizing` | Use when the user needs a conservative position size from account equity, risk budget, entry, stop, and trading friction before entering ... | `finance/position-sizing` |
+| `post-trade-debrief` | Orchestrate a disciplined post-trade workflow by reconstructing the original plan, reviewing execution and rule adherence, and deciding w... | `finance/post-trade-debrief` |
+| `post-trade-review` | Guide a disciplined post-trade review across thesis quality, setup quality, execution, adherence, mistakes, and lessons without turning t... | `finance/post-trade-review` |
 | `pptx-author` | Build PowerPoint decks headless with python-pptx. Pairs with excel-author for model-backed decks where every number traces to a workbook ... | `finance/pptx-author` |
+| `pre-trade-check` | Orchestrate a disciplined pre-trade workflow by routing a watchlist or trade idea through the minimum set of underlying skills needed to ... | `finance/pre-trade-check` |
 | `prefect-quant-orchestration` | สถาปัตยกรรม MLOps สำหรับ Quant Trading โดยใช้ Prefect เป็น Orchestrator ผสาน Data Sources, MLflow, ONNX และ MT5 เข้าด้วยกัน | `finance/prefect-quant-orchestration` |
 | `prefect-quant-pipeline-implementation` | คู่มือการเขียนโค้ดและขึ้นระบบ Prefect Orchestration สำหรับ Quant Trading (ต่อยอดกับ MLflow, PostgreSQL, Optuna, ONNX) | `finance/prefect-quant-pipeline-implementation` |
 | `python-advanced-quant-trading` | Advanced Python libraries for Candlestick pattern recognition, Price Action (Support/Resistance), Statistical indicators, and Strategy Pe... | `finance/python-advanced-quant-trading` |
@@ -403,8 +422,10 @@
 | `quant-walk-forward-validation` | คู่มือทำ Walk Forward Validation แบบ Rolling Window และการวิเคราะห์ความเสถียร (Stability) เชิง Quant | `finance/quant-walk-forward-validation` |
 | `quantum-omnigold-architecture` | สถาปัตยกรรมและกลยุทธ์การเทรดทองคำ (XAUUSD) เลียนแบบ Quantum OmniGold EA | `finance/quantum-omnigold-architecture` |
 | `research-backed-investing` | Use when designing asset allocation frameworks, developing algorithmic trading strategies, or selecting investment vehicles across Stocks... | `finance/research-backed-investing` |
+| `research-finance` | > | `finance/research-finance` |
 | `risk-management` | Portfolio-level risk controls, drawdown management, exposure limits, and circuit breakers for crypto trading | `finance/risk-management` |
 | `risk-management-specialist` | Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evaluation, r... | `finance/risk-management-specialist` |
+| `risk-reward-sanity-check` | Use when the user wants to test whether a proposed entry, stop, and target structure is coherent, asymmetric enough, and vulnerable to ob... | `finance/risk-reward-sanity-check` |
 | `settrade-adaptive-survival-bot` | Deploy an adaptive algorithmic trading bot for Thai stocks. | `finance/settrade-adaptive-survival-bot` |
 | `settrade-api-sandbox-connection` | Establish and verify connection to the Settrade Sandbox API. | `finance/settrade-api-sandbox-connection` |
 | `settrade-dw-algo-trading` | คู่มือและขั้นตอนการสร้างระบบ Algorithmic Trading สำหรับเทรด DW (Derivative Warrants) ในตลาดหุ้นไทยผ่าน Settrade Open API (settrade-v2) ด้... | `finance/settrade-dw-algo-trading` |
@@ -430,8 +451,10 @@
 | `thai-stock-seasonal-strategy` | คู่มือและกลยุทธ์การเลือกหุ้นไทยด้วยปัจจัยพื้นฐาน ผสมผสานกับการเก็งกำไรตามฤดูกาล (Seasonal Effect) ในแต่ละไตรมาส | `finance/thai-stock-seasonal-strategy` |
 | `thai-tax-planning-strategy` | Guide and strategies for legal tax planning and tax optimization (Tax Avoidance) in Thailand for individuals and businesses. | `finance/thai-tax-planning-strategy` |
 | `thai-trading-business` | คู่มือและขั้นตอนปฏิบัติการทำธุรกิจซื้อมาขายไป (Trading Business) ในประเทศไทย ครอบคลุมการตั้งค่าระบบบัญชี คลังสินค้า ภาษีบุคคล/นิติบุคคล แ... | `finance/thai-trading-business` |
+| `thesis-validation` | Pressure-test a trade or investment thesis by clarifying the core claim, evidence, invalidation, timeframe, and dependency chain before t... | `finance/thesis-validation` |
 | `top5-dw-issuers-thailand` | รายชื่อผู้ออก DW (Derivative Warrants) ในประเทศไทยที่มี Market Share ยอดนิยม 5 อันดับแรก | `finance/top5-dw-issuers-thailand` |
 | `topdown-stock-analysis` | กรอบการวิเคราะห์หุ้นแบบ Top-Down Approach (Global -> Thai -> Stock) | `finance/topdown-stock-analysis` |
+| `watchlist-review` | Review a watchlist and rank which names deserve active attention, background monitoring, or removal based on catalysts, tradability, redu... | `finance/watchlist-review` |
 
 ## <a id="gaming"></a>📂 gaming (2 skills)
 
@@ -456,7 +479,7 @@
 | `iterative-domain-mapping` | Structure continuous domain expertise into linked skills. | `hermes-agent/iterative-domain-mapping` |
 | `multi-profile-skills-sync` | Sync and link agent skills across all profiles and GitHub. | `hermes-agent/multi-profile-skills-sync` |
 
-## <a id="marketing"></a>📂 marketing (27 skills)
+## <a id="marketing"></a>📂 marketing (28 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
@@ -472,6 +495,7 @@
 | `digital-product-monetization` | กรอบการทำงาน 5 ขั้นตอนในการสร้างและขาย Digital Product ให้ได้เงินหลักแสน (ถอดรหัสจากคลิปแนวคิด Alex Hormozi) | `marketing/digital-product-monetization` |
 | `facebook-automation-suite` | คู่มือและการสร้างสคริปต์สำหรับจัดการ Facebook Fanpage (โพสต์ออโต้, ดูดข้อมูล, ดึงคอมเมนต์) ผ่าน Python | `marketing/facebook-automation-suite` |
 | `facebook-monetized-content-engine` | Produce SEO-optimized monetized social media content. | `marketing/facebook-monetized-content-engine` |
+| `faceless-video-reverse-engineering` | Replicate viral faceless videos into animated compositions. | `marketing/faceless-video-reverse-engineering` |
 | `fb-reels-monetization-playbook` | ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า | `marketing/fb-reels-monetization-playbook` |
 | `prefect-social-media-factory` | Orchestrate scheduled social media content workflows. | `marketing/prefect-social-media-factory` |
 | `shopee-affiliate-data-pipeline` | Fetch and score Shopee affiliate products using pricing and seasonal matrices. | `marketing/shopee-affiliate-data-pipeline` |
@@ -495,12 +519,14 @@
 | `fastmcp` | Build, test, inspect, install, and deploy MCP servers with FastMCP in Python. Use when creating a new MCP server, wrapping an API or data... | `mcp/fastmcp` |
 | `native-mcp` | MCP client: connect servers, register tools (stdio/HTTP). | `mcp/native-mcp` |
 
-## <a id="media"></a>📂 media (10 skills)
+## <a id="media"></a>📂 media (13 skills)
 
 | Skill Name | Description | Path |
 |---|---|---|
+| `ai-animation-production-pipeline` | Four-stage AI animation and video production pipeline. | `media/ai-animation-production-pipeline` |
 | `ai-avatar-generation-stack` | Tools and APIs for creating consistent AI avatars and talking-head videos. | `media/ai-avatar-generation-stack` |
 | `broll-free-video-automation` | Generate high-retention faceless videos without manual B-roll sourcing. | `media/broll-free-video-automation` |
+| `f5-tts-pipeline-integration` | Train and serve voice cloning models on Colab and VPS. | `media/f5-tts-pipeline-integration` |
 | `ffmpeg-complex-filter-video-automation` | Best practices for building fully automated video pipelines (templates, shorts, overlays) entirely in FFmpeg without MoviePy. | `media/ffmpeg-complex-filter-video-automation` |
 | `ffmpeg-thai-drawtext-pipeline` | Assemble vertical videos with typewriter effects and Thai text using pure FFmpeg. | `media/ffmpeg-thai-drawtext-pipeline` |
 | `ffmpeg-video-automation` | FFmpeg complex filter recipes for automated social media video generation (TikTok, Shorts) | `media/ffmpeg-video-automation` |
@@ -508,6 +534,7 @@
 | `spotify` | Spotify: play, search, queue, manage playlists and devices. | `media/spotify` |
 | `thai-faceless-video-automation` | Pipeline for rendering Thai-language vertical videos with accurate text overlays. | `media/thai-faceless-video-automation` |
 | `video-vision-analysis` | Framework for scoring and reviewing AI-generated videos before publishing. | `media/video-vision-analysis` |
+| `voice-humanizer` | Process synthetic speech with audio DSP and music ducking. | `media/voice-humanizer` |
 | `youtube-data-extraction` | Fetch YouTube channel videos, metadata, and transcripts using yt-dlp and APIs. | `media/youtube-data-extraction` |
 
 ## <a id="misc"></a>📂 misc (10 skills)

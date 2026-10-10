@@ -2,7 +2,7 @@
 
 > **Repository:** [SatangTheValue/ai-skills](https://github.com/SatangTheValue/ai-skills)  
 > **ผู้ดูแล:** Thanapol N (Satang) · ผู้ช่วย: ต้นทอง (Hermes Agent)  
-> **อัปเดตล่าสุด:** 2026-10-02
+> **อัปเดตล่าสุด:** 2026-10-10
 
 ---
 
@@ -26,7 +26,7 @@ hermes skills view <ชื่อ-skill>
 
 ---
 
-## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (504 skills ใน 28 หมวดหมู่)
+## 📚 รายชื่อ Skills แบ่งตามหมวดหมู่ (508 skills ใน 28 หมวดหมู่)
 
 ### 📁 .ARCHIVE (66)
 
@@ -44,7 +44,7 @@ hermes skills view <ชื่อ-skill>
 - **`codebase-inspection`**: Inspect codebases w/ pygount: LOC, languages, ratios.
 - **`codex`**: Delegate coding to OpenAI Codex CLI (features, PRs).
 - **`comfyui`**: Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter injection. Uses the official comfy-cli for lifecycle and direct REST/WebSocket API for execution.
-- **`computer-use`**: /
+- **`computer-use`**: |
 - **`design-md`**: Author/validate/export Google's DESIGN.md token spec files.
 - **`dogfood`**: Exploratory QA of web apps: find bugs, evidence, reports.
 - **`evaluating-llms-harness`**: lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).
@@ -103,7 +103,7 @@ hermes skills view <ชื่อ-skill>
 
 ### 📁 APPLE (1)
 
-- **`macos-computer-use`**: /
+- **`macos-computer-use`**: |
 
 ### 📁 ARCHITECTURE (2)
 
@@ -264,7 +264,7 @@ hermes skills view <ชื่อ-skill>
 - **`aster-bot-trading`**: Automated perpetual futures trading bot for AsterDEX with dual strategies, risk management, and TypeScript/Node.js stack
 - **`backtest-expert`**: Expert guidance for systematic backtesting of trading strategies. Use when developing, testing, stress-testing, or validating quantitative trading strategies. Covers "beating ideas to death" methodology, parameter robustness testing, slippage modeling, bias prevention, and interpreting backtest results. Applicable when user asks about backtesting, strategy validation, robustness testing, avoiding overfitting, or systematic trading development.
 - **`backtesting-py-mean-reversion`**: วิธีเขียนโค้ดและทำ Optimization กลยุทธ์ Mean Reversion ด้วยไลบรารี Backtesting.py
-- **`backtesting-trading-strategies`**: /
+- **`backtesting-trading-strategies`**: |
 - **`build-ea-python-strategy`**: Guidelines and architecture for building Expert Advisors using Python and MT5.
 - **`business-investment-advisor`**: >
 - **`business-ledger-and-inventory`**: สกิลการวางผังบัญชี 5 หมวด การจดบันทึกทางการเงิน และการบริหารจัดการคลังสินค้าสำหรับธุรกิจ SME ในประเทศไทย
@@ -275,7 +275,7 @@ hermes skills view <ชื่อ-skill>
 - **`cost-accounting-inventory`**: การคำนวณบัญชีต้นทุนและการบริหารจัดการสินค้าคงคลัง (FIFO, Weighted Average, EOQ, Reorder Point, Safety Stock) พร้อม Python Implementation
 - **`crassula-investment-persona`**: น้องใบเงิน (Crassula) investment advisor persona — Risk-First framework, response structure, tone, and decision hierarchy for all investment analysis tasks. Load when acting as Crassula or when user asks for investment analysis, risk assessment, or portfolio advice.
 - **`crypto-com-app`**: Execute crypto trades (buy, sell, swap, exchange), manage cash deposits and withdrawals, and query account balances, market prices, and transaction history via the Crypto.com APP API. View weekly trading limits, portfolio positions, bank accounts, and payment networks. Use when the user wants to trade cryptocurrency, deposit or withdraw cash, check bank account details, view deposit instructions, or manage fiat wallet operations. Supports BTC, ETH, CRO, and 200+ tokens across fiat and crypto wallets.
-- **`crypto-market-rank`**: /
+- **`crypto-market-rank`**: |
 - **`crypto-protocol-diagram`**: Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.spthy) models and generates Mermaid sequenceDiagrams with cryptographic annotations. Use when diagramming a crypto protocol, visualizing a handshake or key exchange flow, extracting message flow from a spec or RFC, diagramming a ProVerif or Tamarin model, or drawing sequence diagrams for TLS, Noise, Signal, X3DH, Double Ratchet, FROST, DH, or ECDH protocols.
 - **`crypto-report`**: Analyze cryptocurrency projects with tokenomics, on-chain metrics, and market analysis. Generate comprehensive crypto research reports.
 - **`day-trading-investor-pro`**: Professional AI Trading Mentor. Master price action, technical analysis, and risk management logic. Companion logic model for the Day Trading Investor Course.
@@ -430,7 +430,7 @@ hermes skills view <ชื่อ-skill>
 - **`iterative-domain-mapping`**: Structure continuous domain expertise into linked skills.
 - **`multi-profile-skills-sync`**: Sync and link agent skills across all profiles and GitHub.
 
-### 📁 MARKETING (27)
+### 📁 MARKETING (28)
 
 - **`30x-growth-marketing-panel`**: AI Growth Marketing Expert Panel with 11 world-class experts distilled from 4,000+ YouTube videos for Claude Code
 - **`ai-business-thai-platforms`**: Use when designing, building, or implementing AI strategies for Thai businesses across LINE, Facebook, YouTube, and Instagram.
@@ -444,6 +444,7 @@ hermes skills view <ชื่อ-skill>
 - **`digital-product-monetization`**: กรอบการทำงาน 5 ขั้นตอนในการสร้างและขาย Digital Product ให้ได้เงินหลักแสน (ถอดรหัสจากคลิปแนวคิด Alex Hormozi)
 - **`facebook-automation-suite`**: คู่มือและการสร้างสคริปต์สำหรับจัดการ Facebook Fanpage (โพสต์ออโต้, ดูดข้อมูล, ดึงคอมเมนต์) ผ่าน Python
 - **`facebook-monetized-content-engine`**: Produce SEO-optimized monetized social media content.
+- **`faceless-video-reverse-engineering`**: Replicate viral faceless videos into animated compositions.
 - **`fb-reels-monetization-playbook`**: ระบบสแครปและวิเคราะห์ Facebook Reels คู่แข่งด้วย Python เพื่อสกัดเป็นเทมเพลตสคริปต์ทำเงินสำหรับ Affiliate สินค้า
 - **`prefect-social-media-factory`**: Orchestrate scheduled social media content workflows.
 - **`shopee-affiliate-data-pipeline`**: Fetch and score Shopee affiliate products using pricing and seasonal matrices.
@@ -465,10 +466,12 @@ hermes skills view <ชื่อ-skill>
 - **`fastmcp`**: Build, test, inspect, install, and deploy MCP servers with FastMCP in Python. Use when creating a new MCP server, wrapping an API or database as MCP tools, exposing resources or prompts, or preparing a FastMCP server for Claude Code, Cursor, or HTTP deployment.
 - **`native-mcp`**: MCP client: connect servers, register tools (stdio/HTTP).
 
-### 📁 MEDIA (10)
+### 📁 MEDIA (13)
 
+- **`ai-animation-production-pipeline`**: Four-stage AI animation and video production pipeline.
 - **`ai-avatar-generation-stack`**: Tools and APIs for creating consistent AI avatars and talking-head videos.
 - **`broll-free-video-automation`**: Generate high-retention faceless videos without manual B-roll sourcing.
+- **`f5-tts-pipeline-integration`**: Train and serve voice cloning models on Colab and VPS.
 - **`ffmpeg-complex-filter-video-automation`**: Best practices for building fully automated video pipelines (templates, shorts, overlays) entirely in FFmpeg without MoviePy.
 - **`ffmpeg-thai-drawtext-pipeline`**: Assemble vertical videos with typewriter effects and Thai text using pure FFmpeg.
 - **`ffmpeg-video-automation`**: FFmpeg complex filter recipes for automated social media video generation (TikTok, Shorts)
@@ -476,6 +479,7 @@ hermes skills view <ชื่อ-skill>
 - **`spotify`**: Spotify: play, search, queue, manage playlists and devices.
 - **`thai-faceless-video-automation`**: Pipeline for rendering Thai-language vertical videos with accurate text overlays.
 - **`video-vision-analysis`**: Framework for scoring and reviewing AI-generated videos before publishing.
+- **`voice-humanizer`**: Process synthetic speech with audio DSP and music ducking.
 - **`youtube-data-extraction`**: Fetch YouTube channel videos, metadata, and transcripts using yt-dlp and APIs.
 
 ### 📁 MISC (10)
@@ -507,8 +511,8 @@ hermes skills view <ชื่อ-skill>
 - **`google-workspace-oauth-setup`**: Process for enabling Hermes access to personal Google accounts.
 - **`here.now`**: Publish static sites to {slug}.here.now and store private files in cloud Drives for agent-to-agent handoff.
 - **`linear`**: Linear: manage issues, projects, teams via GraphQL + curl.
-- **`obsidian-personal-templates`**: /
-- **`obsidian-workflow`**: /
+- **`obsidian-personal-templates`**: |
+- **`obsidian-workflow`**: |
 - **`online-income-and-monetization`**: Strategies for online monetization, content creation, digital products, and building a professional brand.
 - **`personal-productivity`**: Build a Personal Productivity System Pack (weekly timebox plan, capture+to-do system, daily/weekly review rituals, and a 7-day rollout). Use for timeboxing, calendar blocking, and staying on top of high-volume leadership work. Category: Career.
 - **`saas-productivity`**: Use when designing animations for business tools, project management, collaboration software, or productivity apps
